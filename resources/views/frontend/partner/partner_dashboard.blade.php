@@ -455,11 +455,43 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="3"  name="services[]" @foreach($service as $data) {{$data == '3' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="4"  name="services[]" @foreach($service as $data) {{$data == '4' ? 'checked="checked"' : '' }} @endforeach>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
-																					</label>Tax
+																					</label>Audit
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="5"  name="services[]" @foreach($service as $data) {{$data == '5' ? 'checked="checked"' : '' }} @endforeach>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Payroll
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="6"  name="services[]" @foreach($service as $data) {{$data == '6' ? 'checked="checked"' : '' }} @endforeach>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Incorporation
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="7"  name="services[]" @foreach($service as $data) {{$data == '7' ? 'checked="checked"' : '' }} @endforeach>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Secretarial service
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="8"  name="services[]" @foreach($service as $data) {{$data == '8' ? 'checked="checked"' : '' }} @endforeach>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Mix your own service pack
 																				</div>
 																				
 																			</div>

@@ -9,7 +9,7 @@
         
         <div class="row">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">About Us</h3>
+            <h3 class="promoted">Why Experlu?</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -23,15 +23,15 @@
         <div class="row">
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>Send your request</h4>
+            <h4>Extraordinarily easy</h4>
           </div>
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>We find you 3 quotes</h4>
+            <h4>Truly transparent</h4>
           </div>
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>Choose the analyst that suits you best</h4>
+            <h4>Fantastically free</h4>
           </div>
         </div>
       </div>
@@ -42,51 +42,47 @@
         
         <div class="row ">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">Choose a service for which you would like to receive 3 quotes</h3>
+            <h3 class="promoted">Receive 3 free quotes from experts for</h3>
           </div>
         </div>
         
         <div class="row">
           
-          <div class="col-md-4 col-sm-6">
+          <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Accounting</h4>
-                  </a>
-                </div>
-              </div>
               
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
                 </div>
               </div>
-              
               <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Audit</h4>
+                  </a>
+                </div>
+              </div>
+              
+             <!--  <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
                     Get 3 quotes
                   </a>
                 </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a href="accountant.html" target="_blank">
-                    <small>Read more about accounting</small>
-                  </a>
-                </div>
-              </div>
+              </div> -->
               
             </div>
           </div>
           
-          <div class="col-md-4 col-sm-6">
+          <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
               
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -95,32 +91,44 @@
                 </div>
               </div>
               
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
-                </div>
-              </div>
-              
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
                     Get 3 quotes
                   </a>
                 </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a href="bookkeeper.html" target="_blank">
-                    <small>Read more about bookkeeping</small>
-                  </a>
-                </div>
-              </div>
+              </div> -->
               
             </div>
           </div>
           
-          <div class="col-md-4 col-sm-6">
+          <div class="col-md-3 col-sm-6">
+            <div class="card card-condensed service-card">
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Accounting</h4>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
               
               <div class="row">
@@ -137,38 +145,138 @@
                 </div>
               </div>
               
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
                     Get 3 quotes
                   </a>
                 </div>
-              </div>
+              </div> -->
               
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6">
+            <div class="card card-condensed service-card">
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <a href="auditor.html" target="_blank">
-                    <small>Read more about tax</small>
+                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Payroll</h4>
                   </a>
                 </div>
               </div>
+              
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6">
+            <div class="card card-condensed service-card">
+              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Incorporation</h4>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6">
+            <div class="card card-condensed service-card">
+              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Secretarial service</h4>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6">
+            <div class="card card-condensed service-card">
+              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
+                    <h4 class="promoted">Mix your own service pack</h4>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
               
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <p class="text-20px" style="margin-top: 40px;">For other services:<br />
-              <a data-industry="general" class="cursor-pointer">
-                Click here and let us know how we can help you
-              </a>
+            <h3 class="promoted" class="text-20px" style="margin-top: 40px;">Mix your own service pack</h3>
+              <p class="text-20px">
+                Looking to build on your brand and not someone else’s? Need customised a combination of services or something not listed here? Our advisory team can help create the perfect tailored service solution for your business. 
+              
             </p>
           </div>
         </div>
       </div>
     </section>
     
-    <section id="how-it-works" class="inverse">
+    <!-- <section id="how-it-works" class="inverse">
       <div class="container">
         
         <div class="row">
@@ -259,11 +367,11 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     
     
     
-    <section id="transparency" class="dark">
+    <!-- <section id="transparency" class="dark">
       <div class="container">
         
         <div class="row">
@@ -310,14 +418,14 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     
     <section id="contact" class="inverse hidden-xs">
       <div class="container">
         
         <div class="row">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">We are here for you</h3>
+            <h3 class="promoted">You can contact us through</h3>
           </div>
         </div>
         
@@ -327,7 +435,7 @@
               <div class="col-md-4 text-center">
                 <i data-icon="mdi-email" class="mdi iconify mdi-email mdi-48px"></i>
                 <p>
-                  Contact us via e-mail<br />
+                  E-mail<br />
                   <br />
                  
                 </p>
@@ -338,7 +446,7 @@
               <div class="col-md-4 text-center">
                 <i data-icon="mdi-phone" class="mdi iconify mdi-phone mdi-48px"></i>
                 <p>
-                  Call us directly<br />
+                  Call<br />
                   <br />
                   
                 </p>
@@ -349,7 +457,7 @@
               <div class="col-md-4 text-center">
                 <i data-icon="mdi-message-text" class="mdi iconify mdi-message-text mdi-48px"></i>
                 <p>
-                  Reach us immediately<br />
+                  Chat<br />
                   <br />
                   
                 </p>
@@ -501,6 +609,36 @@
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Tax"> Tax</lable>
                 <input type="radio" name="services" value="3" id="Tax" style="display:none">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" data-industry="accounting" id="audit">
+                <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Audit"> Audit</lable>
+                <input type="radio" name="services" value="4" id="Audit" style="display:none">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" data-industry="accounting" id="tax">
+                <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
+                <input type="radio" name="services" value="5" id="Payroll" style="display:none">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" data-industry="accounting" id="tax">
+                <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
+                <input type="radio" name="services" value="6" id="Incorporation" style="display:none">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" data-industry="accounting" id="tax">
+                <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Secretarial_service"> Secretarial service</lable>
+                <input type="radio" name="services" value="7" id="Secretarial_service" style="display:none">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" data-industry="accounting" id="tax">
+                <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
+                <input type="radio" name="services" value="8" id="Service_pack" style="display:none">
               </a>
             </li>
           </ul>

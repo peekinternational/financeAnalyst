@@ -47,6 +47,12 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/', function(){
 		return view('frontend.admin.index');
 	});
+	Route::get('/job_management', function(){
+		return view('frontend.admin.job_management');
+	});
+	Route::get('/upload_tamplate', function(){
+		return view('frontend.admin.make_template');
+	});
 	Route::get('/icons', function(){
 		return view('frontend.admin.icons');
 	});

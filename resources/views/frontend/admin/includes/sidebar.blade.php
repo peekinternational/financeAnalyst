@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="white" data-active-color="danger">
+<div class="sidebar" data-color="#072f44" data-active-color="danger">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -24,45 +24,58 @@
             </a>
           </li>
           <li>
-            <a href="{{url('dashboard/icons')}}">
+            <a class="" data-toggle="collapse" href="#manageTemplate" role="button" aria-expanded="false" aria-controls="manageTemplate">
               <i class="nc-icon nc-diamond"></i>
-              <p>Icons</p>
+              <p>Manage Template</p>
+            </a>
+            <ul class="collapse" id="manageTemplate">
+              <li><a href="{{url('dashboard/upload_tamplate')}}">Upload Template</a></li>
+            </ul>
+          </li>
+  
+          <li>
+            <a class="" data-toggle="collapse" href="#manageQuote" role="button" aria-expanded="false" aria-controls="manageQuote">
+              <i class="nc-icon nc-pin-3"></i>
+              <p>Manage Quotes</p>
+            </a>
+            <ul class="collapse" id="manageQuote">
+              <li><a href="">Upload Quotes</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{url('dashboard/job_management')}}">
+              <i class="nc-icon nc-bell-55"></i>
+              <p>Jobs Management</p>
             </a>
           </li>
           <li>
-            <a href="{{url('dashboard/map')}}">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Maps</p>
+            <a href="{{url('dashboard/notifications')}}">
+              <i class="nc-icon nc-single-02"></i>
+              <p>User Management</p>
             </a>
           </li>
           <li>
             <a href="{{url('dashboard/notifications')}}">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Notifications</p>
+              <p>Invoice</p>
             </a>
           </li>
           <li>
             <a href="{{url('dashboard/user')}}">
               <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
+              <p>Profile Management</p>
             </a>
           </li>
           <li>
             <a href="{{url('dashboard/tables')}}">
               <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
+              <p>Blogs</p>
             </a>
           </li>
           <li>
             <a href="{{url('dashboard/typography')}}">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="{{url('dashboard/upgrade')}}">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Messages</p>
             </a>
           </li>
         </ul>
