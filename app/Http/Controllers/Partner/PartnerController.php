@@ -50,8 +50,8 @@ class PartnerController extends Controller
         //dd($userId);
          $userinfo = DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->first();
          $service=json_decode($userinfo->services);
-         $jobs = DB::table('fa_jobpost')->where('services','=',$service[0])->get();
-         $alljobs = DB::table('fa_jobpost')->orderBy('id','desc')->get();
+         $jobs = DB::table('fa_jobpost')->where('status','1')->where('services','=',$service[0])->get();
+         $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
  //dd($jobs);
      return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs'));
     }

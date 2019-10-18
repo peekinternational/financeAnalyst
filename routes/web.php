@@ -45,34 +45,31 @@ Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
 //////////////////////// Admin Dashboard //////////////////////////////
 Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/', function(){
-		return view('frontend.admin.index');
+		return view('/admin.index');
 	});
-	Route::get('/job_management', function(){
-		return view('frontend.admin.job_management');
-	});
-	Route::get('/upload_tamplate', function(){
-		return view('frontend.admin.make_template');
-	});
+	Route::get('/job_management', 'Dashboard\JobManageController@index');
+	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
+	Route::get('/upload_tamplate', 'Dashboard\JobManageController@showtemplate');
 	Route::get('/icons', function(){
-		return view('frontend.admin.icons');
+		return view('/admin.icons');
 	});
 	Route::get('/map', function(){
-		return view('frontend.admin.map');
+		return view('/admin.map');
 	});
 	Route::get('/notifications', function(){
-		return view('frontend.admin.notifications');
+		return view('/admin.notifications');
 	});
 	Route::get('/user', function(){
-		return view('frontend.admin.user');
+		return view('/admin.user');
 	});
 	Route::get('/tables', function(){
-		return view('frontend.admin.tables');
+		return view('/admin.tables');
 	});
 	Route::get('/typography', function(){
-		return view('frontend.admin.typography');
+		return view('/admin.typography');
 	});
 	Route::get('/upgrade', function(){
-		return view('frontend.admin.upgrade');
+		return view('/admin.upgrade');
 	});
 });
 //////////////////////// Admin Dashboard Close ////////////////////////////
