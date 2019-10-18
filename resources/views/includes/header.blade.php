@@ -99,7 +99,7 @@
           </a>
         </li>
         <li class="dropdown">
-          <a href="about-ageras.html"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+          <a href="{{url('/partner')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Expert
           </a>
           <span class="arrow-icon">

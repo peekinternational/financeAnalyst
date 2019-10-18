@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 //////////////////////// Partner /////////////////////////////////
+Route::get('/partner',function(){
+	return view('frontend.partner.index');
+});
+
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
 Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@accountRegister');
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
