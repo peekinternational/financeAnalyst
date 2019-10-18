@@ -4,6 +4,39 @@
     
     
     
+    <section class="light">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <h3 class="promoted">Why Experlu?</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <h4>Extraordinarily easy</h4>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <h4>Truly transparent</h4>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <h4>Fantastically free</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <section id="services" class="dark">
       <div class="container">
         
@@ -31,6 +64,14 @@
                 </div>
               </div>
               
+             <!--  <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
           
@@ -50,6 +91,14 @@
                 </div>
               </div>
               
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
           
@@ -67,6 +116,15 @@
                   </a>
                 </div>
               </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
           
@@ -87,6 +145,14 @@
                 </div>
               </div>
               
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
           
@@ -104,6 +170,15 @@
                   </a>
                 </div>
               </div>
+              
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
               
             </div>
           </div>
@@ -123,6 +198,15 @@
                   </a>
                 </div>
               </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
           
@@ -141,6 +225,14 @@
                   </a>
                 </div>
               </div>
+              
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
               
             </div>
           </div>
@@ -161,6 +253,14 @@
                 </div>
               </div>
               
+              <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
+                    Get 3 quotes
+                  </a>
+                </div>
+              </div> -->
+              
             </div>
           </div>
         </div>
@@ -171,44 +271,6 @@
                 Looking to build on your brand and not someone else’s? Need customised a combination of services or something not listed here? Our advisory team can help create the perfect tailored service solution for your business. 
               
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="transparency" class="light">
-      <div class="container">
-        
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <h3 class="promoted">How it works</h3>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-md-12 text-left">
-            <i data-icon="mdi-eye" class="mdi iconify mdi-48px text-green"></i>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </div>
@@ -357,6 +419,7 @@
         </div>
       </div>
     </section> -->
+    
     <section id="contact" class="inverse hidden-xs">
       <div class="container">
         
@@ -408,40 +471,7 @@
       </div>
     </section>
     
-    <section class="light">
-      <div class="container">
-        
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <h3 class="promoted">Why Experlu?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-
-        </div>
-        
-        <div class="row">
-          <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>Extraordinarily easy</h4>
-          </div>
-          <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>Truly transparent</h4>
-          </div>
-          <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
-            <h4>Fantastically free</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="reviews" class="dark hidden-xs">
+    <section id="reviews" class="dark hidden-xs">
       <div class="container">
         
         <div class="row">
@@ -455,17 +485,17 @@
           <div class="col-md-12">
            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
 
-            
+            <!-- Bottom Carousel Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
               <li data-target="#quote-carousel" data-slide-to="1"></li>
               <li data-target="#quote-carousel" data-slide-to="2"></li>
             </ol>
 
-            
+            <!-- Carousel Slides / Quotes -->
             <div class="carousel-inner">
 
-              
+              <!-- Quote 1 -->
               <div class="item active">
                 <div class="row">
                   <div class="col-sm-12">
@@ -480,7 +510,7 @@
                 </div>
               </div>
 
-             
+              <!-- Quote 2 -->
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12">
@@ -495,7 +525,7 @@
                 </div>
               </div>
 
-              
+              <!-- Quote 3 -->
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12">
@@ -514,15 +544,21 @@
           </div>
         </div>
         
-    </div>>
-</section> -->
+    </div>
+  </div>
+</section>
 
 <!-- Match modal -->
 <div class="modal fade" id="match" tabindex="-1" role="dialog" aria-labelledby="match-label">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       
-
+      <input type="hidden" name="industry[general]" value="d41d8cd98f00b204e9800998ecf8427e" />
+      <input type="hidden" name="industry[accounting]" value="6da6e841ab0eee1694a20ea0381f6938" />
+      <input type="hidden" name="industry[law]" value="8e4d7ffa6427c001d0f54b99fc6254a3" />
+      <input type="hidden" name="industry[lawyer]" value="8e4d7ffa6427c001d0f54b99fc6254a3" />
+      <input type="hidden" name="industry[accountant]" value="6da6e841ab0eee1694a20ea0381f6938" />
+      <input type="hidden" name="redirect" value="/thank-you" />
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -560,49 +596,49 @@
             <li role="presentation">
               <a href="#" data-industry="accounting" id="account">
                <lable  for="Accountant"><i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i> Accountant</lable>
-                <input type="radio" name="services" value="Accountant" id="Accountant" style="display:none">
+                <input type="radio" name="services" value="1" id="Accountant" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="book">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Bookkeeper"> Bookkeeper</lable>
-                <input type="radio" name="services" value="Bookkeeper" id="Bookkeeper" style="display:none">
+                <input type="radio" name="services" value="2" id="Bookkeeper" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Tax"> Tax</lable>
-                <input type="radio" name="services" value="Tax" id="Tax" style="display:none">
+                <input type="radio" name="services" value="3" id="Tax" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="audit">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Audit"> Audit</lable>
-                <input type="radio" name="services" value="Audit" id="Audit" style="display:none">
+                <input type="radio" name="services" value="4" id="Audit" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
-                <input type="radio" name="services" value="Payroll" id="Payroll" style="display:none">
+                <input type="radio" name="services" value="5" id="Payroll" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
-                <input type="radio" name="services" value="Incorporation" id="Incorporation" style="display:none">
+                <input type="radio" name="services" value="6" id="Incorporation" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Secretarial_service"> Secretarial service</lable>
-                <input type="radio" name="services" value="Secretarial" id="Secretarial_service" style="display:none">
+                <input type="radio" name="services" value="7" id="Secretarial_service" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
-                <input type="radio" name="services" value="Mix your own service pack" id="Service_pack" style="display:none">
+                <input type="radio" name="services" value="8" id="Service_pack" style="display:none">
               </a>
             </li>
           </ul>

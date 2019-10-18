@@ -2,9 +2,9 @@
       <section class="inverse condensed primary-footer">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
               <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
                   <h4 class="promoted">The Company</h4>
                   <ul>
                     <li>
@@ -24,9 +24,10 @@
               <a title="Privacy Policy" href="privacy-policy.html"
                 rel="nofollow"
               >Privacy Policy</a>
-            </li>                             </ul>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            </li>                             
+          </ul>
+        </div>
+          <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
             <h4 class="promoted">Partners</h4>
             <ul>
               <li>
@@ -34,42 +35,26 @@
                 ></a>
               </li>                                                                     
               <li>
-              <a title="Become a Partner" href="become-a-partner/accountant.html"
+                <a title="Become a Partner" href="become-a-partner/accountant.html"
               >Become a Partner</a>
-            </li>                                                                                                                             </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-            <h4 class="promoted"></h4>
-            <ul>
-              <li>
-                <a title="" href="#"></a>
-              </li>                                                                     
-              <li>
-              <a title="" href="#"></a>
-            </li>                                                                     
-            <li>
-            <a title="" href="#"></a>
-          </li>                                                                                             </ul>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-          <h4 class="promoted"></h4>
-          <ul>
-          </ul>
+        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+          <p>
+            <img class="logo-footer" src="" alt="Logo" />
+          </p>
+          <p>
+            Vesterbrogade 1e<br />
+            1620 Copenhagen<br />
+            <br />
+            +44 20 3868 3459<br />
+            info@finance.com<br />
+          </p>
         </div>
       </div>
     </div>
-    <div class="col-lg-2">
-      <p>
-        <img class="logo-footer" src="assets/images/ageras-logo.svg" alt="Logo" />
-      </p>
-      <p>
-        Vesterbrogade 1e<br />
-        1620 Copenhagen<br />
-        <br />
-        +44 20 3868 3459<br />
-        info@finance.com<br />
-      </p>
-    </div>
+    
   </div>
 
 </div>
