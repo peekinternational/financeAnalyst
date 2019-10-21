@@ -18,7 +18,8 @@
       <link href="{{asset('/frontend-assets/dashboard/css/bootstrap.min.css')}}" rel="stylesheet" />
       <link href="{{asset('/frontend-assets/dashboard/css/paper-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
       <!-- CSS Just for demo purpose, don't include it in your project -->
-      <link href="{{asset('/frontend-assets/dashboard/demo/demo.css')}}" rel="stylesheet" />
+
+      <link href="{{asset('/frontend-assets/dashboard/css/custom.css')}}" rel="stylesheet" />
        @yield('style')
     </head>
   <body>
