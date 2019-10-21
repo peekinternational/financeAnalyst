@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Session;
 
 class JobManageController extends Controller
 {
@@ -19,6 +20,73 @@ class JobManageController extends Controller
        return view('/admin.job_management',compact('alljobs'));
     }
 
+     public function admin_login(Request $request)
+    {
+         if ($request->session()->exists('fa_admin')) {
+            return redirect('/dashboard');
+        }
+
+        
+		if($request->isMethod('post')){
+//dd($request->all());
+//            $user_type = $request->input('user_type');
+
+       
+           $email = $request->input('email');
+            $password = md5(trim($request->input('password')));
+            
+
+            // /dd($password);
+
+			$user = $this->doLogin($email,$password);
+			if($user == 'invalid'){
+				$request->session()->flash('loginAlert', 'Invalid Email & Password');
+				if($next != ''){
+					return redirect('login?next='.$next);
+				}else{
+					return redirect('admin/login');
+				}
+			}
+			else{
+
+				$request->session()->put('fa_admin', $user);
+				setcookie('cc_data', $user->user_Id, time() + (86400 * 30), "/");
+
+				if($next != ''){
+					return redirect($next);
+				}else{
+					return redirect('dashboard');
+				}
+			}
+ 
+
+		}
+        return view('/admin.login-page');
+    }
+
+    public function doLogin($email,$password){
+        /* do login */
+        //dd($password);
+        $user = DB::table('fa_admin')->where('email','=',$email)->where('password','=',$password)->first();
+       //dd($user);
+		// if(count($user) == null){
+		// 	return 'invalid';
+		// }else{
+		// 	return $user;
+		// }
+        if(empty($user)){
+            return 'invalid';
+        }else{
+            return $user;
+        }
+		/* end */
+	}
+
+ public function logout(Request $request){
+         //Session::flush();
+         Session::forget('fa_admin');
+         return redirect('admin/login');
+        }
     /**
      * Show the form for creating a new resource.
      *
@@ -106,6 +174,8 @@ public function template(Request $request, $id)
      */
     public function destroy($id)
     {
-        //
+        DB::table('fa_jobpost')->where('id',$id)->delete();
+        DB::table('fa_template')->where('job_id',$id)->delete();
+        return redirect()->back()->with('success', 'Data saved successfully!');
     }
 }

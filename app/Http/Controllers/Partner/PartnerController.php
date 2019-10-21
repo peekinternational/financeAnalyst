@@ -45,6 +45,7 @@ class PartnerController extends Controller
             
           $update= DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->update($data_array);
  //dd($update);
+ //return view('frontend.partner.thanks');
             }
     //dd($userinfo);
         //dd($userId);
@@ -262,7 +263,8 @@ public function doLogin($email,$password){
         }
 
         public function logout(Request $request){
-         Session::flush();
+         //Session::flush();
+          Session::forget('faUser');
          return redirect('partner_login');
         }
 

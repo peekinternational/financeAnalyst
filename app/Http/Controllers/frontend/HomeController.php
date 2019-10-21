@@ -1,30 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 
-class customerController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+          if($request->session()->has('faUser')){
+			return redirect('partner/partner_dashboard');
+		}
+      return view('frontend.index');
     }
-
-    public function jobpost(Request $request)
-    {
-        //dd($request->all());
-        DB::table('fa_jobpost')->insert($request->all());
-        return view('frontend.thanks');
-    }
-
 
     /**
      * Show the form for creating a new resource.

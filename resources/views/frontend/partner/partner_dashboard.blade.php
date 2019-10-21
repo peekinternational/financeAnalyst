@@ -53,10 +53,10 @@ if($userinfo->logo != ''){
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills" role="tablist">
 								<li role="presentation" class="active">
-									<a href="#all_jobs" aria-controls="all_jobs" role="tab" data-toggle="tab">All Jobs (1)</a>
+									<a href="#all_jobs" aria-controls="all_jobs" role="tab" data-toggle="tab">All Jobs ({{$alljobs->count()}})</a>
 								</li>
 								<li role="presentation">
-									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs (1)</a>
+									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$jobs->count()}})</a>
 								</li>
 							</ul>
 
