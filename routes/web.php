@@ -64,6 +64,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/icons', function(){
 		return view('/admin.icons');
 	});
+	Route::get('/add_tamplate', function(){
+		return view('/admin.add_tamplate');
+	});
 	Route::get('/map', function(){
 		return view('/admin.map');
 	});

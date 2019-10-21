@@ -30,6 +30,7 @@
             </a>
             <ul class="collapse" id="manageTemplate">
               <li><a href="{{url('dashboard/upload_tamplate')}}">Upload Template</a></li>
+              <li><a href="{{url('dashboard/add_tamplate')}}">Add Template</a></li>
             </ul>
           </li>
   
