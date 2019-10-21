@@ -23,7 +23,24 @@
             </div>
             <a class="navbar-brand" href="#pablo">Users</a>
           </div>
-          
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+         
+            <ul class="navbar-nav">
+              
+              <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{Session::get('fa_admin')->name}}
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                 <a class="dropdown-item" href="{{ url('dashboard/logout') }}">Logout</a>
+                </div>
+              </li>
+            
+            </ul>
+          </div>
         </div>
       </nav>
       <!-- End Navbar -->

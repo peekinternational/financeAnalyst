@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class PartnerAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!$request->session()->exists('fa_admin')) {
-            return redirect('/admin/login');
+        if (!$request->session()->exists('faUser')) {
+            return redirect('/');
         }
 
         return $next($request);
