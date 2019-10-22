@@ -38,6 +38,13 @@
 						<div class="col-md-3">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs profile_tabs" role="tablist">
+								<li>
+									<div class="text-center company-info">
+										<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
+										<p>Company Name</p>
+										<p>Location</p>
+									</div>
+								</li>
 								<li role="presentation" class="active">
 									<a href="#case_detail" aria-controls="case_detail" role="tab" data-toggle="tab">Case details</a>
 								</li>
@@ -53,7 +60,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<div class="row">
-												<div class="col-xs-6">
+												<div class="col-md-offset-3 col-md-6">
 													<div class="about-section-content">
 														<h4>About the client</h4>
 														<p>Case Status:  Won</p>
@@ -65,12 +72,11 @@
 														<button class="btn btn-info btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</button>
 													</div>
 												</div>
-												<div class="col-xs-6"></div>
 											</div>
 											<div class="case-section">
 												<div role="tabpanel">
 													<!-- Nav tabs -->
-													<ul class="nav nav-tabs" role="tablist">
+													<ul class="nav nav-tabs main-tabs	" role="tablist">
 														<li role="presentation" class="active">
 															<a href="#highlights" aria-controls="highlights" role="tab" data-toggle="tab">Case Highlights</a>
 														</li>
@@ -182,12 +188,15 @@
 														</div>
 														<div role="tabpanel" class="tab-pane" id="description">
 															<div class="about-section-content">
+																<h5><strong>Description</strong></h5>
 																<p>
 																	Newly Started Consulting Limited - Local - Fair Price - Annual Accounts (#201396)
 
 																	The client is a newly started consulting limited. She is looking for a long term partner who can advise her at the start and provide guidance through the year. The client would like an accountant who is local, reachable, and offers a fair price.
 																</p>
-																<button class="btn btn-primary">Download as PDF</button>
+																<div class="text-center">
+																	<button class="btn btn-primary btn-lg">Download as PDF</button>
+																</div>
 															</div>
 														</div>
 													</div>
