@@ -21,7 +21,9 @@ Route::get('thank-you',  'frontend\HomeController@index');
 Route::get('/partner',function(){
 	return view('frontend.partner.index');
 });
-
+Route::get('/template_detail',function(){
+		return view('frontend.partner.template_detail');
+	});
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
 Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@accountRegister');
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
@@ -30,13 +32,13 @@ Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
-Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
-Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
-Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
-Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
-Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
-
-});
+	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
+	Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
+	Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
+	Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
+	Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
+	});
+	
 });
 
 //////////////////////// Partner close /////////////////////////////////

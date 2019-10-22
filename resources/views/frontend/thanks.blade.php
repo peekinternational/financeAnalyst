@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('content')
+<style>
+	body{
+		background-color: #fff;
+	}
+	.hero{
+		display: none;
+	}
+</style>
 <p><img alt="" src="https://www.ageras.co.uk/assets/images/_ref/lead/thx-ageras.png" /></p>
 
 <h3>Thank you! We have received your request. Here are the next steps...</h3>
