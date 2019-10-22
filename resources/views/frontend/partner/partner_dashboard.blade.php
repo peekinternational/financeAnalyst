@@ -218,15 +218,19 @@ if($userinfo->logo != ''){
 																<th>ID</th>
 																<th>Name</th>
 																<th>Location</th>
+																<th>Address</th>
+																<th>Phone</th>
+																<th>Notes</th>
+																<th>Quote Date</th>
 																<th>Status</th>
 															</tr>
 														</thead>
 														<tbody>
 															<tr>
-																<td>1</td>
+																<td><a href="">1</a></td>
 																<td>My job</td>
 																<td>London</td>
-																<td>Accept</td>
+																<td>Won</td>
 															</tr>
 														</tbody>
 													</table>
@@ -250,7 +254,7 @@ if($userinfo->logo != ''){
 																<td>1</td>
 																<td>My job</td>
 																<td>London</td>
-																<td>Rejected</td>
+																<td>Lost</td>
 															</tr>
 														</tbody>
 													</table>
