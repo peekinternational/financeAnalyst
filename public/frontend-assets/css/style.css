@@ -817,3 +817,17 @@ table.datatable.responsive .table-mobile-cell {
     border-radius: 3px;
     margin: 0px 0px 20px;
 }
+#quote h4{
+    padding-bottom: 25px;
+}
+#case_detail{
+    padding: 15px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 10px 0px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(199, 215, 221);
+        border-image: initial;
+        border-radius: 3px;
+        margin: 0px 0px 20px;
+}
