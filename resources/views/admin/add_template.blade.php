@@ -11,12 +11,13 @@
 		        </div>
 		        <div class="card-body">
 		          <form method="post" action="">
+							 {{ csrf_field() }}
 		          	<h4 class="field-title">Contact Information</h4>
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Phone Number</label>
-		                  <input type="number" class="form-control" min="0" disabled="" placeholder="Phone Number" name="phone_number" value="+92-214542454">
+		                  <input type="number" class="form-control" min="0" placeholder="Phone Number" name="phone_number" value="+92-214542454">
 		                </div>
 		              </div>
 		              <div class="col-md-12">
@@ -195,19 +196,7 @@
 		                </div>
 		              </div>
 		            </div>
-		            <div class="row">
-		              <div class="col-md-12">
-		                <div class="form-group">
-		                  <label>Self Assessment tax Return</label>
-		                  <select name="self_tax_return" class="form-control">
-		                  	<option>Yes</option>
-		                  	<option>No</option>
-		                  	<option>Not Sure</option>
-		                  	<option>N/A</option>
-		                  </select>
-		                </div>
-		              </div>
-		            </div>
+		
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
@@ -444,7 +433,7 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Working style with chosen Expert </label>
-		                  <input type="text" name="expert_2" class="form-control" placeholder="Working style with chosen Expert? Digital, Manual ">
+		                  <input type="text" name="expert_choice" class="form-control" placeholder="Working style with chosen Expert? Digital, Manual ">
 		                </div>
 		              </div>
 		            </div>

@@ -53,8 +53,10 @@ class PartnerController extends Controller
          $service=json_decode($userinfo->services);
          $jobs = DB::table('fa_jobpost')->where('status','1')->where('services','=',$service[0])->get();
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
- //dd($jobs);
-     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs'));
+         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+// dd($rquote);
+     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots'));
     }
 
         public function getDocument(Request $request)
@@ -313,6 +315,14 @@ public function doLogin($email,$password){
             return redirect()->back()->with('success', 'File uploaded successfully.');
         }
 
+public function quote(Request $request)
+    {
+        $userinfo=$request->session()->get('faUser')->p_id;
+         $request->merge(['p_id' => $userinfo]);
+        //dd($request->all());
+        DB::table('fa_quote')->insert($request->all());
+         return redirect()->back()->with('success', 'File uploaded successfully.');
+    }
 
     public function create()
     {

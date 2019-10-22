@@ -27,6 +27,7 @@ Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@acco
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
 Route::get('/special','Partner\PartnerController@getDocument');
 Route::get('/certification','Partner\PartnerController@getDocumentcer');
+Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');

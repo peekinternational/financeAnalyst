@@ -95,17 +95,15 @@ class JobManageController extends Controller
 public function template(Request $request, $id)
     {
         if($request->isMethod('post')){
-            $data=array(
-          'job_id' => $id,
-          'template' => $request->input('template')
-            );
+            
+            $request->merge(['job_id' => $id]);
            // dd($data);
-       $temp = DB::table('fa_template')->insert($data);
+       $temp = DB::table('fa_user_template')->insert($request->all());
         DB::table('fa_jobpost')->where('id',$id)->update(['status'=>'1']);
        //dd($request->all());
         }
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
-       return view('/admin.template',compact('job'));
+       return view('/admin.add_template',compact('job'));
     }
      public function showtemplate()
     {

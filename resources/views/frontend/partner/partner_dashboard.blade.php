@@ -112,7 +112,7 @@ if($userinfo->logo != ''){
 																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 															</div>
 															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth" href="/quote/201923">Create a quote for this client</a>
+																<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
 																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																</div>
 															</div>
@@ -123,6 +123,43 @@ if($userinfo->logo != ''){
 													</div>
 												</div>
 											</div>
+											<!-- Modal -->
+											<div id="myModal{{$alljob->id}}" class="modal fade" role="dialog">
+											<div class="modal-dialog">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+													<h4 class="modal-title">Quotes</h4>
+												</div>
+												<div class="modal-body">
+													
+													<form action="{{ url('quotepost')}}" method="POST" role="form">
+														 {{ csrf_field() }}
+																<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+														
+														<div class="form-group">
+															<label for="">Enter Quote</label>
+															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
+														</div>
+													
+														
+													
+														<button type="submit" class="btn btn-primary">Submit</button>
+													</form>
+													
+													
+													
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												</div>
+												</div>
+
+											</div>
+											</div>
+
 											<div class="col-md-4"></div>
 											@endforeach
 										</div>
