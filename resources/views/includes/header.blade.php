@@ -17,40 +17,7 @@
     </div>
   </div>  
 </div>
-<section class="hero"  style="background-image: url('frontend-assets/images/financial-analyst.png');" >
-  <div class="hero-overlay hidden-xs hidden-sm"  style="opacity: 0.10;" ></div>
-  <div class="hero-overlay hidden-md hidden-lg"></div>
-  <div class="hero-content">
-    
-    
-    <div id="hero" class="container">
-      
-      <div class="row">
-        <div class="col-md-8">
-          <h1 class="promoted">Find the best accountant or bookkeeper with Finance Analyst</h1>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-5">
-          <a href="#" class="cta-button btn btn-green btn-shadowless btn-lg btn-block" style="margin-bottom: 50px;">
-            Get started now
-          </a>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  <div class="hero-footer">
-    
-    
-    <div class="trustpilot-widget" data-locale="en-UK" data-template-id="5406e65db0d04a09e042d5fc" data-businessunit-id="4f041753000064000512158c" data-style-height="28px" data-style-width="100%" data-theme="dark">
-      <a href="https://www.trustpilot.com/review/ageras.com" target="_blank">Trustpilot</a>
-    </div>
-  </div>
-  
-</section>
+
 <nav class="navbar navbar-ageras  navbar-transparent  ">
   <div class="container">
     <div class="navbar-header">
