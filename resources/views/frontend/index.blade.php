@@ -518,10 +518,11 @@
 </section> -->
 
 <!-- Match modal -->
-<div class="modal fade" id="match" tabindex="-1" role="dialog" aria-labelledby="match-label">
+
+
+    <div class="modal fade" id="match" tabindex="-1" role="dialog" aria-labelledby="match-label">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      
 
       
       <div class="modal-header">
@@ -529,6 +530,24 @@
         <span aria-hidden="true">&times;</span></button>
         <h4 class="promoted modal-title" id="match-label">&nbsp;</h4>
       </div>
+      @if(count($errors))
+        <script>
+            $( document ).ready(function() {
+                $('#match').modal('show');
+
+            });
+
+        </script>
+        <div class="form-group">
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      @endif
       
       <div class="modal-body">
         
@@ -555,6 +574,7 @@
         
         <form action="{{ url('/customer/jobpost') }}" method="post">
         {{ csrf_field() }}
+
         <div class="step-1" data-headline="Choose service">
           <ul class="nav nav-pills nav-stacked">
             <li role="presentation">
@@ -611,7 +631,7 @@
         <div class="step-2" data-headline="Describe your case">
           <div class="form-group">
             <label>Job Title</label>
-            <input type="text" class="form-control" name="job_title" placeholder="Job Title">
+            <input type="text" class="form-control" name="job_title" placeholder="Job Title" >
           </div>
        <div class="form-group">
             <label>Job Title</label>
@@ -623,11 +643,11 @@
           </div>
           <div class="form-group">
             <label>Year End</label>
-            <input type="date" name="ended_year" class="form-control">
+            <input type="date" name="ended_year" class="form-control" >
           </div>
           <div class="form-group">
             <label>Job Description</label>
-            <textarea class="form-control" id="input-description" name="job_case" placeholder="Describe your case" style="height: 6em;"></textarea>
+            <textarea class="form-control" id="input-description" name="job_case" placeholder="Describe your case" style="height: 6em;" ></textarea>
           </div>
           <div class="form-group hidden-md hidden-lg">
             <button class="btn btn-default btn-block proceed-button" data-content="Proceed to the last step" data-no-content="Skip this step">
@@ -647,12 +667,12 @@
         <div class="step-3" data-headline="Contact information">
           <div class="form-group">
             <label class="control-label" for="input-name">Name</label>
-            <input type="text" class="form-control" name="customer_name" id="input-name" placeholder="Enter name" data-error="Please enter your name" />
+            <input  type="text" class="form-control" name="customer_name" id="input-name" placeholder="Enter name" data-error="Please enter your name" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">
-            <label class="control-label" for="input-email">E-mail</label>
-            <input type="email" class="form-control" name="job_email" id="input-email" placeholder="Enter e-mail" data-error="Please enter a valid e-mail address" />
+            <label class="control-label" for="input-email" >E-mail</label>
+            <input required type="email" class="form-control" name="job_email" id="input-email" placeholder="Enter e-mail" data-error="Please enter a valid e-mail address" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">
@@ -667,7 +687,7 @@
           </div>
           <div class="form-group">
             <div class="form-group" style="margin-top: 20px;">
-              <input type="checkbox" id="input-email_optin" style="margin-right: 10px;" />
+              <input required type="checkbox" id="input-email_optin" style="margin-right: 10px;" />
               <label class="control-label" for="input-email_optin">Finance Analyst contact me via email</label>
               <span class="help-block"></span>
             </div>

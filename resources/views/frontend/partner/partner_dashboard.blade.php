@@ -484,7 +484,7 @@ if($userinfo->logo != ''){
 																			<div class="sc-iujRgT hUHAcY">
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Accountant"  name="services[]" @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Accountant"  name="services[]"@if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -492,7 +492,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Bookkeeping"  name="services[]" @foreach($service as $data) {{$data == 'Bookkeeping' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Bookkeeping"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Bookkeeping' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -500,7 +500,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Audit"  name="services[]" @foreach($service as $data) {{$data == 'Audit' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Audit"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Audit' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -508,7 +508,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Payroll"  name="services[]" @foreach($service as $data) {{$data == 'Payroll' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Payroll"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Payroll' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -516,7 +516,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Incorporation"  name="services[]" @foreach($service as $data) {{$data == 'Incorporation' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Incorporation"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Incorporation' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -524,7 +524,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Secretarial service"  name="services[]" @foreach($service as $data) {{$data == 'Secretarial service' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Secretarial service"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Secretarial service' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
@@ -532,7 +532,7 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Mix your own service pack"  name="services[]" @foreach($service as $data) {{$data == 'Mix your own service pack' ? 'checked="checked"' : '' }} @endforeach>
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Mix your own service pack"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Mix your own service pack' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
 																						</div>
