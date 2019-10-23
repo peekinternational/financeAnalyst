@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Mail;
 
 class customerController extends Controller
 {
@@ -21,6 +22,15 @@ class customerController extends Controller
     public function jobpost(Request $request)
     {
         //dd($request->all());
+        $toemail=$request->input('job_email');
+        Mail::send('mail.sendmail',['u_name' =>$request->input('customer_name')],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
         DB::table('fa_jobpost')->insert($request->all());
         return view('frontend.thanks');
     }

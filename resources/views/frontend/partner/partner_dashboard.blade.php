@@ -255,7 +255,6 @@ if($userinfo->logo != ''){
 																<th>ID</th>
 																<th>Name</th>
 																<th>Location</th>
-																<th>Address</th>
 																<th>Phone</th>
 																<th>Notes</th>
 																<th>Quote Date</th>
@@ -263,12 +262,17 @@ if($userinfo->logo != ''){
 															</tr>
 														</thead>
 														<tbody>
+														@foreach($rquote as $quots)
 															<tr>
-																<td><a href="">1</a></td>
-																<td>My job</td>
-																<td>London</td>
-																<td>Won</td>
+																<td><a href="">{{$quots->id}}</a></td>
+																<td>{{$quots->job_title}}</td>
+																<td>{{$quots->city}}</td>
+																<td>{{$quots->mobilenumber}}</td>
+																<td>{{$quots->quote}}</td>
+																<td>{{$quots->created_at}}</td>
+																<td>{{$quots->status}}</td>
 															</tr>
+															@endforeach
 														</tbody>
 													</table>
 												</div>
