@@ -11,7 +11,7 @@
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
-			<p><img alt="" src="https://www.ageras.co.uk/assets/images/_ref/lead/thx-ageras.png" /></p>
+			<p><img alt="" src="{{asset('/frontend-assets/images/partner/thankyou.jpg')}}" width="100%" /></p>
 			<h3>Thank you! We have received your request. Here are the next steps...</h3>
 
 			<p>We will start processing your request and look for 3 specialists that meet your preferences. After a quick phone call, during which we will briefly discuss your assignment, we will send you an email for each match with more information on the specialist interested in handling your case. So please keep an eye on your phone and your inbox - we look forward to helping you!</p>

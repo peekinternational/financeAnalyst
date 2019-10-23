@@ -15,19 +15,19 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs main-tabs" role="tablist">
 					<li role="presentation">
-						<a href="#job_section" aria-controls="job_section" role="tab" data-toggle="tab">Job Section</a>
+						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">Job Section</a>
 					</li>
 					<li role="presentation" class="active">
 						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">Job management</a>
 					</li>
 					<li role="presentation">
-						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Profile</a>
 					</li>
 					<li role="presentation">
 						<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account section</a>
 					</li>
 					<li role="presentation">
-						<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
+						<a href="http://localhost:8000/partner/partner_dashboard/#job_section" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
 					</li>
 					<li role="presentation">
 						<a href="#terms" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
@@ -60,16 +60,21 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<div class="row">
-												<div class="col-md-offset-3 col-md-6">
+												<div class="col-md-12">
 													<div class="about-section-content">
 														<h4>About the client</h4>
-														<p>Case Status:  {{$data->status}}</p>
-														<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p> 
-														<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p> 
-														<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p> 
-														<br><br>
-														<button class="btn btn-info btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</button>
-														<button class="btn btn-info btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</button>
+														<div class="row">
+															<div class="col-xs-8">
+																<p>Case Status:  {{$data->status}}</p>
+																<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p> 
+																<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p> 
+																<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
+															</div> 
+															<div class="col-xs-4">
+																<button class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</button>
+																<button class="btn cta-button btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</button>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
