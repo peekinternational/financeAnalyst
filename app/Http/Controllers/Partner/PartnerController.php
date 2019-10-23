@@ -8,6 +8,7 @@ use DB;
 use Session;
 use Storage;
 use Response;
+use PDF;
 class PartnerController extends Controller
 {
     /**
@@ -332,6 +333,20 @@ public function quote(Request $request)
         return view('frontend.partner.template_detail',compact('data'));
     }
 
+public function export_pdf($id)
+  {
+    // Fetch all customers from database
+    //$data = Customer::get();
+    // Send data to the view using loadView function of PDF facade
+    $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
+        ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
+       // dd($data);
+    $pdf = PDF::loadView('casedetail',compact('data'));
+    // If you want to store the generated pdf to the server then you can use the store function
+   // $pdf->save(storage_path().'_filename.pdf');
+    // Finally, you can download the file using download function
+    return $pdf->download('CaseDetail.pdf');
+  }
     public function create()
     {
         //
