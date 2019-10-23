@@ -50,7 +50,7 @@ class JobManageController extends Controller
 			else{
 
 				$request->session()->put('fa_admin', $user);
-				setcookie('cc_data', $user->user_Id, time() + (86400 * 30), "/");
+				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -95,6 +95,27 @@ class JobManageController extends Controller
 public function template(Request $request, $id)
     {
         if($request->isMethod('post')){
+            $this->validate($request, [
+                'phone_number' => 'required',
+                'email' => 'required',
+                'location'=>'required',
+                'mbl_number' => 'required|digits_between:10,12',
+                'business_address' => 'required',
+
+                'phone_number' => 'required',
+
+                'company_name' => 'required'
+
+            ],[
+                'phone_number.required'=>'Enter your phone number',
+                'email.required' => 'Enter valid email',
+                'location.required' => 'Enter your location',
+                'mbl_number.required' =>'Enter Your Mobile Number',
+                'business_address.required' => 'Enter business address ',
+                'phone_number.required'=>'Enter mobile number',
+                'mbl_number.digits_between' => 'mobile Number must be contain 10,12 digits',
+                'company_name' => 'Enter company name',
+            ]);
             
             $request->merge(['job_id' => $id]);
            // dd($data);

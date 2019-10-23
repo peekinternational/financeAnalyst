@@ -198,7 +198,7 @@
 																	{{$data->quote}}
 																</p>
 																<div class="text-center">
-																	<button class="btn btn-primary btn-lg">Download as PDF</button>
+																	<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary btn-lg">Download as PDF</a>
 																</div>
 															</div>
 														</div>

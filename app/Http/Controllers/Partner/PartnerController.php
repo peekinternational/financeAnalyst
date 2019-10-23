@@ -8,6 +8,7 @@ use DB;
 use Session;
 use Storage;
 use Response;
+use PDF;
 class PartnerController extends Controller
 {
     /**
@@ -110,9 +111,12 @@ class PartnerController extends Controller
         }
 
 public function accountLogin(Request $request){
+
+
         if($request->session()->has('faUser')){
 			return redirect('/');
 		}
+
        // dd($request->all());
 		$next = $request->input('next');
         // $shopping = $request->input('shopping');
@@ -125,7 +129,17 @@ public function accountLogin(Request $request){
 //dd($request->all());
 //            $user_type = $request->input('user_type');
 
-       
+            $this->validate($request,[
+                'email' => 'required',
+
+                'password' => 'required'
+
+            ],[
+                'email.required'=>'Enter your valid email',
+
+                'password.required' => 'Enter Password',
+
+            ]);
            $email = $request->input('email');
             $password = md5(trim($request->input('password')));
             
@@ -144,7 +158,7 @@ public function accountLogin(Request $request){
 			else{
 
 				$request->session()->put('faUser', $user);
-				setcookie('cc_data', $user->user_Id, time() + (86400 * 30), "/");
+				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -196,7 +210,7 @@ public function doLogin($email,$password){
 				'password' => 'required|min:1|max:50',
 
 			],[
-
+                'email.required'=>'Enter your valid email',
 				'email.unique' => 'Email must be unique',
 				'name.required' => 'Enter Your Name',
 				'phoneno.required' =>'Enter Your Mobile Number',
@@ -332,6 +346,20 @@ public function quote(Request $request)
         return view('frontend.partner.template_detail',compact('data'));
     }
 
+public function export_pdf($id)
+  {
+    // Fetch all customers from database
+    //$data = Customer::get();
+    // Send data to the view using loadView function of PDF facade
+    $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
+        ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
+       // dd($data);
+    $pdf = PDF::loadView('casedetail',compact('data'));
+    // If you want to store the generated pdf to the server then you can use the store function
+   // $pdf->save(storage_path().'_filename.pdf');
+    // Finally, you can download the file using download function
+    return $pdf->download('CaseDetail.pdf');
+  }
     public function create()
     {
         //
