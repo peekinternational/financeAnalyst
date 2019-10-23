@@ -1,10 +1,22 @@
 @extends('layouts.app')
 @section('content')
-    <img src="{{asset('frontend-assets/images/ageras-logo-negative.svg')}}" style="display: none; position: absolute; width: 0; height: 0;" alt="" />
+<style>
+  body{
+    background-color: #fff;
+  }
+  .hero{
+    display: none;
+  }
+</style>
     
     
     
-    <section class="light">
+    
+    <section class="light" style="margin-top: 0rem;">
+      <div style="background-image: url('/frontend-assets/images/partner/banner.jpg');background-size: 100% 100%;
+    height: 500px;">
+      
+    </div>
       <div class="container">
         
         <div class="row">

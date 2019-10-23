@@ -50,13 +50,13 @@
             </a>
           </li>
           <li>
-            <a href="{{url('dashboard/notifications')}}">
+            <a href="">
               <i class="nc-icon nc-single-02"></i>
               <p>User Management</p>
             </a>
           </li>
           <li>
-            <a href="{{url('dashboard/notifications')}}">
+            <a href="">
               <i class="nc-icon nc-bell-55"></i>
               <p>Invoice</p>
             </a>
@@ -67,7 +67,7 @@
               <p>Profile Management</p>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="{{url('dashboard/tables')}}">
               <i class="nc-icon nc-tile-56"></i>
               <p>Blogs</p>
@@ -78,7 +78,7 @@
               <i class="nc-icon nc-caps-small"></i>
               <p>Messages</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
