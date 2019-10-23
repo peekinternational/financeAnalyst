@@ -137,23 +137,36 @@ if($userinfo->logo != ''){
 													
 													<form action="{{ url('quotepost')}}" method="POST" role="form">
 														 {{ csrf_field() }}
-																<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
-														
+														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+														<div class="form-group">
+															<div class="row">
+																<div class="col-xs-6">
+																	<label>Service</label>
+																	<select class="form-control">
+																		<option>Select</option>
+																	</select>
+																</div>
+																<div class="col-xs-3">
+																	<label>Payment frequency</label>
+																	<select class="form-control" name="payment_frquency">
+																		<option>Weekly</option>
+																		<option>Monthly</option>
+																		<option>Yearly</option>
+																	</select>
+																</div>
+																<div class="col-xs-3">
+																	<label>Price</label>
+																	<input type="text" name="quote_price" class="form-control">
+																</div>	
+															</div>
+														</div>
 														<div class="form-group">
 															<label for="">Enter Quote</label>
 															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 														</div>
 													
-														
-													
-														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="submit" class="btn btn-success btn-block">Submit</button>
 													</form>
-													
-													
-													
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 												</div>
 												</div>
 
@@ -214,7 +227,7 @@ if($userinfo->logo != ''){
 																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 															</div>
 															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth" href="/quote/201923">Create a quote for this client</a>
+																<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth"  data-toggle="modal" data-target="#profileJob{{$job->id}}">Create a quote for this client</a>
 																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																</div>
 															</div>
@@ -225,6 +238,61 @@ if($userinfo->logo != ''){
 													</div>
 												</div>
 											</div>
+											<!-- Modal -->
+											<div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
+											<div class="modal-dialog">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+													<h4 class="modal-title">Quotes</h4>
+												</div>
+												<div class="modal-body">
+													
+													<form action="{{ url('quotepost')}}" method="POST" role="form">
+														 {{ csrf_field() }}
+														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+														<div class="form-group">
+															<div class="row">
+																<div class="col-xs-6">
+																	<label>Service</label>
+																	<select class="form-control">
+																		<option>Select</option>
+																	</select>
+																</div>
+																<div class="col-xs-3">
+																	<label>Payment frequency</label>
+																	<select class="form-control" name="payment_frquency">
+																		<option>Weekly</option>
+																		<option>Monthly</option>
+																		<option>Yearly</option>
+																	</select>
+																</div>
+																<div class="col-xs-3">
+																	<label>Price</label>
+																	<input type="text" name="quote_price" class="form-control">
+																</div>	
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="">Enter Quote</label>
+															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
+														</div>
+													
+														
+													
+														<button type="submit" class="btn btn-success btn-block">Submit</button>
+													</form>
+													
+													
+													
+												</div>
+												</div>
+
+											</div>
+											</div>
+
 											<div class="col-md-4"></div>
 											@endforeach
 											</div>
@@ -264,7 +332,7 @@ if($userinfo->logo != ''){
 														<tbody>
 														@foreach($rquote as $quots)
 															<tr>
-																<td><a href="">{{$quots->id}}</a></td>
+																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
 																<td>{{$quots->job_title}}</td>
 																<td>{{$quots->city}}</td>
 																<td>{{$quots->mobilenumber}}</td>
@@ -282,21 +350,29 @@ if($userinfo->logo != ''){
 											<div class="row">
 												<div class="col-md-12">
 													<table class="table table-hover">
-														<thead>
+													<thead>
 															<tr>
 																<th>ID</th>
 																<th>Name</th>
 																<th>Location</th>
+																<th>Phone</th>
+																<th>Notes</th>
+																<th>Quote Date</th>
 																<th>Status</th>
 															</tr>
 														</thead>
 														<tbody>
+														@foreach($pquote as $quots)
 															<tr>
-																<td>1</td>
-																<td>My job</td>
-																<td>London</td>
-																<td>Lost</td>
+																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
+																<td>{{$quots->job_title}}</td>
+																<td>{{$quots->city}}</td>
+																<td>{{$quots->mobilenumber}}</td>
+																<td>{{$quots->quote}}</td>
+																<td>{{$quots->created_at}}</td>
+																<td>{{$quots->status}}</td>
 															</tr>
+															@endforeach
 														</tbody>
 													</table>
 												</div>
@@ -805,6 +881,18 @@ if($userinfo->logo != ''){
 @endsection
 @section('script')
 <script>
+	var hash = document.location.hash;
+
+	if (hash) {
+	    $('.nav-tabs a[href='+hash+']').tab('show');
+	} 
+
+	// Change hash for page-reload
+	$('.nav-tabs a').on('shown.bs.tab', function (e) {
+	    window.location.hash = e.target.hash;
+	});
+
+
 //alert('jfjsdf');
 var url="{{url('/')}}";
 function uploadpicture(){

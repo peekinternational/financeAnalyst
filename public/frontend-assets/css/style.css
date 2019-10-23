@@ -847,3 +847,13 @@ table.datatable.responsive .table-mobile-cell {
     text-align: center;
     padding-bottom: 0;
 }
+.btn-shadowless{
+    border-radius: 25px;
+    text-transform: uppercase;
+}
+.carousel-caption{
+    top: 22%;
+}
+.hero{
+    padding : 90px 0 0;
+}
