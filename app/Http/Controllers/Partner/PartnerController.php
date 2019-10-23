@@ -113,9 +113,12 @@ class PartnerController extends Controller
         }
 
 public function accountLogin(Request $request){
+
+
         if($request->session()->has('faUser')){
 			return redirect('/');
 		}
+
        // dd($request->all());
 		$next = $request->input('next');
         // $shopping = $request->input('shopping');
@@ -128,7 +131,17 @@ public function accountLogin(Request $request){
 //dd($request->all());
 //            $user_type = $request->input('user_type');
 
-       
+            $this->validate($request,[
+                'email' => 'required',
+
+                'password' => 'required'
+
+            ],[
+                'email.required'=>'Enter your valid email',
+
+                'password.required' => 'Enter Password',
+
+            ]);
            $email = $request->input('email');
             $password = md5(trim($request->input('password')));
             
@@ -147,7 +160,7 @@ public function accountLogin(Request $request){
 			else{
 
 				$request->session()->put('faUser', $user);
-				setcookie('cc_data', $user->user_Id, time() + (86400 * 30), "/");
+				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -199,7 +212,7 @@ public function doLogin($email,$password){
 				'password' => 'required|min:1|max:50',
 
 			],[
-
+                'email.required'=>'Enter your valid email',
 				'email.unique' => 'Email must be unique',
 				'name.required' => 'Enter Your Name',
 				'phoneno.required' =>'Enter Your Mobile Number',

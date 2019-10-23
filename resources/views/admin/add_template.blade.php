@@ -12,24 +12,35 @@
 		        <div class="card-body">
 		          <form method="post" action="">
 							 {{ csrf_field() }}
+					  @if(count($errors))
+						  <div class="form-group">
+							  <div class="alert alert-danger">
+								  <ul>
+									  @foreach ($errors->all() as $error)
+										  <li>{{$error}}</li>
+									  @endforeach
+								  </ul>
+							  </div>
+						  </div>
+					  @endif
 		          	<h4 class="field-title">Contact Information</h4>
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Phone Number</label>
-		                  <input type="number" class="form-control" min="0" placeholder="Phone Number" name="phone_number" value="+92-214542454">
+		                  <input type="number" class="form-control" min="0" placeholder="Phone Number" name="phone_number" value="+92-214542454" >
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Mobile Number</label>
-		                  <input type="number" name="mbl_number" min="0" class="form-control" placeholder="Mobile Number" value="+92-15442154">
+		                  <input type="number" name="mbl_number" min="0" class="form-control" placeholder="Mobile Number" value="+92-15442154" >
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label for="exampleInputEmail1">Email address</label>
-		                  <input type="email" name="email" class="form-control" placeholder="Email">
+		                  <input type="email" name="email" class="form-control" placeholder="Email" >
 		                </div>
 		              </div>
 		            </div>
@@ -37,13 +48,13 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Location</label>
-		                  <input type="text" name="location" class="form-control" placeholder="Location" value="London">
+		                  <input type="text" name="location" class="form-control" placeholder="Location" value="London" >
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Business Address</label>
-		                  <input type="text" name="business_address" class="form-control" placeholder="Business Address" value="">
+		                  <input type="text" name="business_address" class="form-control" placeholder="Business Address" value="" >
 		                </div>
 		              </div>
 		            </div>
@@ -51,7 +62,7 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Comapny Name</label>
-		                  <input type="text" name="company_name" class="form-control" placeholder="Comapny Name" value="XYZ">
+		                  <input type="text" name="company_name" class="form-control" placeholder="Comapny Name" value="XYZ" >
 		                </div>
 		              </div>
 		            </div>
