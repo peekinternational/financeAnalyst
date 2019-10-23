@@ -76,7 +76,7 @@
                         <td>{{$jobs->city}}</td>
                         <td class="text-right">{{$jobs->created_at}}</td>
                         <td class="text-right">
-                       <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Template</a>
+                       <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
                           <i class="fa fa-edit text-primary"></i>
                          <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
                           <i class="fa fa-eye text-success"></i>

@@ -27,15 +27,19 @@ Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@acco
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
 Route::get('/special','Partner\PartnerController@getDocument');
 Route::get('/certification','Partner\PartnerController@getDocumentcer');
+Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
-Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
-Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
-Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
-Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
-Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
+	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
+	Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
+	Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
+	Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
+	Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
+	Route::get('/template_detail/{id}','Partner\PartnerController@customerdetail');
+	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 
-});
+	});
+	
 });
 
 //////////////////////// Partner close /////////////////////////////////

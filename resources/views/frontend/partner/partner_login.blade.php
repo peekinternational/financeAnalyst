@@ -21,22 +21,33 @@
 			 			<div class="panel-body">
 			    		<form action="{{ url('partner_login'.$next) }}" method="post" role="form">
 						 {{ csrf_field() }}
+							@if(count($errors))
+							<div class="form-group">
+								<div class="alert alert-danger">
+									<ul>
+										@foreach ($errors->all() as $error)
+											<li>{{$error}}</li>
+										@endforeach
+									</ul>
+								</div>
+							</div>
+							@endif
 			    			<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
-									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" required>
 								</div>
 			    				</div>
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required >
 			    					</div>
 			    				</div>
 			    				
 			    			</div>
 			    			
 			    			<input type="submit" value="Login" class="btn btn-success btn-block" style="margin-bottom: 20px;">
-			    			<a href="{{url(partner_register)}}" class="btn cta-button btn-block">Register</a>
+			    			<a href="{{url('partner_register')}}" class="btn cta-button btn-block">Register</a>
 			    		</form>
 			    	</div>
 	    		</div>
@@ -48,6 +59,17 @@
 			 			<div class="panel-body">
 			    		<form action="{{ url('partner_register') }}" method="post" role="form">
 						 {{ csrf_field() }}
+							@if(count($errors))
+								<div class="form-group">
+									<div class="alert alert-danger">
+										<ul>
+											@foreach ($errors->all() as $error)
+												<li>{{$error}}</li>
+											@endforeach
+										</ul>
+									</div>
+								</div>
+							@endif
 			    			<div class="row">
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
@@ -69,22 +91,49 @@
 			    				</div>
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-			    					</div>
+			    						<input type="password" name="password" onkeyup='checklen()' id="pwd" class="form-control input-sm" placeholder="Password">
+
+										<span id='length'></span>
+									</div>
 			    				</div>
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+			    						<input type="password" name="password_confirmation" id="password_confirmation"  onkeyup='check()' class="form-control input-sm" placeholder="Confirm Password">
+										<span id='message'></span>
 			    					</div>
 			    				</div>
 			    			</div>
 			    			
 			    			<input type="submit" value="Register" class="btn btn-success btn-block" style="margin-bottom: 20px;">
-			    			<a href="{{url(partner_login)}}" class="btn cta-button btn-block">Login</a>
+			    			<a href="{{url('partner_login')}}" class="btn cta-button btn-block">Login</a>
 			    		</form>
 			    	</div>
 	    		</div>
 			</div>
 		</div>
 	</div>
+
+	<script>
+        var checklen = function()
+        {
+            if(document.getElementById('pwd').value.length < 6 ) {
+                document.getElementById('length').style.color = 'red';
+                document.getElementById('length').innerHTML = 'Password is too short';
+            } else {
+                document.getElementById('length').innerHTML = ' ';
+            }
+        }
+        var check = function()
+        {
+            if (document.getElementById('pwd').value === document.getElementById('password_confirmation').value)
+                {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Password Match';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Password not matching';
+            }
+        }
+
+	</script>
 @endsection
