@@ -264,7 +264,7 @@ if($userinfo->logo != ''){
 														<tbody>
 														@foreach($rquote as $quots)
 															<tr>
-																<td><a href="">{{$quots->id}}</a></td>
+																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
 																<td>{{$quots->job_title}}</td>
 																<td>{{$quots->city}}</td>
 																<td>{{$quots->mobilenumber}}</td>
@@ -282,21 +282,29 @@ if($userinfo->logo != ''){
 											<div class="row">
 												<div class="col-md-12">
 													<table class="table table-hover">
-														<thead>
+													<thead>
 															<tr>
 																<th>ID</th>
 																<th>Name</th>
 																<th>Location</th>
+																<th>Phone</th>
+																<th>Notes</th>
+																<th>Quote Date</th>
 																<th>Status</th>
 															</tr>
 														</thead>
 														<tbody>
+														@foreach($pquote as $quots)
 															<tr>
-																<td>1</td>
-																<td>My job</td>
-																<td>London</td>
-																<td>Lost</td>
+																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
+																<td>{{$quots->job_title}}</td>
+																<td>{{$quots->city}}</td>
+																<td>{{$quots->mobilenumber}}</td>
+																<td>{{$quots->quote}}</td>
+																<td>{{$quots->created_at}}</td>
+																<td>{{$quots->status}}</td>
 															</tr>
+															@endforeach
 														</tbody>
 													</table>
 												</div>
