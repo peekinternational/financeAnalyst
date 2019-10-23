@@ -9,6 +9,8 @@ use Session;
 use Storage;
 use Response;
 use PDF;
+use Mail;
+
 class PartnerController extends Controller
 {
     /**
@@ -321,8 +323,19 @@ public function quote(Request $request)
         $userinfo=$request->session()->get('faUser')->p_id;
          $request->merge(['p_id' => $userinfo]);
         //dd($request->all());
+           $job_id=$request->input('job_id');
+          $getemail= DB::table('fa_jobpost')->where('id',$job_id)->first();
+          $toemail=$getemail->job_email;
+        Mail::send('mail.sendmailtocustomer',['u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> $request->input('q_services'),'payment_frquency'=> $request->input('payment_frquency'),'quote_price' => $request->input('quote_price')],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
         DB::table('fa_quote')->insert($request->all());
-         return redirect()->back()->with('success', 'File uploaded successfully.');
+         return redirect()->back()->with('success', 'Your Quote uploaded successfully.');
     }
 
      public function customerdetail(Request $request,$id)
@@ -342,9 +355,7 @@ public function export_pdf($id)
         ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
        // dd($data);
     $pdf = PDF::loadView('casedetail',compact('data'));
-    // If you want to store the generated pdf to the server then you can use the store function
-   // $pdf->save(storage_path().'_filename.pdf');
-    // Finally, you can download the file using download function
+    
     return $pdf->download('CaseDetail.pdf');
   }
     public function create()
