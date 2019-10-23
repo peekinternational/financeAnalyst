@@ -882,9 +882,9 @@ if($userinfo->logo != ''){
 @section('script')
 <script>
 	var hash = document.location.hash;
-
+	// alert('.nav-tabs li a[href='+hash+']');
 	if (hash) {
-	    $('.nav-tabs a[href='+hash+']').tab('show');
+	    $('.nav-tabs li a[href='+hash+']').parent().addClass('active');
 	} 
 
 	// Change hash for page-reload

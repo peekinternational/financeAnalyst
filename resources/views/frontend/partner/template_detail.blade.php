@@ -24,13 +24,13 @@
 						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Profile</a>
 					</li>
 					<li role="presentation">
-						<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account section</a>
+						<a href="{{url('partner/partner_dashboard#account')}}" aria-controls="account" role="tab" data-toggle="tab">Account section</a>
 					</li>
 					<li role="presentation">
-						<a href="http://localhost:8000/partner/partner_dashboard/#job_section" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
+						<a href="{{url('partner/partner_dashboard#messages')}}" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
 					</li>
 					<li role="presentation">
-						<a href="#terms" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
+						<a href="{{url('partner/partner_dashboard#terms')}}" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
 					</li>
 				</ul>
 				<div class="tab-content">
