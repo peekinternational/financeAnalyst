@@ -151,8 +151,19 @@ if($userinfo->logo != ''){
 															<div class="row">
 																<div class="col-xs-6">
 																	<label>Service</label>
-																	<select class="form-control">
-																		<option>Select</option>
+																	<select class="form-control" name="q_services">
+																		<option>Select Service</option>
+																		<option value="Accountant">Accountant</option>
+																		<option value="Bookkeeper">Bookkeeper</option>
+																		<option value="Tax">Tax</option>
+																		<option value="Audit">Audit</option>
+																		<option value="Payroll">Payroll</option>
+																		<option value="Incorporation">Incorporation</option>
+																		<option value="Secretarial service">Secretarial service</option>
+																		<option value="Mix your own service pack">Mix your own service pack</option>
+
+															
+
 																	</select>
 																</div>
 																<div class="col-xs-3">
@@ -891,9 +902,9 @@ if($userinfo->logo != ''){
 @section('script')
 <script>
 	var hash = document.location.hash;
-
+	// alert('.nav-tabs li a[href='+hash+']');
 	if (hash) {
-	    $('.nav-tabs a[href='+hash+']').tab('show');
+	    $('.nav-tabs li a[href='+hash+']').parent().addClass('active');
 	} 
 
 	// Change hash for page-reload
