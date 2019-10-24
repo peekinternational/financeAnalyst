@@ -49,6 +49,15 @@ if($userinfo->logo != ''){
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="job_section">
+						@if(session()->has('message'))
+							<div class="row">
+								<div class="alert alert-danger">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+									<strong>Message:</strong>{{session()->get('message')}}
+								</div>
+							</div>
+						@endif
+
 						<div role="tabpanel">
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills" role="tablist">
@@ -362,7 +371,7 @@ if($userinfo->logo != ''){
 															</tr>
 														</thead>
 														<tbody>
-														@foreach($pquote as $quots)
+														@foreach($pquots as $quots)
 															<tr>
 																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
 																<td>{{$quots->job_title}}</td>

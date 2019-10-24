@@ -148,17 +148,20 @@ public function accountLogin(Request $request){
 
 			$user = $this->doLogin($email,$password);
 			if($user == 'invalid'){
-				$request->session()->flash('loginAlert', 'Invalid Email & Password');
+				$request->session()->flash('message', 'Invalid Email & Password');
 				if($next != ''){
 					return redirect('login?next='.$next);
 				}else{
-					return redirect('login');
+
+                    $request->session()->flash('message','please enter valid email or password');
+					return redirect('/partner_login');
+
 				}
 			}
 			else{
-
+              //dd($user);
 				$request->session()->put('faUser', $user);
-				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
+				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -335,7 +338,8 @@ public function quote(Request $request)
          $request->merge(['p_id' => $userinfo]);
         //dd($request->all());
         DB::table('fa_quote')->insert($request->all());
-         return redirect()->back()->with('success', 'File uploaded successfully.');
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
     }
 
      public function customerdetail(Request $request,$id)

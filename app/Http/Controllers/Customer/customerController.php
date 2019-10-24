@@ -34,6 +34,7 @@ class customerController extends Controller
             'job_title.required'=>'Enter job title',
             'email.required' => 'Enter valid email',
             'job_type.required' => 'Enter job type',
+            'ended_year.required' => 'Enter ended year',
             'phoneno.required' =>'Enter Your Mobile Number',
             'city.required' => 'Enter city ',
             'mobilenumber.required'=>'Enter mobile number',
