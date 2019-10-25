@@ -17,6 +17,7 @@ if($userinfo->logo != ''){
 	$userImage = url('frontend-assets/partner/profile-photos/'.$userinfo->logo);
 
 }
+//print_r(FA::checkquote()); die;
 
 ?>
   
@@ -112,9 +113,11 @@ if($userinfo->logo != ''){
 																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 															</div>
 															<div class="sc-jhAzac jqgdQA">
+														
 																<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
 																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																</div>
+																
 															</div>
 															
 														</div>
