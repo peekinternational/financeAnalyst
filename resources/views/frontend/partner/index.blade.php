@@ -760,6 +760,6 @@ $('#account').click(function(){
                 $('#Service_pack').prop("checked", true);
          });
  
-         
+            
 </script>
 @endsection
