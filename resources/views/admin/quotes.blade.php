@@ -50,39 +50,23 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Jobs List</h4>
+                <h4 class="card-title"> Quotes</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>Job id</th>
-                      <th>Job title</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Categories</th>
-                      <th>Location</th>
+                      <th>Posted By</th>
+                      <th>Quoted By</th>
+                      <th>Quotation Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
                       <th class="text-right">Posted date</th>
                       <th class="text-right">Action</th>
                     </thead>
                     <tbody>
-                    @foreach($alljobs as $jobs)
-                      <tr>
-                        <td> {{$jobs->id}}</td>
-                        <td> {{$jobs->job_title}}</td>
-                        <td> {{$jobs->mobilenumber}}</td>
-                        <td> {{$jobs->job_email}}</td>
-                        <td>{{$jobs->services}}</td>
-                        <td>{{$jobs->city}}</td>
-                        <td class="text-right">{{$jobs->created_at}}</td>
-                        <td class="text-right">
-                       <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
-                          <i class="fa fa-edit text-primary"></i>
-                         <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
-                          <i class="fa fa-eye text-success"></i>
-                        </td>
-                      </tr>
-                      @endforeach
+                    
                      
                     </tbody>
                   </table>
