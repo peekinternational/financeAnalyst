@@ -728,37 +728,37 @@
 </div>
 <script>
 console.log('sadasdasdddddddddddd');
-$('#account').click(function(){
+  $('#account').click(function(){
           $('#Accountant').prop("checked", true); 
     });
 
-         $('#book').click(function(){
-                $('#Bookkeeper').prop("checked", true);
-         });
+   $('#book').click(function(){
+          $('#Bookkeeper').prop("checked", true);
+   });
 
-         $('#tax').click(function(){
-                $('#Tax').prop("checked", true);
-         });
+   $('#tax').click(function(){
+          $('#Tax').prop("checked", true);
+   });
 
-         $('#audit').click(function(){
-                $('#Audit').prop("checked", true);
-         });
+   $('#audit').click(function(){
+          $('#Audit').prop("checked", true);
+   });
 
-         $('#payroll').click(function(){
-                $('#Payroll').prop("checked", true);
-         });
+   $('#payroll').click(function(){
+          $('#Payroll').prop("checked", true);
+   });
 
-         $('#incorporation').click(function(){
-                $('#Incorporation').prop("checked", true);
-         });
+   $('#incorporation').click(function(){
+          $('#Incorporation').prop("checked", true);
+   });
 
-         $('#secretarial_service').click(function(){
-                $('#Secretarial_service').prop("checked", true);
-         });
+   $('#secretarial_service').click(function(){
+          $('#Secretarial_service').prop("checked", true);
+   });
 
-         $('#service_pack').click(function(){
-                $('#Service_pack').prop("checked", true);
-         });
+   $('#service_pack').click(function(){
+          $('#Service_pack').prop("checked", true);
+   });
  
             
 </script>
