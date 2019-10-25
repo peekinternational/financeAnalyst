@@ -777,6 +777,9 @@ $('#account').click(function(){
          $('#tax').click(function(){
                 $('#Tax').prop("checked", true);
          });
+          $('#tax').click(function(){
+                $('#Tax').prop("checked", true);
+         });
  
          
 </script>
