@@ -728,9 +728,9 @@
 </div>
 <script>
 console.log('sadasdasdddddddddddd');
-  $('#account').click(function(){
-          $('#Accountant').prop("checked", true); 
-    });
+  // $('#account').click(function(){
+  //         $('#Accountant').prop("checked", true); 
+  //   });
 
    $('#book').click(function(){
           $('#Bookkeeper').prop("checked", true);
