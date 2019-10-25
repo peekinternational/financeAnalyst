@@ -348,7 +348,7 @@
     display: flex;
 }
 .eXQcCf {
-    background-color: rgb(0, 164, 235);
+    background-color: rgb(7, 47, 68);
     color: rgb(255, 255, 255);
     font-size: 23px;
     margin-right: 20px;
@@ -369,7 +369,7 @@
 }
 .iTODfi {
     color: rgb(101, 118, 140);
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5em;
     margin-bottom: 16px;
     margin-top: 0px;
@@ -401,11 +401,12 @@
     color: rgb(255, 255, 255);
 }
 .cVJCmw {
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: rgb(101, 118, 140);
     font-weight: 500;
     margin-bottom: 6px;
-    font-size: 12px;
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 .jAtXPi {
     font-size: 15px;
@@ -414,11 +415,12 @@
     text-transform: capitalize;
 }
 .laCNAj {
-    padding: 30px 30px 0px;
+    padding: 0px 30px 0px;
 }
 .ktcFPK {
-    font-size: 15px;
+    font-size: 18px;
     color: rgb(0, 164, 235);
+    text-transform: capitalize;
 }
 .irwWzV {
     margin-bottom: 20px;
@@ -430,7 +432,7 @@
 }
 .hBLiWj {
     display: flex;
-    margin: 30px;
+    margin: 50px 0 30px;
 }
 .gkmRbZ {
     text-align: center;
@@ -449,7 +451,7 @@
 .jqgdQA {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /*width: 100%;*/
 }
 .eeChfy {
     color: #fff;
@@ -768,6 +770,7 @@ table.datatable.responsive .table-mobile-cell {
 .nav-pills li a{
 	padding: 20px;
 	color: #072f44;
+    background-color: #eee;
 }
 .nav-pills li.active a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
 	background-color: #072f44;

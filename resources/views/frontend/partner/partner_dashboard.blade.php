@@ -71,17 +71,17 @@ if($userinfo->logo != ''){
 													<div class="sc-caSCKo dokwNX">
 														<div class="sc-jhAzac ibcqOI">
 															<div>
-																<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
+																<div class="mdi mdi-book sc-kvZOFW eXQcCf"></div>
 															</div>
 														
 															<div>
-																<div class="sc-TOsTZ hiHQAi">{{$alljob->job_title}}</div>
+																<div class="sc-TOsTZ hiHQAi" style="text-transform: capitalize;"><b>{{$alljob->job_title}}</b></div>
 																<p class="sc-ksYbfQ dFOSHG">
 																	<span>{{$alljob->city}} • </span>#{{$alljob->id}}</p>
 																</div>
 															</div>
-															<div class="sc-cHGsZl iTODfi">Description</div>
-															{{$alljob->job_case}}
+															<div class="sc-cHGsZl iTODfi"><b>Description</b></div>
+															<p>{{$alljob->job_case}}</p>
 														</div>
 														<div class="job_type">
 															<div class="sc-caSCKo jKLHsR">
@@ -93,10 +93,12 @@ if($userinfo->logo != ''){
 																		</div>
 																	</div>
 																</div>
+																	<div class="sc-cJSrbW irwWzV"></div>
 															</div>
 														</div>
+
 														<div class="sc-caSCKo laCNAj">
-															<div class="sc-kgAjT ktcFPK">Services needed</div>
+															<div class="sc-kgAjT ktcFPK"><b>Services needed</b></div>
 															<div class="sc-cJSrbW irwWzV"></div>
 															<div class="sc-jbKcbu eUIbYn row">
 																<div class="col-sm-6">{{$alljob->services}}</div>
@@ -107,16 +109,20 @@ if($userinfo->logo != ''){
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
-															<div>
-																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
-															</div>
-															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
-																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+														<div class="row">
+															<div class="col-md-7 col-md-offset-5">
+																<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
+																	<div>
+																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
+																	</div>
+																	<div class="sc-jhAzac jqgdQA">
+																		<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
+																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																		</div>
+																	</div>
+																	
 																</div>
 															</div>
-															
 														</div>
 																
 														
@@ -208,6 +214,7 @@ if($userinfo->logo != ''){
 																		</div>
 																	</div>
 																</div>
+																<div class="sc-cJSrbW irwWzV"></div>
 															</div>
 														</div>
 														<div class="sc-caSCKo laCNAj">
@@ -222,19 +229,22 @@ if($userinfo->logo != ''){
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
-															<div>
-																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
-															</div>
-															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth"  data-toggle="modal" data-target="#profileJob{{$job->id}}">Create a quote for this client</a>
-																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+														<div class="row">
+															<div class="col-xs-7 col-xs-offset-5">
+																<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
+																	<div>
+																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
+																	</div>
+																	<div class="sc-jhAzac jqgdQA">
+																		<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth"  data-toggle="modal" data-target="#profileJob{{$job->id}}">Create a quote for this client</a>
+																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																		</div>
+																	</div>
+																	
 																</div>
 															</div>
-															
 														</div>
-																
-														
+															
 													</div>
 												</div>
 											</div>
@@ -576,6 +586,14 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Tax"  name="services[]"@if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Tax
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
 																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Audit"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Audit' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
@@ -712,6 +730,7 @@ if($userinfo->logo != ''){
 									<div role="tabpanel">
 										<div class="col-md-3">
 											<!-- Nav tabs -->
+
 											<ul class="nav nav-tabs profile_tabs" role="tablist">
 												<li role="presentation" class="active">
 													<a href="#account_status" aria-controls="account_status" role="tab" data-toggle="tab">Account Status</a>
@@ -884,7 +903,9 @@ if($userinfo->logo != ''){
 	var hash = document.location.hash;
 	// alert('.nav-tabs li a[href='+hash+']');
 	if (hash) {
-	    $('.nav-tabs li a[href='+hash+']').parent().addClass('active');
+	    $('.nav-tabs li a[href='+hash+']').click(function(){
+
+	    });
 	} 
 
 	// Change hash for page-reload
