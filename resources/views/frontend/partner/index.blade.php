@@ -603,49 +603,49 @@
             <li role="presentation">
               <a href="#" data-industry="accounting" id="account">
                <lable  for="Accountant"><i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i> Accountant</lable>
-                <input type="radio" name="" value="" id="Accountant" style="display:none">
+                <input type="radio" name="" value="Accountant" id="Accountant" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="book">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Bookkeeper"> Bookkeeper</lable>
-                <input type="radio" name="" value="" id="Bookkeeper" style="display:none">
+                <input type="radio" name="" value="Bookkeeper" id="Bookkeeper" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Tax"> Tax</lable>
-                <input type="radio" name="" value="" id="Tax" style="display:none">
+                <input type="radio" name="" value="Tax" id="Tax" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="audit">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Audit"> Audit</lable>
-                <input type="radio" name="services" value="4" id="Audit" style="display:none">
+                <input type="radio" name="services" value="Audit" id="Audit" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="payroll">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
-                <input type="radio" name="services" value="5" id="Payroll" style="display:none">
+                <input type="radio" name="services" value="Payroll" id="Payroll" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="incorporation">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
-                <input type="radio" name="services" value="6" id="Incorporation" style="display:none">
+                <input type="radio" name="services" value="Incorporation" id="Incorporation" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="secretarial_service">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Secretarial_service"> Secretarial service</lable>
-                <input type="radio" name="services" value="7" id="Secretarial_service" style="display:none">
+                <input type="radio" name="services" value="Secretarial_service" id="Secretarial_service" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="service_pack">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
-                <input type="radio" name="services" value="8" id="Service_pack" style="display:none">
+                <input type="radio" name="services" value="Service_pack" id="Service_pack" style="display:none">
               </a>
             </li>
           </ul>
@@ -728,9 +728,10 @@
 </div>
 <script>
 console.log('sadasdasdddddddddddd');
-  // $('#account').click(function(){
-  //         $('#Accountant').prop("checked", true); 
-  //   });
+  $('#account').click(function(){
+     alert('audit');
+          $('#Accountant').prop("checked", true); 
+    });
 
    $('#book').click(function(){
           $('#Bookkeeper').prop("checked", true);
@@ -741,6 +742,7 @@ console.log('sadasdasdddddddddddd');
    });
 
    $('#audit').click(function(){
+    
           $('#Audit').prop("checked", true);
    });
 
