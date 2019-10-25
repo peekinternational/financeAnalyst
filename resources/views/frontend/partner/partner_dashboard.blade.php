@@ -50,6 +50,15 @@ if($userinfo->logo != ''){
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="job_section">
+						@if(session()->has('message'))
+							<div class="row">
+								<div class="alert alert-danger">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+									<strong>Message:</strong>{{session()->get('message')}}
+								</div>
+							</div>
+						@endif
+
 						<div role="tabpanel">
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills" role="tablist">
@@ -141,6 +150,7 @@ if($userinfo->logo != ''){
 													<form action="{{ url('quotepost')}}" method="POST" role="form">
 														 {{ csrf_field() }}
 														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+
 														<div class="form-group">
 															<div class="row">
 																<div class="col-xs-6">
@@ -178,8 +188,21 @@ if($userinfo->logo != ''){
 															<label for="">Enter Quote</label>
 															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 														</div>
-													
+														@if($alljob->quot > 3)
+															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
+															@endif
+                                                        <?php
+                                                        date_default_timezone_set("Asia/Karachi");
+                                                        $datetime1 = new DateTime();
+                                                        $date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($alljob->created_at)));
+                                                        $datetime2 = new DateTime($date);
+														$interval = $datetime1->diff($datetime2);
+                                                       // dd($interval->i);
+														?>
+														@if($interval->d <1 && $interval->h <1 && $interval->i<51)
+
 														<button type="submit" class="btn btn-success btn-block">Submit</button>
+														@endif
 													</form>
 												</div>
 												</div>
@@ -376,7 +399,7 @@ if($userinfo->logo != ''){
 															</tr>
 														</thead>
 														<tbody>
-														@foreach($pquote as $quots)
+														@foreach($pquots as $quots)
 															<tr>
 																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
 																<td>{{$quots->job_title}}</td>

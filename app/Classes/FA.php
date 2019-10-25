@@ -10,5 +10,10 @@ class FA {
            // $data=DB::table('fa_quote')->where('job_id',$id)->where('p_id',$userinfo)->first();
             return "hek";
         }
+        public function abc()
+        {
+            $data="hello";
+            return  $data;
+        }
 }
 ?>

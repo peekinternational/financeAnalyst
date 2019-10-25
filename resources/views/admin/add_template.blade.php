@@ -23,6 +23,14 @@
 							  </div>
 						  </div>
 					  @endif
+					  @if(session()->has('message'))
+						  <div class="row">
+							  <div class="alert alert-success">
+								  <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+								  <strong>Message:</strong>{{session()->get('message')}}
+							  </div>
+						  </div>
+					  @endif
 		          	<h4 class="field-title">Contact Information</h4>
 		            <div class="row">
 		              <div class="col-md-12">
@@ -115,7 +123,7 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Number of Locations</label>
-		                  <input type="number" name="nmber_location" min="0" class="form-control" placeholder="Comapny Name" value="XYZ">
+		                  <input type="number" name="nmber_location" min="0" class="form-control" placeholder="Comapny Location" value="XYZ">
 		                </div>
 		              </div>
 		            </div>

@@ -101,9 +101,7 @@ public function template(Request $request, $id)
                 'location'=>'required',
                 'mbl_number' => 'required|digits_between:10,12',
                 'business_address' => 'required',
-
                 'phone_number' => 'required',
-
                 'company_name' => 'required'
 
             ],[
@@ -122,6 +120,8 @@ public function template(Request $request, $id)
        $temp = DB::table('fa_user_template')->insert($request->all());
         DB::table('fa_jobpost')->where('id',$id)->update(['status'=>'1']);
        //dd($request->all());
+            $request->session()->flash('message','Detail added successfully');
+            return redirect()->back();
         }
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
        return view('/admin.add_template',compact('job'));
@@ -191,10 +191,11 @@ public function template(Request $request, $id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         DB::table('fa_jobpost')->where('id',$id)->delete();
         DB::table('fa_template')->where('job_id',$id)->delete();
-        return redirect()->back()->with('success', 'Data saved successfully!');
+        $request->session()->flash('message','Job deleted successfully');
+        return redirect()->back();
     }
 }

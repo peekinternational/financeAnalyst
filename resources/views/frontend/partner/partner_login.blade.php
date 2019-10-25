@@ -32,6 +32,16 @@
 								</div>
 							</div>
 							@endif
+							@if(session()->has('message'))
+								<div class="row">
+									<div class="alert alert-danger">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+										<strong>Message:</strong>{{session()->get('message')}}
+									</div>
+								</div>
+							@endif
+
+
 			    			<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
@@ -70,6 +80,7 @@
 									</div>
 								</div>
 							@endif
+
 			    			<div class="row">
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">

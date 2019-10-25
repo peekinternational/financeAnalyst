@@ -47,6 +47,8 @@ class PartnerController extends Controller
             );
             
           $update= DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->update($data_array);
+                $request->session()->flash('message','Profile save successfully');
+                return redirect()->back();
  //dd($update);
  //return view('frontend.partner.thanks');
             }
@@ -56,9 +58,18 @@ class PartnerController extends Controller
          $service=json_decode($userinfo->services);
          $jobs = DB::table('fa_jobpost')->where('status','1')->where('services','=',$service[0])->get();
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
-         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
-         $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
- //dd($rquote);
+
+         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         //$quotes=DB::table('fa_quote')->get();
+        //dd($alljobs);
+         foreach($alljobs as &$res)
+         {
+             $res->quot=DB::table('fa_quote')->where('job_id','=',$res->id)->count();
+
+         }
+
+
      return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots'));
     }
 
@@ -67,7 +78,7 @@ class PartnerController extends Controller
          //   dd('hello');
            $userId=$request->session()->get('faUser')->p_id;
            $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->where('type','=','special')->first();
-
+           //dd($document);
             $filePath = $document->cv;
 
             // file not found
@@ -82,7 +93,7 @@ class PartnerController extends Controller
             //$fileName   = Storage::name($filePath);
 
             return Response::make($pdfContent, 200, [
-            'Content-Type'        => $type,
+            'Content-Type'        => $document->type,
             'Content-Disposition' => 'inline; filename="'.$filePath.'"'
             ]);
         }
@@ -91,8 +102,9 @@ class PartnerController extends Controller
         {
          //   dd('hello');
            $userId=$request->session()->get('faUser')->p_id;
+            //dd($userId);
            $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->where('type','=','certification')->first();
-
+            //dd($document);
             $filePath = $document->cv;
 
             // file not found
@@ -107,7 +119,7 @@ class PartnerController extends Controller
             //$fileName   = Storage::name($filePath);
 
             return Response::make($pdfContent, 200, [
-            'Content-Type'        => $type,
+            'Content-Type'        => $document->type,
             'Content-Disposition' => 'inline; filename="'.$filePath.'"'
             ]);
         }
@@ -150,17 +162,20 @@ public function accountLogin(Request $request){
 
 			$user = $this->doLogin($email,$password);
 			if($user == 'invalid'){
-				$request->session()->flash('loginAlert', 'Invalid Email & Password');
+				$request->session()->flash('message', 'Invalid Email & Password');
 				if($next != ''){
 					return redirect('login?next='.$next);
 				}else{
-					return redirect('login');
+
+                    $request->session()->flash('message','please enter valid email or password');
+					return redirect('/partner_login');
+
 				}
 			}
 			else{
-
+              //dd($user);
 				$request->session()->put('faUser', $user);
-				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
+				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -296,7 +311,8 @@ public function doLogin($email,$password){
              
 
              }
-             $type = $request->file('type');
+             $type = $request->type;
+
             $document=DB::table('fa_partner_cv')->where('partner_id',$userinfo)->where('type','special')->first();
             if($document){
                DB::table('fa_partner_cv')->where('partner_id','=',$userinfo)->update(array('cv' => $upload));
@@ -304,8 +320,8 @@ public function doLogin($email,$password){
 
              DB::table('fa_partner_cv')->insert(array('partner_id'=>$userinfo,'cv' => $upload,'type'=>$type));
             }
-
-            return redirect()->back()->with('success', 'File uploaded successfully.');
+             $request->session()->flash('message','File uploaded successfully');
+            return redirect()->back();
         }
 
           public function carupload(Request $request){
@@ -327,8 +343,8 @@ public function doLogin($email,$password){
 
              DB::table('fa_partner_cv')->insert(array('partner_id'=>$userinfo,'cv' => $upload,'type'=>$type));
             }
-
-            return redirect()->back()->with('success', 'File uploaded successfully.');
+            $request->session()->flash('message','File uploaded successfully');
+            return redirect()->back();
         }
 
 public function quote(Request $request)
@@ -347,8 +363,13 @@ public function quote(Request $request)
         $message->from('searchbysearchs@gmail.com', 'Experlu');
         $message->to($toemail);
       });
+
         DB::table('fa_quote')->insert($request->all());
-         return redirect()->back()->with('success', 'Your Quote uploaded successfully.');
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
     }
 
      public function customerdetail(Request $request,$id)
