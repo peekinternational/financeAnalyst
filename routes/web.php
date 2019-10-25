@@ -50,7 +50,7 @@ Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
 
 
 });
-
+Route::get('dashboard/user_management','customer\customerController@user_management');
 //////////////////////// Customer close /////////////////////////////////
 //////////////////////// Admin Dashboard //////////////////////////////
 Route::match(['get','post'],'/admin/login', 'Dashboard\JobManageController@admin_login');
@@ -65,6 +65,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
 	Route::get('/upload_tamplate', 'Dashboard\JobManageController@showtemplate');
 	Route::get('/job_delete/{id}', 'Dashboard\JobManageController@destroy');
+
 	Route::get('/icons', function(){
 		return view('/admin.icons');
 	});

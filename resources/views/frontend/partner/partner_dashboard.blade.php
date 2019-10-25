@@ -118,28 +118,45 @@ if($userinfo->logo != ''){
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="row">
+												<div class="row">
 															<div class="col-md-7 col-md-offset-5">
-																<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
-																	<div>
-																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
-																	</div>
-																	<div class="sc-jhAzac jqgdQA">
-																		<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
-																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
-																		</div>
-																	</div>
-																	
+														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
+															<div>
+																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
+															</div>
+                                                            <?php
+                                                            date_default_timezone_set("Asia/Karachi");
+                                                            $datetime1 = new DateTime();
+                                                            $date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($alljob->created_at)));
+                                                            $datetime2 = new DateTime($date);
+                                                            $interval = $datetime1->diff($datetime2);
+                                                            // dd($interval);
+                                                            ?>
+															@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+															<div class="sc-jhAzac jqgdQA">
+																<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
+																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																</div>
 															</div>
+															@else
+															<div class="sc-jhAzac jqgdQA">
+																<a type="button" class="sc-bRBYWo eeChfy"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
+																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																</div>
+															</div>
+															@endif
 														</div>
 																
-														
+														</div>
+													</div>
 													</div>
 												</div>
 											</div>
 											<!-- Modal -->
+
+
 											<!-- <div id="myModal{{$alljob->id}}" class="modal fade" role="dialog">
+
 											<div class="modal-dialog">
 
 												<div class="modal-content">
@@ -198,6 +215,7 @@ if($userinfo->logo != ''){
 														@if($alljob->quot > 3)
 															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
 															@endif
+
                               <?php
                               date_default_timezone_set("Asia/Karachi");
                               $datetime1 = new DateTime();
@@ -208,14 +226,16 @@ if($userinfo->logo != ''){
 														?>
 														@if($interval->d <1 && $interval->h <1 && $interval->i<51)
 
+
 														<button type="submit" class="btn btn-success btn-block">Submit</button>
-														@endif
+
 													</form>
 												</div>
 												</div>
 
 											</div>
-											</div> -->
+											</div> --> 
+
 
 											<div class="col-md-4"></div>
 											@endforeach
@@ -341,7 +361,19 @@ if($userinfo->logo != ''){
 															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 														</div>
 													
-														
+														@if($jobs->quot > 3)
+															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
+															@endif
+
+                              <?php
+                              date_default_timezone_set("Asia/Karachi");
+                              $datetime1 = new DateTime();
+                              $date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($jobs->created_at)));
+                              $datetime2 = new DateTime($date);
+														$interval = $datetime1->diff($datetime2);
+                                                       // dd($interval->i);
+														?>
+														@if($interval->d <1 && $interval->h <1 && $interval->i<51)
 													
 														<button type="submit" class="btn btn-success btn-block">Submit</button>
 													</form>
