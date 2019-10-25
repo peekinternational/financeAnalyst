@@ -624,31 +624,31 @@
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="audit">
+              <a href="#" data-industry="accounting" id="Audit">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Audit"> Audit</lable>
                 <input type="radio" name="services" value="4" id="Audit" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="Payroll">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
                 <input type="radio" name="services" value="5" id="Payroll" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="Incorporation">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
                 <input type="radio" name="services" value="6" id="Incorporation" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="secretarial_service">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Secretarial_service"> Secretarial service</lable>
                 <input type="radio" name="services" value="7" id="Secretarial_service" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="Service_pack">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
                 <input type="radio" name="services" value="8" id="Service_pack" style="display:none">
               </a>

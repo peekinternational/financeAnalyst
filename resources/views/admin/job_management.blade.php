@@ -52,8 +52,17 @@
               <div class="card-header">
                 <h4 class="card-title"> Jobs List</h4>
               </div>
+
               <div class="card-body">
                 <div class="table-responsive">
+                  @if(session()->has('message'))
+                    <div class="row">
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <strong>Message:</strong>{{session()->get('message')}}
+                      </div>
+                    </div>
+                  @endif
                   <table class="table">
                     <thead class=" text-primary">
                       <th>Job id</th>
@@ -78,7 +87,7 @@
                         <td class="text-right">
                        <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
                           <i class="fa fa-edit text-primary"></i>
-                         <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
+                         <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>
                           <i class="fa fa-eye text-success"></i>
                         </td>
                       </tr>
@@ -94,6 +103,21 @@
       </div>
     </div>
   </div>
+  <script>
+      function myFunction() {
+
+          var x =confirm("you want to delete this job ");
+          if (x)
+          {
+              return true;
+          }
+          else
+          {
+              event.preventDefault();
+              return false;
+          }
+      }
+  </script>
 @endsection
 @section('script')
 @endsection
