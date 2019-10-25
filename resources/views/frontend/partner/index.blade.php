@@ -565,11 +565,6 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       
-      <input type="hidden" name="industry[general]" value="d41d8cd98f00b204e9800998ecf8427e" />
-      <input type="hidden" name="industry[accounting]" value="6da6e841ab0eee1694a20ea0381f6938" />
-      <input type="hidden" name="industry[law]" value="8e4d7ffa6427c001d0f54b99fc6254a3" />
-      <input type="hidden" name="industry[lawyer]" value="8e4d7ffa6427c001d0f54b99fc6254a3" />
-      <input type="hidden" name="industry[accountant]" value="6da6e841ab0eee1694a20ea0381f6938" />
       <input type="hidden" name="redirect" value="/thank-you" />
       
       <div class="modal-header">
@@ -608,35 +603,35 @@
             <li role="presentation">
               <a href="#" data-industry="accounting" id="account">
                <lable  for="Accountant"><i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i> Accountant</lable>
-                <input type="radio" name="services" value="1" id="Accountant" style="display:none">
+                <input type="radio" name="" value="" id="Accountant" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="book">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Bookkeeper"> Bookkeeper</lable>
-                <input type="radio" name="services" value="2" id="Bookkeeper" style="display:none">
+                <input type="radio" name="" value="" id="Bookkeeper" style="display:none">
               </a>
             </li>
             <li role="presentation">
               <a href="#" data-industry="accounting" id="tax">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Tax"> Tax</lable>
-                <input type="radio" name="services" value="3" id="Tax" style="display:none">
+                <input type="radio" name="" value="" id="Tax" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="Audit">
+              <a href="#" data-industry="accounting" id="audit">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Audit"> Audit</lable>
                 <input type="radio" name="services" value="4" id="Audit" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="Payroll">
+              <a href="#" data-industry="accounting" id="payroll">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
                 <input type="radio" name="services" value="5" id="Payroll" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="Incorporation">
+              <a href="#" data-industry="accounting" id="incorporation">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
                 <input type="radio" name="services" value="6" id="Incorporation" style="display:none">
               </a>
@@ -648,7 +643,7 @@
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="Service_pack">
+              <a href="#" data-industry="accounting" id="service_pack">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
                 <input type="radio" name="services" value="8" id="Service_pack" style="display:none">
               </a>
@@ -743,6 +738,26 @@ $('#account').click(function(){
 
          $('#tax').click(function(){
                 $('#Tax').prop("checked", true);
+         });
+
+         $('#audit').click(function(){
+                $('#Audit').prop("checked", true);
+         });
+
+         $('#payroll').click(function(){
+                $('#Payroll').prop("checked", true);
+         });
+
+         $('#incorporation').click(function(){
+                $('#Incorporation').prop("checked", true);
+         });
+
+         $('#secretarial_service').click(function(){
+                $('#Secretarial_service').prop("checked", true);
+         });
+
+         $('#service_pack').click(function(){
+                $('#Service_pack').prop("checked", true);
          });
  
          

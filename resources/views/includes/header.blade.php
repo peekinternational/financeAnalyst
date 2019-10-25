@@ -36,7 +36,7 @@
           </a>
         </li>
         <li class="dropdown">
-          <a href="index.html#services"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+          <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Services
           </a>
           <span class="arrow-icon">
@@ -45,18 +45,18 @@
           </span>
           <ul class="dropdown-menu dropdown-menu-services dropdown-menu-small">
             <li class="dropdown">
-              <a href="accountant.html" >Accounting</a>
+              <a href="" >Accounting</a>
             </li>
             <li class="dropdown">
-              <a href="bookkeeper.html" >Bookkeeping</a>
+              <a href="" >Bookkeeping</a>
             </li>
             <li class="dropdown">
-              <a href="auditor.html" >Tax</a>
+              <a href="" >Tax</a>
             </li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="companies.html"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+          <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Blogs
           </a>
         </li>

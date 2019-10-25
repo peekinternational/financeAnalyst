@@ -46,7 +46,7 @@ class customerController extends Controller
             'mobilenumber.digits_between' => 'Phone Number must be contain 10,12 digits',
         ]);
 
-        dd($request->all());
+        //dd($request->all());
         $toemail=$request->input('job_email');
         Mail::send('mail.sendmail',['u_name' =>$request->input('customer_name')],
       function ($message) use ($toemail)
