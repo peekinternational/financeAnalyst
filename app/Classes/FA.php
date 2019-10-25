@@ -15,5 +15,11 @@ class FA {
             $data="hello";
             return  $data;
         }
+	// public function test()
+	// {
+	// 	$test = "zeeshan";
+	// 	return $test;
+	// }
+
 }
 ?>

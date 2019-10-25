@@ -324,12 +324,13 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Other</label>
-		                  <select name="other_service" class="form-control">
+		                  <textarea name="other_service" class="form-control" rows="4" cols="8"></textarea>
+		                  <!-- <select name="other_service" class="form-control">
 		                  	<option>Yes</option>
 		                  	<option>No</option>
 		                  	<option>Not Sure</option>
 		                  	<option>N/A</option>
-		                  </select>
+		                  </select> -->
 		                </div>
 		              </div>
 		            </div>
