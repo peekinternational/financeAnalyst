@@ -175,6 +175,10 @@ public function accountLogin(Request $request){
 			else{
               //dd($user);
 				$request->session()->put('faUser', $user);
+                $user=$request->session()->get('faUser');
+
+				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Active"]);
+
 				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
 				if($next != ''){
@@ -297,6 +301,9 @@ public function doLogin($email,$password){
 
         public function logout(Request $request){
          //Session::flush();
+            $user=$request->session()->get('faUser');
+
+            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Not_Active"]);
           Session::forget('faUser');
          return redirect('partner_login');
         }

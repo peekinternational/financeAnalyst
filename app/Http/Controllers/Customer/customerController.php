@@ -18,6 +18,11 @@ class customerController extends Controller
     {
         //
     }
+    public function user_management()
+    {
+        $allpartner = DB::table('fa_partner')->orderBy('p_id','desc')->get();
+        return view('admin.user_management',compact('allpartner'));
+    }
 
     public function jobpost(Request $request)
     {

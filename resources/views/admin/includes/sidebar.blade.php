@@ -49,7 +49,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{url('dashboard/user_management')}}">
               <i class="nc-icon nc-single-02"></i>
               <p>User Management</p>
             </a>
