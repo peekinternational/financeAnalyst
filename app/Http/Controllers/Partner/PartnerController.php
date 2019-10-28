@@ -54,15 +54,24 @@ class PartnerController extends Controller
             }
     //dd($userinfo);
         //dd($userId);
+        $jobs=[];
          $userinfo = DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->first();
          $service=json_decode($userinfo->services);
-         $jobs = DB::table('fa_jobpost')->where('status','1')->where('services','=',$service[0])->get();
+
+         foreach($service as &$ser){
+            
+            $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
+         }
+
+//dd($jobs);
+         
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
 
          $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          //$quotes=DB::table('fa_quote')->get();
         //dd($alljobs);
+      
          foreach($alljobs as &$res)
          {
              $res->quot=DB::table('fa_quote')->where('job_id','=',$res->id)->count();
