@@ -366,12 +366,23 @@ public function doLogin($email,$password){
 public function quote(Request $request)
     {
         $userinfo=$request->session()->get('faUser')->p_id;
-         $request->merge(['p_id' => $userinfo]);
-        //dd($request->all());
+        $input['p_id']=$userinfo;
+        $input['job_id']=$request->input('job_id');
+         $input['quote']=$request->input('quote');
+         $input['_token']=$request->input('_token');
+          $input['q_services']=json_encode($request->input('q_services'));
+           $input['payment_frquency']=json_encode($request->input('payment_frquency'));
+            $input['quote_price']=json_encode($request->input('quote_price'));
+        // $request->merge(['p_id' => $userinfo]);
+         //$request->merge(['q_services' => json_encode($request->input('q_services'))]);
+       // dd($request->all());
            $job_id=$request->input('job_id');
           $getemail= DB::table('fa_jobpost')->where('id',$job_id)->first();
           $toemail=$getemail->job_email;
-        Mail::send('mail.sendmailtocustomer',['u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> $request->input('q_services'),'payment_frquency'=> $request->input('payment_frquency'),'quote_price' => $request->input('quote_price')],
+         // dd($job_id);
+       $q_id= DB::table('fa_quote')->insertGetId($input);
+
+        Mail::send('mail.sendmailtocustomer',['parnter'=>$userinfo,'q_id'=>$q_id,'job_id'=>$job_id,'u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> json_encode($request->input('q_services')),'payment_frquency'=> json_encode($request->input('payment_frquency')),'quote_price' => json_encode($request->input('quote_price'))],
       function ($message) use ($toemail)
       {
 
@@ -380,7 +391,6 @@ public function quote(Request $request)
         $message->to($toemail);
       });
 
-        DB::table('fa_quote')->insert($request->all());
 
 
         $request->session()->flash('message','Quote created successfully');
@@ -388,6 +398,57 @@ public function quote(Request $request)
 
     }
 
+
+public function rejectquote(Request $request,$id,$id2)
+    {
+       
+           //$job_id=$request->input('job_id');
+          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
+        //dd($quotedata);
+          $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
+          $toemail=$userinfo->email;
+         // dd($job_id);
+        Mail::send('mail.rejecttmailtopartner',['parnter'=>$userinfo,'quotedata'=>$quotedata],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
+
+         DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Loss']);
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
+    }
+
+    public function acceptquote(Request $request, $id,$id2)
+    {
+       
+          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
+        //dd($quotedata);
+          $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
+          $toemail=$userinfo->email;
+         // dd($job_id);
+        Mail::send('mail.acceptmailtopartner',['parnter'=>$userinfo,'quotedata'=>$quotedata],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
+
+        DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Won']);
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
+    }
      public function customerdetail(Request $request,$id)
     {
        $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
