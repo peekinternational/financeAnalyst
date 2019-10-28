@@ -80,13 +80,13 @@
 		                <div class="form-group">
 		                  <label>Legal Structure</label>
 		                  <select class="form-control" name="legal_structure">
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Ltd Company (UK)"}} selected="selected" @endif >Ltd Company (UK)</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Ltd Company (other)"}} selected="selected" @endif>Ltd Company (other)</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Sole Trader"}} selected="selected" @endif>Sole Trader</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="LLP"}} selected="selected" @endif>LLP</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Charity"}} selected="selected" @endif>Charity</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Trust"}} selected="selected" @endif>Trust</option>
-		                  	<option @if(!empty($template)) {{$template->legal_structure =="Other"}} selected="selected" @endif>Other</option>
+		                  	<option @if($template->legal_structure =="Ltd Company (UK)") selected="selected" @endif >Ltd Company (UK)</option>
+		                  	<option @if($template->legal_structure =="Ltd Company (other)") selected="selected" @endif>Ltd Company (other)</option>
+		                  	<option @if($template->legal_structure =="Sole Trader") selected="selected" @endif>Sole Trader</option>
+		                  	<option @if($template->legal_structure =="LLP") selected="selected" @endif>LLP</option>
+		                  	<option @if($template->legal_structure =="Charity") selected="selected" @endif>Charity</option>
+		                  	<option @if($template->legal_structure =="Trust") selected="selected" @endif>Trust</option>
+		                  	<option @if($template->legal_structure =="Other") selected="selected" @endif>Other</option>
 		                  </select>
 		                </div>
 		              </div>
