@@ -41,22 +41,19 @@ class JobManageController extends Controller
 			$user = $this->doLogin($email,$password);
 			if($user == 'invalid'){
 				$request->session()->flash('loginAlert', 'Invalid Email & Password');
-				if($next != ''){
-					return redirect('login?next='.$next);
-				}else{
+
 					return redirect('admin/login');
-				}
+
 			}
 			else{
 
 				$request->session()->put('fa_admin', $user);
 				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
 
-				if($next != ''){
-					return redirect($next);
-				}else{
+
+
 					return redirect('dashboard');
-				}
+
 			}
  
 
@@ -117,14 +114,26 @@ public function template(Request $request, $id)
             
             $request->merge(['job_id' => $id]);
            // dd($data);
-       $temp = DB::table('fa_user_template')->insert($request->all());
+           $res= DB::table('fa_user_template')->where('job_id',$id)->first();
+          // dd($request->all());
+            if(empty($res))
+            {
+                $temp = DB::table('fa_user_template')->insert($request->all());
+            }
+            else
+            {
+                $temp = DB::table('fa_user_template')->where('job_id',$id)->update($request->all());
+            }
+
         DB::table('fa_jobpost')->where('id',$id)->update(['status'=>'1']);
        //dd($request->all());
             $request->session()->flash('message','Detail added successfully');
             return redirect()->back();
         }
+        $template=DB::table('fa_user_template')->where('job_id',$id)->first();
+          //dd($template);
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
-       return view('/admin.add_template',compact('job'));
+       return view('/admin.add_template',compact('job','template'));
     }
      public function showtemplate()
     {
