@@ -19,7 +19,7 @@ Route::get('thank-you',  'frontend\HomeController@index');
 //////////////////////// Partner /////////////////////////////////
 
 Route::get('/partner',function(){
-	return view('frontend.partner.index');
+	return view('frontend.partner.expert');
 });
 
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
@@ -73,6 +73,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	});
 	Route::get('/add_tamplate', function(){
 		return view('/admin.add_tamplate');
+	});
+	Route::get('/quotes', function(){
+		return view('/admin.quotes');
 	});
 	Route::get('/map', function(){
 		return view('/admin.map');

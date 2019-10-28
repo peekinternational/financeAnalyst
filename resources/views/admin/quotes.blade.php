@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Jobs Management</a>
+            <a class="navbar-brand" href="#pablo">Manage Quotes</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -61,12 +61,35 @@
                       <th>Quoted By</th>
                       <th>Quotation Date</th>
                       <th>Status</th>
-                      <th>Action</th>
-                      <th class="text-right">Posted date</th>
-                      <th class="text-right">Action</th>
+                      <th class="text-center">Action</th>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                        <td> 1</td>
+                        <td> title</td>
+                        <td> nabeel</td>
+                        <td> Zeeshan</td>
+                        <td> pending</td>
+                        <td class="text-center">
+                        <a href="">Add Detail</a>
+                          <i class="fa fa-edit text-primary"></i>
+                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
+                          <i class="fa fa-eye text-success"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td> 1</td>
+                        <td> title</td>
+                        <td> nabeel</td>
+                        <td> Zeeshan</td>
+                        <td> pending</td>
+                        <td class="text-center">
+                        <a href="">Add Detail</a>
+                          <i class="fa fa-edit text-primary"></i>
+                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
+                          <i class="fa fa-eye text-success"></i>
+                        </td>
+                      </tr>
                      
                     </tbody>
                   </table>

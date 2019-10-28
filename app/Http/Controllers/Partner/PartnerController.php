@@ -57,12 +57,15 @@ class PartnerController extends Controller
         $jobs=[];
          $userinfo = DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->first();
          $service=json_decode($userinfo->services);
+       if(!empty($service))
+       {
+
 
          foreach($service as &$ser){
             
             $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
          }
-
+       }
 //dd($jobs);
          
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
@@ -186,7 +189,7 @@ public function accountLogin(Request $request){
 				$request->session()->put('faUser', $user);
                 $user=$request->session()->get('faUser');
 
-				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Active"]);
+				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"online"]);
 
 				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
@@ -312,7 +315,7 @@ public function doLogin($email,$password){
          //Session::flush();
             $user=$request->session()->get('faUser');
 
-            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Not_Active"]);
+            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"offline"]);
           Session::forget('faUser');
          return redirect('partner_login');
         }

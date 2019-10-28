@@ -21,5 +21,20 @@ class FA {
 	// 	return $test;
 	// }
 
+    public function checktemplate($id)
+    {
+       $templete= DB::table('fa_user_template')->where('job_id',$id)->first();
+
+        if(!empty($templete))
+        {
+          return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }
+
 ?>

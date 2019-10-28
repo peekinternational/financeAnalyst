@@ -34,13 +34,13 @@
           </li>
   
           <li>
-            <a class="" data-toggle="collapse" href="#manageQuote" role="button" aria-expanded="false" aria-controls="manageQuote">
+            <a class="" href="{{url('dashboard/quotes')}}" role="button" aria-expanded="false">
               <i class="nc-icon nc-pin-3"></i>
               <p>Manage Quotes</p>
             </a>
-            <ul class="collapse" id="manageQuote">
-              <li><a href="">Upload Quotes</a></li>
-            </ul>
+            <!-- <ul class="collapse" id="manageQuote">
+              <li><a href="{{url('quotes')}}">Upload Quotes</a></li>
+            </ul> -->
           </li>
           <li>
             <a href="{{url('dashboard/job_management')}}">
