@@ -18,6 +18,11 @@ if($userinfo->logo != ''){
 
 }
 //print_r(FA::checkquote()); die;
+$tJobs=0;
+ foreach($jobs as $item){
+			$tJobs+=count($item);
+ }
+		
 
 ?>
   
@@ -66,7 +71,7 @@ if($userinfo->logo != ''){
 									<a href="#all_jobs" aria-controls="all_jobs" role="tab" data-toggle="tab">All Jobs ({{$alljobs->count()}})</a>
 								</li>
 								<li role="presentation">
-									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$jobs->count()}})</a>
+									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$tJobs}})</a>
 								</li>
 							</ul>
 
@@ -139,7 +144,11 @@ if($userinfo->logo != ''){
 									</div>
 									<div role="tabpanel" class="tab-pane" id="profile_jobs">
 										<div class="row">
-											@foreach($jobs as $job)
+											
+												@foreach($jobs as $item)
+													@if(count($item)>0)
+														@foreach($item as $job)
+
 										<div class="col-md-8">
 											<div>
 												<div class="sc-hmzhuo fPEirj">
@@ -189,15 +198,15 @@ if($userinfo->logo != ''){
 																	<div>
 																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 																	</div>
-		                              <?php
-		                              date_default_timezone_set("Asia/Karachi");
-		                              $datetime1 = new DateTime();
-		                              $date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->created_at)));
-		                              $datetime2 = new DateTime($date);
-		                              $interval = $datetime1->diff($datetime2);
-		                              // dd($interval);
-		                              ?>
-																	@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+																		<?php
+																		date_default_timezone_set("Asia/Karachi");
+																		$datetime1 = new DateTime();
+																		$date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->created_at)));
+																		$datetime2 = new DateTime($date);
+																		$interval = $datetime1->diff($datetime2);
+																		// dd($interval);
+																		?>
+																				@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
 																	<div class="sc-jhAzac jqgdQA">
 																		<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#profileJob{{$job->id}}" style="cursor: pointer;">Create a quote for this client</a>
 																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
@@ -290,6 +299,9 @@ if($userinfo->logo != ''){
 
 											<div class="col-md-4"></div>
 											@endforeach
+										@endif
+									@endforeach
+								
 											</div>
 										</div>
 									</div>
