@@ -130,10 +130,12 @@ public function template(Request $request, $id)
             $request->session()->flash('message','Detail added successfully');
             return redirect()->back();
         }
+
+          $autofil=DB::table('fa_jobpost')->where('id',$id)->first();
         $template=DB::table('fa_user_template')->where('job_id',$id)->first();
           //dd($template);
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
-       return view('/admin.add_template',compact('job','template'));
+       return view('/admin.add_template',compact('job','template','autofil'));
     }
      public function showtemplate()
     {

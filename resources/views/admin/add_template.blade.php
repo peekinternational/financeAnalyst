@@ -31,6 +31,7 @@
 							  </div>
 						  </div>
 					  @endif
+					  @if(!empty($template))
 		          	<h4 class="field-title">Contact Information</h4>
 		            <div class="row">
 		              <div class="col-md-12">
@@ -74,19 +75,70 @@
 		                </div>
 		              </div>
 		            </div>
+					  @else
+
+
+
+						  <h4 class="field-title">Contact Information</h4>
+						  <div class="row">
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label>Phone Number</label>
+									  <input type="number" class="form-control" min="0" placeholder="Phone Number" name="phone_number"  value="" >
+								  </div>
+							  </div>
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label>Mobile Number</label>
+									  <input type="number" name="mbl_number" min="0" class="form-control" placeholder="Mobile Number"  value="{{$autofil->mobilenumber}}">
+								  </div>
+							  </div>
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label for="exampleInputEmail1">Email address</label>
+									  <input type="email" name="email" class="form-control" placeholder="Email"  value="{{$autofil->job_email}}" >
+								  </div>
+							  </div>
+						  </div>
+						  <div class="row">
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label>Location</label>
+									  <input type="text" name="location" class="form-control" placeholder="Location"   value=""  >
+								  </div>
+							  </div>
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label>Business Address</label>
+									  <input type="text" name="business_address" class="form-control" placeholder="Business Address"   value=""  >
+								  </div>
+							  </div>
+						  </div>
+						  <div class="row">
+							  <div class="col-md-12">
+								  <div class="form-group">
+									  <label>Comapny Name</label>
+									  <input type="text" name="company_name" class="form-control" placeholder="Comapny Name"   value="" >
+								  </div>
+							  </div>
+						  </div>
+
+
+                   @endif
+
 		            <h4 class="field-title">Case Highlights</h4>
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Legal Structure</label>
 		                  <select class="form-control" name="legal_structure">
-		                  	<option @if($template->legal_structure =="Ltd Company (UK)") selected="selected" @endif >Ltd Company (UK)</option>
-		                  	<option @if($template->legal_structure =="Ltd Company (other)") selected="selected" @endif>Ltd Company (other)</option>
-		                  	<option @if($template->legal_structure =="Sole Trader") selected="selected" @endif>Sole Trader</option>
-		                  	<option @if($template->legal_structure =="LLP") selected="selected" @endif>LLP</option>
-		                  	<option @if($template->legal_structure =="Charity") selected="selected" @endif>Charity</option>
-		                  	<option @if($template->legal_structure =="Trust") selected="selected" @endif>Trust</option>
-		                  	<option @if($template->legal_structure =="Other") selected="selected" @endif>Other</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="Ltd Company (UK)")selected="selected"  @endif @endif >Ltd Company (UK)</option>
+		                  	<option @if(!empty($template))  @if($template->legal_structure =="Ltd Company (other)") selected="selected" @endif @endif>Ltd Company (other)</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="Sole Trader") selected="selected" @endif @endif>Sole Trader</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="LLP") selected="selected" @endif @endif>LLP</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="Charity") selected="selected" @endif @endif>Charity</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="Trust") selected="selected" @endif @endif>Trust</option>
+		                  	<option @if(!empty($template)) @if($template->legal_structure =="Other") selected="selected" @endif @endif>Other</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -169,10 +221,10 @@
 
 		                  <label>Company Registration</label>
 		                  <select name="company_resgiter_number" class="form-control">
-		                  	<option value="Yes"  @if($template->company_resgiter_number ="Yes") selected="selected"@endif >Yes</option>
-		                  	<option value="No"  @if($template->company_resgiter_number ="No") selected="selected" @endif >No</option>
-		                  	<option value="Not Sure"  @if($template->company_resgiter_number ="Not Sure") selected="selected" @endif >Not Sure</option>
-		                  	<option value="N/A"  @if($template->company_resgiter_number ="N/A") selected="selected" @endif >N/A</option>
+		                  	<option value="No" @if(!empty($template))  @if($template->company_resgiter_number ="Yes")selected="selected" @endif   @endif >Yes</option>
+		                  	<option value="Yes" @if(!empty($template))  @if($template->company_resgiter_number ="No") selected="selected" @endif   @endif >No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if ($template->company_resgiter_number ="Not Sure") selected="selected" @endif   @endif >Not Sure</option>
+		                  	<option value="N/A" @if(!empty($template))  @if ($template->company_resgiter_number ="N/A") selected="selected" @endif  @endif >N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -182,10 +234,10 @@
 		                <div class="form-group">
 		                  <label>Annual Accounts</label>
 		                  <select name="annual_accounts" class="form-control">
-		                  	<option value="Yes" @if($template->annual_accounts =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->annual_accounts =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->annual_accounts =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option  value="N/A" @if($template->annual_accounts =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->annual_accounts =="Yes")selected="selected" @endif   @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->annual_accounts =="No") selected="selected" @endif  @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->annual_accounts =="Not Sure") selected="selected" @endif  @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template)) @if($template->annual_accounts =="N/A") selected="selected" @endif   @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -195,10 +247,10 @@
 		                <div class="form-group">
 		                  <label>Corporation tax return</label>
 		                  <select name="tax_return" class="form-control">
-		                  	<option value="Yes" @if($template->tax_return =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option  value="No" @if($template->tax_return =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->tax_return =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="No N/A" @if($template->tax_return =="N/A")selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->tax_return =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->tax_return =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->tax_return =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="No N/A" @if(!empty($template)) @if($template->tax_return =="N/A")selected="selected" @endif   @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -208,10 +260,10 @@
 		                <div class="form-group">
 		                  <label>Self Assessment tax Return</label>
 		                  <select name="self_tax_return" class="form-control">
-		                  	<option  value="Yes"  @if($template->self_tax_return =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option  value="No"  @if($template->self_tax_return =="No") selected="selected" @endif>No</option>
-		                  	<option  value="Not Sure"  @if($template->self_tax_return =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option  value="N/A"  @if($template->self_tax_return =="N/A") selected="selected" @endif> N/A</option>
+		                  	<option  value="Yes"  @if(!empty($template)) @if($template->self_tax_return =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No"  @if(!empty($template)) @if($template->self_tax_return =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->self_tax_return =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template))  @if($template->self_tax_return =="N/A") selected="selected" @endif    @endif> N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -222,10 +274,10 @@
 		                <div class="form-group">
 		                  <label>Bookkeeping</label>
 		                  <select name="bookkeeping" class="form-control">
-		                  	<option  value="Yes" @if($template->bookkeeping =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option  value="No" @if($template->bookkeeping =="No") selected="selected" @endif>No</option>
-		                  	<option  value="Not Sure" @if($template->bookkeeping =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option   value="N/A" @if($template->bookkeeping =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option  value="Yes" @if(!empty($template))  @if($template->bookkeeping =="Yes")selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template))  @if($template->bookkeeping =="No") selected="selected" @endif    @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template))  @if($template->bookkeeping =="Not Sure") selected="selected" @endif   @endif>Not Sure</option>
+		                  	<option   value="N/A" @if(!empty($template))  @if($template->bookkeeping =="N/A") selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -235,10 +287,10 @@
 		                <div class="form-group">
 		                  <label>Confirmation Statement</label>
 		                  <select name="confirmation_statement" class="form-control">
-		                  	<option value="Yes" @if($template->confirmation_statement =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->confirmation_statement =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->confirmation_statement =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A" @if($template->confirmation_statement =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template))  @if($template->confirmation_statement =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template))  @if($template->confirmation_statement =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template))  @if($template->confirmation_statement =="Not Sure")selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A" @if(!empty($template))  @if($template->confirmation_statement =="N/A")selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -248,10 +300,10 @@
 		                <div class="form-group">
 		                  <label>VAT Returns</label>
 		                  <select name="vat_returns" class="form-control">
-		                  	<option value="Yes" @if($template->vat_returns =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->vat_returns =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->vat_returns =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A" @if($template->vat_returns =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template))  @if($template->vat_returns =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template))  @if($template->vat_returns =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template))  @if($template->vat_returns =="Not Sure")selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A" @if(!empty($template))  @if($template->vat_returns =="N/A")selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -261,10 +313,10 @@
 		                <div class="form-group">
 		                  <label>Payroll</label>
 		                  <select name="payroll" class="form-control">
-		                  	<option value="Yes" @if($template->payroll =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->payroll =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->payroll =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A" @if($template->payroll =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->payroll =="Yes")selected="selected" @endif    @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->payroll =="No") selected="selected" @endif    @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->payroll =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A"  @if(!empty($template)) @if($template->payroll =="N/A") selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -274,10 +326,10 @@
 		                <div class="form-group">
 		                  <label>Tax Advice</label>
 		                  <select name="tax_advice" class="form-control">
-		                  	<option value="Yes" @if($template->tax_advice =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->tax_advice =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->tax_advice =="Not Sure")selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A"  @if($template->tax_advice =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->tax_advice =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->tax_advice =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->tax_advice =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A"  @if(!empty($template)) @if($template->tax_advice =="N/A")selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -287,10 +339,10 @@
 		                <div class="form-group">
 		                  <label>HMRC registration (VAT, PAYE etc)</label>
 		                  <select name="hmre_register" class="form-control">
-		                  	<option value="Yes" @if($template->hmre_register =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->hmre_register =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->hmre_register =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A"  @if($template->hmre_register =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->hmre_register =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->hmre_register =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if( $template->hmre_register =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A"  @if(!empty($template)) @if($template->hmre_register =="N/A") selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -300,10 +352,10 @@
 		                <div class="form-group">
 		                  <label>Management Accounts</label>
 		                  <select name="management_accounts" class="form-control">
-		                  	<option value="Yes" @if($template->management_accounts =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->management_accounts =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->management_accounts ="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option  value="N/A"  @if($template->management_accounts =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->management_accounts =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->management_accounts =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->management_accounts ="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A"  @if(!empty($template)) @if($template->management_accounts =="N/A") selected="selected" @endif    @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -313,10 +365,10 @@
 		                <div class="form-group">
 		                  <label>Audit</label>
 		                  <select name="audit" class="form-control">
-		                  	<option value="Yes" @if($template->audit =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->audit =="No") selected="selected" @endif>No</option>
-		                  	<option value="Not Sure" @if($template->audit =="Not Sure") selected="selected" @endif>Not Sure</option>
-		                  	<option value="N/A"  @if($template->audit =="N/A") selected="selected" @endif>N/A</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->audit =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->audit =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->audit =="Not Sure") selected="selected" @endif   @endif>Not Sure</option>
+		                  	<option value="N/A"  @if(!empty($template)) @if($template->audit =="N/A")selected="selected" @endif   @endif>N/A</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -349,8 +401,8 @@
 		                <div class="form-group">
 		                  <label>Experience as a Business Owner</label>
 		                  <select name="owner_experience" class="form-control">
-		                  	<option value="Yes" @if($template->owner_experience =="Yes") selected="selected" @endif>Yes</option>
-		                  	<option value="No" @if($template->owner_experience =="No") selected="selected" @endif>No</option>
+		                  	<option value="Yes" @if(!empty($template)) @if($template->owner_experience =="Yes") selected="selected"  @endif @endif>Yes</option>
+		                  	<option value="No" @if(!empty($template)) @if($template->owner_experience =="No") selected="selected"  @endif @endif>No</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -377,10 +429,10 @@
 		                <div class="form-group">
 		                  <label>Mode</label>
 		                  <select name="mode" class="form-control">
-		                  	<option value="Email"  @if($template->mode =="Email") selected="selected" @endif>Email</option>
-		                  	<option  value="Call" @if($template->mode =="Call") selected="selected" @endif>Call</option>
-		                  	<option value="Text message" @if($template->mode =="Text message") selected="selected" @endif>Text message</option>
-		                  	<option value="Whatsapp mesage" @if($template->mode =="Whatsapp mesage") selected="selected" @endif>Whatsapp mesage</option>
+		                  	<option value="Email"  @if(!empty($template)) @if($template->mode =="Email") selected="selected" @endif @endif>Email</option>
+		                  	<option  value="Call" @if(!empty($template)) @if($template->mode =="Call")selected="selected" @endif @endif>Call</option>
+		                  	<option value="Text message" @if(!empty($template)) @if($template->mode =="Text message") selected="selected" @endif @endif>Text message</option>
+		                  	<option value="Whatsapp mesage" @if(!empty($template)) @if($template->mode =="Whatsapp mesage") selected="selected" @endif @endif>Whatsapp mesage</option>
 		                  </select>
 		                </div>
 		              </div>
@@ -471,6 +523,7 @@
 		</div>
 	</div>
 </div>
+
 @endsection
 @section('script')
 @endsection
