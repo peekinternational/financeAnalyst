@@ -85,7 +85,11 @@
                         <td>{{$jobs->city}}</td>
                         <td class="text-right">{{$jobs->created_at}}</td>
                         <td class="text-right">
+                          @if(FA::checktemplate($jobs->id)=="1")
+                           <a href="{{ url('dashboard/template/'.$jobs->id)}}">Update Detail</a>
+                          @else
                        <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
+                          @endif
                           <i class="fa fa-edit text-primary"></i>
                          <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>
                           <i class="fa fa-eye text-success"></i>

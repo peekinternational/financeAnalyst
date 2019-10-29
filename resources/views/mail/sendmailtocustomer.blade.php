@@ -24,7 +24,50 @@
 <td class="m_1888394735623576276content-cell" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;padding:35px">
                                         <h1 style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#2f3133;font-size:19px;font-weight:bold;margin-top:0;text-align:left">Hello {{$u_name}} </h1>
   <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">This email is sent with reference to your job post on Experlu.</p>
-  <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">Service: {{$services}}, &nbsp;&nbsp;&nbsp;  Payment frequency: {{$payment_frquency}}, &nbsp;&nbsp;&nbsp;  Price: {{$quote_price}}</p>
+  <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">
+ <?php
+            $service=json_decode($services); 
+            $fre=json_decode($payment_frquency);
+            $q_price=json_decode($quote_price);
+
+ ?>
+ <div class="table-responsive">
+     <table class="table table-hover">
+       
+             <tr>
+                 <th style="float: left;">Service</th>
+                  @foreach($service as $ser)
+           
+                 <td>{{$ser}}</td>
+            
+             @endforeach
+             </tr>
+             
+             <tr>
+                
+                 <th style="float: left;">Payment frequency</th>
+                  @foreach($fre as $fres)
+            
+                 <td>{{$fres}}</td>
+             
+             @endforeach
+                 
+             </tr>
+            
+             
+             <tr>
+                 <th style="float: left;">Price</th>
+                  @foreach($q_price as $q_prices)
+             
+                 <td>{{$q_prices}}</td>
+            
+             @endforeach
+             </tr>
+        
+        
+     </table>
+ </div>
+ </p>
 <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">{{$quote}}</p>
 <table class="m_1888394735623576276action" align="center" width="100%" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;margin:30px auto;padding:0;text-align:center;width:100%"><tbody><tr>
 <td align="center" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
@@ -34,8 +77,12 @@
   
                         <table border="0" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box"><tbody><tr>
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
-                                    <a href="" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Accept</a>
-                                     <a href="" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Reject</a>
+                                    <a href="{{ url('acceptquote/'.$parnter.'/'.$q_id)}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Accept</a>
+                                     <a href="{{ url('rejectquote/'.$parnter.'/'.$q_id)}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color: #d19f30;
+    border-top: 10px solid #d19f30;
+    border-right: 18px solid #d19f30;
+    border-bottom: 10px solid #d19f30;
+    border-left: 18px solid #d19f30;" target="_blank">Reject</a>
                                 </td>
 
                             </tr></tbody></table>

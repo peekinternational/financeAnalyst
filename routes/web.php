@@ -28,6 +28,8 @@ Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
 Route::get('/special','Partner\PartnerController@getDocument');
 Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
+Route::get('/acceptquote/{id}/{id2}','Partner\PartnerController@acceptquote');
+Route::get('/rejectquote/{id}/{id2}','Partner\PartnerController@rejectquote');
 
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {

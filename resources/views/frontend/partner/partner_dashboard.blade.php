@@ -241,7 +241,7 @@ $tJobs=0;
 													
 													<form action="{{ url('quotepost')}}" method="POST" role="form">
 														 {{ csrf_field() }}
-														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+														<input type="hidden" name="job_id" id="" value="{{$job->id}}" >
 														<div class="form-group">
 															<div class="servies_list">
 																<div class="row">
@@ -261,7 +261,7 @@ $tJobs=0;
 																	</div>
 																	<div class="col-xs-3">
 																		<label>Payment frequency</label>
-																		<select class="form-control" name="payment_frquency">
+																		<select class="form-control" name="payment_frquency[]">
 																			<option>Weekly</option>
 																			<option>Monthly</option>
 																			<option>Yearly</option>
@@ -269,7 +269,7 @@ $tJobs=0;
 																	</div>
 																	<div class="col-xs-3">
 																		<label>Price</label>
-																		<input type="text" name="quote_price" class="form-control">
+																		<input type="text" name="quote_price[]" class="form-control">
 																	</div>
 																	<div class="col-xs-1">
 																		<a href="javascript:void(0)" class="add_more"><i class="fa fa-plus"></i></a>
@@ -905,7 +905,7 @@ $tJobs=0;
 																	
 		var fieldHTML2 = '<div class="row">'+
 		'<div class="col-xs-5"><label>Service</label>'+
-		'<select class="form-control" name="q_services">'+
+		'<select class="form-control" name="q_services[]">'+
 		'<option>Select Service</option><option value="Accountant">Accountant</option>'+
 		'<option value="Bookkeeper">Bookkeeper</option>'+
 		'<option value="Tax">Tax</option>'+
@@ -917,7 +917,7 @@ $tJobs=0;
 		'</select>'+
 		'</div>'+
 		'<div class="col-xs-3"><label>Payment frequency</label>'+
-		'<select class="form-control" name="payment_frquency">'+
+		'<select class="form-control" name="payment_frquency[]">'+
 		'<option>Weekly</option>'+
 		'<option>Monthly</option>'+
 		'<option>Yearly</option>'+
@@ -925,7 +925,7 @@ $tJobs=0;
 		'</div>'+
 		'<div class="col-xs-3">'+
 		'<label>Price</label>'+
-		'<input type="text" name="quote_price" class="form-control">'+
+		'<input type="text" name="quote_price[]" class="form-control">'+
 		'</div>'+
 		//'<div class="col-xs-1">'+
 		//'<a href="javascript:void(0)" class="remove_service"><i class="fa fa-minus"></i></a>'+
