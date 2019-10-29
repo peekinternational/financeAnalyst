@@ -97,6 +97,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/upgrade', function(){
 		return view('/admin.upgrade');
 	});
+	Route::get('/add-users', function(){
+		return view('/admin.add-users');
+	});
 });
 });
 //////////////////////// Admin Dashboard Close ////////////////////////////

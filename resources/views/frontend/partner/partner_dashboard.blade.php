@@ -208,7 +208,7 @@ $tJobs=0;
 																		?>
 																				@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
 																	<div class="sc-jhAzac jqgdQA">
-																		<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#profileJob{{$job->id}}" style="cursor: pointer;">Create a quote for this client</a>
+																		<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a quote for this client</a>
 																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																		</div>
 																	</div>
@@ -228,10 +228,10 @@ $tJobs=0;
 												</div>
 											</div>
 											<!-- Modal -->
-											<div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
+											<!-- <div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
 											<div class="modal-dialog">
 
-												<!-- Modal content-->
+												
 												<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -295,7 +295,7 @@ $tJobs=0;
 												</div>
 
 											</div>
-											</div>
+											</div> -->
 
 											<div class="col-md-4"></div>
 											@endforeach

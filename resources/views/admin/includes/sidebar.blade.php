@@ -34,31 +34,43 @@
           </li>
   
           <li>
-            <a class="" href="{{url('dashboard/quotes')}}" role="button" aria-expanded="false">
+            <a  data-toggle="collapse" href="#manageQuote"  role="button" aria-expanded="false" aria-controls="manageQuote">
               <i class="nc-icon nc-pin-3"></i>
               <p>Manage Quotes</p>
             </a>
-            <!-- <ul class="collapse" id="manageQuote">
-              <li><a href="{{url('quotes')}}">Upload Quotes</a></li>
-            </ul> -->
+            <ul class="collapse" id="manageQuote">
+              <li><a href="{{url('dashboard/quotes')}}">New cases</a></li>
+            </ul>
           </li>
           <li>
-            <a href="{{url('dashboard/job_management')}}">
+            <a href="#manageJobs"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
               <i class="nc-icon nc-bell-55"></i>
               <p>Jobs Management</p>
             </a>
+            <ul class="collapse" id="manageJobs">
+              <li><a href="{{url('dashboard/job_management')}}">Open Jobs</a></li>
+            </ul>
+
           </li>
           <li>
-            <a href="{{url('dashboard/user_management')}}">
+            <a href="#manageUsers"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageUsers">
               <i class="nc-icon nc-single-02"></i>
               <p>User Management</p>
             </a>
+            <ul class="collapse" id="manageUsers">
+              <li><a href="{{url('dashboard/user_management')}}">Add New User </a></li>
+            </ul>
           </li>
           <li>
-            <a href="">
+            <a class="" data-toggle="collapse" href="#accounts" role="button" aria-expanded="false" aria-controls="accounts">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Invoice</p>
+              <p>Account</p>
             </a>
+            <ul class="collapse" id="accounts">
+              <li><a href="{{url('')}}">Sales</a></li>
+              <li><a href="{{url('')}}">Invoice</a></li>
+              <li><a href="{{url('')}}">Refund Cases</a></li>
+            </ul>
           </li>
           <li>
             <a href="{{url('dashboard/user')}}">
@@ -71,13 +83,29 @@
               <i class="nc-icon nc-tile-56"></i>
               <p>Blogs</p>
             </a>
-          </li>
+          </li> -->
           <li>
-            <a href="{{url('dashboard/typography')}}">
+            <a class="" data-toggle="collapse" href="#messages" role="button" aria-expanded="false" aria-controls="messages">
               <i class="nc-icon nc-caps-small"></i>
               <p>Messages</p>
             </a>
-          </li> -->
+            <ul class="collapse" id="messages">
+              <li><a href="{{url('')}}">Expert Mesages</a></li>
+              <li><a href="{{url('')}}">Customer Messages</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Payments</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Help Menu</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
