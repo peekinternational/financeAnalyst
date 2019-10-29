@@ -176,8 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FAProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        App\Providers\FAProvider::class,
 
     ],
 

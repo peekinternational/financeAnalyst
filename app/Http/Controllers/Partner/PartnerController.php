@@ -47,18 +47,41 @@ class PartnerController extends Controller
             );
             
           $update= DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->update($data_array);
+                $request->session()->flash('message','Profile save successfully');
+                return redirect()->back();
  //dd($update);
  //return view('frontend.partner.thanks');
             }
     //dd($userinfo);
         //dd($userId);
+        $jobs=[];
          $userinfo = DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->first();
          $service=json_decode($userinfo->services);
-         $jobs = DB::table('fa_jobpost')->where('status','1')->where('services','=',$service[0])->get();
+       if(!empty($service))
+       {
+
+
+         foreach($service as &$ser){
+            
+            $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
+         }
+       }
+//dd($jobs);
+         
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
-         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
-         $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
- //dd($rquote);
+
+         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         //$quotes=DB::table('fa_quote')->get();
+        //dd($alljobs);
+      
+         foreach($alljobs as &$res)
+         {
+             $res->quot=DB::table('fa_quote')->where('job_id','=',$res->id)->count();
+
+         }
+
+
      return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots'));
     }
 
@@ -67,7 +90,7 @@ class PartnerController extends Controller
          //   dd('hello');
            $userId=$request->session()->get('faUser')->p_id;
            $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->where('type','=','special')->first();
-
+           //dd($document);
             $filePath = $document->cv;
 
             // file not found
@@ -82,7 +105,7 @@ class PartnerController extends Controller
             //$fileName   = Storage::name($filePath);
 
             return Response::make($pdfContent, 200, [
-            'Content-Type'        => $type,
+            'Content-Type'        => $document->type,
             'Content-Disposition' => 'inline; filename="'.$filePath.'"'
             ]);
         }
@@ -91,8 +114,9 @@ class PartnerController extends Controller
         {
          //   dd('hello');
            $userId=$request->session()->get('faUser')->p_id;
+            //dd($userId);
            $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->where('type','=','certification')->first();
-
+            //dd($document);
             $filePath = $document->cv;
 
             // file not found
@@ -107,7 +131,7 @@ class PartnerController extends Controller
             //$fileName   = Storage::name($filePath);
 
             return Response::make($pdfContent, 200, [
-            'Content-Type'        => $type,
+            'Content-Type'        => $document->type,
             'Content-Disposition' => 'inline; filename="'.$filePath.'"'
             ]);
         }
@@ -150,17 +174,24 @@ public function accountLogin(Request $request){
 
 			$user = $this->doLogin($email,$password);
 			if($user == 'invalid'){
-				$request->session()->flash('loginAlert', 'Invalid Email & Password');
+				$request->session()->flash('message', 'Invalid Email & Password');
 				if($next != ''){
 					return redirect('login?next='.$next);
 				}else{
-					return redirect('login');
+
+                    $request->session()->flash('message','please enter valid email or password');
+					return redirect('/partner_login');
+
 				}
 			}
 			else{
-
+              //dd($user);
 				$request->session()->put('faUser', $user);
-				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
+                $user=$request->session()->get('faUser');
+
+				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"online"]);
+
+				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
 				if($next != ''){
 					return redirect($next);
@@ -282,6 +313,9 @@ public function doLogin($email,$password){
 
         public function logout(Request $request){
          //Session::flush();
+            $user=$request->session()->get('faUser');
+
+            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"offline"]);
           Session::forget('faUser');
          return redirect('partner_login');
         }
@@ -296,7 +330,8 @@ public function doLogin($email,$password){
              
 
              }
-             $type = $request->file('type');
+             $type = $request->type;
+
             $document=DB::table('fa_partner_cv')->where('partner_id',$userinfo)->where('type','special')->first();
             if($document){
                DB::table('fa_partner_cv')->where('partner_id','=',$userinfo)->update(array('cv' => $upload));
@@ -304,8 +339,8 @@ public function doLogin($email,$password){
 
              DB::table('fa_partner_cv')->insert(array('partner_id'=>$userinfo,'cv' => $upload,'type'=>$type));
             }
-
-            return redirect()->back()->with('success', 'File uploaded successfully.');
+             $request->session()->flash('message','File uploaded successfully');
+            return redirect()->back();
         }
 
           public function carupload(Request $request){
@@ -327,19 +362,30 @@ public function doLogin($email,$password){
 
              DB::table('fa_partner_cv')->insert(array('partner_id'=>$userinfo,'cv' => $upload,'type'=>$type));
             }
-
-            return redirect()->back()->with('success', 'File uploaded successfully.');
+            $request->session()->flash('message','File uploaded successfully');
+            return redirect()->back();
         }
 
 public function quote(Request $request)
     {
         $userinfo=$request->session()->get('faUser')->p_id;
-         $request->merge(['p_id' => $userinfo]);
-        //dd($request->all());
+        $input['p_id']=$userinfo;
+        $input['job_id']=$request->input('job_id');
+         $input['quote']=$request->input('quote');
+         $input['_token']=$request->input('_token');
+          $input['q_services']=json_encode($request->input('q_services'));
+           $input['payment_frquency']=json_encode($request->input('payment_frquency'));
+            $input['quote_price']=json_encode($request->input('quote_price'));
+        // $request->merge(['p_id' => $userinfo]);
+         //$request->merge(['q_services' => json_encode($request->input('q_services'))]);
+       // dd($request->all());
            $job_id=$request->input('job_id');
           $getemail= DB::table('fa_jobpost')->where('id',$job_id)->first();
           $toemail=$getemail->job_email;
-        Mail::send('mail.sendmailtocustomer',['u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> $request->input('q_services'),'payment_frquency'=> $request->input('payment_frquency'),'quote_price' => $request->input('quote_price')],
+         // dd($job_id);
+       $q_id= DB::table('fa_quote')->insertGetId($input);
+
+        Mail::send('mail.sendmailtocustomer',['parnter'=>$userinfo,'q_id'=>$q_id,'job_id'=>$job_id,'u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> json_encode($request->input('q_services')),'payment_frquency'=> json_encode($request->input('payment_frquency')),'quote_price' => json_encode($request->input('quote_price'))],
       function ($message) use ($toemail)
       {
 
@@ -347,16 +393,79 @@ public function quote(Request $request)
         $message->from('searchbysearchs@gmail.com', 'Experlu');
         $message->to($toemail);
       });
-        DB::table('fa_quote')->insert($request->all());
-         return redirect()->back()->with('success', 'Your Quote uploaded successfully.');
+
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
     }
 
+
+public function rejectquote(Request $request,$id,$id2)
+    {
+       
+           //$job_id=$request->input('job_id');
+          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
+        //dd($quotedata);
+          $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
+          $toemail=$userinfo->email;
+         // dd($job_id);
+        Mail::send('mail.rejecttmailtopartner',['parnter'=>$userinfo,'quotedata'=>$quotedata],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
+
+         DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Loss']);
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
+    }
+
+    public function acceptquote(Request $request, $id,$id2)
+    {
+       
+          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
+        //dd($quotedata);
+          $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
+          $toemail=$userinfo->email;
+         // dd($job_id);
+        Mail::send('mail.acceptmailtopartner',['parnter'=>$userinfo,'quotedata'=>$quotedata],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
+
+        DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Won']);
+
+
+        $request->session()->flash('message','Quote created successfully');
+         return redirect()->back();
+
+    }
      public function customerdetail(Request $request,$id)
     {
        $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
         ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
         //dd($data);
         return view('frontend.partner.template_detail',compact('data'));
+    }
+
+     public function jobdetail(Request $request,$id)
+    {
+       // dd($id);
+       $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id', '=','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
+        //dd($data);
+        return view('frontend.partner.job_detail',compact('data'));
     }
 
 public function export_pdf($id)

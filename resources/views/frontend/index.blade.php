@@ -609,6 +609,7 @@
           </div>
         </div>
       @endif
+
       
       <div class="modal-body">
         
@@ -663,25 +664,25 @@
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="payroll">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Payroll"> Payroll</lable>
                 <input type="radio" name="services" value="Payroll" id="Payroll" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="incorporation">
                 <i class="mdi mdi-book-multiple mdi-24px mdi-margin-right"></i><lable for="Incorporation"> Incorporation</lable>
                 <input type="radio" name="services" value="Incorporation" id="Incorporation" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="secretarial_service">
                 <i class="mdi mdi-account-edit mdi-24px mdi-margin-right"></i><lable for="Secretarial_service"> Secretarial service</lable>
                 <input type="radio" name="services" value="Secretarial" id="Secretarial_service" style="display:none">
               </a>
             </li>
             <li role="presentation">
-              <a href="#" data-industry="accounting" id="tax">
+              <a href="#" data-industry="accounting" id="service_pack">
                 <i class="mdi mdi-calculator mdi-24px mdi-margin-right"></i><lable for="Service_pack"> Mix your own service pack</lable>
                 <input type="radio" name="services" value="Mix your own service pack" id="Service_pack" style="display:none">
               </a>
@@ -767,17 +768,38 @@
 <script>
 console.log('sadasdasdddddddddddd');
 $('#account').click(function(){
+     alert('audit');
           $('#Accountant').prop("checked", true); 
     });
 
-         $('#book').click(function(){
-                $('#Bookkeeper').prop("checked", true);
-         });
+   $('#book').click(function(){
+          $('#Bookkeeper').prop("checked", true);
+   });
 
-         $('#tax').click(function(){
-                $('#Tax').prop("checked", true);
-         });
- 
+   $('#tax').click(function(){
+          $('#Tax').prop("checked", true);
+   });
+
+   $('#audit').click(function(){
+    
+          $('#Audit').prop("checked", true);
+   });
+
+   $('#payroll').click(function(){
+          $('#Payroll').prop("checked", true);
+   });
+
+   $('#incorporation').click(function(){
+          $('#Incorporation').prop("checked", true);
+   });
+
+   $('#secretarial_service').click(function(){
+          $('#Secretarial_service').prop("checked", true);
+   });
+
+   $('#service_pack').click(function(){
+          $('#Service_pack').prop("checked", true);
+   });
          
 </script>
 @endsection

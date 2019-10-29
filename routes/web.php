@@ -19,7 +19,7 @@ Route::get('thank-you',  'frontend\HomeController@index');
 //////////////////////// Partner /////////////////////////////////
 
 Route::get('/partner',function(){
-	return view('frontend.partner.index');
+	return view('frontend.partner.expert');
 });
 
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
@@ -28,6 +28,9 @@ Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
 Route::get('/special','Partner\PartnerController@getDocument');
 Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
+Route::get('/acceptquote/{id}/{id2}','Partner\PartnerController@acceptquote');
+Route::get('/rejectquote/{id}/{id2}','Partner\PartnerController@rejectquote');
+
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
@@ -37,6 +40,7 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
 	Route::get('/template_detail/{id}','Partner\PartnerController@customerdetail');
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
+	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 
 	});
 	
@@ -50,7 +54,7 @@ Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
 
 
 });
-
+Route::get('dashboard/user_management','customer\customerController@user_management');
 //////////////////////// Customer close /////////////////////////////////
 //////////////////////// Admin Dashboard //////////////////////////////
 Route::match(['get','post'],'/admin/login', 'Dashboard\JobManageController@admin_login');
@@ -65,11 +69,15 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
 	Route::get('/upload_tamplate', 'Dashboard\JobManageController@showtemplate');
 	Route::get('/job_delete/{id}', 'Dashboard\JobManageController@destroy');
+
 	Route::get('/icons', function(){
 		return view('/admin.icons');
 	});
 	Route::get('/add_tamplate', function(){
 		return view('/admin.add_tamplate');
+	});
+	Route::get('/quotes', function(){
+		return view('/admin.quotes');
 	});
 	Route::get('/map', function(){
 		return view('/admin.map');
@@ -88,6 +96,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	});
 	Route::get('/upgrade', function(){
 		return view('/admin.upgrade');
+	});
+	Route::get('/add-users', function(){
+		return view('/admin.add-users');
 	});
 });
 });

@@ -17,6 +17,12 @@ if($userinfo->logo != ''){
 	$userImage = url('frontend-assets/partner/profile-photos/'.$userinfo->logo);
 
 }
+//print_r(FA::checkquote()); die;
+$tJobs=0;
+ foreach($jobs as $item){
+			$tJobs+=count($item);
+ }
+		
 
 ?>
   
@@ -49,6 +55,15 @@ if($userinfo->logo != ''){
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="job_section">
+						@if(session()->has('message'))
+							<div class="row">
+								<div class="alert alert-danger">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+									<strong>Message:</strong>{{session()->get('message')}}
+								</div>
+							</div>
+						@endif
+
 						<div role="tabpanel">
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills" role="tablist">
@@ -56,7 +71,7 @@ if($userinfo->logo != ''){
 									<a href="#all_jobs" aria-controls="all_jobs" role="tab" data-toggle="tab">All Jobs ({{$alljobs->count()}})</a>
 								</li>
 								<li role="presentation">
-									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$jobs->count()}})</a>
+									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$tJobs}})</a>
 								</li>
 							</ul>
 
@@ -71,17 +86,17 @@ if($userinfo->logo != ''){
 													<div class="sc-caSCKo dokwNX">
 														<div class="sc-jhAzac ibcqOI">
 															<div>
-																<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
+																<div class="mdi mdi-book sc-kvZOFW eXQcCf"></div>
 															</div>
 														
 															<div>
-																<div class="sc-TOsTZ hiHQAi">{{$alljob->job_title}}</div>
+																<div class="sc-TOsTZ hiHQAi" style="text-transform: capitalize;"><b>{{$alljob->job_title}}</b></div>
 																<p class="sc-ksYbfQ dFOSHG">
 																	<span>{{$alljob->city}} • </span>#{{$alljob->id}}</p>
 																</div>
 															</div>
-															<div class="sc-cHGsZl iTODfi">Description</div>
-															{{$alljob->job_case}}
+															<div class="sc-cHGsZl iTODfi"><b>Description</b></div>
+															<p>{{$alljob->job_case}}</p>
 														</div>
 														<div class="job_type">
 															<div class="sc-caSCKo jKLHsR">
@@ -93,10 +108,12 @@ if($userinfo->logo != ''){
 																		</div>
 																	</div>
 																</div>
+																	<div class="sc-cJSrbW irwWzV"></div>
 															</div>
 														</div>
+
 														<div class="sc-caSCKo laCNAj">
-															<div class="sc-kgAjT ktcFPK">Services needed</div>
+															<div class="sc-kgAjT ktcFPK"><b>Services needed</b></div>
 															<div class="sc-cJSrbW irwWzV"></div>
 															<div class="sc-jbKcbu eUIbYn row">
 																<div class="col-sm-6">{{$alljob->services}}</div>
@@ -107,90 +124,31 @@ if($userinfo->logo != ''){
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
+												<div class="row">
+															<div class="col-md-7 col-md-offset-5">
+														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj" style="float: right;">
 															<div>
 																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 															</div>
-															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" data-toggle="modal" data-target="#myModal{{$alljob->id}}" style="cursor: pointer;">Create a quote for this client</a>
-																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
-																</div>
-															</div>
-															
 														</div>
 																
-														
+														</div>
+													</div>
 													</div>
 												</div>
 											</div>
-											<!-- Modal -->
-											<div id="myModal{{$alljob->id}}" class="modal fade" role="dialog">
-											<div class="modal-dialog">
-
-												<!-- Modal content-->
-												<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Quotes</h4>
-												</div>
-												<div class="modal-body">
-													
-													<form action="{{ url('quotepost')}}" method="POST" role="form">
-														 {{ csrf_field() }}
-														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
-														<div class="form-group">
-															<div class="row">
-																<div class="col-xs-6">
-																	<label>Service</label>
-																	<select class="form-control" name="q_services">
-																		<option>Select Service</option>
-																		<option value="Accountant">Accountant</option>
-																		<option value="Bookkeeper">Bookkeeper</option>
-																		<option value="Tax">Tax</option>
-																		<option value="Audit">Audit</option>
-																		<option value="Payroll">Payroll</option>
-																		<option value="Incorporation">Incorporation</option>
-																		<option value="Secretarial service">Secretarial service</option>
-																		<option value="Mix your own service pack">Mix your own service pack</option>
-
-															
-
-																	</select>
-																</div>
-																<div class="col-xs-3">
-																	<label>Payment frequency</label>
-																	<select class="form-control" name="payment_frquency">
-																		<option>Weekly</option>
-																		<option>Monthly</option>
-																		<option>Yearly</option>
-																	</select>
-																</div>
-																<div class="col-xs-3">
-																	<label>Price</label>
-																	<input type="text" name="quote_price" class="form-control">
-																</div>	
-															</div>
-														</div>
-														<div class="form-group">
-															<label for="">Enter Quote</label>
-															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
-														</div>
-													
-														<button type="submit" class="btn btn-success btn-block">Submit</button>
-													</form>
-												</div>
-												</div>
-
-											</div>
-											</div>
-
+											 
 											<div class="col-md-4"></div>
 											@endforeach
 										</div>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="profile_jobs">
 										<div class="row">
-											@foreach($jobs as $job)
+											
+												@foreach($jobs as $item)
+													@if(count($item)>0)
+														@foreach($item as $job)
+
 										<div class="col-md-8">
 											<div>
 												<div class="sc-hmzhuo fPEirj">
@@ -219,6 +177,7 @@ if($userinfo->logo != ''){
 																		</div>
 																	</div>
 																</div>
+																<div class="sc-cJSrbW irwWzV"></div>
 															</div>
 														</div>
 														<div class="sc-caSCKo laCNAj">
@@ -233,27 +192,46 @@ if($userinfo->logo != ''){
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
-															<div>
-																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
-															</div>
-															<div class="sc-jhAzac jqgdQA">
-																<a type="button" class="sc-bRBYWo eeChfy" modifiers="action,p_2,fullWidth"  data-toggle="modal" data-target="#profileJob{{$job->id}}">Create a quote for this client</a>
-																<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+														<div class="row">
+															<div class="col-md-7 col-md-offset-5">
+																<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
+																	<div>
+																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
+																	</div>
+																		<?php
+																		date_default_timezone_set("Asia/Karachi");
+																		$datetime1 = new DateTime();
+																		$date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->created_at)));
+																		$datetime2 = new DateTime($date);
+																		$interval = $datetime1->diff($datetime2);
+																		// dd($interval);
+																		?>
+																				@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+																	<div class="sc-jhAzac jqgdQA">
+																		<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a quote for this client</a>
+																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																		</div>
+																	</div>
+																	@else
+																	<div class="sc-jhAzac jqgdQA">
+																		<a type="button" class="sc-bRBYWo eeChfy"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
+																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																		</div>
+																	</div>
+																	@endif
 																</div>
-															</div>
-															
-														</div>
 																
-														
+															</div>
+														</div>
+															
 													</div>
 												</div>
 											</div>
 											<!-- Modal -->
-											<div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
+											<!-- <div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
 											<div class="modal-dialog">
 
-												<!-- Modal content-->
+												
 												<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -263,27 +241,40 @@ if($userinfo->logo != ''){
 													
 													<form action="{{ url('quotepost')}}" method="POST" role="form">
 														 {{ csrf_field() }}
-														<input type="hidden" name="job_id" id="" value="{{$alljob->id}}" >
+														<input type="hidden" name="job_id" id="" value="{{$job->id}}" >
 														<div class="form-group">
-															<div class="row">
-																<div class="col-xs-6">
-																	<label>Service</label>
-																	<select class="form-control">
-																		<option>Select</option>
-																	</select>
+															<div class="servies_list">
+																<div class="row">
+																	<div class="col-xs-5">
+																		<label>Service</label>
+																		<select class="form-control" name="q_services[]">
+																			<option>Select Service</option>
+																			<option value="Accountant">Accountant</option>
+																			<option value="Bookkeeper">Bookkeeper</option>
+																			<option value="Tax">Tax</option>
+																			<option value="Audit">Audit</option>
+																			<option value="Payroll">Payroll</option>
+																			<option value="Incorporation">Incorporation</option>
+																			<option value="Secretarial service">Secretarial service</option>
+																			<option value="Mix your own service pack">Mix your own service pack</option>
+																		</select>
+																	</div>
+																	<div class="col-xs-3">
+																		<label>Payment frequency</label>
+																		<select class="form-control" name="payment_frquency[]">
+																			<option>Weekly</option>
+																			<option>Monthly</option>
+																			<option>Yearly</option>
+																		</select>
+																	</div>
+																	<div class="col-xs-3">
+																		<label>Price</label>
+																		<input type="text" name="quote_price[]" class="form-control">
+																	</div>
+																	<div class="col-xs-1">
+																		<a href="javascript:void(0)" class="add_more"><i class="fa fa-plus"></i></a>
+																	</div>	
 																</div>
-																<div class="col-xs-3">
-																	<label>Payment frequency</label>
-																	<select class="form-control" name="payment_frquency">
-																		<option>Weekly</option>
-																		<option>Monthly</option>
-																		<option>Yearly</option>
-																	</select>
-																</div>
-																<div class="col-xs-3">
-																	<label>Price</label>
-																	<input type="text" name="quote_price" class="form-control">
-																</div>	
 															</div>
 														</div>
 														<div class="form-group">
@@ -291,8 +282,10 @@ if($userinfo->logo != ''){
 															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 														</div>
 													
-														
-													
+														@if($job->quot > 3)
+															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
+															@endif
+
 														<button type="submit" class="btn btn-success btn-block">Submit</button>
 													</form>
 													
@@ -302,10 +295,13 @@ if($userinfo->logo != ''){
 												</div>
 
 											</div>
-											</div>
+											</div> -->
 
 											<div class="col-md-4"></div>
 											@endforeach
+										@endif
+									@endforeach
+								
 											</div>
 										</div>
 									</div>
@@ -373,7 +369,7 @@ if($userinfo->logo != ''){
 															</tr>
 														</thead>
 														<tbody>
-														@foreach($pquote as $quots)
+														@foreach($pquots as $quots)
 															<tr>
 																<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
 																<td>{{$quots->job_title}}</td>
@@ -587,6 +583,14 @@ if($userinfo->logo != ''){
 																				</div>
 																				<div class="sc-jhAzac iGbrby">
 																					<label class="sc-bAeIUo fuksr">
+																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Tax"  name="services[]"@if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
+																						<div class="sc-gqPbQI ilsJbL">
+																							<div class="sc-hORach kMXQwc"></div>
+																						</div>
+																					</label>Tax
+																				</div>
+																				<div class="sc-jhAzac iGbrby">
+																					<label class="sc-bAeIUo fuksr">
 																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Audit"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Audit' ? 'checked="checked"' : '' }} @endforeach @endif>
 																						<div class="sc-gqPbQI ilsJbL">
 																							<div class="sc-hORach kMXQwc"></div>
@@ -723,6 +727,7 @@ if($userinfo->logo != ''){
 									<div role="tabpanel">
 										<div class="col-md-3">
 											<!-- Nav tabs -->
+
 											<ul class="nav nav-tabs profile_tabs" role="tablist">
 												<li role="presentation" class="active">
 													<a href="#account_status" aria-controls="account_status" role="tab" data-toggle="tab">Account Status</a>
@@ -892,10 +897,51 @@ if($userinfo->logo != ''){
 @endsection
 @section('script')
 <script>
+	$('.add_more').click(function(){
+	// alert("fjsdhfjsd");
+	//Check maximum number of input fields
+	
+		//Increment field counter
+																	
+		var fieldHTML2 = '<div class="row">'+
+		'<div class="col-xs-5"><label>Service</label>'+
+		'<select class="form-control" name="q_services[]">'+
+		'<option>Select Service</option><option value="Accountant">Accountant</option>'+
+		'<option value="Bookkeeper">Bookkeeper</option>'+
+		'<option value="Tax">Tax</option>'+
+		'<option value="Audit">Audit</option>'+
+		'<option value="Payroll">Payroll</option>'+
+		'<option value="Incorporation">Incorporation</option>'+
+		'<option value="Secretarial service">Secretarial service</option>>'+
+		'<option value="Mix your own service pack">Mix your own service pack</option>'+
+		'</select>'+
+		'</div>'+
+		'<div class="col-xs-3"><label>Payment frequency</label>'+
+		'<select class="form-control" name="payment_frquency[]">'+
+		'<option>Weekly</option>'+
+		'<option>Monthly</option>'+
+		'<option>Yearly</option>'+
+		'</select>'+
+		'</div>'+
+		'<div class="col-xs-3">'+
+		'<label>Price</label>'+
+		'<input type="text" name="quote_price[]" class="form-control">'+
+		'</div>'+
+		//'<div class="col-xs-1">'+
+		//'<a href="javascript:void(0)" class="remove_service"><i class="fa fa-minus"></i></a>'+
+		'</div>'; //New input field html
+
+
+
+		$('.servies_list').append(fieldHTML2); //Add field html
+	});
+
 	var hash = document.location.hash;
 	// alert('.nav-tabs li a[href='+hash+']');
 	if (hash) {
-	    $('.nav-tabs li a[href='+hash+']').parent().addClass('active');
+	    $('.nav-tabs li a[href='+hash+']').click(function(){
+
+	    });
 	} 
 
 	// Change hash for page-reload
@@ -981,6 +1027,8 @@ function deletepicture(){
 		}
 	});
 }
+
+
 </script>
 
 @endsection

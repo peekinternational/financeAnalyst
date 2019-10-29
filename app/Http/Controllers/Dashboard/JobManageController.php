@@ -41,22 +41,19 @@ class JobManageController extends Controller
 			$user = $this->doLogin($email,$password);
 			if($user == 'invalid'){
 				$request->session()->flash('loginAlert', 'Invalid Email & Password');
-				if($next != ''){
-					return redirect('login?next='.$next);
-				}else{
+
 					return redirect('admin/login');
-				}
+
 			}
 			else{
 
 				$request->session()->put('fa_admin', $user);
 				setcookie('cc_data', $user->id, time() + (86400 * 30), "/");
 
-				if($next != ''){
-					return redirect($next);
-				}else{
+
+
 					return redirect('dashboard');
-				}
+
 			}
  
 
@@ -101,9 +98,7 @@ public function template(Request $request, $id)
                 'location'=>'required',
                 'mbl_number' => 'required|digits_between:10,12',
                 'business_address' => 'required',
-
                 'phone_number' => 'required',
-
                 'company_name' => 'required'
 
             ],[
@@ -119,12 +114,28 @@ public function template(Request $request, $id)
             
             $request->merge(['job_id' => $id]);
            // dd($data);
-       $temp = DB::table('fa_user_template')->insert($request->all());
+           $res= DB::table('fa_user_template')->where('job_id',$id)->first();
+          // dd($request->all());
+            if(empty($res))
+            {
+                $temp = DB::table('fa_user_template')->insert($request->all());
+            }
+            else
+            {
+                $temp = DB::table('fa_user_template')->where('job_id',$id)->update($request->all());
+            }
+
         DB::table('fa_jobpost')->where('id',$id)->update(['status'=>'1']);
        //dd($request->all());
+            $request->session()->flash('message','Detail added successfully');
+            return redirect()->back();
         }
+
+          $autofil=DB::table('fa_jobpost')->where('id',$id)->first();
+        $template=DB::table('fa_user_template')->where('job_id',$id)->first();
+          //dd($template);
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
-       return view('/admin.add_template',compact('job'));
+       return view('/admin.add_template',compact('job','template','autofil'));
     }
      public function showtemplate()
     {
@@ -191,10 +202,11 @@ public function template(Request $request, $id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         DB::table('fa_jobpost')->where('id',$id)->delete();
         DB::table('fa_template')->where('job_id',$id)->delete();
-        return redirect()->back()->with('success', 'Data saved successfully!');
+        $request->session()->flash('message','Job deleted successfully');
+        return redirect()->back();
     }
 }
