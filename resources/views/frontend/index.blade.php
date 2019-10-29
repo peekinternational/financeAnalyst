@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
   <section class="hero" >
     <div class="hero-overlay hidden-xs hidden-sm"  style="opacity: 0.10;" ></div>
     <div class="hero-overlay hidden-md hidden-lg"></div>
