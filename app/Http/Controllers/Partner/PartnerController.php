@@ -396,6 +396,14 @@ public function quote(Request $request)
         return view('frontend.partner.template_detail',compact('data'));
     }
 
+     public function jobdetail(Request $request,$id)
+    {
+       $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
+        ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
+        //dd($data);
+        return view('frontend.partner.job_detail',compact('data'));
+    }
+
 public function export_pdf($id)
   {
     // Fetch all customers from database
