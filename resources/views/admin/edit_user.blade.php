@@ -48,57 +48,52 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                      <form class="form-inline" action="" method="">
-                        <div class="form-group" style="width: 100%">
-                          <input type="text" class="form-control" placeholder="Search" style="height: 40px; width: 90%;">
-                          <input type="button" name="search_btn" class="btn btn-primary" value="Search">
-                        </div>
-                      </form>
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"> User List</h4>
+                                <h4 class="card-title"> Add User</h4>
                             </div>
 
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    @if(session()->has('message'))
-                                        <div class="row">
-                                            <div class="alert alert-success">
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                                <strong>Message:</strong>{{session()->get('message')}}
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                        <th>Partner id</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($allpartner as $user)
-                                            <tr>
-                                                <td> {{$user->p_id}}</td>
-                                                <td> {{$user->name}}</td>
-                                                <td> {{$user->phoneno}}</td>
-                                                <td> {{$user->email}}</td>
-
-                                                <td>{{$user->status}}</td>
-                                                <td> 
-                                                  <a href="{{url('dashboard/edit_user/'.$user->p_id)}}"><i class="fa fa-edit"></i></a>
-                                                  <a href=""><i class="fa fa-trash"></i></a>
-                                                </td>
-
-                                            </tr>
-                                        @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="row" style="margin: 0;">
+                            	<div class="col-md-12">
+                            		<form action="" method="">
+                            			<div class="form-group">
+                            				<div class="row">
+                            					<div class="col-md-6">
+                            						<label>User name</label>
+                            						<input type="text" name="username" class="form-control">
+                            					</div>
+                            					<div class="col-md-6">
+                            						<label>Email address</label>
+                            						<input type="email" name="email" class="form-control">
+                            					</div>		
+                            				</div>
+                            			</div>
+                            			<div class="form-group">
+                            				<div class="row">
+                            					<div class="col-md-6">
+		                        						<label>Phone Number</label>
+		                        						<input type="Number" name="phone_number" class="form-control">
+		                        					</div>
+                            					<div class="col-md-6">
+		                        						<label>User type</label>
+		                        						<select class="form-control" name="user_type">
+		                        							<option>Admin</option>
+		                        							<option>Experts only</option>
+		                        							<option>Customer only</option>
+		                        							<option>Customer only</option>
+		                        						</select>
+		                        					</div>
+		                        				</div>
+                            			</div>
+                            			<div class="form-group">
+                        						<label>Password</label>
+                        						<input type="password" name="username" class="form-control">
+                            			</div>
+                            			<div class="form-group">
+                            				<button type="submit" class="btn btn-success">Update </button>
+                            			</div>
+                            		</form>
+                            	</div>
                             </div>
                         </div>
                     </div>

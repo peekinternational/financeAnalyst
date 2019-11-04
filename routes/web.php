@@ -100,6 +100,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/add-users', function(){
 		return view('/admin.add-users');
 	});
+	Route::get('/edit_user/{id}', function(){
+		return view('/admin.edit_user');
+	});
 });
 });
 //////////////////////// Admin Dashboard Close ////////////////////////////

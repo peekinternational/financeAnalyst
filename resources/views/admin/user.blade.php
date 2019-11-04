@@ -56,16 +56,20 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Job id</th>
+                      <th>Partner id</th>
                       <th>Name</th>
                       <th>No of quotes</th>
+                      <th>Won quotes</th>
+                      <th>Pending quotes</th>
                       <th class="text-center">Action</th>
                     </thead>
                     <tbody>
                       <tr>
                         <td> 1</td>
                         <td> Zeeshan</td>
-                        <td> 4</td>
+                        <td class="text-center"> 4</td>
+                        <td class="text-center"> 2</td>
+                        <td class="text-center"> 2</td>
                         <td class="text-center">
                           <i class="fa fa-edit text-primary"></i>
                          <a href=""> <i class="fa fa-trash text-danger"></i> </a>
@@ -75,7 +79,9 @@
                       <tr>
                         <td> 2</td>
                         <td> Zeeshan</td>
-                        <td> 5</td>
+                        <td class="text-center"> 5</td>
+                        <td class="text-center"> 2</td>
+                        <td class="text-center"> 3</td>
                         <td class="text-center">
                           <i class="fa fa-edit text-primary"></i>
                          <a href=""> <i class="fa fa-trash text-danger"></i> </a>

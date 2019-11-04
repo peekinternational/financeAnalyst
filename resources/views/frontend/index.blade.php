@@ -695,7 +695,7 @@
             <input type="text" class="form-control" name="job_title" placeholder="Job Title" >
           </div>
        <div class="form-group">
-            <label>Job Title</label>
+            <label>Job Type</label>
             <select class="form-control" name="job_type">
               <option value="">Select Type</option>
               <option value="individual">Indivdual</option>
