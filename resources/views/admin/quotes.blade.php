@@ -64,12 +64,13 @@
                       <th class="text-center">Action</th>
                     </thead>
                     <tbody>
+                    @foreach($allquote as $quote)
                       <tr>
-                        <td> 1</td>
-                        <td> title</td>
-                        <td> nabeel</td>
-                        <td> Zeeshan</td>
-                        <td> pending</td>
+                        <td> {{$quote->job_id}}</td>
+                        <td> {{$quote->customer_name}}</td>
+                        <td> {{$quote->partner->name}}</td>
+                        <td> {{$quote->created_at}}</td>
+                        <td> {{$quote->status}}</td>
                         <td class="text-center">
                         <a href="">Add Detail</a>
                           <i class="fa fa-edit text-primary"></i>
@@ -77,22 +78,12 @@
                           <i class="fa fa-eye text-success"></i>
                         </td>
                       </tr>
-                      <tr>
-                        <td> 1</td>
-                        <td> title</td>
-                        <td> nabeel</td>
-                        <td> Zeeshan</td>
-                        <td> pending</td>
-                        <td class="text-center">
-                        <a href="">Add Detail</a>
-                          <i class="fa fa-edit text-primary"></i>
-                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
-                          <i class="fa fa-eye text-success"></i>
-                        </td>
-                      </tr>
+                      @endforeach
+                     
                      
                     </tbody>
                   </table>
+                  {!! $allquote->render(); !!}
                 </div>
               </div>
             </div>
