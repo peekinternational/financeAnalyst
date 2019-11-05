@@ -76,9 +76,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/add_tamplate', function(){
 		return view('/admin.add_tamplate');
 	});
-	Route::get('/quotes', function(){
-		return view('/admin.quotes');
-	});
+	Route::get('/quotes','Dashboard\JobManageController@quotes');
 	Route::get('/map', function(){
 		return view('/admin.map');
 	});
@@ -99,6 +97,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 	});
 	Route::get('/add-users', function(){
 		return view('/admin.add-users');
+	});
+	Route::get('/edit_user/{id}', function(){
+		return view('/admin.edit_user');
 	});
 });
 });

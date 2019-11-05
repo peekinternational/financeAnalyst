@@ -1,5 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
+<style>
+  .col-12 {
+    padding-left: 0;
+  }
+</style>
   <div class="wrapper ">
     
     <div class="main-panel">
@@ -50,10 +55,186 @@
 </div> -->
       <div class="content">
         <div class="row">
-          <div class="col-md-offset-3 col-md-6">
-            <h3>Welcome to Dashboard</h3>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Total Admin</p>
+                      <p class="card-title">3
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Total Partners</p>
+                      <p class="card-title">5
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Active partners</p>
+                      <p class="card-title">3
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Quotes won</p>
+                      <p class="card-title">5
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Quotes pending</p>
+                      <p class="card-title">5
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="numbers">
+                      <p class="card-category">Daily earnings</p>
+                      <p class="card-title">5 $
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Partner Characteristics</h5>
+                <p class="card-category">24 Hours performance</p>
+              </div>
+              <div class="card-body ">
+                <canvas id=chartHours width="400" height="100"></canvas>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <div class="legend">
+                  <i class="fa fa-circle" style="color: #fcc468;"></i> Most successful
+                  <i class="fa fa-circle text-success"></i> Average
+                  <i class="fa fa-circle text-danger"></i> Unsuccessfull 
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Quotes</h5>
+                <p class="card-category">Weekly quotes</p>
+              </div>
+              <div class="card-body ">
+                <canvas id="chartEmail"></canvas>
+              </div>
+              <div class="card-footer ">
+                <div class="legend">
+                  <i class="fa fa-circle text-primary"></i> Won
+                  <i class="fa fa-circle text-warning"></i> Rejected
+                  <i class="fa fa-circle text-danger"></i> Pending
+                </div>
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-calendar"></i> Number of quotes
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-title">Individual Sale</h5>
+                <p class="card-category">Line Chart with Points</p>
+              </div>
+              <div class="card-body">
+                <canvas id="speedChart" width="400" height="100"></canvas>
+              </div>
+              <div class="card-footer">
+                <div class="chart-legend">
+                  <i class="fa fa-circle text-info"></i> Tesla Model S
+                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
+                </div>
+                <hr/>
+                <div class="card-stats">
+                  <i class="fa fa-check"></i> Data information certified
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-title">Company Sale</h5>
+                <p class="card-category">Line Chart with Points</p>
+              </div>
+              <div class="card-body">
+                <canvas id="speedChartCompany" width="400" height="100"></canvas>
+              </div>
+              <div class="card-footer">
+                <div class="chart-legend">
+                  <i class="fa fa-circle text-info"></i> Tesla Model S
+                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
+                </div>
+                <hr/>
+                <div class="card-stats">
+                  <i class="fa fa-check"></i> Data information certified
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 @endsection

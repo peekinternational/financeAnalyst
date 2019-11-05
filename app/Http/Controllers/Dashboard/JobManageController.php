@@ -146,6 +146,18 @@ public function template(Request $request, $id)
         return view('/admin.make_template',compact('template'));
     }
 
+    public function quotes()
+    {
+       $allquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->orderBy('fa_quote.id','desc')->paginate(15);
+       foreach($allquote as &$ser){
+            
+            $ser->partner = DB::table('fa_partner')->where('p_id','=',$ser->p_id)->first();
+         }
+       
+        //dd( $allquote);
+        return view('/admin.quotes',compact('allquote'));
+    }
+
     public function create()
     {
         //
