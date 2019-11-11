@@ -50,11 +50,11 @@ Route::group(['prefix' => 'partner'], function () {
 
 //////////////////////// Customer /////////////////////////////////
 Route::group(['prefix' => 'customer'], function () {
-Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
+Route::match(['get','post'],'/jobpost','Customer\CustomerController@jobpost');
 
 
 });
-Route::get('dashboard/user_management','customer\customerController@user_management');
+Route::get('dashboard/user_management','Customer\CustomerController@user_management');
 //////////////////////// Customer close /////////////////////////////////
 //////////////////////// Admin Dashboard //////////////////////////////
 Route::match(['get','post'],'/admin/login', 'Dashboard\JobManageController@admin_login');

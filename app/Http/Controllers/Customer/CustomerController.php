@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Mail;
 
-class customerController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.

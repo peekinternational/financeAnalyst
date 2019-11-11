@@ -227,75 +227,7 @@ $tJobs=0;
 													</div>
 												</div>
 											</div>
-											<!-- Modal -->
-											<!-- <div id="profileJob{{$job->id}}" class="modal fade" role="dialog">
-											<div class="modal-dialog">
-
-												
-												<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Quotes</h4>
-												</div>
-												<div class="modal-body">
-													
-													<form action="{{ url('quotepost')}}" method="POST" role="form">
-														 {{ csrf_field() }}
-														<input type="hidden" name="job_id" id="" value="{{$job->id}}" >
-														<div class="form-group">
-															<div class="servies_list">
-																<div class="row">
-																	<div class="col-xs-5">
-																		<label>Service</label>
-																		<select class="form-control" name="q_services[]">
-																			<option>Select Service</option>
-																			<option value="Accountant">Accountant</option>
-																			<option value="Bookkeeper">Bookkeeper</option>
-																			<option value="Tax">Tax</option>
-																			<option value="Audit">Audit</option>
-																			<option value="Payroll">Payroll</option>
-																			<option value="Incorporation">Incorporation</option>
-																			<option value="Secretarial service">Secretarial service</option>
-																			<option value="Mix your own service pack">Mix your own service pack</option>
-																		</select>
-																	</div>
-																	<div class="col-xs-3">
-																		<label>Payment frequency</label>
-																		<select class="form-control" name="payment_frquency[]">
-																			<option>Weekly</option>
-																			<option>Monthly</option>
-																			<option>Yearly</option>
-																		</select>
-																	</div>
-																	<div class="col-xs-3">
-																		<label>Price</label>
-																		<input type="text" name="quote_price[]" class="form-control">
-																	</div>
-																	<div class="col-xs-1">
-																		<a href="javascript:void(0)" class="add_more"><i class="fa fa-plus"></i></a>
-																	</div>	
-																</div>
-															</div>
-														</div>
-														<div class="form-group">
-															<label for="">Enter Quote</label>
-															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
-														</div>
-													
-														@if($job->quot > 3)
-															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
-															@endif
-
-														<button type="submit" class="btn btn-success btn-block">Submit</button>
-													</form>
-													
-													
-													
-												</div>
-												</div>
-
-											</div>
-											</div> -->
+									
 
 											<div class="col-md-4"></div>
 											@endforeach

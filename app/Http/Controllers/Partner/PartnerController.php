@@ -66,7 +66,7 @@ class PartnerController extends Controller
             $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
          }
        }
-//dd($jobs);
+//dd($service);
          
          $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
 
