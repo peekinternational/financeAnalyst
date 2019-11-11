@@ -21,7 +21,9 @@ Route::get('thank-you',  'frontend\HomeController@index');
 Route::get('/partner',function(){
 	return view('frontend.partner.expert');
 });
-
+Route::get('/services', function(){
+	return view('frontend/services');
+});
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
 Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@accountRegister');
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
@@ -30,6 +32,8 @@ Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::get('/acceptquote/{id}/{id2}','Partner\PartnerController@acceptquote');
 Route::get('/rejectquote/{id}/{id2}','Partner\PartnerController@rejectquote');
+
+
 
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
