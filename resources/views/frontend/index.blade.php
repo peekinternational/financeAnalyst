@@ -23,7 +23,7 @@
                     <div class="carousel-caption">
                       <h1>Find the best accountant or bookkeeper with Finance Analyst</h1>
                       <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg">
+                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                         Get started now
                       </a></p>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="carousel-caption">
                       <h1>Find the best accountant or bookkeeper with Finance Analyst</h1>
                       <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg">
+                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                         Get started now
                       </a></p>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="carousel-caption">
                       <h1>Find the best accountant or bookkeeper with Finance Analyst</h1>
                       <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg">
+                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                           Get started now
                         </a></p>
                     </div>
@@ -70,7 +70,7 @@
         
         <div class="row ">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">Receive 3 free quotes from experts for</h3>
+            <h3 class="promoted">Receive up to 3 quotes from our Experts</h3>
           </div>
         </div>
         
@@ -78,12 +78,6 @@
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -91,18 +85,16 @@
                   </a>
                 </div>
               </div>
-              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -110,22 +102,27 @@
                   </a>
                 </div>
               </div>
-              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
+              
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
                     <h4 class="promoted">Accounting</h4>
                   </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
                 </div>
               </div>
             </div>
@@ -144,7 +141,7 @@
               
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-money mdi-48px text-muted"></i>
                 </div>
               </div>
               
@@ -153,11 +150,6 @@
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -165,18 +157,17 @@
                   </a>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-calculator" class="iconify fa fa-usd mdi-48px text-muted"></i>
+                </div>
+              </div>
               
             </div>
           </div>
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -184,17 +175,17 @@
                   </a>
                 </div>
               </div>
+              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-book-multiple" class="iconify fa fa-connectdevelop mdi-48px text-muted"></i>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -202,18 +193,17 @@
                   </a>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-info-circle mdi-48px text-muted"></i>
+                </div>
+              </div>
               
             </div>
           </div>
           
           <div class="col-md-3 col-sm-6">
             <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
                   <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
@@ -221,7 +211,11 @@
                   </a>
                 </div>
               </div>
-              
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <i data-icon="fa fa-question" class="iconify fa fa-question mdi-48px text-muted"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -229,7 +223,7 @@
           <div class="col-xs-12 text-center">
             <h3 class="promoted" class="text-20px" style="margin-top: 40px;">Mix your own service pack</h3>
               <p class="text-20px">
-                Looking to build on your brand and not someone else’s? Need customised a combination of services or something not listed here? Our advisory team can help create the perfect tailored service solution for your business. 
+                Looking to build on your brand and not someone else’s? Need a customised combination of services or something not listed here? Our advisory team can help create the perfect tailored solution for your business. 
               
             </p>
           </div>
@@ -428,7 +422,7 @@
         </div>
         
         <div class="row">
-          <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
+          <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2 conatct-cols">
             <div class="row">
               <div class="col-md-4 text-center">
                 <i data-icon="mdi-email" class="mdi iconify mdi-email mdi-48px"></i>
@@ -723,7 +717,7 @@
             <i class="mdi mdi-chevron-double-right"></i>
             </button>
           </div>
-          <p class="text-muted">You do not need to provide a detailed description. Our customer success team will review your case before we match you with relevant advisers.</p>
+          <p class="text-muted">A brief description is enough, we will review this in detail and may call you before matching you with your Experts.</p>
         </div>
         
         <div class="step-3" data-headline="Contact information">
@@ -768,8 +762,7 @@
 <script>
 console.log('sadasdasdddddddddddd');
 $('#account').click(function(){
-     alert('audit');
-          $('#Accountant').prop("checked", true); 
+      $('#Accountant').prop("checked", true); 
     });
 
    $('#book').click(function(){

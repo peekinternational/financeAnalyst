@@ -30,6 +30,7 @@ class PartnerController extends Controller
             if($request->isMethod('post')){
            
             $data_array=array(
+                'introduce_urself'=>$request->input('introduce_urself'),
                 'availability'=>$request->input('availability'),
                 'no_clients'=>$request->input('no_clients'),
                 'no_employs'=>$request->input('no_employs'),
@@ -41,6 +42,8 @@ class PartnerController extends Controller
                 'phoneno'=>$request->input('phoneno'),
                 'company_des'=>$request->input('company_des'),
                 'company_info'=>$request->input('company_info'),
+                'vat_number'=>$request->input('vat_number'),
+                'company_number'=>$request->input('company_number'),
                 'services'=>json_encode($request->input('services')),
                 'interview'=>$request->input('interview'),
                 'personal_quets'=>$request->input('personal_quets'),
@@ -248,7 +251,7 @@ public function doLogin($email,$password){
 				'name.required' => 'Enter Your Name',
 				'phoneno.required' =>'Enter Your Mobile Number',
 				'password.required' => 'Enter Password',
-				'phoneno.digits_between' => 'Phone Number must be contain 10,12 digits',
+				'phoneno.digits_between' => 'Oops! It seems like you have entered a wrong phone number, please check',
             ]);
            // $string = rand(1, 1000000);
             $input['email'] = trim($request->input('email'));

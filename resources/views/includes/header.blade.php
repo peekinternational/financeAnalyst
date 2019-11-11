@@ -1,3 +1,8 @@
+<?php 
+  $route = Request::route()->uri();
+
+ ?>
+@if($route != 'partner/partner_dashboard' && $route != 'partner')
 <div class="top-header">
   <div class="container">
     <div class="row">
@@ -36,24 +41,9 @@
           </a>
         </li>
         <li class="dropdown">
-          <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+          <a href="{{url('/services')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Services
           </a>
-          <span class="arrow-icon">
-            <span class="left-bar"></span>
-            <span class="right-bar"></span>
-          </span>
-          <ul class="dropdown-menu dropdown-menu-services dropdown-menu-small">
-            <li class="dropdown">
-              <a href="" >Accounting</a>
-            </li>
-            <li class="dropdown">
-              <a href="" >Bookkeeping</a>
-            </li>
-            <li class="dropdown">
-              <a href="" >Tax</a>
-            </li>
-          </ul>
         </li>
         <li class="dropdown">
           <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
@@ -76,7 +66,7 @@
           <ul class="dropdown-menu dropdown-menu-services dropdown-menu-small">
           @if(!Session::has('faUser'))
             <li class="dropdown">
-              <a href="{{ url('partner_register') }}" >Become a Partner</a>
+              <a href="{{ url('partner_register') }}" >Join as an Expert</a>
             </li>
             @endif
             <!--<li class="dropdown">
@@ -123,3 +113,44 @@
       </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
+@else
+  <nav class="navbar navbar-ageras  navbar-transparent" style="top: 0;">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ageras-navbar" aria-expanded="false">
+        <span class="sr-only">Navigation</span>
+        <i data-icon="mdi-menu" class="iconify"></i>
+        </button>
+        <!-- <a class="navbar-brand" href="index.html" ></a> -->
+        Logo
+      </div>
+      <div class="collapse navbar-collapse"  id="ageras-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bell"></i>
+            </a>
+          </li>
+          @if(Session::has('faUser'))
+          <li class="dropdown">
+            <a href="{{url('partner/partner_dashboard#profile')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+              {{Session::get('faUser')->name}} <span class="caret"></span>
+            </a>
+            <span class="arrow-icon">
+              <span class="left-bar"></span>
+              <span class="right-bar"></span>
+            </span>
+            <ul class="dropdown-menu dropdown-menu-services dropdown-menu-small">
+              <li class="dropdown">
+                <a href="{{ url('logout') }}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+                Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
+        </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+      </nav>
+@endif
