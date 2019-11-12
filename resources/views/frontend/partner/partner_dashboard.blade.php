@@ -26,30 +26,30 @@ $tJobs=0;
 
 ?>
   
-<div class="container" style="margin-top: 9rem;">
+<div class="container" style="margin-top: 9rem; margin-bottom: 6rem;">
 	<div class="row">
 		<div class="col-md-12">
 			<div role="tabpanel">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs main-tabs" role="tablist">
 					<li role="presentation" class="active">
-						<a href="#job_section" aria-controls="job_section" role="tab" data-toggle="tab">Job Section</a>
+						<a href="#job_section" aria-controls="job_section" role="tab" data-toggle="tab">New Jobs</a>
 					</li>
 					<li role="presentation">
-						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">Job management</a>
+						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">My Jobs</a>
 					</li>
 					<li role="presentation">
-						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Business Profile</a>
 					</li>
 					<li role="presentation">
-						<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account section</a>
+						<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account</a>
 					</li>
-					<li role="presentation">
+					<!-- <li role="presentation">
 						<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
-					</li>
-					<li role="presentation">
+					</li> -->
+					<!-- <li role="presentation">
 						<a href="#terms" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
-					</li>
+					</li> -->
 				</ul>
 
 				<!-- Tab panes -->
@@ -57,7 +57,7 @@ $tJobs=0;
 					<div role="tabpanel" class="tab-pane active" id="job_section">
 						@if(session()->has('message'))
 							<div class="row">
-								<div class="alert alert-danger">
+								<div class="alert alert-success">
 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
 									<strong>Message:</strong>{{session()->get('message')}}
 								</div>
@@ -71,7 +71,7 @@ $tJobs=0;
 									<a href="#all_jobs" aria-controls="all_jobs" role="tab" data-toggle="tab">All Jobs ({{$alljobs->count()}})</a>
 								</li>
 								<li role="presentation">
-									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">Profile Jobs ({{$tJobs}})</a>
+									<a href="#profile_jobs" aria-controls="profile_jobs" role="tab" data-toggle="tab">My Matches ({{$tJobs}})</a>
 								</li>
 							</ul>
 
@@ -113,7 +113,7 @@ $tJobs=0;
 														</div>
 
 														<div class="sc-caSCKo laCNAj">
-															<div class="sc-kgAjT ktcFPK"><b>Services needed</b></div>
+															<div class="sc-kgAjT ktcFPK service-txt"><b>Services needed</b></div>
 															<div class="sc-cJSrbW irwWzV"></div>
 															<div class="sc-jbKcbu eUIbYn row">
 																<div class="col-sm-6">{{$alljob->services}}</div>
@@ -128,7 +128,7 @@ $tJobs=0;
 															<div class="col-md-7 col-md-offset-5">
 														<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj" style="float: right;">
 															<div>
-																<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
+																<!-- <button type="button" class="sc-iRbamj gkmRbZ">Read more</button> -->
 															</div>
 														</div>
 																
@@ -159,7 +159,7 @@ $tJobs=0;
 															</div>
 														
 															<div>
-																<div class="sc-TOsTZ hiHQAi">{{$job->job_title}}</div>
+																<div class="sc-TOsTZ hiHQAi" style="text-transform: capitalize;"><b>{{$job->job_title}}</b></div>
 																<p class="sc-ksYbfQ dFOSHG">
 																	<span>{{$job->city}} • </span>#{{$job->id}}</p>
 																</div>
@@ -181,7 +181,7 @@ $tJobs=0;
 															</div>
 														</div>
 														<div class="sc-caSCKo laCNAj">
-															<div class="sc-kgAjT ktcFPK">Services needed</div>
+															<div class="sc-kgAjT ktcFPK service-txt"><b>Services needed</b></div>
 															<div class="sc-cJSrbW irwWzV"></div>
 															<div class="sc-jbKcbu eUIbYn row">
 																<div class="col-sm-6">{{$job->services}}</div>
@@ -192,12 +192,12 @@ $tJobs=0;
 															</div>
 														</div>
 														<div class="collapse"></div>
-														<div class="row">
-															<div class="col-md-7 col-md-offset-5">
+														<div class="row" style="margin: 0;">
+															<div class="col-md-4 col-md-offset-8">
 																<div class="sc-jqCOkK btptCT sc-jhAzac hBLiWj">
-																	<div>
+																	<!-- <div>
 																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
-																	</div>
+																	</div> -->
 																		<?php
 																		date_default_timezone_set("Asia/Karachi");
 																		$datetime1 = new DateTime();
@@ -208,13 +208,13 @@ $tJobs=0;
 																		?>
 																				@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
 																	<div class="sc-jhAzac jqgdQA">
-																		<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a quote for this client</a>
+																		<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a proposal</a>
 																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																		</div>
 																	</div>
 																	@else
 																	<div class="sc-jhAzac jqgdQA">
-																		<a type="button" class="sc-bRBYWo eeChfy"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
+																		<a type="button" class="sc-bRBYWo eeChfy timeout-btn"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
 																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																		</div>
 																	</div>
@@ -402,13 +402,13 @@ $tJobs=0;
 													<a href="#review" aria-controls="review" role="tab" data-toggle="tab">Reviews</a>
 												</li>
 												<li role="presentation">
-													<a href="#cv" aria-controls="cv" role="tab" data-toggle="tab">Specialities</a>
-												</li>
-												<li role="presentation">
 													<a href="#widget" aria-controls="widget" role="tab" data-toggle="tab">Certifications</a>
 												</li>
 												<li role="presentation">
 													<a href="#segmentation" aria-controls="segmentation" role="tab" data-toggle="tab">Profile Badges</a>
+												</li>
+												<li role="presentation">
+													<a href="#billing" aria-controls="cv" role="tab" data-toggle="tab">Billing</a>
 												</li>
 											</ul>
 
@@ -420,11 +420,12 @@ $tJobs=0;
 													<div class="sc-hmzhuo fPEirj">
 														<div class="sc-caSCKo jKLHsR">
 															<h2>Company profile</h2>
+															<div class="sc-TOsTZ hiHQAi">Company description</div>
 															<div class="sc-cHGsZl iTzrAd">{{$userinfo->company_des}}</div>
 															<div class="sc-cJSrbW gCuqTd"></div>
 															<div class="sc-TOsTZ hiHQAi">Company logo</div>
 															
-															<div class="dropzone text-center">
+															<div class="dropzone text-center company-logo">
 															<img class="uploaded-logo" src="{{$userImage}}" alt="...">
 																
 																
@@ -445,19 +446,43 @@ $tJobs=0;
 															<form action="{{url('partner/partner_dashboard')}}" method="post">
 															{{ csrf_field() }}
 																<div class="sc-caSCKo jKLHsR">
+																	<div class="sc-TOsTZ hiHQAi">Introduce yourself</div>
+																	<div class="sc-cHGsZl iTzrAd">Inform your clients that waht is your aim and what you want to to do.</div>
+																	<div class="form-group">
+																		<label>Your name</label>
+																		<input type="text" class="form-control" name="name" readonly="" value="{{Session::get('faUser')->name}}">
+																	</div>
+																	<div class="form-group">
+																		<label>Introduce yourself</label>
+																		<textarea class="form-control" name="introduce_urself" cols="8" rows="5">{{$userinfo->introduce_urself}}</textarea>
+																	</div>
+																</div>
+																<div class="sc-caSCKo jKLHsR">
 																	<div class="sc-TOsTZ hiHQAi">Company information</div>
 																	<div class="sc-cHGsZl iTzrAd">Inform clients of basic information about your company, headquarter location and phone number.</div>
 																	<div class="row">
 																		<div class="col-md-6">
 																			<div class="form-group">
-																				<label>Company Name</label>
+																				<label>Business Name</label>
 																				<input type="text" name="company_name" class="form-control" placeholder="Company Name">
 																			</div>
 																		</div>
 																		<div class="col-md-6">
 																			<div class="form-group">
-																				<label>Company Email</label>
+																				<label>Business Email</label>
 																				<input type="Email" name="company_email" class="form-control" placeholder="Company Email">
+																			</div>
+																		</div>
+																		<div class="col-md-6">
+																			<div class="form-group">
+																				<label>VAT Number</label>
+																				<input type="text" name="vat_number" class="form-control" placeholder="VAT Number">
+																			</div>
+																		</div>
+																		<div class="col-md-6">
+																			<div class="form-group">
+																				<label>Company Number</label>
+																				<input type="text" name="company_number" class="form-control" placeholder="Company Number">
 																			</div>
 																		</div>
 																		<div class="col-md-6">
@@ -621,14 +646,6 @@ $tJobs=0;
 																						</div>
 																					</label>Secretarial service
 																				</div>
-																				<div class="sc-jhAzac iGbrby">
-																					<label class="sc-bAeIUo fuksr">
-																						<input type="checkbox" class="sc-bMVAic kyrrfd" value="Mix your own service pack"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Mix your own service pack' ? 'checked="checked"' : '' }} @endforeach @endif>
-																						<div class="sc-gqPbQI ilsJbL">
-																							<div class="sc-hORach kMXQwc"></div>
-																						</div>
-																					</label>Mix your own service pack
-																				</div>
 																				
 																			</div>
 																		</div>
@@ -638,7 +655,7 @@ $tJobs=0;
 																
 																	<div class="sc-cJSrbW jcDgkN"></div>
 																	<div class="sc-caSCKo jKLHsR">
-																		<div class="sc-TOsTZ hiHQAi">Interview</div>
+																		<div class="sc-TOsTZ hiHQAi">Why you are best match for the customer</div>
 																		<textarea class="sc-gGBfsJ jrocpm" placeholder="Questions to be asked" name="interview">{{$userinfo->interview}}</textarea>
 																	</div>
 																</div>
@@ -714,7 +731,177 @@ $tJobs=0;
 													</div>
 												</div>
 											</div>
-											<div role="tabpanel" class="tab-pane" id="review">Review</div>
+											<div role="tabpanel" class="tab-pane" id="review">
+												<div class="review_content">
+												<!-- Review Form -->
+												<div class="row">
+													<div id="content1">
+													
+															<div class="col-md-12" id="review_alert">
+															<div class="alert alert-success" style="margin-bottom:0px !important">
+																<strong>Review Submitted!</strong> Thank you for completing the review of this submission. Your review has been submitted successfully.
+															</div>
+															</div>
+														
+														<form  method="POST" role="form" id="reviews_form">
+														   {{csrf_field()}}
+														   
+														   <div class='rating-stars text-center'>
+														      <div class="row" style="margin: 15px 0;">
+
+														      	<div id="half-stars-example" class="col-md-12 text-center">
+														      	   <div class="rating-group">
+														      	    <input class="rating__input rating__input--none" checked name="rating2" id="rating2-0" value="0" type="radio">
+														      	    <label aria-label="0 stars" data-label="0" class="rating__label" for="rating2-0">&nbsp;</label>
+														      	    <label aria-label="0.5 stars" data-label="0.5" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-05" value="0.5" type="radio">
+														      	    <label aria-label="1 stars" data-label="1" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
+														      	    <label aria-label="1.5 stars" data-label="1.5" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-15" value="1.5" type="radio">
+														      	    <label aria-label="2 stars" data-label="2" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
+														      	    <label aria-label="2.5 stars" data-label="2.5" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-25" value="2.5" type="radio">
+														      	    <label aria-label="3 stars" data-label="3" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
+														      	    <label aria-label="3.5 stars" data-label="3.5" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-35" value="3.5" type="radio">
+														      	    <label aria-label="4 stars" data-label="4" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
+														      	    <label aria-label="4.5 stars" data-label="4.5" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-45" value="4.5" type="radio">
+														      	    <label aria-label="5 stars" data-label="5" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+														      	    <input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio">
+														      	   </div>
+														      	</div>
+														      </div>
+														   </div>
+														   <!-- <span class="write_review_span"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> -->
+														   <!-- </p> -->
+														   <div class="write_review_div">
+														      <div class="form-group" style="padding-right:15px;">
+														         <label for="">Write your review</label>
+														         <textarea class="form-control" rows="5" id="comment" name="comment" placeholder="Write your review"></textarea>
+														      </div>
+														   </div>
+														   <div class="text-center" style="padding-top: 30px;">
+														      <button type="submit" id="submit_review" class="btn btn-success">Submit Evaluation</button>
+														   </div>
+														</form>
+													</div>
+												</div>
+												<br><br>
+												<!-- End Reveiw Form -->
+												
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+														<!-- <p>Review can only be made by dinners who have eaten at this restaurant</p> -->
+														<p>
+															<span class="rating_heading" style="margin-left: 0px;">Overall Ratings (<span class="users-count">2</span>)</span>
+															<span class="rating_star">&nbsp;
+	                            <i class="fa fa-star avg-star-1"></i>
+	                            <i class="fa fa-star avg-star-2"></i>
+	                            <i class="fa fa-star avg-star-3"></i>
+	                            <i class="fa fa-star avg-star-4"></i>
+	                            <i class="fa fa-star avg-star-5"></i>
+	                            </span>
+														</p>
+
+													</div>
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+                            <div class="side">
+                               <div>Excellent</div>
+                            </div>
+                            <div class="middle md-rating">
+                               <div class="bar-container-rating">
+                                  <div class="bar-5-rating" style="width:100%"></div>
+                                  <span>&nbsp; <span class="rating-5">90</span>%</span>
+                               </div>
+                            </div>
+                            <div class="side">
+                               <div>Very Good</div>
+                            </div>
+                            <div class="middle md-rating">
+                               <div class="bar-container-rating">
+                                  <div class="bar-4-rating" style="width:45%"></div>
+                                  <span>&nbsp; <span class="rating-4">45</span>%</span>
+                               </div>
+                            </div>
+                            <div class="side">
+                               <div>Good</div>
+                            </div>
+                            <div class="middle md-rating">
+                               <div class="bar-container-rating">
+                                  <div class="bar-3-rating" style="width:50%"></div>
+                                  <span>&nbsp; <span class="rating-3">50</span>%</span>
+                               </div>
+                            </div>
+                            <div class="side">
+                               <div>Average</div>
+                            </div>
+                            <div class="middle md-rating">
+                               <div class="bar-container-rating">
+                                  <div class="bar-2-rating" style="width:20%"></div>
+                                  <span>&nbsp; <span class="rating-2">25</span>%</span>
+                               </div>
+                            </div>
+                            <div class="side">
+                               <div>Poor</div>
+                            </div>
+                            <div class="middle md-rating">
+                               <div class="bar-container-rating">
+                                  <div class="bar-1-rating" style="width:5%"></div>
+                                  <span>&nbsp; <span class="rating-1">15</span>%</span>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <br>
+											<hr>
+												<div class="comment_section">
+													<div class="review_form">
+															<div class="form-group">
+																<label for="">Sort By</label>
+																<select  class="form-control filter-products">
+																	<option value="default">Default</option>
+																	<option value="newest">Newest</option>
+																	<option value="oldest">Oldest</option>
+																</select>
+															</div>
+													</div><br>
+													<div class="table_comments" style="margin-left: 30px;">
+													<div class="reviews_container">
+															<div class="row review_comment">
+																<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+																	<div class="user_image user_image_table" style="margin-left:auto;margin-right:auto">
+																			<img src="" class="img-circle" alt="Image" style="width: 100%;">
+																		
+																	</div>
+																	<p class="text-center">Zeeshan</p>
+																</div>
+																<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+																<p><span>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star-half-o"></i></span></p>
+																	<p>review</p>
+																</div>
+															</div>
+															<hr>
+													</div>
+													</div>
+												</div>
+											</div>
+											</div>
 											<div role="tabpanel" class="tab-pane" id="segmentation">Profile badge</div>
 										</div>
 									</div>
@@ -936,19 +1123,6 @@ $tJobs=0;
 		$('.servies_list').append(fieldHTML2); //Add field html
 	});
 
-	var hash = document.location.hash;
-	// alert('.nav-tabs li a[href='+hash+']');
-	if (hash) {
-	    $('.nav-tabs li a[href='+hash+']').click(function(){
-
-	    });
-	} 
-
-	// Change hash for page-reload
-	$('.nav-tabs a').on('shown.bs.tab', function (e) {
-	    window.location.hash = e.target.hash;
-	});
-
 
 //alert('jfjsdf');
 var url="{{url('/')}}";
@@ -1027,7 +1201,17 @@ function deletepicture(){
 		}
 	});
 }
+$(function(){
+  var url = window.location.href;
 
+  var activeTab = url.substring(url.indexOf("#") + 1);
+  $('a[href="#'+ activeTab +'"]').tab('show')
+
+  $('.nav-tabs a').click(function (e) {
+    $(this).tab('show');
+    $(this).addClass('active');
+  });
+});
 
 </script>
 

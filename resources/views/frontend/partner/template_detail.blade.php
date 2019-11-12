@@ -15,23 +15,23 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs main-tabs" role="tablist">
 					<li role="presentation">
-						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">Job Section</a>
+						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">New Jobs</a>
 					</li>
 					<li role="presentation" class="active">
-						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">Job management</a>
+						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">My Jobs</a>
 					</li>
 					<li role="presentation">
-						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Profile</a>
+						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Business Profile</a>
 					</li>
 					<li role="presentation">
-						<a href="{{url('partner/partner_dashboard#account')}}" aria-controls="account" role="tab" data-toggle="tab">Account section</a>
+						<a href="{{url('partner/partner_dashboard#account')}}" aria-controls="account" role="tab" data-toggle="tab">Account</a>
 					</li>
-					<li role="presentation">
+					<!-- <li role="presentation">
 						<a href="{{url('partner/partner_dashboard#messages')}}" aria-controls="messages" role="tab" data-toggle="tab">Personal messages with client</a>
 					</li>
 					<li role="presentation">
 						<a href="{{url('partner/partner_dashboard#terms')}}" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
-					</li>
+					</li> -->
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel">
