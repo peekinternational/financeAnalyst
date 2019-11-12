@@ -189,7 +189,7 @@ public function accountLogin(Request $request){
 				$request->session()->put('faUser', $user);
                 $user=$request->session()->get('faUser');
 
-				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"online"]);
+				DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Online"]);
 
 				setcookie('cc_data', $user->p_id, time() + (86400 * 30), "/");
 
