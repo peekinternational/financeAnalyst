@@ -230,7 +230,7 @@ public function accountLogin(Request $request){
                     $message->from('searchbysearchs@gmail.com', 'Experlu');
                     $message->to($toemail);
                 });
-            $request->session()->flash('message','mail send successfully');
+            $request->session()->flash('message','Kindly check your email');
             return redirect()->back();
         }
         $request->session()->flash('message','Plz enter valid email');
