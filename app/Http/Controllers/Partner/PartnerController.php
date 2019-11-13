@@ -210,6 +210,60 @@ public function accountLogin(Request $request){
 		$pageType = \Request::segment('1');
 		return view('frontend.partner.partner_login',compact('pageType'));
     }
+    public function forgetPassword()
+    {
+        return view('frontend.partner.reset_password');
+    }
+    public function retrivePassword(Request $request)
+    {
+        $data=$request->all();
+        $partner=DB::table('fa_partner')->where('email',$data['email'])->first();
+        if(!empty($partner))
+        {
+            DB::table('fa_partner')->where('p_id',$partner->p_id)->update(['token'=>$data['_token']]);
+            $toemail=$partner->email;
+            Mail::send('mail.resetPassword',['parnter'=>$partner],
+                function ($message) use ($toemail)
+                {
+
+                    $message->subject('Experlu.com - Welcome To Experlu');
+                    $message->from('searchbysearchs@gmail.com', 'Experlu');
+                    $message->to($toemail);
+                });
+            $request->session()->flash('message','mail send successfully');
+            return redirect()->back();
+        }
+        $request->session()->flash('message','Plz enter valid email');
+        return redirect()->back();
+
+
+    }
+    public function reset_Password($p_id,$id)
+    {
+        $token=$id;
+        $p_id=$p_id;
+
+        return view('frontend.partner.Forget_password',compact('token','p_id'));
+    }
+    public function password_reset(Request $request)
+    {
+        $data=$request->all();
+        $password1=$request->password;
+        $con_password=$request->confirm_password;
+        if($password1==$con_password)
+        {
+            $password = md5(trim($password1));
+
+            DB::table('fa_partner')->where('p_id',$data['id'])->where('token','!=','')->update(['password'=>$password]);
+            DB::table('fa_partner')->where('p_id',$data['id'])->update(['token'=>'']);
+            $request->session()->flash('message','Your password change successfully');
+            return redirect()->to('partner_login');
+        }
+        else{
+            $request->session()->flash('message','your password not match plz try again');
+            return redirect()->back();
+        }
+    }
 
 public function doLogin($email,$password){
         /* do login */
@@ -388,7 +442,9 @@ public function quote(Request $request)
          // dd($job_id);
        $q_id= DB::table('fa_quote')->insertGetId($input);
 
-        Mail::send('mail.sendmailtocustomer',['parnter'=>$userinfo,'q_id'=>$q_id,'job_id'=>$job_id,'u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> json_encode($request->input('q_services')),'payment_frquency'=> json_encode($request->input('payment_frquency')),'quote_price' => json_encode($request->input('quote_price'))],
+        Mail::send('mail.sendmailtocustomer',['parnter'=>$userinfo,'q_id'=>$q_id,'job_id'=>$job_id,'u_name'
+        =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> json_encode($request->input('q_services')),'payment_frquency'=>
+            json_encode($request->input('payment_frquency')),'quote_price' => json_encode($request->input('quote_price'))],
       function ($message) use ($toemail)
       {
 
@@ -433,7 +489,6 @@ public function rejectquote(Request $request,$id,$id2)
 
     public function acceptquote(Request $request, $id,$id2)
     {
-       
           $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
         //dd($quotedata);
           $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();

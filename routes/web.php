@@ -32,8 +32,10 @@ Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::get('/acceptquote/{id}/{id2}','Partner\PartnerController@acceptquote');
 Route::get('/rejectquote/{id}/{id2}','Partner\PartnerController@rejectquote');
-
-
+Route::get('/forget-password','Partner\PartnerController@forgetPassword');
+Route::post('/retrive-password','Partner\PartnerController@retrivePassword');
+Route::get('password-mail/{p_id}/{id}','Partner\PartnerController@reset_Password');
+Route::post('/reset-password','Partner\PartnerController@password_reset');
 
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {

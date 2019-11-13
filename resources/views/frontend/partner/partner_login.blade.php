@@ -55,7 +55,7 @@
 			    				</div>
 			    				
 			    			</div>
-			    			
+							<a href="{{url('/forget-password')}}" >Forget Password</a>
 			    			<input type="submit" value="Login" class="btn btn-success btn-block" style="margin-bottom: 20px;">
 			    			<a href="{{url('partner_register')}}" class="btn cta-button btn-block">Register</a>
 			    		</form>
