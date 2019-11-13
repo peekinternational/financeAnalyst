@@ -387,7 +387,11 @@ public function quote(Request $request)
           $toemail=$getemail->job_email;
          // dd($job_id);
        $q_id= DB::table('fa_quote')->insertGetId($input);
-
+       $job=DB::table('fa_jobpost')->where('id',$job_id)->first();
+       if($job->quote_status == 0){
+           date_default_timezone_set("Asia/Karachi");
+           DB::table('fa_jobpost')->where('id',$job_id)->update(['quote_status'=>'1','quote_time'=>date("Y-m-d H:i:s")]);
+       }
         Mail::send('mail.sendmailtocustomer',['parnter'=>$userinfo,'q_id'=>$q_id,'job_id'=>$job_id,'u_name' =>$getemail->customer_name,'quote'=>$request->input('quote'),'services'=> json_encode($request->input('q_services')),'payment_frquency'=> json_encode($request->input('payment_frquency')),'quote_price' => json_encode($request->input('quote_price'))],
       function ($message) use ($toemail)
       {
