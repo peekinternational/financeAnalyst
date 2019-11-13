@@ -58,7 +58,6 @@ Route::group(['prefix' => 'partner'], function () {
 Route::group(['prefix' => 'customer'], function () {
 Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
 
-
 });
 Route::get('dashboard/user_management','customer\customerController@user_management');
 //////////////////////// Customer close /////////////////////////////////

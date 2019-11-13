@@ -460,7 +460,7 @@ public function quote(Request $request)
 
 
         $request->session()->flash('message','Quote created successfully');
-         return redirect()->back();
+         return redirect()->to('partner/partner_dashboard');
 
     }
 

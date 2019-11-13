@@ -26,6 +26,7 @@ class customerController extends Controller
 
     public function jobpost(Request $request)
     {
+
         $this->validate($request, [
             'job_title' => 'required',
             'job_type' => 'required',
@@ -45,19 +46,26 @@ class customerController extends Controller
             'mobilenumber.required'=>'Enter mobile number',
             'mobilenumber.digits_between' => 'Phone Number must be contain 10,12 digits',
         ]);
+        $job_email=$request->job_email;
+        $job= DB::table('fa_jobpost')->where('job_email',$job_email)->get();
+        $total_job=count($job);
+        if($total_job < 4) {
 
-        //dd($request->all());
-        $toemail=$request->input('job_email');
-        Mail::send('mail.sendmail',['u_name' =>$request->input('customer_name')],
-      function ($message) use ($toemail)
-      {
+            $toemail = $request->input('job_email');
+            Mail::send('mail.sendmail', ['u_name' => $request->input('customer_name')],
+                function ($message) use ($toemail) {
 
-        $message->subject('Experlu.com - Welcome To Experlu');
-        $message->from('searchbysearchs@gmail.com', 'Experlu');
-        $message->to($toemail);
-      });
-        DB::table('fa_jobpost')->insert($request->all());
-        return view('frontend.thanks');
+                    $message->subject('Experlu.com - Welcome To Experlu');
+                    $message->from('searchbysearchs@gmail.com', 'Experlu');
+                    $message->to($toemail);
+                });
+            DB::table('fa_jobpost')->insert($request->all());
+            return view('frontend.thanks');
+        }
+        else{
+            $request->session()->flash('message','You already post 3 jobs');
+            return back()->withInput();
+        }
     }
 
 

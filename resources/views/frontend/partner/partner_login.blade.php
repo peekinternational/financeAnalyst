@@ -45,7 +45,7 @@
 			    			<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
-									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" required>
+									<input type="email" name="email" id="email" class="form-control input-sm" value="{{ old('email') }}"  placeholder="Email Address" required>
 								</div>
 			    				</div>
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
@@ -84,20 +84,20 @@
 			    			<div class="row">
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			                <input type="text" name="name" id="name" class="form-control input-sm" placeholder="First Name">
+			                <input type="text" name="name" id="name" value="{{ old('name') }}"  class="form-control input-sm" placeholder="First Name">
 			    					</div>
 			    				</div>
 			    				
 			    			</div>
 
 			    			<div class="form-group">
-			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			    				<input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control input-sm" placeholder="Email Address">
 			    			</div>
 
 			    			<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			    						<input type="number" name="phoneno" id="phoneno" class="form-control input-sm" min="0" placeholder="Mobile Number">
+			    						<input type="number" name="phoneno" value="{{ old('phoneno') }}"  id="phoneno" class="form-control input-sm" min="0" placeholder="Mobile Number">
 			    					</div>
 			    				</div>
 			    				<div class="col-xs-12 col-sm-12 col-md-12">

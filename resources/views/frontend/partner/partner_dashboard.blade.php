@@ -289,9 +289,9 @@ $tJobs=0;
 															<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 														</div>
 													
-														@if($job->quot > 3)
+														{{--@if($job->quot > 3)--}}
 															<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
-															@endif
+															{{--@endif--}}
 
 														<button type="submit" class="btn btn-success btn-block">Submit</button>
 													</form>
