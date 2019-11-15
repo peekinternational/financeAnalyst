@@ -91,7 +91,7 @@
                        <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
                           @endif
                           <i class="fa fa-edit text-primary"></i>
-                         <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>
+                         {{--<a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>--}}
                           <i class="fa fa-eye text-success"></i>
                         </td>
                       </tr>

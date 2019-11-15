@@ -53,7 +53,7 @@
                 <h4 class="card-title"> Quotes</h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive" id="table1">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>Job id</th>
@@ -63,19 +63,19 @@
                       <th>Status</th>
                       <th class="text-center">Action</th>
                     </thead>
+
                     <tbody>
                     @foreach($allquote as $quote)
-                      <tr>
+                      <tr @if($quote->visited == "not_visited") style="background-color:#efc36e @endif">
                         <td> {{$quote->job_id}}</td>
                         <td> {{$quote->customer_name}}</td>
                         <td> {{$quote->partner->name}}</td>
                         <td> {{$quote->created_at}}</td>
                         <td> {{$quote->status}}</td>
                         <td class="text-center">
-                        <a href="">Add Detail</a>
                           <i class="fa fa-edit text-primary"></i>
-                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
-                          <i class="fa fa-eye text-success"></i>
+
+                          <a href="javascript:void(0);" onclick="visitFunction({{$quote->job_id}})" ><i class="fa fa-eye text-success"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -83,7 +83,7 @@
                      
                     </tbody>
                   </table>
-                  {!! $allquote->render(); !!}
+                  {!! $allquote->render();!!}
                 </div>
               </div>
             </div>
@@ -94,4 +94,34 @@
   </div>
 @endsection
 @section('script')
+  <script>
+    function visitFunction(id) {
+        event.preventDefault();
+        var visit_id=id;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+            $.ajax({
+                type: 'post',
+                url: "{{ url('quotes/visit')}}",
+                data: { visit_id : visit_id},
+                success: function(response){
+                    console.log(response);
+//                     $('#table1').append(response);
+                    location.reload();
+
+                },
+                error: function (error) {
+                    console.log(error)
+                    alert("data not saved");
+
+                }
+            });
+
+
+    }
+  </script>
 @endsection

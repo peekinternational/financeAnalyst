@@ -53,7 +53,7 @@ Route::group(['prefix' => 'partner'], function () {
 });
 
 //////////////////////// Partner close /////////////////////////////////
-
+Route::post('quotes/visit','Dashboard\JobManageController@visit');
 //////////////////////// Customer /////////////////////////////////
 Route::group(['prefix' => 'customer'], function () {
 Route::match(['get','post'],'/jobpost','Customer\customerController@jobpost');
@@ -69,6 +69,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/', function(){
 		return view('/admin.index');
 	});
+
 	Route::match(['get','post'],'/logout', 'Dashboard\JobManageController@logout');
 	Route::get('/job_management', 'Dashboard\JobManageController@index');
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
