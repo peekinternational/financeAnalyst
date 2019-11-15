@@ -80,7 +80,7 @@
                         <td> {{$partner->created_at}}</td>
                         <td> {{$partner->status}}</td>
                         <td> {{$partner->city}}</td>
-                        <td class="text-center"> 4</td>
+                        <td class="text-center"><a href="{{url('partner/job_detail/'.$partner->job_id)}}">4</a> </td>
                         <td class="text-center"> 2</td>
                         <td class="text-center"> 2</td>
                         <td class="text-center"> 2</td>
