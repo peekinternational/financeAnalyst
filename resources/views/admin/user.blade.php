@@ -56,38 +56,45 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Partner id</th>
+                      <th>Partner_id</th>
                       <th>Name</th>
-                      <th>No of quotes</th>
-                      <th>Won quotes</th>
-                      <th>Pending quotes</th>
+                      <th>Date_of_joining</th>
+                      <th>Status</th>
+                      <th>City</th>
+                      <!-- <th>Country</th> -->
+                      <th>Total_quotes</th>
+                      <th>Won_quotes</th>
+                      <th>In_Progress</th>
+                      <th>Lost</th>
+                      <th>Total_quotes_price</th>
+                      <th>Won_quotes_price</th>
+                      <th>In_progress_price</th>
+                      <th>Lost_quote_price</th>
                       <th class="text-center">Action</th>
                     </thead>
                     <tbody>
+                      @foreach($partner_data as $partner)
                       <tr>
-                        <td> 1</td>
-                        <td> Zeeshan</td>
+                        <td> {{$partner->p_id}}</td>
+                        <td> {{$partner->name}}</td>
+                        <td> {{$partner->created_at}}</td>
+                        <td> {{$partner->status}}</td>
+                        <td> {{$partner->city}}</td>
                         <td class="text-center"> 4</td>
                         <td class="text-center"> 2</td>
                         <td class="text-center"> 2</td>
-                        <td class="text-center">
-                          <i class="fa fa-edit text-primary"></i>
-                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
-                          <i class="fa fa-eye text-success"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td> 2</td>
-                        <td> Zeeshan</td>
-                        <td class="text-center"> 5</td>
                         <td class="text-center"> 2</td>
-                        <td class="text-center"> 3</td>
+                        <td class="text-center"> 4</td>
+                        <td class="text-center"> 2</td>
+                        <td class="text-center"> 2</td>
+                        <td class="text-center"> 2</td>
                         <td class="text-center">
                           <i class="fa fa-edit text-primary"></i>
                          <a href=""> <i class="fa fa-trash text-danger"></i> </a>
                           <i class="fa fa-eye text-success"></i>
                         </td>
                       </tr>
+                      @endforeach
                      
                     </tbody>
                   </table>

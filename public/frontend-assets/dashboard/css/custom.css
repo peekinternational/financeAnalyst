@@ -4,3 +4,13 @@
     padding: 6px 5px;
     margin-top: 5px;
 }
+.quote-modal .modal-header{
+    display: block;
+}
+.quote-modal .modal-header .modal-title{
+	text-align: center;
+	margin-top: 0;
+}
+.table-responsive{
+	overflow: auto;
+}

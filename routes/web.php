@@ -88,9 +88,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/notifications', function(){
 		return view('/admin.notifications');
 	});
-	Route::get('/user', function(){
-		return view('/admin.user');
-	});
+	Route::get('/user', 'Dashboard\ProfileController@show_partner');
 	Route::get('/tables', function(){
 		return view('/admin.tables');
 	});
