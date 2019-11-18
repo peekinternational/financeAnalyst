@@ -34,21 +34,27 @@
 					  @if(!empty($template))
 		          	<h4 class="field-title">Contact Information</h4>
 		            <div class="row">
+		              <!-- <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Name <span class="required" style="color: red;">*</span></label>
+		                  <input type="number" class="form-control" min="0" placeholder="Phone Number"  name="phone_number" @if(!empty($template))value="{{$template->phone_number}}" @endif>
+		                </div>
+		              </div> -->
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Phone Number</label>
+		                  <label>Phone Number <span class="required" style="color: red;">*</span></label>
 		                  <input type="number" class="form-control" min="0" placeholder="Phone Number"  name="phone_number" @if(!empty($template))value="{{$template->phone_number}}" @endif>
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Mobile Number</label>
+		                  <label>Mobile Number <span class="required" style="color: red;">*</span></label>
 		                  <input type="number" name="mbl_number" min="0" class="form-control"  placeholder="Mobile Number" @if(!empty($template)) value="{{$template->mbl_number}}" @endif >
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label for="exampleInputEmail1">Email address</label>
+		                  <label for="exampleInputEmail1">Email address <span class="required" style="color: red;">*</span></label>
 		                  <input type="email" name="email" class="form-control"  placeholder="Email" @if(!empty($template)) value="{{$template->email}}" @endif >
 		                </div>
 		              </div>
@@ -56,7 +62,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Location</label>
+		                  <label>Location <span class="required" style="color: red;">*</span></label>
 		                  <input type="text" name="location" class="form-control"  placeholder="Location"  @if(!empty($template)) value="{{$template->location}}" @endif >
 		                </div>
 		              </div>
@@ -81,19 +87,19 @@
 						  <div class="row">
 							  <div class="col-md-12">
 								  <div class="form-group">
-									  <label>Phone Number</label>
+									  <label>Phone Number <span class="required" style="color: red;">*</span></label>
 									  <input type="number" class="form-control" min="0" placeholder="Phone Number" value="{{ old('phone_number') }}" name="phone_number"  value="" >
 								  </div>
 							  </div>
 							  <div class="col-md-12">
 								  <div class="form-group">
-									  <label>Mobile Number</label>
+									  <label>Mobile Number <span class="required" style="color: red;">*</span></label>
 									  <input type="number" name="mbl_number" min="0" class="form-control"   placeholder="Mobile Number"  value="{{$autofil->mobilenumber}}">
 								  </div>
 							  </div>
 							  <div class="col-md-12">
 								  <div class="form-group">
-									  <label for="exampleInputEmail1">Email address</label>
+									  <label for="exampleInputEmail1">Email address <span class="required" style="color: red;">*</span></label>
 									  <input type="email" name="email" class="form-control" placeholder="Email"  value="{{$autofil->job_email}}" >
 								  </div>
 							  </div>
@@ -101,7 +107,7 @@
 						  <div class="row">
 							  <div class="col-md-12">
 								  <div class="form-group">
-									  <label>Location</label>
+									  <label>Location <span class="required" style="color: red;">*</span></label>
 									  <input type="text" name="location"  class="form-control" value="{{$autofil->city}}" placeholder="Location"   value=""  >
 								  </div>
 							  </div>
@@ -128,7 +134,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Legal Structure</label>
+		                  <label>Legal Structure <span class="required" style="color: red;">*</span></label>
 		                  <select class="form-control" name="legal_structure">
 		                  	<option  @if(!empty($template)) @if($template->legal_structure =="Ltd Company (UK)")selected="selected"  @endif @endif >Ltd Company (UK)</option>
 		                  	<option  @if(!empty($template))  @if($template->legal_structure =="Ltd Company (other)") selected="selected" @endif @endif>Ltd Company (other)</option>
@@ -142,13 +148,13 @@
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Currency</label>
+		                  <label>Currency <span class="required" style="color: red;">*</span></label>
 		                  <input type="text" name="currency" class="form-control"  placeholder="Country"  @if(!empty($template)) value="{{$template->currency}}" @endif>
 		                </div>
 		              </div>
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Turnover</label>
+		                  <label>Turnover <span class="required" style="color: red;">*</span></label>
 		                  <input type="number" name="turnover" class="form-control"   placeholder="Turnover"  @if(!empty($template)) value="{{$template->turnover}}" @endif>
 		                </div>
 		              </div>
@@ -156,7 +162,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Year end</label>
+		                  <label>Year end <span class="required" style="color: red;">*</span></label>
 		                  <input type="date" name="year_end" class="form-control"   placeholder="Comapny Name"  @if(!empty($template)) value="{{$template->year_end}}" @endif>
 		                </div>
 		              </div>
@@ -164,7 +170,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Deadline</label>
+		                  <label>Deadline <span class="required" style="color: red;">*</span></label>
 		                  <input type="date" name="deadline"  class="form-control"  @if(!empty($template)) value="{{$template->deadline}}" @endif>
 		                </div>
 		              </div>
@@ -199,7 +205,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Budget</label>
+		                  <label>Budget <span class="required" style="color: red;">*</span></label>
 		                  <input type="text" name="budget" class="form-control" placeholder="82484524"  @if(!empty($template)) value="{{$template->budget}}" @endif>
 		                </div>
 		              </div>
@@ -389,7 +395,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Industry</label>
+		                  <label>Industry <span class="required" style="color: red;">*</span></label>
 		                  <input type="text" name="industry"  class="form-control" placeholder="Industry"  @if(!empty($template)) value="{{$template->industry}}" @endif>
 		                </div>
 		              </div>
@@ -425,7 +431,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>Mode</label>
+		                  <label>Mode <span class="required" style="color: red;">*</span></label>
 		                  <select name="mode" class="form-control">
 		                  	<option  value="Email"  @if(!empty($template)) @if($template->mode =="Email") selected="selected" @endif @endif>Email</option>
 		                  	<option  value="Call" @if(!empty($template)) @if($template->mode =="Call")selected="selected" @endif @endif>Call</option>
@@ -446,7 +452,7 @@
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
-		                  <label>When Looking to Hire?</label>
+		                  <label>When Looking to Hire? <span class="required" style="color: red;">*</span></label>
 		                  <input type="text" name="when_hire" class="form-control"  placeholder="When looking to hire?"  @if(!empty($template)) value="{{$template->when_hire}}" @endif>
 		                </div>
 		              </div>

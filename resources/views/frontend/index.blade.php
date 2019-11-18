@@ -86,7 +86,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
+                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
+                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@
               
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="iconify fa fa-money mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-money mdi-48px"></i>
                 </div>
               </div>
               
@@ -158,7 +158,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="iconify fa fa-usd mdi-48px text-muted"></i>
+                  <i data-icon="mdi-calculator" class="iconify fa fa-usd mdi-48px"></i>
                 </div>
               </div>
               
@@ -177,7 +177,7 @@
               
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="iconify fa fa-connectdevelop mdi-48px text-muted"></i>
+                  <i data-icon="mdi-book-multiple" class="iconify fa fa-connectdevelop mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="iconify fa fa-info-circle mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-info-circle mdi-48px"></i>
                 </div>
               </div>
               
@@ -212,7 +212,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="fa fa-question" class="iconify fa fa-question mdi-48px text-muted"></i>
+                  <i data-icon="fa fa-question" class="iconify fa fa-question mdi-48px"></i>
                 </div>
               </div>
             </div>

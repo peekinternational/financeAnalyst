@@ -796,8 +796,69 @@ table.datatable.responsive .table-mobile-cell {
 }
 .service-card{
     height: 210px !important;
-    /*border-radius: 50%;*/
+    border-radius: 10px;
     padding: 30px 15px !important;
+    background: #ffffff none repeat scroll 0 0;
+    border-left: 2px solid #e0c184;
+    -moz-box-shadow: 0 0 10px #cccccc;
+    -webkit-box-shadow: 0 0 10px #cccccc;
+    -o-box-shadow: 0 0 10px #cccccc;
+    box-shadow: 0 0 10px #cccccc;
+    overflow: hidden;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+}
+.service-card::after {
+  background: #e0c184 none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  width: 100%;
+  z-index: -1;
+}
+
+.service-card:hover::after {
+  left: 0;
+}
+
+.service-card:hover i,
+.service-card:hover h4,
+.service-card:hover p {
+  color: #ffffff !important;
+}
+
+.service-card:hover i::after {
+  border-color: #ffffff !important;
+}
+
+.service-card:hover i {
+  background-color: #ffffff !important;
+  color: #e0c184 !important;
+}
+
+.service-card i {
+  background: #e0c184 none repeat scroll 0 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 60px;
+  height: 80px;
+  line-height: 80px;
+  margin-bottom: 30px;
+  position: relative;
+  width: 80px;
+  z-index: 1;
+  text-align: center;
 }
 #caseDetail, #service_needed, #highlights, #description{
     margin-top: 20px;
@@ -869,15 +930,15 @@ table.datatable.responsive .table-mobile-cell {
     color: #000;
 }
 .service-txt{
-    color: #efc36e;
+    color: #e0c184;
 }
 .conatct-cols .mdi{
-    color: #efc36e;
+    color: #e0c184;
 }
 .conatct-cols .btn-link {
-    background: #efc36e;
+    background: #e0c184;
     color: #000;
-    border: 1px solid #efc36e;
+    border: 1px solid #e0c184;
 }
 .company-logo{
     width: 50%;
