@@ -28,7 +28,10 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ageras-navbar" aria-expanded="false">
       <span class="sr-only">Navigation</span>
-      <i data-icon="mdi-menu" class="iconify"></i>
+        <i data-icon="mdi-menu" class="iconify"></i>
+        <i data-icon="mdi-menu" class="icon-bar"></i>
+        <i data-icon="mdi-menu" class="icon-bar"></i>
+        <i data-icon="mdi-menu" class="icon-bar"></i>
       </button>
       <!-- <a class="navbar-brand" href="index.html" ></a> -->
       Logo
@@ -118,8 +121,11 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ageras-navbar" aria-expanded="false">
-        <span class="sr-only">Navigation</span>
-        <i data-icon="mdi-menu" class="iconify"></i>
+          <span class="sr-only">Navigation</span>
+          <i data-icon="mdi-menu" class="iconify"></i>
+          <i data-icon="mdi-menu" class="icon-bar"></i>
+          <i data-icon="mdi-menu" class="icon-bar"></i>
+          <i data-icon="mdi-menu" class="icon-bar"></i>
         </button>
         <!-- <a class="navbar-brand" href="index.html" ></a> -->
         Logo

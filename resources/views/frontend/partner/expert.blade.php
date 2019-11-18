@@ -14,7 +14,7 @@
     
     <section class="light" style="margin-top: 0rem;">
       <div style="background-image: url('/frontend-assets/images/partner/banner.jpg');background-size: 100% 100%;
-    height: 500px;">
+    height: 500px;" class="main-banner">
       
     </div>
       <div class="container">

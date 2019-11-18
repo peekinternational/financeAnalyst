@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('frontend-assets/css/style-guide-external-9b33b7fc1b.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend-assets/css/style-guide-a355bce31e.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend-assets/css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend-assets/css/responsive.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend-assets/css/owl.carousel.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend-assets/css/owl.theme.default.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend-assets/css/materialdesignicons.min.css')}}">
