@@ -65,25 +65,55 @@
                   @endif
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Job id</th>
-                      <th>Job title</th>
-                      <th>Phone</th>
+                      <th colspan="2">Job_id</th>
+                      <th colspan="2">Name</th>
+                      <th colspan="3">Job_title</th>
+                      <th colspan="3">Service</th>
+                      <th colspan="3">Job_type</th>
+                      <th colspan="3">Year_end</th>
                       <th>Email</th>
-                      <th>Categories</th>
-                      <th>Location</th>
-                      <th class="text-right">Posted date</th>
+                      <th>Phone</th>
+                      <th>City</th>
+                      <th class="text-right">Posted_date</th>
+                      <th class="text-right">Client_contacted</th>
+                      <th class="text-right">Client_template updated</th>
+                      <th class="text-right">Posted_on_partnel_portal</th>
                       <th class="text-right">Action</th>
                     </thead>
                     <tbody>
                     @foreach($alljobs as $jobs)
                       <tr>
-                        <td> {{$jobs->id}}</td>
-                        <td> {{$jobs->job_title}}</td>
-                        <td> {{$jobs->mobilenumber}}</td>
+                        <td colspan="2"> {{$jobs->id}}</td>
+                        <td colspan="2"> {{$jobs->customer_name}}</td>
+                        <td colspan="3"> {{$jobs->job_title}}</td>
+                        <td colspan="3"> {{$jobs->services}}</td>
+                        <td colspan="3"> {{$jobs->job_type}}</td>
+                        <td colspan="3"> {{$jobs->ended_year}}</td>
                         <td> {{$jobs->job_email}}</td>
-                        <td>{{$jobs->services}}</td>
+                        <td> {{$jobs->mobilenumber}}</td>
                         <td>{{$jobs->city}}</td>
-                        <td class="text-right">{{$jobs->created_at}}</td>
+                        <td>{{$jobs->created_at}}</td>
+                        <td class="text-right">
+                          <select class="form-control">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Other</option>
+                          </select>
+                        </td>
+                        <td class="text-right">
+                          <select class="form-control">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Other</option>
+                          </select>
+                        </td>
+                        <td class="text-right">
+                          <select class="form-control">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Other</option>
+                          </select>
+                        </td>
                         <td class="text-right">
                           @if(FA::checktemplate($jobs->id)=="1")
                            <a href="{{ url('dashboard/template/'.$jobs->id)}}">Update Detail</a>
@@ -91,7 +121,7 @@
                        <a href="{{ url('dashboard/template/'.$jobs->id)}}">Add Detail</a>
                           @endif
                           <i class="fa fa-edit text-primary"></i>
-                         <a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>
+                         {{--<a href="{{ url('dashboard/job_delete/'.$jobs->id)}}" onclick="myFunction()"> <i class="fa fa-trash text-danger"></i> </a>--}}
                           <i class="fa fa-eye text-success"></i>
                         </td>
                       </tr>

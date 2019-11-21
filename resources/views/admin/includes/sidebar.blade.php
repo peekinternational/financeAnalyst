@@ -24,15 +24,15 @@
             </a>
           </li>
           <li>
-            <a class="" data-toggle="collapse" href="#manageTemplate" role="button" aria-expanded="false" aria-controls="manageTemplate">
-              <i class="nc-icon nc-diamond"></i>
-              <p>Manage Template</p>
+            <a href="#manageJobs"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
+              <i class="nc-icon nc-bell-55"></i>
+              <p>Jobs Management</p>
             </a>
-            <ul class="collapse" id="manageTemplate">
-              <li><a href="{{url('dashboard/upload_tamplate')}}">Upload Template</a></li>
+            <ul class="collapse" id="manageJobs">
+              <li><a href="{{url('dashboard/job_management')}}">Open Jobs</a></li>
             </ul>
+
           </li>
-  
           <li>
             <a  data-toggle="collapse" href="#manageQuote"  role="button" aria-expanded="false" aria-controls="manageQuote">
               <i class="nc-icon nc-pin-3"></i>
@@ -43,14 +43,15 @@
             </ul>
           </li>
           <li>
-            <a href="#manageJobs"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
-              <i class="nc-icon nc-bell-55"></i>
-              <p>Jobs Management</p>
+            <a class="" data-toggle="collapse" href="#customer" role="button" aria-expanded="false" aria-controls="customer">
+              <i class="nc-icon nc-diamond"></i>
+              <p>Customer</p>
             </a>
-            <ul class="collapse" id="manageJobs">
-              <li><a href="{{url('dashboard/job_management')}}">Open Jobs</a></li>
+            <ul class="collapse" id="customer">
+              <li><a href="">Active</a></li>
+              <li><a href="">Archieved</a></li>
+              <li><a href="">Completed</a></li>
             </ul>
-
           </li>
           <li>
             <a href="#manageUsers"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageUsers">

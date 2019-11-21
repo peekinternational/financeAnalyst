@@ -137,6 +137,16 @@ public function template(Request $request, $id)
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
        return view('/admin.add_template',compact('job','template','autofil'));
     }
+    public function visit(Request $request)
+    {
+        $id=$request->all();
+
+        $allquote1=DB::table('fa_quote')->where('id',$id['visit_id'])->update(['visited'=>'visit']);
+        $allquote=DB::table('fa_quote')->get();
+
+        return $allquote;
+
+    }
      public function showtemplate()
     {
         $template=DB::table('fa_template')

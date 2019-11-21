@@ -87,7 +87,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
+                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
+                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@
               
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="iconify fa fa-money mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-money mdi-48px"></i>
                 </div>
               </div>
               
@@ -159,7 +159,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="iconify fa fa-usd mdi-48px text-muted"></i>
+                  <i data-icon="mdi-calculator" class="iconify fa fa-usd mdi-48px"></i>
                 </div>
               </div>
               
@@ -178,7 +178,7 @@
               
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="iconify fa fa-connectdevelop mdi-48px text-muted"></i>
+                  <i data-icon="mdi-book-multiple" class="iconify fa fa-connectdevelop mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -195,7 +195,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="iconify fa fa-info-circle mdi-48px text-muted"></i>
+                  <i data-icon="mdi-account-edit" class="iconify fa fa-info-circle mdi-48px"></i>
                 </div>
               </div>
               
@@ -213,7 +213,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <i data-icon="fa fa-question" class="iconify fa fa-question mdi-48px text-muted"></i>
+                  <i data-icon="fa fa-question" class="iconify fa fa-question mdi-48px"></i>
                 </div>
               </div>
             </div>
@@ -603,6 +603,21 @@
           </div>
         </div>
       @endif
+      @if(session()->has('message'))
+        <script>
+            $( document ).ready(function() {
+                $('#match').modal('show');
+
+            });
+
+        </script>
+        <div class="form-group">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <strong>Message:</strong>{{session()->get('message')}}
+          </div>
+        </div>
+      @endif
 
       
       <div class="modal-body">
@@ -687,26 +702,26 @@
         <div class="step-2" data-headline="Describe your case">
           <div class="form-group">
             <label>Job Title</label>
-            <input type="text" class="form-control" name="job_title" placeholder="Job Title" >
+            <input type="text" class="form-control" name="job_title" placeholder="Job Title" value="{{ old('job_title') }}" >
           </div>
        <div class="form-group">
             <label>Job Type</label>
-            <select class="form-control" name="job_type">
-              <option value="">Select Type</option>
-              <option value="individual">Indivdual</option>
-              <option value="company">Company</option>
+            <select class="form-control" name="job_type" >
+              <option>Select Type</option>
+              <option @if( old('job_type') =="individual" )selected="selected"  @endif  value="individual">Indivdual</option>
+              <option @if( old('job_type') =="company" )selected="selected"  @endif  value="company">Company</option>
             </select>
           </div>
           <div class="form-group">
             <label>Year End</label>
-            <input type="date" name="ended_year" class="form-control" >
+            <input type="date" name="ended_year" value="{{ old('ended_year') }}" class="form-control" >
           </div>
           <div class="form-group">
             <label>Job Description</label>
-            <textarea class="form-control" id="input-description" name="job_case" placeholder="Describe your case" style="height: 6em;" ></textarea>
+            <textarea class="form-control" id="input-description" name="job_case"  placeholder="Describe your case" style="height: 6em;" > {{ old('job_case') }}</textarea>
           </div>
           <div class="form-group hidden-md hidden-lg">
-            <button class="btn btn-default btn-block proceed-button" data-content="Proceed to the last step" data-no-content="Skip this step">
+            <button class="btn btn-default btn-block proceed-button"  data-content="Proceed to the last step" data-no-content="Skip this step">
             <span>Next</span>
             <i class="mdi mdi-chevron-double-right"></i>
             </button>
@@ -723,22 +738,22 @@
         <div class="step-3" data-headline="Contact information">
           <div class="form-group">
             <label class="control-label" for="input-name">Name</label>
-            <input  type="text" class="form-control" name="customer_name" id="input-name" placeholder="Enter name" data-error="Please enter your name" />
+            <input  type="text" class="form-control" name="customer_name" id="input-name" value="{{ old('customer_name') }}" placeholder="Enter name" data-error="Please enter your name" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">
             <label class="control-label" for="input-email" >E-mail</label>
-            <input required type="email" class="form-control" name="job_email" id="input-email" placeholder="Enter e-mail" data-error="Please enter a valid e-mail address" />
+            <input required type="email" class="form-control" name="job_email" id="input-email" placeholder="Enter e-mail" value="{{ old('job_email') }}" data-error="Please enter a valid e-mail address" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">
             <label class="control-label" for="input-phone">Phone number</label>
-            <input type="text" class="form-control" name="mobilenumber" id="input-phone" placeholder="Enter phone number" data-error="Please enter your phone number" />
+            <input type="text" class="form-control" name="mobilenumber" id="input-phone"  value="{{ old('mobilenumber') }}" placeholder="Enter phone number" data-error="Please enter your phone number" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">
             <label class="control-label" for="input-city">City</label>
-            <input type="text" class="form-control" name="city" id="input-city" placeholder="Please enter your city" />
+            <input type="text" class="form-control" name="city" value="{{old('city')}}" id="input-city" placeholder="Please enter your city" />
             <span class="help-block"></span>
           </div>
           <div class="form-group">

@@ -32,8 +32,10 @@ Route::get('/certification','Partner\PartnerController@getDocumentcer');
 Route::POST('/quotepost','Partner\PartnerController@quote');
 Route::get('/acceptquote/{id}/{id2}','Partner\PartnerController@acceptquote');
 Route::get('/rejectquote/{id}/{id2}','Partner\PartnerController@rejectquote');
-
-
+Route::get('/forget-password','Partner\PartnerController@forgetPassword');
+Route::post('/retrive-password','Partner\PartnerController@retrivePassword');
+Route::get('password-mail/{p_id}/{id}','Partner\PartnerController@reset_Password');
+Route::post('/reset-password','Partner\PartnerController@password_reset');
 
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
@@ -51,11 +53,10 @@ Route::group(['prefix' => 'partner'], function () {
 });
 
 //////////////////////// Partner close /////////////////////////////////
-
+Route::post('quotes/visit','Dashboard\JobManageController@visit');
 //////////////////////// Customer /////////////////////////////////
 Route::group(['prefix' => 'customer'], function () {
 Route::match(['get','post'],'/jobpost','Customer\CustomerController@jobpost');
-
 
 });
 Route::get('dashboard/user_management','Customer\CustomerController@user_management');
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/', function(){
 		return view('/admin.index');
 	});
+
 	Route::match(['get','post'],'/logout', 'Dashboard\JobManageController@logout');
 	Route::get('/job_management', 'Dashboard\JobManageController@index');
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
@@ -87,9 +89,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/notifications', function(){
 		return view('/admin.notifications');
 	});
-	Route::get('/user', function(){
-		return view('/admin.user');
-	});
+	Route::get('/user', 'Dashboard\ProfileController@show_partner');
 	Route::get('/tables', function(){
 		return view('/admin.tables');
 	});

@@ -198,27 +198,34 @@ $tJobs=0;
 																	<!-- <div>
 																		<button type="button" class="sc-iRbamj gkmRbZ">Read more</button>
 																	</div> -->
-																		<?php
+																	<?php
 																		date_default_timezone_set("Asia/Karachi");
 																		$datetime1 = new DateTime();
-																		$date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->created_at)));
+																		$date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->quote_time)));
 																		$datetime2 = new DateTime($date);
 																		$interval = $datetime1->diff($datetime2);
-																		// dd($interval);
+																		//dd($interval);
 																		?>
-																				@if($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+																	@if($job->quote_status == 0)
 																	<div class="sc-jhAzac jqgdQA">
 																		<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a proposal</a>
 																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																		</div>
 																	</div>
-																	@else
-																	<div class="sc-jhAzac jqgdQA">
-																		<a type="button" class="sc-bRBYWo eeChfy timeout-btn"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
-																		<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
-																		</div>
-																	</div>
-																	@endif
+																		
+																		@elseif($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+																			<div class="sc-jhAzac jqgdQA">
+																				<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a proposal</a>
+																				<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																				</div>
+																			</div>
+																			@else
+																			<div class="sc-jhAzac jqgdQA">
+																				<a type="button" class="sc-bRBYWo eeChfy timeout-btn"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
+																				<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																				</div>
+																			</div>
+																			@endif
 																</div>
 																
 															</div>
@@ -227,13 +234,11 @@ $tJobs=0;
 													</div>
 												</div>
 											</div>
-									
 
 											<div class="col-md-4"></div>
 											@endforeach
 										@endif
 									@endforeach
-								
 											</div>
 										</div>
 									</div>
@@ -388,6 +393,19 @@ $tJobs=0;
 																		<label>Introduce yourself</label>
 																		<textarea class="form-control" name="introduce_urself" cols="8" rows="5">{{$userinfo->introduce_urself}}</textarea>
 																	</div>
+																	<div class="form-group">
+																		<label>Qualification</label>
+																		<input type="file" class="form-control" name="qualification">
+																	</div>
+																	<div class="form-group">
+																		<label>Professional indemnity</label>
+																		<input type="file" class="form-control" name="professional">
+																	</div>
+																	<div class="form-group">
+																		<label>Location</label>
+																		<input type="text" class="form-control" name="location">
+																	</div>
+
 																</div>
 																<div class="sc-caSCKo jKLHsR">
 																	<div class="sc-TOsTZ hiHQAi">Company information</div>

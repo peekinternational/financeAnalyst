@@ -53,29 +53,91 @@
                 <h4 class="card-title"> Quotes</h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive" id="table1">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Job id</th>
-                      <th>Posted By</th>
-                      <th>Quoted By</th>
-                      <th>Quotation Date</th>
-                      <th>Status</th>
+                      <th>Job_id</th>
+                      <th>Job_title</th>
+                      <th>Posted_by</th>
+                      <th>View quotes</th>
+                      <th>Case_status</th>
+                      <th>Outcome</th>
+                      <th>Comments</th>
+                      <th>Date_time</th>
+                      <th>Employee_id</th>
                       <th class="text-center">Action</th>
                     </thead>
+
                     <tbody>
                     @foreach($allquote as $quote)
-                      <tr>
+                      <tr @if($quote->visited == "not_visited") style="background-color:#efc36e @endif">
                         <td> {{$quote->job_id}}</td>
+                        <td> {{$quote->job_title}}</td>
                         <td> {{$quote->customer_name}}</td>
-                        <td> {{$quote->partner->name}}</td>
-                        <td> {{$quote->created_at}}</td>
-                        <td> {{$quote->status}}</td>
+                        
+                        <td> <a class="btn btn-primary" data-toggle="modal" href='#modal-id{{$quote->job_id}}'>View Quotes</a>
+                          <div class="modal fade" id="modal-id{{$quote->job_id}}">
+                          <div class="modal-dialog modal-lg quote-modal">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">{{$quote->job_title}} quotes</h4>
+                              </div>
+                              <div class="modal-body">
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th>Quote by</th>
+                                        <th>Quote_date</th>
+                                        <th>Quote_Services</th>
+                                        <th>Quote_price</th>
+                                        <th>Status</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>{{$quote->partner->name}}</td>
+                                        <td>{{$quote->created_at}}</td>
+                                        <td>Services</td>
+                                        <td>Price</td>
+                                        <td>{{$quote->status}}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div></td>
+                        <td> 
+                          <select class="form-control">
+                            <option>Awaiting customer info</option>
+                            <option>Awaiting proposal </option>
+                            <option>Awaiting customer reply </option>
+                            <option>Invalid case </option>
+                            <option>Other </option>
+                          </select>
+                        </td>
+                        <td> 
+                          <select class="form-control">
+                            <option>Match found</option>
+                            <option>Work in progress</option>
+                            <option>Case closed because customer irresponsive</option>
+                            <option>Case closed because not enough proposals</option>
+                            <option>Invalid case</option>
+                            <option>Other</option>
+                          </select>
+                        </td>
+                        <td> <input type="text" name="comments" class="form-control"></td>
+                        <td> Date time</td>
+                        <td> iddd</td>
                         <td class="text-center">
-                        <a href="">Add Detail</a>
                           <i class="fa fa-edit text-primary"></i>
-                         <a href=""> <i class="fa fa-trash text-danger"></i> </a>
-                          <i class="fa fa-eye text-success"></i>
+                          <a href="javascript:void(0);" onclick="visitFunction({{$quote->job_id}})" ><i class="fa fa-eye text-success"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -83,7 +145,7 @@
                      
                     </tbody>
                   </table>
-                  {!! $allquote->render(); !!}
+                  {!! $allquote->render();!!}
                 </div>
               </div>
             </div>
@@ -94,4 +156,34 @@
   </div>
 @endsection
 @section('script')
+  <script>
+    function visitFunction(id) {
+        event.preventDefault();
+        var visit_id=id;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+            $.ajax({
+                type: 'post',
+                url: "{{ url('quotes/visit')}}",
+                data: { visit_id : visit_id},
+                success: function(response){
+                    console.log(response);
+//                     $('#table1').append(response);
+                    location.reload();
+
+                },
+                error: function (error) {
+                    console.log(error)
+                    alert("data not saved");
+
+                }
+            });
+
+
+    }
+  </script>
 @endsection
