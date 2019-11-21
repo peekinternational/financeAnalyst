@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class FA {
 
-        public function checkquote(Request $request){
+        public function check(Request $request){
            //$userinfo=$request->session()->get('faUser')->p_id; 
            // $data=DB::table('fa_quote')->where('job_id',$id)->where('p_id',$userinfo)->first();
             return "hek";
@@ -34,6 +34,12 @@ class FA {
         {
             return 0;
         }
+    }
+	
+	public function checkquote($id)
+    {
+       $res=DB::table('fa_quote')->where('job_id','=',$id)->count();
+         return $res;
     }
 
 }

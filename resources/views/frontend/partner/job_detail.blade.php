@@ -8,6 +8,7 @@
 		display: none;
 	}
 </style>
+
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
@@ -93,7 +94,7 @@
 														<p>
 															{{$data->job_case}}
 														</p>
-														<div class="text-right">
+														<div class="text-right" style="display:none">
 															<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary">Download as PDF</a>
 														</div>
 													</div>
@@ -147,7 +148,7 @@
 																<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 															</div>
 														
-															@if($data->quot > 3)
+															@if(FA::checkquote($data->job_id) > 3)
 																<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
 																@endif
 
