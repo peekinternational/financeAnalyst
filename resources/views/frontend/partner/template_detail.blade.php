@@ -13,6 +13,7 @@
 		<div class="col-md-12">
 			<div role="tabpanel">
 				<!-- Nav tabs -->
+				@if(Session::has('faUser'))
 				<ul class="nav nav-tabs main-tabs" role="tablist">
 					<li role="presentation">
 						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">New Jobs</a>
@@ -33,6 +34,7 @@
 						<a href="{{url('partner/partner_dashboard#terms')}}" aria-controls="terms" role="tab" data-toggle="tab">Terms & Conditions</a>
 					</li> -->
 				</ul>
+				@endif
 				<div class="tab-content">
 					<div role="tabpanel">
 						<div class="col-md-3">
