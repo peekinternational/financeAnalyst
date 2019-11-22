@@ -141,8 +141,13 @@ public function template(Request $request, $id)
     {
         $id=$request->all();
 
-        $allquote1=DB::table('fa_quote')->where('id',$id['visit_id'])->update(['visited'=>'visit']);
-        $allquote=DB::table('fa_quote')->get();
+        $allquote1=DB::table('fa_jobpost')->where('id',$id['visit_id'])->update(['visited'=>'visited']);
+        
+		$allquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->orderBy('fa_quote.id','desc')->paginate(15);
+       foreach($allquote as &$ser){
+            
+            $ser->partner = DB::table('fa_partner')->where('p_id','=',$ser->p_id)->first();
+         }
 
         return $allquote;
 
@@ -158,13 +163,18 @@ public function template(Request $request, $id)
 
     public function quotes()
     {
-       $allquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->orderBy('fa_quote.id','desc')->paginate(15);
+       $allquote = DB::table('fa_jobpost')->select('fa_jobpost.id','fa_jobpost.services','fa_jobpost.visited','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->where('quote_status','1')->orderBy('fa_jobpost.id','desc')->groupBy('fa_jobpost.id')->paginate(15);
        foreach($allquote as &$ser){
             
-            $ser->partner = DB::table('fa_partner')->where('p_id','=',$ser->p_id)->first();
-         }
+            $ser->qoutes = DB::table('fa_quote')->where('job_id','=',$ser->id)->orderBy('id','desc')->get();
        
-        //dd( $allquote);
+	   foreach($ser->qoutes  as &$qoute){
+            
+            $qoute->partner = DB::table('fa_partner')->where('p_id','=',$qoute->p_id)->first();
+         }
+		 
+         }
+       // dd( $allquote);
         return view('/admin.quotes',compact('allquote'));
     }
 

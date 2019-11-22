@@ -71,12 +71,12 @@
                     <tbody>
                     @foreach($allquote as $quote)
                       <tr @if($quote->visited == "not_visited") style="background-color:#efc36e @endif">
-                        <td> {{$quote->job_id}}</td>
+                        <td> {{$quote->id}}</td>
                         <td> {{$quote->job_title}}</td>
                         <td> {{$quote->customer_name}}</td>
                         
-                        <td> <a class="btn btn-primary" data-toggle="modal" href='#modal-id{{$quote->job_id}}'>View Quotes</a>
-                          <div class="modal fade" id="modal-id{{$quote->job_id}}">
+                        <td> <a class="btn btn-primary" data-toggle="modal" href='#modal-id{{$quote->id}}'>View Quotes</a>
+                          <div class="modal fade" id="modal-id{{$quote->id}}">
                           <div class="modal-dialog modal-lg quote-modal">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -96,13 +96,23 @@
                                       </tr>
                                     </thead>
                                     <tbody>
+									@foreach($quote->qoutes as $jobqoute)
                                       <tr>
-                                        <td>{{$quote->partner->name}}</td>
-                                        <td>{{$quote->created_at}}</td>
-                                        <td>Services</td>
-                                        <td>Price</td>
-                                        <td>{{$quote->status}}</td>
+                                        <td>{{$jobqoute->partner->name}}</td>
+                                        <td>{{$jobqoute->created_at}}</td>
+                                        <td><?php
+										foreach(@json_decode($jobqoute->q_services) as $service){
+											echo $service. '</br>';
+										}
+										?></td>
+                                        <td><?php
+										foreach(@json_decode($jobqoute->quote_price) as $price){
+											echo $price. '</br>';
+										}
+										?></td>
+                                        <td>{{$jobqoute->status}}</td>
                                       </tr>
+									  @endforeach
                                     </tbody>
                                   </table>
                                 </div>
@@ -137,7 +147,7 @@
                         <td> iddd</td>
                         <td class="text-center">
                           <i class="fa fa-edit text-primary"></i>
-                          <a href="javascript:void(0);" onclick="visitFunction({{$quote->job_id}})" ><i class="fa fa-eye text-success"></i></a>
+                          <a href="javascript:void(0);" onclick="visitFunction({{$quote->id}})" ><i class="fa fa-eye text-success"></i></a>
                         </td>
                       </tr>
                       @endforeach

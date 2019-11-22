@@ -36,7 +36,7 @@ Route::get('/forget-password','Partner\PartnerController@forgetPassword');
 Route::post('/retrive-password','Partner\PartnerController@retrivePassword');
 Route::get('password-mail/{p_id}/{id}','Partner\PartnerController@reset_Password');
 Route::post('/reset-password','Partner\PartnerController@password_reset');
-
+Route::get('partner/template_detail/{id}','Partner\PartnerController@customerdetail');
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
 	Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
 	Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
-	Route::get('/template_detail/{id}','Partner\PartnerController@customerdetail');
+	
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 
