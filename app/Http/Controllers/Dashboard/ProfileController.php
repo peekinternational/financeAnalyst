@@ -23,7 +23,15 @@ class ProfileController extends Controller
     }
     public function show_partner()
     {
-        $partner_data = DB::table('fa_partner')->select('fa_partner.*', 'fa_quote.*')->join('fa_quote','fa_quote.p_id', '=', 'fa_partner.p_id')->get();
+        $partner_data = DB::table('fa_partner')->orderBy('p_id','desc')->get();
+
+        foreach($partner_data as &$qoutes){
+
+          $qoutes->qoute = DB::table('fa_quote')->where('p_id','=',$qoutes->p_id)->orderBy('id','desc')->get();
+          $qoutes->peddingqoute = DB::table('fa_quote')->where('p_id','=',$qoutes->p_id)->where('status','Pending')->orderBy('id','desc')->get();
+          $qoutes->wonqoute = DB::table('fa_quote')->where('p_id','=',$qoutes->p_id)->where('status','Won')->orderBy('id','desc')->get();
+          $qoutes->lossqoute = DB::table('fa_quote')->where('p_id','=',$qoutes->p_id)->where('status','Loss')->orderBy('id','desc')->get();
+        }
         //dd($partner_data);
         return view('admin.user', compact('partner_data'));
     }
