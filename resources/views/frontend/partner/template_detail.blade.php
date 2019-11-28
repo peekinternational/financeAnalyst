@@ -73,8 +73,8 @@
 																<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
 															</div> 
 															<div class="col-xs-4">
-																<button class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</button>
-																<button class="btn cta-button btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</button>
+																<a href="" title='{{$data->mobilenumber}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</a>
+																<a href="" title='{{$data->job_email}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</a>
 															</div>
 														</div>
 													</div>
@@ -199,9 +199,9 @@
 																<p>
 																	{{$data->quote}}
 																</p>
-																<div class="text-center">
+																<!--<div class="text-center">
 																	<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary btn-lg">Download as PDF</a>
-																</div>
+																</div>-->
 															</div>
 														</div>
 													</div>

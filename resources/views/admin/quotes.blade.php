@@ -90,6 +90,7 @@
                                       <th>Quote_Services</th>
                                       <th>Quote_price</th>
                                       <th>Status</th>
+                                      <th>Mark</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -108,6 +109,15 @@
                                         }
                                       ?></td>
                                       <td>{{$jobqoute->status}}</td>
+                                      <td>
+                                      @if($jobqoute->status == 'Loss' || $jobqoute->status == 'Won' )
+                                      
+                                        <div id="{{$jobqoute->id}}">
+                                         <input type="checkbox" class="form-control" id="check{{$jobqoute->id}}"  onclick="mark('{{$jobqoute->id}}')" <?php echo ($jobqoute->mark == '1') ? 'checked' : ''; ?>> 
+                                        </div>
+                                        
+                                      @endif
+                                      </td>
                                     </tr>
                                     @endforeach
                                   </tbody>
@@ -164,6 +174,35 @@
 @endsection
 @section('script')
   <script>
+  function mark(id){
+    var value='';
+    if($('#check'+id).prop('checked') == true){
+    //o something
+      value='1';
+    }
+    else{
+       value='0';
+    }
+	 $.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+  $.ajax({
+          type: "post",
+          url: "{{ url('dashboard/mark') }}",
+          data:{id:id,value:value},
+          success: function(data){
+            //$('#treeviews').html(data);
+            if(data ==1){
+            toastr.success("Status Update");
+		
+            }
+            console.log(data);
+          }
+
+    });
+}
     function visitFunction(id) {
         event.preventDefault();
         var visit_id=id;

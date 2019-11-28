@@ -36,7 +36,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="{{asset('frontend-assets/icons/apple-touch-icon-152x152.png')}}" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('frontend-assets/icons/apple-touch-icon-180x180.png')}}" />
     
-     
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />   
     <script src="{{asset('frontend-assets/js/external-9787175a94.js')}}"></script>
     @yield('style')
     <!-- Global site tag (gtag.js) - Google Ads: 810393520 -->
@@ -73,6 +73,7 @@
     <script src="{{asset('frontend-assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend-assets/js/vendor-match-height-32a288c259.js')}}"></script>
     <script src="{{asset('frontend-assets/js/tp.widget.bootstrap.min.js')}}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @yield('script')
     <script>
     $('.card.service-card').matchHeight();

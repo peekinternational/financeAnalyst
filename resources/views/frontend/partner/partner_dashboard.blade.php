@@ -204,6 +204,7 @@ $tJobs=0;
 																		$date=date('d-m-Y H:i:s', strtotime('+50 minutes',strtotime($job->quote_time)));
 																		$datetime2 = new DateTime($date);
 																		$interval = $datetime1->diff($datetime2);
+																		
 																		//dd($interval);
 																		?>
 																	@if($job->quote_status == 0)
@@ -213,15 +214,20 @@ $tJobs=0;
 																		</div>
 																	</div>
 																		
-																		@elseif($interval->m <1 && $interval->d <1 && $interval->h <1 && $interval->i<51)
+																		@elseif($interval->m <1 && $interval->d <1 && $interval->h < 1 && $interval->i < 51 &&  $interval->invert ==0)
 																			<div class="sc-jhAzac jqgdQA">
+																			@if(FA::checkalreadyquote($job->id) > 0)
+																				<span  class="sc-bRBYWo btn btn-info" style="cursor: pointer;">Already Quoted</sapn>
+																				@else
 																				<a  class="sc-bRBYWo eeChfy" href="{{url('partner/job_detail/'.$job->id)}}" style="cursor: pointer;">Create a proposal</a>
 																				<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
+																				<p>Job will close in {{$interval->format('%h : %i : %S ')}}</p>
 																				</div>
+																				@endif
 																			</div>
 																			@else
 																			<div class="sc-jhAzac jqgdQA">
-																				<a type="button" class="sc-bRBYWo eeChfy timeout-btn"  data-target="" style="cursor: pointer; background-color:blue;">Time out</a>
+																				<span class="sc-bRBYWo btn btn-danger"  style="cursor: pointer;">Time out</span>
 																				<div class="text-center" style="color: rgb(126, 126, 126); margin-top: 10px;">
 																				</div>
 																			</div>
@@ -271,6 +277,7 @@ $tJobs=0;
 																<th>Notes</th>
 																<th>Quote Date</th>
 																<th>Status</th>
+																<th>Mark</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -283,6 +290,17 @@ $tJobs=0;
 																<td>{{$quots->quote}}</td>
 																<td>{{$quots->created_at}}</td>
 																<td>{{$quots->status}}</td>
+																<td>
+																@if($quots->status == 'Loss' || $quots->status == 'Won' )
+																@if($quots->mark =='1')
+																<i class="fa fa-check"></i>
+																	@else
+																	<div id="{{$quots->id}}">
+                                                                      <input type="checkbox" class="form-control" onclick="mark('{{$quots->id}}')" value="1" <?php echo ($quots->mark == '1') ? 'checked' : ''; ?>> 
+																	</div>
+																	@endif
+																@endif
+																</td>
 															</tr>
 															@endforeach
 														</tbody>
@@ -1033,7 +1051,28 @@ $tJobs=0;
 	</div>
 @endsection
 @section('script')
+
 <script>
+function mark(id){
+	 $.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+  $.ajax({
+          type: "get",
+          url: "{{ url('partner/mark') }}/"+id,
+          success: function(data){
+            //$('#treeviews').html(data);
+            if(data ==1){
+            toastr.success("Status Update");
+			$('#'+id).html('<i class="fa fa-check"></i>');
+            }
+            console.log(data);
+          }
+
+    });
+}
 	$('.add_more').click(function(){
 	// alert("fjsdhfjsd");
 	//Check maximum number of input fields

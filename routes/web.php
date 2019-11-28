@@ -47,6 +47,7 @@ Route::group(['prefix' => 'partner'], function () {
 	
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
+	Route::get('/mark/{id}','Partner\PartnerController@mark');
 
 	});
 	
@@ -75,6 +76,8 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
 	Route::get('/upload_tamplate', 'Dashboard\JobManageController@showtemplate');
 	Route::get('/job_delete/{id}', 'Dashboard\JobManageController@destroy');
+	Route::post('/post_portal', 'Dashboard\JobManageController@post_portal');
+	Route::post('/mark', 'Dashboard\JobManageController@mark');
 
 	Route::get('/icons', function(){
 		return view('/admin.icons');

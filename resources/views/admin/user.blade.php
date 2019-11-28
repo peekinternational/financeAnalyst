@@ -295,7 +295,7 @@
                                         $val=$val + array_sum(@json_decode($qoutes->quote_price));
                                         ?>
                                       @endforeach
-                                     <?php echo number_format($val, 2); ?>
+                                     <?php echo '£ '.number_format($val, 2); ?>
                                       </td>
                       <td class="text-center"> 
                                     <?php $val1=0; ?>
@@ -304,7 +304,7 @@
                                         $val1=$val1 + array_sum(@json_decode($qoutes->quote_price));
                                         ?>
                                       @endforeach
-                                     <?php echo number_format($val1, 2); ?></td>
+                                     <?php echo '£ '.number_format($val1, 2); ?></td>
                       <td class="text-center">
                        <?php $val2=0; ?>
                                       @foreach($partner->peddingqoute as $qoutes)
@@ -312,7 +312,7 @@
                                         $val2=$val2 + array_sum(@json_decode($qoutes->quote_price));
                                         ?>
                                       @endforeach
-                                     <?php echo number_format($val2, 2); ?></td>
+                                     <?php echo '£ '.number_format($val2, 2); ?></td>
                       <td class="text-center"> 
                        <?php $val3=0; ?>
                                       @foreach($partner->lossqoute as $qoutes)
@@ -320,7 +320,7 @@
                                         $val3=$val3 + array_sum(@json_decode($qoutes->quote_price));
                                         ?>
                                       @endforeach
-                                     <?php echo number_format($val3, 2); ?>
+                                     <?php echo '£ '.number_format($val3, 2); ?>
                       </td>
                       <td class="text-center">
                         <i class="fa fa-edit text-primary"></i>

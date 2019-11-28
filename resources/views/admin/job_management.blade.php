@@ -77,7 +77,7 @@
                       <th class="text-right">Posted_date</th>
                       <th class="text-right">Client_contacted</th>
                       <th class="text-right">Client_template updated</th>
-                      <th class="text-right">Posted_on_partnel_portal</th>
+                      <th class="text-right">Posted_on_partner_portal</th>
                       <th class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -93,26 +93,28 @@
                         <td> {{$jobs->mobilenumber}}</td>
                         <td>{{$jobs->city}}</td>
                         <td>{{$jobs->created_at}}</td>
-                        <td class="text-right">
-                          <select class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                            <option>Other</option>
-                          </select>
+                        <td class="text-center">
+                           @if(FA::checktemplate($jobs->id)=="1")
+                            <span class="badge badge-primary" style="font-size: 13px;">Yes</span>
+                            @else
+                            <span class="badge badge-secondary" style="font-size: 13px;">No</span>
+                             @endif
                         </td>
-                        <td class="text-right">
-                          <select class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                            <option>Other</option>
-                          </select>
+                        <td class="text-center">
+                           @if(FA::checktemplate($jobs->id)=="1")
+                            <span class="badge badge-primary" style="font-size: 13px;">Yes</span>
+                            @else
+                            <span class="badge badge-secondary" style="font-size: 13px;">No</span>
+                             @endif
                         </td>
-                        <td class="text-right">
+
+                        <td class="text-right" data-id="{{$jobs->id}}">
+                        @if(FA::checktemplate($jobs->id)=="1")
                           <select class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                            <option>Other</option>
+                            <option value="Yes" <?php echo ($jobs->post_portal == 'Yes') ? 'selected' : ''; ?>>Yes</option>
+                            <option value="No" <?php echo ($jobs->post_portal == 'No') ? 'selected' : ''; ?>>No</option>
                           </select>
+                           @endif
                         </td>
                         <td class="text-right">
                           @if(FA::checktemplate($jobs->id)=="1")
@@ -153,5 +155,31 @@
       }
   </script>
 @endsection
+
 @section('script')
+<script>
+$('select').on('change', function() {
+  var value=this.value;
+  var id=$(this).parent().attr("data-id");
+   $.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+  $.ajax({
+          type: "POST",
+          url: "{{ url('dashboard/post_portal') }}",
+          data: {job_id:id,value:value},
+          success: function(data){
+            //$('#treeviews').html(data);
+            if(data ==1){
+            toastr.success("Status Update");
+            }
+            console.log(data);
+          }
+
+    });
+ 
+});
+</script>
 @endsection

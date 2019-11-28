@@ -178,10 +178,22 @@ public function template(Request $request, $id)
         return view('/admin.quotes',compact('allquote'));
     }
 
-    public function create()
+    public function post_portal(Request $request)
     {
-        //
+        $id=$request->input('job_id');
+        $value=$request->input('value');
+       // dd($request->all());
+        $allquote = DB::table('fa_jobpost')->where('id',$id)->update(['post_portal'=>$value]);
+        return $allquote;
     }
+  public function mark(Request $request)
+    {
+        $id=$request->input('id');
+        $value=$request->input('value');
+        
+         $quotedata= DB::table('fa_quote')->where('id',$id)->update(['mark'=>$value]);
+  return $quotedata;
+   }
 
     /**
      * Store a newly created resource in storage.

@@ -44,6 +44,14 @@ class FA {
          return $res;
     }
 
+    public function checkalreadyquote($id)
+    {
+        //dd($id);
+        $userId=Session::get('faUser')->p_id;
+       $res=DB::table('fa_quote')->where('job_id','=',$id)->where('p_id',$userId)->count();
+         return $res;
+    }
+
 
 }
 

@@ -66,12 +66,12 @@ class PartnerController extends Controller
 
          foreach($service as &$ser){
             
-            $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
+            $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('post_portal','Yes')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
          }
        }
 //dd($service);
          
-         $alljobs = DB::table('fa_jobpost')->where('status','1')->orderBy('id','desc')->get();
+         $alljobs = DB::table('fa_jobpost')->where('status','1')->where('post_portal','Yes')->orderBy('id','desc')->get();
 
          $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
@@ -553,6 +553,13 @@ public function export_pdf($id)
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+      public function mark($id)
+    {
+        $userId=Session::get('faUser')->p_id;
+         $quotedata= DB::table('fa_quote')->where('id',$id)->where('p_id',$userId)->update(['mark'=>'1']);
+  return $quotedata;
+   }
+
     public function store(Request $request)
     {
         //
