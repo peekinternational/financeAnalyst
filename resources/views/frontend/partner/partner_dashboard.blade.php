@@ -362,9 +362,9 @@ $tJobs=0;
 												<li role="presentation">
 													<a href="#segmentation" aria-controls="segmentation" role="tab" data-toggle="tab">Profile Badges</a>
 												</li>
-												<li role="presentation">
+												<!-- <li role="presentation">
 													<a href="#billing" aria-controls="cv" role="tab" data-toggle="tab">Billing</a>
-												</li>
+												</li> -->
 											</ul>
 
 											<!-- Tab panes -->

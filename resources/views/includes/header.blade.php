@@ -10,7 +10,7 @@
         <span><b>Conatct us:</b> 054-8465484</span> &nbsp; &nbsp;
         <span><b>Email:</b> finance@gmail.com</span>
       </div>  
-      <div class="col-md-6 text-right social-icons">
+      <!-- <div class="col-md-6 text-right social-icons">
         <ul>
           <li><a href=""><span style="background-color: #3b5999;"><i class="fa fa-facebook"></i></span></a></li>
           <li><a href=""><span style="background-color: #55acee;"><i class="fa fa-twitter"></i></span></a></li>
@@ -18,7 +18,7 @@
           <li><a href=""><span style="background-color: #e4405f;"><i class="fa fa-instagram"></i></span></a></li>
           <li><a href=""><span style="background-color: #0077B5;"><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>  
 </div>

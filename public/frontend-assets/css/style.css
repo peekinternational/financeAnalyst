@@ -917,7 +917,7 @@ table.datatable.responsive .table-mobile-cell {
 }
 .btn-shadowless{
     border-radius: 25px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .carousel-caption{
     top: 22%;
@@ -926,8 +926,11 @@ table.datatable.responsive .table-mobile-cell {
     padding : 90px 0 0;
 }
 .get-started-btn{
-    background-color: #e0c184;
-    color: #000;
+    background-color: #e91e63;
+    color: #fff;
+}
+.get-started-btn:hover{
+    background-color: #e91e63;
 }
 .service-txt{
     color: #e0c184;
@@ -1555,4 +1558,6 @@ table.datatable.responsive .table-mobile-cell {
     display: list-item;
     color: black;
 }
-
+#contact{
+    padding: 30px 0;
+}

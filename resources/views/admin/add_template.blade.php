@@ -221,6 +221,71 @@
 		            <h4 class="field-title">Services Needed</h4>
 		            <div class="row">
 		              <div class="col-md-12">
+		                <div class="form-group undefined">
+		                	<div class="sc-iujRgT hUHAcY">
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Accountant"  name="services[]"@if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Accountant
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Bookkeeping"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Bookkeeping' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Bookkeeping
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Tax"  name="services[]"@if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Tax
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Audit"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Audit' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Audit
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Payroll"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Payroll' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Payroll
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Incorporation"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Incorporation' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Incorporation
+		                		</div>
+		                		<div class="sc-jhAzac iGbrby">
+		                			<label class="sc-bAeIUo fuksr">
+		                				<input type="checkbox" class="sc-bMVAic kyrrfd" value="Secretarial service"  name="services[]" @if($service) @foreach($service as $data) {{$data == 'Secretarial service' ? 'checked="checked"' : '' }} @endforeach @endif>
+		                				<div class="sc-gqPbQI ilsJbL">
+		                					<div class="sc-hORach kMXQwc"></div>
+		                				</div>
+		                			</label>Secretarial service
+		                		</div>
+		                		
+		                	</div>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col-md-12">
 		                <div class="form-group">
 
 		                  <label>Company Registration</label>
@@ -273,7 +338,7 @@
 		              </div>
 		            </div>
 		
-		            <div class="row">
+		            <!-- <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Bookkeeping</label>
@@ -285,7 +350,7 @@
 		                  </select>
 		                </div>
 		              </div>
-		            </div>
+		            </div> -->
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
@@ -312,7 +377,7 @@
 		                </div>
 		              </div>
 		            </div>
-		            <div class="row">
+		            <!-- <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Payroll</label>
@@ -324,8 +389,8 @@
 		                  </select>
 		                </div>
 		              </div>
-		            </div>
-		            <div class="row">
+		            </div> -->
+		            <!-- <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Tax Advice</label>
@@ -337,7 +402,7 @@
 		                  </select>
 		                </div>
 		              </div>
-		            </div>
+		            </div> -->
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
@@ -351,7 +416,7 @@
 		                </div>
 		              </div>
 		            </div>
-		            <div class="row">
+		            <!-- <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Management Accounts</label>
@@ -363,8 +428,8 @@
 		                  </select>
 		                </div>
 		              </div>
-		            </div>
-		            <div class="row">
+		            </div> -->
+		            <!-- <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Audit</label>
@@ -376,7 +441,7 @@
 		                  </select>
 		                </div>
 		              </div>
-		            </div>
+		            </div> -->
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
