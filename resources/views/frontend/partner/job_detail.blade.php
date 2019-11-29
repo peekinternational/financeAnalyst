@@ -8,7 +8,7 @@
 		display: none;
 	}
 </style>
-
+<?php $service=json_decode($data->service_needed, true); ?>
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
@@ -115,14 +115,10 @@
 																			<label>Service</label>
 																			<select class="form-control" name="q_services[]">
 																				<option>Select Service</option>
-																				<option value="Accountant">Accountant</option>
-																				<option value="Bookkeeper">Bookkeeper</option>
-																				<option value="Tax">Tax</option>
-																				<option value="Audit">Audit</option>
-																				<option value="Payroll">Payroll</option>
-																				<option value="Incorporation">Incorporation</option>
-																				<option value="Secretarial service">Secretarial service</option>
-																				<option value="Mix your own service pack">Mix your own service pack</option>
+																				@if($service) @foreach($service as $data_need)
+																				<option value="{{$data_need}}">{{$data_need}}</option>
+																				@endforeach
+																				@endif
 																			</select>
 																		</div>
 																		<div class="col-xs-3">

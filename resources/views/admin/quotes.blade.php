@@ -131,29 +131,17 @@
                         </div>
                       </div></td>
                       <td>
-                        <select class="form-control">
-                          <option>Awaiting customer info</option>
-                          <option>Awaiting proposal </option>
-                          <option>Awaiting customer reply </option>
-                          <option>Invalid case </option>
-                          <option>Other </option>
-                        </select>
+                        {{$quote->status_from_admin}}
                       </td>
                       <td>
-                        <select class="form-control">
-                          <option>Match found</option>
-                          <option>Work in progress</option>
-                          <option>Case closed because customer irresponsive</option>
-                          <option>Case closed because not enough proposals</option>
-                          <option>Invalid case</option>
-                          <option>Other</option>
-                        </select>
+                        {{$quote->outcome}}
                       </td>
-                      <td> <input type="text" name="comments" class="form-control"></td>
-                      <td> Date time</td>
-                      <td> iddd</td>
+                      <td> {{$quote->admin_comment}}</td>
+                      <td> {{$quote->admin_update}}</td>
+                      <td> {{$quote->admin_id}}</td>
                       <td class="text-center">
-                        <i class="fa fa-edit text-primary"></i>
+                        
+                        <a href="{{url('dashboard/jobstatus_update/'.$quote->id)}}"  ><i class="fa fa-edit text-primary"></i></a>
                         <a href="javascript:void(0);" onclick="visitFunction({{$quote->id}})" ><i class="fa fa-eye text-success"></i></a>
                       </td>
                     </tr>

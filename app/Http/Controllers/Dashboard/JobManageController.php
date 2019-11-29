@@ -113,6 +113,7 @@ public function template(Request $request, $id)
             ]);
             
             $request->merge(['job_id' => $id]);
+            $request->merge(['service_needed' => @json_encode($request->input('service_needed'))]);
            // dd($data);
            $res= DB::table('fa_user_template')->where('job_id',$id)->first();
           // dd($request->all());
@@ -163,7 +164,7 @@ public function template(Request $request, $id)
 
     public function quotes()
     {
-       $allquote = DB::table('fa_jobpost')->select('fa_jobpost.id','fa_jobpost.services','fa_jobpost.visited','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->where('quote_status','1')->orderBy('fa_jobpost.id','desc')->groupBy('fa_jobpost.id')->paginate(15);
+       $allquote = DB::table('fa_jobpost')->select('fa_jobpost.id','fa_jobpost.services','fa_jobpost.visited','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type','fa_jobpost.status_from_admin','fa_jobpost.outcome','fa_jobpost.admin_comment','fa_jobpost.admin_update','fa_jobpost.admin_id')->where('quote_status','1')->orderBy('fa_jobpost.id','desc')->groupBy('fa_jobpost.id')->paginate(15);
        foreach($allquote as &$ser){
             
             $ser->qoutes = DB::table('fa_quote')->where('job_id','=',$ser->id)->orderBy('id','desc')->get();
@@ -193,6 +194,19 @@ public function template(Request $request, $id)
         
          $quotedata= DB::table('fa_quote')->where('id',$id)->update(['mark'=>$value]);
   return $quotedata;
+   }
+   public function jobstatus_update(Request $request,$id)
+    {
+        $admin_data=$request->session()->get('fa_admin')->name;
+        //dd($admin_data);
+        if ($request->isMethod('post')) {
+            $request->merge(['admin_id' => $admin_data]);
+            $request->merge(['admin_update' => date("Y-m-d h:i")]);
+           // dd($request->all());
+            $allquote = DB::table('fa_jobpost')->where('id',$id)->update($request->all());
+            return redirect('dashboard/quotes');
+    }
+        return view('/admin.job_update');
    }
 
     /**

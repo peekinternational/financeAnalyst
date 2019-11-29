@@ -78,6 +78,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::get('/job_delete/{id}', 'Dashboard\JobManageController@destroy');
 	Route::post('/post_portal', 'Dashboard\JobManageController@post_portal');
 	Route::post('/mark', 'Dashboard\JobManageController@mark');
+	Route::match(['get','post'],'/jobstatus_update/{id}', 'Dashboard\JobManageController@jobstatus_update');
 
 	Route::get('/icons', function(){
 		return view('/admin.icons');
