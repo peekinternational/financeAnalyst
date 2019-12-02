@@ -261,6 +261,9 @@
                 <p><i class="fa fa-check text-green"></i> All this is absolutely free for you!</p>
               </div>
             </div>
+            <div class="caption-img">
+              <img src="{{asset('/frontend-assets/images/how_it_work.png')}}" width="100%">
+            </div>
           </div>
         </div>
       </div>
@@ -478,17 +481,23 @@
         
         <div class="row">
           <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><!-- <span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span> -->
+              <img src="{{asset('frontend-assets/images/easy.png')}}" width="45px">
+            </div>
             <h4>Extraordinarily easy</h4>
             <p>Our match making process makes it spectacularly simple to find your perfect accountant, tax advisor or bookkeeper. And from finding a perfect match till onboarding and filing your tax returns, our expert advisors are here to help.</p>
           </div>
           <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><!-- <span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span> -->
+              <img src="{{asset('frontend-assets/images/truly.png')}}" width="45px">
+            </div>
             <h4>Truly transparent</h4>
             <p>Decades of finance experience. We hand pick our accountants from across the country and thoroughly verify them- including their practice certificates, indemnity insurance and professional memberships. So, you can trust that your match is genuinely an EXPERT</p>
           </div>
           <div class="col-md-4 text-center">
-            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
+            <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><!-- <span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span> -->
+              <img src="{{asset('frontend-assets/images/free.png')}}" width="45px">
+            </div>
             <h4>Fantastically free</h4>
             <p>Experlu won’t cost you a penny because we get paid by the Expert. Our Experts will save you around 15% off the average fee for similar services. What are you waiting for?</p>
           </div>
