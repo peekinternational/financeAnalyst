@@ -17,12 +17,15 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+        @if(Session::get('fa_admin')->role =='admin')
           <li class="active ">
             <a href="{{url('/dashboard')}}">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
+          @endif
+          @if(Session::get('fa_admin')->role =='admin' || Session::get('fa_admin')->role =='a')
           <li>
             <a href="#manageJobs"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
               <i class="nc-icon nc-bell-55"></i>
@@ -33,7 +36,10 @@
             </ul>
 
           </li>
+           @endif
           <li>
+         
+          @if(Session::get('fa_admin')->role =='admin' || Session::get('fa_admin')->role =='b')
             <a  data-toggle="collapse" href="#manageQuote"  role="button" aria-expanded="false" aria-controls="manageQuote">
               <i class="nc-icon nc-pin-3"></i>
               <p>Manage Quotes</p>
@@ -42,6 +48,8 @@
               <li><a href="{{url('dashboard/quotes')}}">New cases</a></li>
             </ul>
           </li>
+           @endif
+           @if(Session::get('fa_admin')->role =='admin')
           <li>
             <a class="" data-toggle="collapse" href="#customer" role="button" aria-expanded="false" aria-controls="customer">
               <i class="nc-icon nc-diamond"></i>
@@ -95,18 +103,23 @@
               <li><a href="{{url('')}}">Customer Messages</a></li>
             </ul>
           </li>
+          @endif
+           @if(Session::get('fa_admin')->role =='admin' || Session::get('fa_admin')->role =='c')
           <li>
             <a href="">
               <i class="nc-icon nc-single-02"></i>
               <p>Payments</p>
             </a>
           </li>
+          @endif
+           @if(Session::get('fa_admin')->role =='admin')
           <li>
             <a href="">
               <i class="nc-icon nc-single-02"></i>
               <p>Help Menu</p>
             </a>
           </li>
+          @endif
         </ul>
       </div>
     </div>

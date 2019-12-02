@@ -464,6 +464,14 @@ public function quote(Request $request)
 
     }
 
+public function quote_ajax(Request $request)
+    {
+        $data =$request->all();
+    
+       return view('frontend.partner.quote_ajax',compact('data'));
+       
+
+    }
 
 public function rejectquote(Request $request,$id,$id2)
     {

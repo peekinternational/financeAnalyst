@@ -56,8 +56,9 @@
 																		<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
 																	</div> 
 																	<div class="col-xs-12">
-																		<button class="btn cta-button btn-lg" style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
-																		<button class="btn cta-button btn-lg" style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
+																	
+																		<button class="btn cta-button btn-lg" title='{{$data->mobilenumber}}' style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
+																		<button class="btn cta-button btn-lg"  title='{{$data->job_email}}' style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
 																	</div>
 																</div>
 															</div>
@@ -108,9 +109,9 @@
 														<form action="{{ url('quotepost')}}" method="POST" role="form">
 															 {{ csrf_field() }}
 															<input type="hidden" name="job_id" id="" value="{{$data->job_id}}" >
-															<div class="form-group">
-																<div class="servies_list">
-																	<div class="row">
+															<div class="form-group" id="top_row">
+																<div class="servies_list" >
+																	<div class="row" >
 																		<div class="col-xs-5">
 																			<label>Service</label>
 																			<select class="form-control" name="q_services[]">
@@ -139,7 +140,9 @@
 																	</div>
 																</div>
 															</div>
-															<div class="form-group">
+															<div id="main_div" style="display:none">
+															<div id="qoute_ajax"></div>
+															<div class="form-group" >
 																<label for="">Enter Quote</label>
 																<textarea name="quote" id="" class="form-control" rows="6" required="required"></textarea>
 															</div>
@@ -148,10 +151,17 @@
 																<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
 																@endif
 
-
+                                                           <div class="form-group text-left" id="back">
+																<button type="button" class="btn btn-success">Back</button>
+															</div>
 															<div class="form-group text-right">
 																<button type="submit" class="btn btn-success">Submit</button>
 															</div>
+															</div>
+															<div class="form-group text-right" id="next">
+																<button type="button" class="btn btn-success">Next</button>
+															</div>
+															
 														</form>
 													</div>
 												</div>
@@ -171,25 +181,24 @@
 @endsection
 @section('script')
 <script>
+
+	var services= <?php echo json_encode($service); ?>;
+	console.log(services);
 	
 	var x = 0;
 	$('.add_more').click(function(){
-	// alert("fjsdhfjsd");
+		var ser='';
+	for(var i=0; i < services.length; i++){
+		console.log(services[i]);
+		ser+='<option value="'+services[i]+'">'+services[i]+'</option>';
+	}
 	//Check maximum number of input fields
 	
 		//Increment field counter
 																
 		var fieldHTML2 = '<div class="row" id="service'+x+'">'+
 		'<div class="col-xs-5"><label>Service</label>'+
-		'<select class="form-control" name="q_services[]">'+
-		'<option>Select Service</option><option value="Accountant">Accountant</option>'+
-		'<option value="Bookkeeper">Bookkeeper</option>'+
-		'<option value="Tax">Tax</option>'+
-		'<option value="Audit">Audit</option>'+
-		'<option value="Payroll">Payroll</option>'+
-		'<option value="Incorporation">Incorporation</option>'+
-		'<option value="Secretarial service">Secretarial service</option>>'+
-		'<option value="Mix your own service pack">Mix your own service pack</option>'+
+		'<select class="form-control" name="q_services[]"><option>Select Service</option>'+ser+
 		'</select>'+
 		'</div>'+
 		'<div class="col-xs-3"><label>Payment frequency</label>'+
@@ -216,6 +225,32 @@
 		
 		$('#service'+id).remove();
 	};
+
+	$('#next').click(function(){
+		var formdata=$('form').serialize();
+		console.log(formdata);
+		$.ajax({
+        url: "{{ url('quote_ajax')}}",
+        type: "post",
+        data: formdata ,
+        success: function (response) {
+			console.log(response);
+         $('#qoute_ajax').html(response);
+           // You will get response from your PHP page (what you echo or print)
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+        }
+    });
+			$('#main_div').show();
+			$('#top_row').hide();
+			$('#next').hide();
+		});
+	$('#back').click(function(){
+			$('#main_div').hide();
+			$('#top_row').show();
+			$('#next').show();
+   });
 
 </script>
 @endsection

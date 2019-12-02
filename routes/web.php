@@ -37,6 +37,7 @@ Route::post('/retrive-password','Partner\PartnerController@retrivePassword');
 Route::get('password-mail/{p_id}/{id}','Partner\PartnerController@reset_Password');
 Route::post('/reset-password','Partner\PartnerController@password_reset');
 Route::get('partner/template_detail/{id}','Partner\PartnerController@customerdetail');
+Route::match(['get','post'],'/quote_ajax','Partner\PartnerController@quote_ajax');
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
