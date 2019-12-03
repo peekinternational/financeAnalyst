@@ -65,12 +65,7 @@ class JobManageController extends Controller
         /* do login */
         //dd($password);
         $user = DB::table('fa_admin')->where('email','=',$email)->where('password','=',$password)->first();
-       //dd($user);
-		// if(count($user) == null){
-		// 	return 'invalid';
-		// }else{
-		// 	return $user;
-		// }
+       
         if(empty($user)){
             return 'invalid';
         }else{
@@ -206,7 +201,9 @@ public function template(Request $request, $id)
             $allquote = DB::table('fa_jobpost')->where('id',$id)->update($request->all());
             return redirect('dashboard/quotes');
     }
-        return view('/admin.job_update');
+    $update = DB::table('fa_jobpost')->select('outcome','status_from_admin','admin_comment')->where('id',$id)->first();
+//dd($update);
+        return view('/admin.job_update',compact('update'));
    }
 
     /**

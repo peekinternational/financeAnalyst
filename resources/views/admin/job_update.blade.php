@@ -60,28 +60,28 @@
                             			<div class="form-group">
                         						<label>Case Status</label>
                         							<select class="form-control" name="status_from_admin">
-                                                    <option>Awaiting customer info</option>
-                                                    <option>Awaiting proposal </option>
-                                                    <option>Awaiting customer reply </option>
-                                                    <option>Invalid case </option>
-                                                    <option>Other </option>
+                                                    <option <?php echo ($update->status_from_admin == 'Awaiting customer info') ? 'selected' : ''; ?>>Awaiting customer info</option>
+                                                    <option <?php echo ($update->status_from_admin == 'Awaiting proposal') ? 'selected' : ''; ?>>Awaiting proposal</option>
+                                                    <option <?php echo ($update->status_from_admin == 'Awaiting customer reply') ? 'selected' : ''; ?>>Awaiting customer reply</option>
+                                                    <option <?php echo ($update->status_from_admin == 'Invalid case') ? 'selected' : ''; ?>>Invalid case</option>
+                                                    <option <?php echo ($update->status_from_admin == 'Other') ? 'selected' : ''; ?>>Other</option>
                                                     
                         						</select>
                             			</div>
                             			<div class="form-group">
                         						<label>Outcome</label>
                         						<select class="form-control" name="outcome">
-                                                <option>Match found</option>
-                                                <option>Work in progress</option>
-                                                <option>Case closed because customer irresponsive</option>
-                                                <option>Case closed because not enough proposals</option>
-                                                <option>Invalid case</option>
-                                                <option>Other</option>
+                                                <option <?php echo ($update->outcome == 'Match found') ? 'selected' : ''; ?>>Match found</option>
+                                                <option <?php echo ($update->outcome == 'Work in progress') ? 'selected' : ''; ?>>Work in progress</option>
+                                                <option <?php echo ($update->outcome == 'Case closed because customer irresponsive') ? 'selected' : ''; ?>>Case closed because customer irresponsive</option>
+                                                <option <?php echo ($update->outcome == 'Case closed because not enough proposals') ? 'selected' : ''; ?>>Case closed because not enough proposals</option>
+                                                <option <?php echo ($update->outcome == 'Invalid case') ? 'selected' : ''; ?>>Invalid case</option>
+                                                <option <?php echo ($update->outcome == 'Other') ? 'selected' : ''; ?>>Other</option>
                                                 </select>
                             			</div>
                                         <div class="form-group">
                                         <label>Comment</label>
-                            				  <textarea class="form-control" name="admin_comment" rows="5" id="comment"></textarea>
+                            				  <textarea class="form-control" name="admin_comment" rows="5" id="comment">{{$update->admin_comment}}</textarea>
                             			</div>
                             			<div class="form-group">
                             				<button type="submit" class="btn btn-success">Update </button>
