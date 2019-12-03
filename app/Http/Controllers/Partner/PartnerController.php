@@ -372,7 +372,7 @@ public function doLogin($email,$password){
          //Session::flush();
             $user=$request->session()->get('faUser');
 
-            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"offline"]);
+            DB::table('fa_partner')->where('p_id',$user->p_id)->update(['status'=>"Offline"]);
           Session::forget('faUser');
          return redirect('partner_login');
         }
