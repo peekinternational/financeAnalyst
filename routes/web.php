@@ -24,6 +24,9 @@ Route::get('/partner',function(){
 Route::get('/services', function(){
 	return view('frontend/services');
 });
+Route::get('/blog','frontend\BlogController@index');
+Route::get('blog/show/{id}', 'frontend\BlogController@show');
+
 Route::match(['get','post'],'/partner_login', 'Partner\PartnerController@accountLogin');
 Route::match(['get','post'],'/partner_register', 'Partner\PartnerController@accountRegister');
 Route::match(['get','post'],'/logout', 'Partner\PartnerController@logout');
@@ -41,17 +44,18 @@ Route::match(['get','post'],'/quote_ajax','Partner\PartnerController@quote_ajax'
 Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
+	Route::match(['get','post'],'/get_review','Partner\PartnerController@get_review');
 	Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
 	Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
 	Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
 	Route::match(['get','post'],'/cartification','Partner\PartnerController@carupload');
-	
+
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
 
 	});
-	
+
 });
 
 //////////////////////// Partner close /////////////////////////////////
@@ -59,6 +63,11 @@ Route::post('quotes/visit','Dashboard\JobManageController@visit');
 //////////////////////// Customer /////////////////////////////////
 Route::group(['prefix' => 'customer'], function () {
 Route::match(['get','post'],'/jobpost','Customer\CustomerController@jobpost');
+Route::get('/review','Customer\CustomerController@review');
+
+});
+Route::group(['prefix' => 'review'], function () {
+Route::post('/addQuoteReview','frontend\ReviewController@add_quote_review');
 
 });
 Route::get('dashboard/user_management','Customer\CustomerController@user_management');
@@ -74,6 +83,11 @@ Route::group(['prefix' => 'dashboard'], function () {
 
 	Route::match(['get','post'],'/logout', 'Dashboard\JobManageController@logout');
 	Route::get('/job_management', 'Dashboard\JobManageController@index');
+	Route::get('/blogs', 'Dashboard\JobManageController@blogs');
+	Route::get('/blog/create', 'frontend\BlogController@create');
+	Route::get('/blog/edit/{id}', 'frontend\BlogController@edit');
+	Route::get('/blog/delete/{id}', 'frontend\BlogController@destroy');
+	Route::post('/blog/store', 'frontend\BlogController@store');
 	Route::match(['get','post'],'/template/{id}', 'Dashboard\JobManageController@template');
 	Route::get('/upload_tamplate', 'Dashboard\JobManageController@showtemplate');
 	Route::get('/job_delete/{id}', 'Dashboard\JobManageController@destroy');

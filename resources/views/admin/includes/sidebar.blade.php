@@ -38,7 +38,7 @@
           </li>
            @endif
           <li>
-         
+
           @if(Session::get('fa_admin')->role =='admin' || Session::get('fa_admin')->role =='b')
             <a  data-toggle="collapse" href="#manageQuote"  role="button" aria-expanded="false" aria-controls="manageQuote">
               <i class="nc-icon nc-pin-3"></i>
@@ -59,6 +59,15 @@
               <li><a href="">Active</a></li>
               <li><a href="">Archieved</a></li>
               <li><a href="">Completed</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="customer">
+              <i class="nc-icon nc-diamond"></i>
+              <p>Blogs</p>
+            </a>
+            <ul class="collapse" id="blog">
+              <li><a href="{{url('/dashboard/blogs')}}">Blogs</a></li>
             </ul>
           </li>
           <li>

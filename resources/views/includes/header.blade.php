@@ -1,4 +1,4 @@
-<?php 
+<?php
   $route = Request::route()->uri();
 
  ?>
@@ -9,7 +9,7 @@
       <div class="col-md-6 contact-text">
         <span><b>Conatct us:</b> 054-8465484</span> &nbsp; &nbsp;
         <span><b>Email:</b> finance@gmail.com</span>
-      </div>  
+      </div>
       <!-- <div class="col-md-6 text-right social-icons">
         <ul>
           <li><a href=""><span style="background-color: #3b5999;"><i class="fa fa-facebook"></i></span></a></li>
@@ -20,7 +20,7 @@
         </ul>
       </div> -->
     </div>
-  </div>  
+  </div>
 </div>
 
 <nav class="navbar navbar-ageras  navbar-transparent  ">
@@ -49,7 +49,7 @@
           </a>
         </li>
         <li class="dropdown">
-          <a href=""  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
+          <a href="{{url('/blog')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Blogs
           </a>
         </li>
@@ -111,7 +111,7 @@
           </a>
         </li>
         @endif
-        
+
       </ul>
       </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
