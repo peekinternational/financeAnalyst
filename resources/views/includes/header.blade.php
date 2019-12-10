@@ -128,7 +128,7 @@
           <i data-icon="mdi-menu" class="icon-bar"></i>
         </button>
         <!-- <a class="navbar-brand" href="index.html" ></a> -->
-        Logo
+        <a class="navbar-brand" href="{{url('/')}}" ></a>
       </div>
       <div class="collapse navbar-collapse"  id="ageras-navbar">
         <ul class="nav navbar-nav navbar-right">

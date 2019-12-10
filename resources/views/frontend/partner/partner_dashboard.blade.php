@@ -303,7 +303,9 @@ foreach($jobs as $item){
 																@endif
 															</td>
 															<td>
+															@if($quots->status == 'Loss' || $quots->status == 'Won' )
 																<a href="javascript:void(0);" onclick="sendEmail('{{$quots->id}}','{{$quots->job_id}}','{{$quots->p_id}}','{{$quots->job_email}}');" class="btn btn-xs btn-primary">Get Review</a>
+															@endif
 															</td>
 														</tr>
 														@endforeach
