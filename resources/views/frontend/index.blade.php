@@ -262,7 +262,7 @@
               </div>
             </div>
             <div class="caption-img">
-              <img src="{{asset('/frontend-assets/images/how_it_work.png')}}" width="100%">
+           <!--    <img src="{{asset('/frontend-assets/images/how_it_work.png')}}" width="100%"> -->
             </div>
           </div>
         </div>

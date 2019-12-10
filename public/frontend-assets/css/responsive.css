@@ -16,7 +16,7 @@
 		font-size: 14px;
 	}
 	.navbar.navbar-ageras.navbar-scroll, .navbar.navbar-ageras{
-		background: #072f44;
+		
 	}
 	#carousel-id{
 		height: auto !important;
@@ -27,13 +27,13 @@
 	}
 	.navbar.navbar-ageras .navbar-toggle{
 		background-color: transparent;
-		border-color: #fff;
+		border-color: #072f44;
 	}
 	.navbar-toggle .icon-bar{
 		width: 25px;
 		height: 3px;
 		margin: 0 auto;
-		background-color: white;
+		background-color: #072f44;
 	}
 	.navbar-nav{
 		margin: 0 -15px;
