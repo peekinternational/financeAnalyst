@@ -23,12 +23,12 @@ class PartnerController extends Controller
              if(!$request->session()->has('faUser')){
 			return redirect('/');
 		}
-        
+
         $userId=$request->session()->get('faUser')->p_id;
-      
+
      $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->first();
             if($request->isMethod('post')){
-           
+
             $data_array=array(
                 'introduce_urself'=>$request->input('introduce_urself'),
                 'availability'=>$request->input('availability'),
@@ -48,7 +48,7 @@ class PartnerController extends Controller
                 'interview'=>$request->input('interview'),
                 'personal_quets'=>$request->input('personal_quets'),
             );
-            
+
           $update= DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->update($data_array);
                 $request->session()->flash('message','Profile save successfully');
                 return redirect()->back();
@@ -65,19 +65,19 @@ class PartnerController extends Controller
 
 
          foreach($service as &$ser){
-            
+
             $jobs[] = DB::table('fa_jobpost')->where('status','1')->where('post_portal','Yes')->where('services','=',$ser)->orderBy('id','desc')->get()->toArray();
          }
        }
 //dd($service);
-         
+
          $alljobs = DB::table('fa_jobpost')->where('status','1')->where('post_portal','Yes')->orderBy('id','desc')->get();
 
-         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
+         $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_email','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          //$quotes=DB::table('fa_quote')->get();
-        //dd($alljobs);
-      
+        // dd($rquote);
+
          foreach($alljobs as &$res)
          {
              $res->quot=DB::table('fa_quote')->where('job_id','=',$res->id)->count();
@@ -171,7 +171,7 @@ public function accountLogin(Request $request){
             ]);
            $email = $request->input('email');
             $password = md5(trim($request->input('password')));
-            
+
 
             // /dd($password);
 
@@ -202,7 +202,7 @@ public function accountLogin(Request $request){
 					return redirect('partner/partner_dashboard');
 				}
 			}
- 
+
 
 		}
 
@@ -291,7 +291,7 @@ public function doLogin($email,$password){
 
         if($request->isMethod('post')){
           // dd($request->all());
-         
+
 			$this->validate($request,[
 				'email' => 'required|email|unique:fa_partner,email',
 				'name' => 'required|min:2|max:32',
@@ -313,7 +313,7 @@ public function doLogin($email,$password){
             $input['phoneno'] = trim($request->input('phoneno'));
             $input['user_type'] = 'partner';
             $input['password'] = md5(trim($request->input('password')));
-        
+
            $userId = DB::table('fa_partner')->insertGetId($input);
             setcookie('cc_data', $userId, time() + (86400 * 30), "/");
             $fNotice = 'Please check your mobile for verification code';
@@ -382,9 +382,9 @@ public function doLogin($email,$password){
              $userinfo=$request->session()->get('faUser')->p_id;
              if($request->file('cv') != ''){
                 $cv = $request->file('cv');
-              
+
                $upload = $request->file('cv')->store('cv');
-             
+
 
              }
              $type = $request->type;
@@ -405,9 +405,9 @@ public function doLogin($email,$password){
              $userinfo=$request->session()->get('faUser')->p_id;
              if($request->file('cer') != ''){
                 $cer = $request->file('cer');
-              
+
                $upload = $request->file('cer')->store('cv');
-             
+
 
              }
              $type = $request->input('type');
@@ -467,15 +467,15 @@ public function quote(Request $request)
 public function quote_ajax(Request $request)
     {
         $data =$request->all();
-    
+
        return view('frontend.partner.quote_ajax',compact('data'));
-       
+
 
     }
 
 public function rejectquote(Request $request,$id,$id2)
     {
-       
+
            //$job_id=$request->input('job_id');
           $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
         //dd($quotedata);
@@ -547,7 +547,7 @@ public function export_pdf($id)
         ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
        // dd($data);
     $pdf = PDF::loadView('casedetail',compact('data'));
-    
+
     return $pdf->download('CaseDetail.pdf');
   }
     public function create()
@@ -568,32 +568,39 @@ public function export_pdf($id)
   return $quotedata;
    }
 
-    public function store(Request $request)
-    {
-        //
-    }
+   public function get_review(Request $request)
+   {
+       // dd($request->all());
+       $q_id = $request->input('q_id');
+       $j_id = $request->input('j_id');
+       $p_id=$request->session()->get('faUser')->p_id;
+       // $p_id = $request->input('p_id');
+       $email = $request->input('email');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+       $job_email=$request->job_email;
+       $quote= DB::table('fa_quote')
+               ->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')
+               ->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')
+               ->where('fa_quote.id',$q_id)->first();
+               $input['q_services']=$quote->q_services;
+                $input['payment_frquency']=$quote->payment_frquency;
+                 $input['quote_price']=$quote->quote_price;
+       // dd($quote);
+           $toemail = $email;
+           Mail::send('mail.sendmailforreview',['p_id'=>$p_id,'q_id'=>$q_id,'j_id'=>$j_id,'customer_name' =>$quote->customer_name,'quote'=>$quote->quote,'partner_name'=>$quote->name,'services'=> $input['q_services'],'payment_frquency'=> $input['payment_frquency'],'quote_price' =>$input['quote_price'] ],
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+         function ($message) use ($toemail)
+         {
+
+           $message->subject('Experlu.com - Welcome To Experlu');
+           $message->from('searchbysearchs@gmail.com', 'Experlu');
+           $message->to($toemail);
+         });
+           return view('frontend.thanks');
+   }
+
+
+
 
     /**
      * Update the specified resource in storage.
