@@ -2,7 +2,7 @@
   $route = Request::route()->uri();
 
  ?>
-@if($route != 'partner/partner_dashboard' && $route != 'partner')
+@if(!Session::has('faUser'))
 <div class="top-header">
   <div class="container">
     <div class="row">
