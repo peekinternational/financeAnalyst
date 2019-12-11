@@ -8,7 +8,7 @@ class FA {
 
         public function check(Request $request){
 
-           //$userinfo=$request->session()->get('faUser')->p_id; 
+           //$userinfo=$request->session()->get('faUser')->p_id;
            // $data=DB::table('fa_quote')->where('job_id',$id)->where('p_id',$userinfo)->first();
             return "hek";
         }
@@ -37,7 +37,7 @@ class FA {
         }
     }
 
-	
+
 	public function checkquote($id)
     {
        $res=DB::table('fa_quote')->where('job_id','=',$id)->count();
@@ -50,6 +50,22 @@ class FA {
         $userId=Session::get('faUser')->p_id;
        $res=DB::table('fa_quote')->where('job_id','=',$id)->where('p_id',$userId)->count();
          return $res;
+    }
+
+    public function countQuoteReviews($quote_id, $job_id)
+  	{
+  		$count =  DB::table('fa_quotes_review')
+              ->select(DB::raw('avg(overall_rating) AS `starsAvg`, count(customer_name) AS `usersCount`'))
+              ->where('quote_id','=', $quote_id)
+              ->where('job_id','=', $job_id)
+              ->get()->toArray();
+          return $count;
+  	}
+
+    public function getAuthorName($id){
+      $name = DB::table('fa_admin')->where('id','=',$id)->first()->name;
+      // dd($subCategories);
+      return $name;
     }
 
 

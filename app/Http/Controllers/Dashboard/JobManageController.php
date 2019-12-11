@@ -19,6 +19,12 @@ class JobManageController extends Controller
        $alljobs = DB::table('fa_jobpost')->orderBy('id','desc')->get();
        return view('/admin.job_management',compact('alljobs'));
     }
+    public function blogs()
+    {
+       $alljobs = DB::table('fa_jobpost')->orderBy('id','desc')->get();
+       $allblogs = DB::table('fa_blogs')->orderBy('id','desc')->get();
+       return view('/admin.blogs',compact('alljobs','allblogs'));
+    }
 
      public function admin_login(Request $request)
     {
@@ -26,15 +32,15 @@ class JobManageController extends Controller
             return redirect('/dashboard');
         }
 
-        
+
 		if($request->isMethod('post')){
 //dd($request->all());
 //            $user_type = $request->input('user_type');
 
-       
+
            $email = $request->input('email');
             $password = md5(trim($request->input('password')));
-            
+
 
             // /dd($password);
 
@@ -55,7 +61,7 @@ class JobManageController extends Controller
 					return redirect('dashboard');
 
 			}
- 
+
 
 		}
         return view('/admin.login-page');
@@ -65,7 +71,7 @@ class JobManageController extends Controller
         /* do login */
         //dd($password);
         $user = DB::table('fa_admin')->where('email','=',$email)->where('password','=',$password)->first();
-       
+
         if(empty($user)){
             return 'invalid';
         }else{
@@ -106,7 +112,7 @@ public function template(Request $request, $id)
                 'mbl_number.digits_between' => 'mobile Number must be contain 10,12 digits',
                 'company_name' => 'Enter company name',
             ]);
-            
+
             $request->merge(['job_id' => $id]);
             $request->merge(['service_needed' => @json_encode($request->input('service_needed'))]);
            // dd($data);
@@ -138,10 +144,10 @@ public function template(Request $request, $id)
         $id=$request->all();
 
         $allquote1=DB::table('fa_jobpost')->where('id',$id['visit_id'])->update(['visited'=>'visited']);
-        
+
 		$allquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->orderBy('fa_quote.id','desc')->paginate(15);
        foreach($allquote as &$ser){
-            
+
             $ser->partner = DB::table('fa_partner')->where('p_id','=',$ser->p_id)->first();
          }
 
@@ -161,14 +167,14 @@ public function template(Request $request, $id)
     {
        $allquote = DB::table('fa_jobpost')->select('fa_jobpost.id','fa_jobpost.services','fa_jobpost.visited','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.customer_name','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_type','fa_jobpost.status_from_admin','fa_jobpost.outcome','fa_jobpost.admin_comment','fa_jobpost.admin_update','fa_jobpost.admin_id')->where('quote_status','1')->orderBy('fa_jobpost.id','desc')->groupBy('fa_jobpost.id')->paginate(15);
        foreach($allquote as &$ser){
-            
+
             $ser->qoutes = DB::table('fa_quote')->where('job_id','=',$ser->id)->orderBy('id','desc')->get();
-       
+
 	   foreach($ser->qoutes  as &$qoute){
-            
+
             $qoute->partner = DB::table('fa_partner')->where('p_id','=',$qoute->p_id)->first();
          }
-		 
+
          }
        // dd( $allquote);
         return view('/admin.quotes',compact('allquote'));
@@ -186,7 +192,7 @@ public function template(Request $request, $id)
     {
         $id=$request->input('id');
         $value=$request->input('value');
-        
+
          $quotedata= DB::table('fa_quote')->where('id',$id)->update(['mark'=>$value]);
   return $quotedata;
    }

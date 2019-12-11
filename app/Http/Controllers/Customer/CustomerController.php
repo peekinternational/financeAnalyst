@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Mail;
 
-class CustomerController extends Controller
+class customerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class CustomerController extends Controller
 
     public function jobpost(Request $request)
     {
-
+        
         $this->validate($request, [
             'job_title' => 'required',
             'job_type' => 'required',
@@ -46,38 +46,120 @@ class CustomerController extends Controller
             'mobilenumber.required'=>'Enter mobile number',
             'mobilenumber.digits_between' => 'Phone Number must be contain 10,12 digits',
         ]);
-        $job_email=$request->job_email;
-        $job= DB::table('fa_jobpost')->where('job_email',$job_email)->get();
-        $total_job=count($job);
-        if($total_job < 4) {
 
-            $toemail = $request->input('job_email');
-            Mail::send('mail.sendmail', ['u_name' => $request->input('customer_name')],
-                function ($message) use ($toemail) {
+        //dd($request->all());
+        $toemail=$request->input('job_email');
+        Mail::send('mail.sendmail',['u_name' =>$request->input('customer_name')],
+      function ($message) use ($toemail)
+      {
 
-                    $message->subject('Experlu.com - Welcome To Experlu');
-                    $message->from('searchbysearchs@gmail.com', 'Experlu');
-                    $message->to($toemail);
-                });
-            DB::table('fa_jobpost')->insert($request->all());
-            return view('frontend.thanks');
-        }
-        else{
-            $request->session()->flash('message','You already post 3 jobs');
-            return back()->withInput();
-        }
+        $message->subject('Experlu.com - Welcome To Experlu');
+        $message->from('searchbysearchs@gmail.com', 'Experlu');
+        $message->to($toemail);
+      });
+        DB::table('fa_jobpost')->insert($request->all());
+        return view('frontend.thanks');
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function review(Request $request)
     {
-        //
+      // dd($request->all());
+      $q_id = $request->input('q_id');
+      $p_id = $request->input('p_id');
+      $j_id = $request->input('j_id');
+      $customer_name = $request->input('customer_name');
+      // $userinfo   = session()->get('bkyUser');
+      $quote= DB::table('fa_quote')
+              ->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')
+              ->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')
+              ->where('fa_quote.id',$q_id)->first();
+
+      $rating_avg = array();
+
+      $reviews = DB::table('fa_quotes_review')
+      ->where('job_id','=',$j_id)
+      ->where('quote_id','=',$q_id)
+      ->orderBy('review_id','desc')
+      ->get()->toArray();
+
+      $star1 = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->where(function ($query) {
+              $query->where('overall_rating', '=', 0.5)
+                ->orWhere('overall_rating', '=', 1);
+          })
+          ->count('overall_rating');
+
+      $star2 = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->where(function ($query) {
+              $query->where('overall_rating', '=', 1.5)
+                ->orWhere('overall_rating', '=', 2);
+          })
+          ->count('overall_rating');
+      $star3 = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->where(function ($query) {
+              $query->where('overall_rating', '=', 2.5)
+                ->orWhere('overall_rating', '=', 3);
+          })
+          ->count('overall_rating');
+      $star4 = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->where(function ($query) {
+              $query->where('overall_rating', '=', 3.5)
+                ->orWhere('overall_rating', '=', 4);
+          })
+          ->count('overall_rating');
+      $star5 = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->where(function ($query) {
+              $query->where('overall_rating', '=', 4.5)
+                ->orWhere('overall_rating', '=', 5);
+          })
+          ->count('overall_rating');
+
+
+      $tot_stars = $star1 + $star2 + $star3 + $star4 + $star5;
+
+      if($tot_stars == 0){
+          $rating_avg = array('0','0','0','0','0');
+      } else{
+
+          for ($i=1;$i<=5;++$i) {
+
+            $var     = "star$i";
+            $count   = $$var;
+            $percent = $count * 100 / $tot_stars;
+            $avg     = number_format($percent,2)+0;
+
+            array_push($rating_avg, $avg);
+
+          }
+
+      }
+
+      if(session()->has('bkyUser')){
+
+        $user_exist = DB::table('fa_quotes_review')
+          ->where('job_id','=',$j_id)
+          ->where('quote_id','=',$q_id)
+          ->count('job_id');
+
+      } else {
+        $user_exist = 0;
+      }
+      // dd($reviews);
+      return view('frontend.review',compact('reviews','rating_avg','user_exist','user_type','q_id','j_id','p_id','quote','customer_name'));
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
