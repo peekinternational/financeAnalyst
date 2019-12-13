@@ -9,6 +9,7 @@
 	}
 </style>
 <?php $service=json_decode($data->service_needed, true); ?>
+<?php $service_required=json_decode($data->service_required, true);  ?>
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
@@ -36,7 +37,7 @@
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel">
-						
+
 						<div class="col-md-12">
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane active" id="case_detail">
@@ -51,38 +52,29 @@
 																<div class="row">
 																	<div class="col-xs-12">
 																		<p>Case Status:  {{$data->status}}</p>
-																		<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p> 
-																		<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p> 
+																		<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p>
+																		<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p>
 																		<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
-																	</div> 
+																	</div>
 																	<div class="col-xs-12">
-																	
+
 																		<button class="btn cta-button btn-lg" title='{{$data->mobilenumber}}' style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
 																		<button class="btn cta-button btn-lg"  title='{{$data->job_email}}' style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
 																	</div>
 																</div>
 															</div>
 															<div class="col-md-6">
-																	<h4>Services needed</h4>
-																<div class="">
-																	<div class="row">
-																		<div class="col-md-6">Annual accounts</div>
-																		<div class="col-md-6">{{$data->annual_accounts}}</div>
+																<h4>Services needed</h4>
+																<div class="row">
+																	@if($service_required)
+																	@foreach($service_required as $data_need)
+																	<div class="col-md-12">
+																		{{$data_need}}
 																	</div>
-																	<div class="row">
-																		<div class="col-md-6">Corporation tax</div>
-																		<div class="col-md-6">{{$data->tax_return}}</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-6">Confirmation statement</div>
-																		<div class="col-md-6">{{$data->confirmation_statement}}</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-6">Self Assessment tax return</div>
-																		<div class="col-md-6">{{$data->self_tax_return}}</div>
-																	</div>
+																	@endforeach
+																	@endif
 																</div>
-															</div>
+														</div>
 														</div>
 													</div>
 												</div>
@@ -116,12 +108,22 @@
 																			<label>Service</label>
 																			<select class="form-control" name="q_services[]">
 																				<option>Select Service</option>
-																				@if($service) @foreach($service as $data_need)
+																				@if($service_required) @foreach($service_required as $data_need)
 																				<option value="{{$data_need}}">{{$data_need}}</option>
 																				@endforeach
 																				@endif
 																			</select>
 																		</div>
+																		<!-- <div class="col-xs-5">
+																			<label>Service</label>
+																			<select class="form-control" name="q_services[]">
+																				<option>Select Service</option>
+																				@if($service) @foreach($service as $data_need)
+																				<option value="{{$data_need}}">{{$data_need}}</option>
+																				@endforeach
+																				@endif
+																			</select>
+																		</div> -->
 																		<div class="col-xs-3">
 																			<label>Payment frequency</label>
 																			<select class="form-control" name="payment_frquency[]">
@@ -136,7 +138,7 @@
 																		</div>
 																		<div class="col-xs-1" style="line-height: 5;">
 																			<a href="javascript:void(0)" class="add_more"><i class="fa fa-plus"></i></a>
-																		</div>	
+																		</div>
 																	</div>
 																</div>
 															</div>
@@ -161,7 +163,7 @@
 															<div class="form-group text-right" id="next">
 																<button type="button" class="btn btn-success">Next</button>
 															</div>
-															
+
 														</form>
 													</div>
 												</div>
@@ -183,19 +185,20 @@
 <script>
 
 	var services= <?php echo json_encode($service); ?>;
-	console.log(services);
-	
+	var services_required= <?php echo json_encode($service_required); ?>;
+	console.log(services_required);
+
 	var x = 0;
 	$('.add_more').click(function(){
 		var ser='';
-	for(var i=0; i < services.length; i++){
-		console.log(services[i]);
-		ser+='<option value="'+services[i]+'">'+services[i]+'</option>';
+	for(var i=0; i < services_required.length; i++){
+		console.log(services_required[i]);
+		ser+='<option value="'+services_required[i]+'">'+services_required[i]+'</option>';
 	}
 	//Check maximum number of input fields
-	
+
 		//Increment field counter
-																
+
 		var fieldHTML2 = '<div class="row" id="service'+x+'">'+
 		'<div class="col-xs-5"><label>Service</label>'+
 		'<select class="form-control" name="q_services[]"><option>Select Service</option>'+ser+
@@ -222,7 +225,7 @@
 		x++;
 	});
 	function deleteService(id){
-		
+
 		$('#service'+id).remove();
 	};
 

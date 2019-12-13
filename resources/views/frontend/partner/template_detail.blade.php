@@ -8,6 +8,7 @@
 		display: none;
 	}
 </style>
+<?php $service_required=json_decode($data->q_services, true);  ?>
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
@@ -43,8 +44,8 @@
 								<li>
 									<div class="text-center company-info">
 										<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
-										<p>Company Name: {{$data->company_name}}</p> 
-										<p>Location: {{$data->location}}</p> 
+										<p>Company Name: {{$data->company_name}}</p>
+										<p>Location: {{$data->location}}</p>
 									</div>
 								</li>
 								<li role="presentation" class="active">
@@ -68,10 +69,10 @@
 														<div class="row">
 															<div class="col-xs-8">
 																<p>Case Status:  {{$data->status}}</p>
-																<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p> 
-																<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p> 
+																<p><i class="fa fa-user"></i>  Client Name: {{$data->customer_name}}</p>
+																<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p>
 																<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
-															</div> 
+															</div>
 															<div class="col-xs-4">
 																<a href="" title='{{$data->mobilenumber}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</a>
 																<a href="" title='{{$data->job_email}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</a>
@@ -97,7 +98,7 @@
 															<a href="#description" aria-controls="tab" role="tab" data-toggle="tab">Case description</a>
 														</li>
 													</ul>
-												
+
 													<!-- Tab panes -->
 													<div class="tab-content">
 														<div role="tabpanel" class="tab-pane active" id="highlights">
@@ -106,8 +107,44 @@
 																	<div class="about-section-content">
 																		<p>Newly Started Consulting Limited - Local - Fair Price - Annual Accounts #201396</p>
 																		<div class="row">
-																			<div class="col-md-6">Annual amount of annexes</div>
-																			<div class="col-md-6">50</div>
+																			<div class="col-md-6">Legal Structure</div>
+																			<div class="col-md-6">{{$data->legal_structure}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Currency</div>
+																			<div class="col-md-6">{{$data->currency}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Turnover</div>
+																			<div class="col-md-6">{{$data->turnover}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Year End </div>
+																			<div class="col-md-6">{{$data->year_end}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Deadline </div>
+																			<div class="col-md-6">{{$data->deadline}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Number of Locations</div>
+																			<div class="col-md-6">{{$data->nmber_location}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Current Bookkeeping Status</div>
+																			<div class="col-md-6">{{$data->bookkeeping_status}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Software Use</div>
+																			<div class="col-md-6">{{$data->software_use}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Budget</div>
+																			<div class="col-md-6">{{$data->budget}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Other</div>
+																			<div class="col-md-6">{{$data->other}}</div>
 																		</div>
 																	</div>
 																</div>
@@ -119,20 +156,13 @@
 																	<div class="about-section-content">
 																		<h4>Services needed</h4>
 																		<div class="row">
-																			<div class="col-md-6">Annual accounts</div>
-																			<div class="col-md-6">{{$data->annual_accounts}}</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-6">Corporation tax</div>
-																			<div class="col-md-6">{{$data->tax_return}}</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-6">Confirmation statement</div>
-																			<div class="col-md-6">{{$data->confirmation_statement}}</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-6">Self Assessment tax return</div>
-																			<div class="col-md-6">{{$data->self_tax_return}}</div>
+																			@if($service_required)
+																			@foreach($service_required as $data_need)
+																			<div class="col-md-12">
+																				{{$data_need}}
+																			</div>
+																			@endforeach
+																			@endif
 																		</div>
 																	</div>
 																</div>
@@ -144,31 +174,47 @@
 																	<div class="about-section-content">
 																		<h4>About the Client</h4>
 																		<div class="row">
-																			<div class="col-md-6">Vision for future</div>
-																			<div class="col-md-6">Stable</div>
+																			<div class="col-md-6">Industry</div>
+																			<div class="col-md-6">{{$data->industry}}</div>
 																		</div>
 																		<div class="row">
-																			<div class="col-md-6">Experience as business owner</div>
-																			<div class="col-md-6">Some experience</div>
+																			<div class="col-md-6">Experience as a Business Owner</div>
+																			<div class="col-md-6">{{$data->owner_experience}}</div>
 																		</div>
 																		<div class="row">
-																			<div class="col-md-6">Has had previous partner</div>
-																			<div class="col-md-6">No</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-6">Reason of change</div>
+																			<div class="col-md-6">Reason for Change (if applicable)</div>
 																			<div class="col-md-6">{{$data->reason_change}}</div>
 																		</div>
-																		<h4>About the bookkeeping</h4>
 																		<div class="row">
-																			<div class="col-md-6">State of the bookkeeping</div>
-																			<div class="col-md-6">{{$data->bookkeeping}}</div>
+																			<div class="col-md-6">Any other Requirements</div>
+																			<div class="col-md-6">{{$data->other_requirement}}</div>
+																		</div>
+																		<h4>Client Contact Preference</h4>
+																		<div class="row">
+																			<div class="col-md-6">Mode</div>
+																			<div class="col-md-6">{{$data->mode}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Time</div>
+																			<div class="col-md-6">{{$data->time}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Looking to Hire</div>
+																			<div class="col-md-6">{{$data->when_hire}}</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-md-6">Deadlines</div>
+																			<div class="col-md-6">{{$data->deadlines_approch}}</div>
 																		</div>
 																	</div>
 																</div>
 																<div class="col-md-6">
 																	<div class="about-section-content">
 																		<h4>Preferences for the partner</h4>
+																		<div class="row">
+																			<div class="col-md-6">Preferred Expert Requirements</div>
+																			<div class="col-md-6">{{$data->expert_requiremnt}}</div>
+																		</div>
 																		<div class="row">
 																			<div class="col-md-6">Partner should be (1)</div>
 																			<div class="col-md-6">{{$data->expert_1}}</div>
@@ -182,12 +228,12 @@
 																			<div class="col-md-6">{{$data->expert_3}}</div>
 																		</div>
 																		<div class="row">
-																			<div class="col-md-6">Communication style</div>
-																			<div class="col-md-6">Formal</div>
+																			<div class="col-md-6">Local Expert</div>
+																			<div class="col-md-6">{{$data->local_expert}}</div>
 																		</div>
 																		<div class="row">
-																			<div class="col-md-6">Material is delivered</div>
-																			<div class="col-md-6">Mostly digital</div>
+																			<div class="col-md-6">Working style</div>
+																			<div class="col-md-6">{{$data->expert_choice}}</div>
 																		</div>
 																	</div>
 																</div>

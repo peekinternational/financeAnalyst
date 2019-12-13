@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
 <?php $service=[]; if(!empty($template)){ $service=json_decode($template->service_needed, true); }
-      $service_required=[]; if(!empty($template)){ $service_required=json_decode($template->service_required, true); }
 
 ?>
 <div class="wrapper">
@@ -289,76 +288,182 @@
 		              </div>
 		            </div>
                 <h4 class="field-title">Services Needed</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group undefined">
-                      <div class="sc-iujRgT hUHAcY">
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="Company Registration"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'Company Registration' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>Company Registration
+		            <div class="row">
+		              <div class="col-md-12">
+                    <!-- <div class="sc-jhAzac iGbrby">
+                      <label class="sc-bAeIUo fuksr">
+                        <input type="checkbox" class="sc-bMVAic kyrrfd" value="Accountant"  name="service_needed[]" @if($service) @foreach($service as $data) {{$data == 'Accountant' ? 'checked="checked"' : '' }} @endforeach @endif>
+                        <div class="sc-gqPbQI ilsJbL">
+                          <div class="sc-hORach kMXQwc"></div>
                         </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="Annual Accounts"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'Annual Accounts' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>Annual Accounts
-                        </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="Corporation Tax Return"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'Corporation Tax Return' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>Corporation Tax Return
-                        </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="Self Assessment Tax Return"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'Self Assessment Tax Return' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>Self Assessment Tax Return
-                        </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="Confirmation Statement"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'Confirmation Statement' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>Confirmation Statement
-                        </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="VAT Returns"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'VAT Returns' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>VAT Returns
-                        </div>
-                        <div class="sc-jhAzac iGbrby">
-                          <label class="sc-bAeIUo fuksr">
-                            <input type="checkbox" class="sc-bMVAic kyrrfd" value="HMRC registration (VAT, PAYE etc)"  name="service_required[]" @if($service_required) @foreach($service_required as $data2) {{$data2 == 'HMRC registration (VAT, PAYE etc)' ? 'checked="checked"' : '' }} @endforeach @endif>
-                            <div class="sc-gqPbQI ilsJbL">
-                              <div class="sc-hORach kMXQwc"></div>
-                            </div>
-                          </label>HMRC registration (VAT, PAYE etc)
-                        </div>
+                      </label>Company Registration
+                    </div> -->
+                    <div class="form-group">
+		                  <label>Company Registration</label>
+		                  <select name="company_resgiter_number" class="form-control">
+		                  	<option value="No" @if(!empty($template))  @if($template->company_resgiter_number ="No")selected="selected" @endif   @endif >No</option>
+		                  	<option value="Yes" @if(!empty($template))  @if($template->company_resgiter_number ="Yes") selected="selected" @endif   @endif >Yes</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if ($template->company_resgiter_number ="Not Sure") selected="selected" @endif   @endif >Not Sure</option>
+		                  	<option value="N/A" @if(!empty($template))  @if ($template->company_resgiter_number ="N/A") selected="selected" @endif  @endif >N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Annual Accounts</label>
+		                  <select name="annual_accounts" class="form-control">
+		                  	<option value="Yes" @if(!empty($template)) @if($template->annual_accounts =="Yes")selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->annual_accounts =="No") selected="selected" @endif  @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->annual_accounts =="Not Sure") selected="selected" @endif  @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template)) @if($template->annual_accounts =="N/A") selected="selected" @endif   @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Corporation tax return</label>
+		                  <select name="tax_return" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->tax_return =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->tax_return =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option value="Not Sure" @if(!empty($template)) @if($template->tax_return =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template)) @if($template->tax_return =="N/A")selected="selected" @endif   @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Self Assessment tax Return</label>
+		                  <select name="self_tax_return" class="form-control">
+		                  	<option  value="Yes"  @if(!empty($template)) @if($template->self_tax_return =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No"  @if(!empty($template)) @if($template->self_tax_return =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->self_tax_return =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option value="N/A" @if(!empty($template))  @if($template->self_tax_return =="N/A") selected="selected" @endif    @endif> N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
 
-                      </div>
-                    </div>
-                  </div>
-                </div>
+		            <!-- <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Bookkeeping</label>
+		                  <select name="bookkeeping" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template))  @if($template->bookkeeping =="Yes")selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template))  @if($template->bookkeeping =="No") selected="selected" @endif    @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template))  @if($template->bookkeeping =="Not Sure") selected="selected" @endif   @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template))  @if($template->bookkeeping =="N/A") selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div> -->
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Confirmation Statement</label>
+		                  <select name="confirmation_statement" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template))  @if($template->confirmation_statement =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template))  @if($template->confirmation_statement =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template))  @if($template->confirmation_statement =="Not Sure")selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template))  @if($template->confirmation_statement =="N/A")selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>VAT Returns</label>
+		                  <select name="vat_returns" class="form-control">
+		                  	<option value="Yes" @if(!empty($template))  @if($template->vat_returns =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template))  @if($template->vat_returns =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template))  @if($template->vat_returns =="Not Sure")selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A" @if(!empty($template))  @if($template->vat_returns =="N/A")selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <!-- <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Payroll</label>
+		                  <select name="payroll" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->payroll =="Yes")selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->payroll =="No") selected="selected" @endif    @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->payroll =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A"  @if(!empty($template)) @if($template->payroll =="N/A") selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div> -->
+		            <!-- <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Tax Advice</label>
+		                  <select name="tax_advice" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->tax_advice =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->tax_advice =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->tax_advice =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A"  @if(!empty($template)) @if($template->tax_advice =="N/A")selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div> -->
+		            <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>HMRC registration (VAT, PAYE etc)</label>
+		                  <select name="hmre_register" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->hmre_register =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->hmre_register =="No") selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if( $template->hmre_register =="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option  value="N/A"  @if(!empty($template)) @if($template->hmre_register =="N/A") selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div>
+		            <!-- <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Management Accounts</label>
+		                  <select name="management_accounts" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->management_accounts =="Yes") selected="selected" @endif    @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->management_accounts =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->management_accounts ="Not Sure") selected="selected" @endif    @endif>Not Sure</option>
+		                  	<option   value="N/A"  @if(!empty($template)) @if($template->management_accounts =="N/A") selected="selected" @endif    @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div> -->
+		            <!-- <div class="row">
+		              <div class="col-md-12">
+		                <div class="form-group">
+		                  <label>Audit</label>
+		                  <select name="audit" class="form-control">
+		                  	<option  value="Yes" @if(!empty($template)) @if($template->audit =="Yes") selected="selected" @endif   @endif>Yes</option>
+		                  	<option  value="No" @if(!empty($template)) @if($template->audit =="No")selected="selected" @endif   @endif>No</option>
+		                  	<option  value="Not Sure" @if(!empty($template)) @if($template->audit =="Not Sure") selected="selected" @endif   @endif>Not Sure</option>
+		                  	<option  value="N/A"  @if(!empty($template)) @if($template->audit =="N/A")selected="selected" @endif   @endif>N/A</option>
+		                  </select>
+		                </div>
+		              </div>
+		            </div> -->
 		            <div class="row">
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Other</label>
 		                  <textarea name="other_service" class="form-control" rows="4" cols="8">   @if(!empty($template)){{$template->other_service}} @endif</textarea>
+		                  <!-- <select name="other_service" class="form-control">
+		                  	<option>Yes</option>
+		                  	<option>No</option>
+		                  	<option>Not Sure</option>
+		                  	<option>N/A</option>
+		                  </select> -->
 		                </div>
 		              </div>
 		            </div>
