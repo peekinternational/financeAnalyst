@@ -92,6 +92,7 @@ class JobManageController extends Controller
      */
 public function template(Request $request, $id)
     {
+      // dd($request->all());
         if($request->isMethod('post')){
             $this->validate($request, [
                 'phone_number' => 'required',
@@ -115,6 +116,7 @@ public function template(Request $request, $id)
 
             $request->merge(['job_id' => $id]);
             $request->merge(['service_needed' => @json_encode($request->input('service_needed'))]);
+            $request->merge(['service_required' => @json_encode($request->input('service_required'))]);
            // dd($data);
            $res= DB::table('fa_user_template')->where('job_id',$id)->first();
           // dd($request->all());
@@ -135,8 +137,9 @@ public function template(Request $request, $id)
 
           $autofil=DB::table('fa_jobpost')->where('id',$id)->first();
         $template=DB::table('fa_user_template')->where('job_id',$id)->first();
-          //dd($template);
+          // dd($template);
         $job = DB::table('fa_jobpost')->where('id',$id)->first();
+        // dd($job);
        return view('/admin.add_template',compact('job','template','autofil'));
     }
     public function visit(Request $request)
