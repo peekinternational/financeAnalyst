@@ -81,8 +81,7 @@
                         <table border="0" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box"><tbody><tr>
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
                                     <a href="{{ url('customer/review/?q_id='.$q_id.'&&p_id='.$p_id.'&&j_id='.$j_id.'&&customer_name='.$customer_name)}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color:#3097d1;border-top:10px solid #3097d1;border-right:18px solid #3097d1;border-bottom:10px solid #3097d1;border-left:18px solid #3097d1" target="_blank">Give Review</a>
-                                     <!-- <a href="{{ url('rejectquote/'.$parnter.'/'.$q_id)}}" class="m_1888394735623576276button m_1888394735623576276button-blue" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;border-radius:3px;color:#fff;display:inline-block;text-decoration:none;background-color: #d19f30;border-top: 10px solid #d19f30;border-right: 18px solid #d19f30;border-bottom: 10px solid #d19f30;
-																		 border-left: 18px solid #d19f30" target="_blank">Reject</a> -->
+                                    
                                 </td>
 
                             </tr></tbody></table>

@@ -10,7 +10,11 @@
       <div id="hero">
         <div class="row">
           <div class="col-md-12">
-            <div id="carousel-id" class="carousel slide" data-ride="carousel" style=" height: 550px ; overflow: hidden;">
+		   <img  alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
+		   <p style="position: absolute; top: 280px;left: 479px;"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+                        Get started
+                      </a></p>
+           <!-- <div id="carousel-id" class="carousel slide" data-ride="carousel" style=" height: 550px ; overflow: hidden;">
               <ol class="carousel-indicators">
                 <li data-target="#carousel-id" data-slide-to="0" class=""></li>
                 <li data-target="#carousel-id" data-slide-to="1" class=""></li>
@@ -22,10 +26,8 @@
                   <div class="container">
                     <div class="carousel-caption">
                       <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                      <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                        Get started
-                      </a></p>
+                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
+                     <!-- 
                     </div>
                   </div>
                 </div>
@@ -34,8 +36,8 @@
                   <div class="container">
                     <div class="carousel-caption">
                       <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                      <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
+                     <!-- <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                         Get started
                       </a></p>
                     </div>
@@ -45,9 +47,9 @@
                   <img data-src="{{asset('frontend-assets/images/slide3.jpg')}}" src="{{asset('frontend-assets/images/slide3.jpg')}}" style="width: 100%; height: 100%;">
                   <div class="container">
                     <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
+                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1> -->
                       <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                      <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+                     <!--  <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                           Get started
                         </a></p>
                     </div>
@@ -56,7 +58,7 @@
               </div>
               <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
               <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
+            </div> -->
           </div>
         </div>
         
@@ -469,12 +471,7 @@
         <div class="row">
           <div class="col-xs-12 text-center">
             <h3 class="promoted">Why Experlu?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p></p>
           </div>
 
         </div>

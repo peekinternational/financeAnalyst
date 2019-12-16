@@ -41,7 +41,7 @@
             </div>
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
               <p>
-                <img class="logo-footer" src="" alt="Logo" />
+               
               </p>
               <p>
                 Vesterbrogade 1e<br />
