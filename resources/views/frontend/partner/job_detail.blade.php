@@ -58,8 +58,8 @@
 																	</div>
 																	<div class="col-xs-12">
 
-																		<button class="btn cta-button btn-lg" title='{{$data->mobilenumber}}' style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
-																		<button class="btn cta-button btn-lg"  title='{{$data->job_email}}' style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
+																		<button class="btn cta-button btn-lg"  style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
+																		<button class="btn cta-button btn-lg"   style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
 																	</div>
 																</div>
 															</div>

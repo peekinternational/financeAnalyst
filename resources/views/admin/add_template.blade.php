@@ -153,7 +153,7 @@
 		              <div class="col-md-12">
 		                <div class="form-group">
 		                  <label>Currency <span class="required" style="color: red;">*</span></label>
-		                  <input type="text" name="currency" class="form-control"  placeholder="Country"  @if(!empty($template)) value="{{$template->currency}}" @endif required/>
+		                  <input type="text" name="currency" class="form-control"  placeholder="Currency"  @if(!empty($template)) value="{{$template->currency}}" @endif required/>
 		                </div>
 		              </div>
 		              <div class="col-md-12">

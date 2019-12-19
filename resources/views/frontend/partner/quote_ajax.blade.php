@@ -42,7 +42,7 @@ table, th, td {
             <tr style="background-color: #03840396;font-weight: 700;">
                 <td colspan="2">Total</td>
                 
-                <td  style="text-align: right;">{{number_format(array_sum($data['quote_price']) - array_sum($data['quote_price'])*20/100 - array_sum($data['quote_price'])*25/100)}}</td>
+                <td  style="text-align: right;">{{number_format(array_sum($data['quote_price']) + array_sum($data['quote_price'])*20/100 + array_sum($data['quote_price'])*25/100)}}</td>
             </tr>
         </tbody>
     </table>

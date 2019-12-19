@@ -524,8 +524,9 @@ public function rejectquote(Request $request,$id,$id2)
     }
      public function customerdetail(Request $request,$id)
     {
+		$userId=Session::get('faUser')->p_id;
        $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
-        ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
+        ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->where('fa_quote.p_id',$userId)->first();
         // dd($data);
         return view('frontend.partner.template_detail',compact('data'));
     }

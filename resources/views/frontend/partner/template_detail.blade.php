@@ -105,47 +105,75 @@
 															<div class="row">
 																<div class="col-md-12">
 																	<div class="about-section-content">
-																		<p>Newly Started Consulting Limited - Local - Fair Price - Annual Accounts #201396</p>
 																		<div class="row">
 																			<div class="col-md-6">Legal Structure</div>
 																			<div class="col-md-6">{{$data->legal_structure}}</div>
 																		</div>
+																		@if($data->currency !="")
 																		<div class="row">
 																			<div class="col-md-6">Currency</div>
 																			<div class="col-md-6">{{$data->currency}}</div>
 																		</div>
+																		@endif
+																		@if($data->turnover !="")
 																		<div class="row">
 																			<div class="col-md-6">Turnover</div>
 																			<div class="col-md-6">{{$data->turnover}}</div>
 																		</div>
+																		@endif
+																		@if($data->year_end !="")
+																		<?php
+																		$date = $data->year_end;
+																		$show_date = DateTime::createFromFormat('Y-m-d', $date)->format('d F Y');
+																		 ?>
 																		<div class="row">
 																			<div class="col-md-6">Year End </div>
-																			<div class="col-md-6">{{$data->year_end}}</div>
+																			<div class="col-md-6">{{$show_date}}</div>
 																		</div>
+																		@endif
+																		@if($data->deadline !="")
+																		<?php
+																		// $date_return = date($data->deadline);
+																		// print_r($date_return); die;
+
+																		$date2 = $data->deadline;
+																		$show_date2 = DateTime::createFromFormat('Y-m-d', $date2)->format('d F Y');
+																		 ?>
 																		<div class="row">
 																			<div class="col-md-6">Deadline </div>
-																			<div class="col-md-6">{{$data->deadline}}</div>
+																			<div class="col-md-6">{{$show_date2}}</div>
 																		</div>
+																		@endif
+																		@if($data->nmber_location !="")
 																		<div class="row">
 																			<div class="col-md-6">Number of Locations</div>
 																			<div class="col-md-6">{{$data->nmber_location}}</div>
 																		</div>
+																		@endif
+																		@if($data->bookkeeping_status !="")
 																		<div class="row">
 																			<div class="col-md-6">Current Bookkeeping Status</div>
 																			<div class="col-md-6">{{$data->bookkeeping_status}}</div>
 																		</div>
+																		@endif
+																		@if($data->software_use !="")
 																		<div class="row">
 																			<div class="col-md-6">Software Use</div>
 																			<div class="col-md-6">{{$data->software_use}}</div>
 																		</div>
+																		@endif
+																		@if($data->budget !="")
 																		<div class="row">
 																			<div class="col-md-6">Budget</div>
 																			<div class="col-md-6">{{$data->budget}}</div>
 																		</div>
+																		@endif
+																		@if($data->other !="")
 																		<div class="row">
 																			<div class="col-md-6">Other</div>
 																			<div class="col-md-6">{{$data->other}}</div>
 																		</div>
+																		@endif
 																	</div>
 																</div>
 															</div>
@@ -173,68 +201,96 @@
 																<div class="col-md-6">
 																	<div class="about-section-content">
 																		<h4>About the Client</h4>
+																		@if($data->industry !="")
 																		<div class="row">
 																			<div class="col-md-6">Industry</div>
 																			<div class="col-md-6">{{$data->industry}}</div>
 																		</div>
+																		@endif
+																		@if($data->owner_experience !="")
 																		<div class="row">
 																			<div class="col-md-6">Experience as a Business Owner</div>
 																			<div class="col-md-6">{{$data->owner_experience}}</div>
 																		</div>
+																		@endif
+																		@if($data->reason_change !="")
 																		<div class="row">
 																			<div class="col-md-6">Reason for Change (if applicable)</div>
 																			<div class="col-md-6">{{$data->reason_change}}</div>
 																		</div>
+																		@endif
+																		@if($data->other_requirement !="")
 																		<div class="row">
 																			<div class="col-md-6">Any other Requirements</div>
 																			<div class="col-md-6">{{$data->other_requirement}}</div>
 																		</div>
+																		@endif
 																		<h4>Client Contact Preference</h4>
+																		@if($data->mode !="")
 																		<div class="row">
 																			<div class="col-md-6">Mode</div>
 																			<div class="col-md-6">{{$data->mode}}</div>
 																		</div>
+																		@endif
+																		@if($data->time !="")
 																		<div class="row">
 																			<div class="col-md-6">Time</div>
 																			<div class="col-md-6">{{$data->time}}</div>
 																		</div>
+																		@endif
+																		@if($data->when_hire !="")
 																		<div class="row">
 																			<div class="col-md-6">Looking to Hire</div>
 																			<div class="col-md-6">{{$data->when_hire}}</div>
 																		</div>
+																		@endif
+																		@if($data->deadlines_approch !="")
 																		<div class="row">
 																			<div class="col-md-6">Deadlines</div>
 																			<div class="col-md-6">{{$data->deadlines_approch}}</div>
 																		</div>
+																		@endif
 																	</div>
 																</div>
 																<div class="col-md-6">
 																	<div class="about-section-content">
 																		<h4>Preferences for the partner</h4>
+																		@if($data->expert_requiremnt !="")
 																		<div class="row">
 																			<div class="col-md-6">Preferred Expert Requirements</div>
 																			<div class="col-md-6">{{$data->expert_requiremnt}}</div>
 																		</div>
+																		@endif
+																		@if($data->expert_1 !="")
 																		<div class="row">
 																			<div class="col-md-6">Partner should be (1)</div>
 																			<div class="col-md-6">{{$data->expert_1}}</div>
 																		</div>
+																		@endif
+																		@if($data->expert_2 !="")
 																		<div class="row">
 																			<div class="col-md-6">Partner should be (2)</div>
 																			<div class="col-md-6">{{$data->expert_2}}</div>
 																		</div>
+																		@endif
+																		@if($data->expert_3 !="")
 																		<div class="row">
 																			<div class="col-md-6">Partner should be (3)</div>
 																			<div class="col-md-6">{{$data->expert_3}}</div>
 																		</div>
+																		@endif
+																		@if($data->local_expert !="")
 																		<div class="row">
 																			<div class="col-md-6">Local Expert</div>
 																			<div class="col-md-6">{{$data->local_expert}}</div>
 																		</div>
+																		@endif
+																		@if($data->expert_choice !="")
 																		<div class="row">
 																			<div class="col-md-6">Working style</div>
 																			<div class="col-md-6">{{$data->expert_choice}}</div>
 																		</div>
+																		@endif
 																	</div>
 																</div>
 															</div>
