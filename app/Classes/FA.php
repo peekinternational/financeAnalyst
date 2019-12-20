@@ -61,6 +61,14 @@ class FA {
               ->get()->toArray();
           return $count;
   	}
+    public function countUserReviews($p_id)
+  	{
+  		$count =  DB::table('fa_quotes_review')
+              ->select(DB::raw('avg(overall_rating) AS `starsAvg`, count(customer_name) AS `usersCount`'))
+              ->where('p_id','=', $p_id)
+              ->get()->toArray();
+          return $count;
+  	}
 
     public function getAuthorName($id){
       $name = DB::table('fa_admin')->where('id','=',$id)->first()->name;

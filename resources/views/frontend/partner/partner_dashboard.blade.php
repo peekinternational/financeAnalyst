@@ -7,6 +7,12 @@ body{
 .hero{
 	display: none;
 }
+.orange-star {
+	color: #FF7814 !important;
+}
+.grey-star {
+    color: #8e8c8c !important;
+}
 </style>
 <?php
 $service=json_decode($userinfo->services, true);
@@ -707,174 +713,110 @@ foreach($jobs as $item){
 									</div>
 									<div role="tabpanel" class="tab-pane" id="review">
 										<div class="review_content">
-											<!-- Review Form -->
-											<div class="row">
-												<div id="content1">
 
-													<div class="col-md-12" id="review_alert">
-														<div class="alert alert-success" style="margin-bottom:0px !important">
-															<strong>Review Submitted!</strong> Thank you for completing the review of this submission. Your review has been submitted successfully.
-														</div>
-													</div>
-
-													<form  method="POST" role="form" id="reviews_form">
-														{{csrf_field()}}
-
-														<div class='rating-stars text-center'>
-															<div class="row" style="margin: 15px 0;">
-
-																<div id="half-stars-example" class="col-md-12 text-center">
-																	<div class="rating-group">
-																		<input class="rating__input rating__input--none" checked name="rating2" id="rating2-0" value="0" type="radio">
-																		<label aria-label="0 stars" data-label="0" class="rating__label" for="rating2-0">&nbsp;</label>
-																		<label aria-label="0.5 stars" data-label="0.5" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-05" value="0.5" type="radio">
-																		<label aria-label="1 stars" data-label="1" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
-																		<label aria-label="1.5 stars" data-label="1.5" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-15" value="1.5" type="radio">
-																		<label aria-label="2 stars" data-label="2" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
-																		<label aria-label="2.5 stars" data-label="2.5" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-25" value="2.5" type="radio">
-																		<label aria-label="3 stars" data-label="3" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
-																		<label aria-label="3.5 stars" data-label="3.5" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-35" value="3.5" type="radio">
-																		<label aria-label="4 stars" data-label="4" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
-																		<label aria-label="4.5 stars" data-label="4.5" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-45" value="4.5" type="radio">
-																		<label aria-label="5 stars" data-label="5" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-																		<input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio">
-																	</div>
-																</div>
-															</div>
-														</div>
-														<!-- <span class="write_review_span"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> -->
-														<!-- </p> -->
-														<div class="write_review_div">
-															<div class="form-group" style="padding-right:15px;">
-																<label for="">Write your review</label>
-																<textarea class="form-control" rows="5" id="comment" name="comment" placeholder="Write your review"></textarea>
-															</div>
-														</div>
-														<div class="text-center" style="padding-top: 30px;">
-															<button type="submit" id="submit_review" class="btn btn-success">Submit Evaluation</button>
-														</div>
-													</form>
-												</div>
-											</div>
-											<br><br>
-											<!-- End Reveiw Form -->
-
+											<?php
+												$usersCounts = FA::countUserReviews($userId);
+												$starAvg     = ($usersCounts[0]->starsAvg != null) ? round($usersCounts[0]->starsAvg) : 0;
+											?>
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 													<!-- <p>Review can only be made by dinners who have eaten at this restaurant</p> -->
 													<p>
-														<span class="rating_heading" style="margin-left: 0px;">Overall Ratings (<span class="users-count">2</span>)</span>
-														<span class="rating_star">&nbsp;
-															<i class="fa fa-star avg-star-1"></i>
-															<i class="fa fa-star avg-star-2"></i>
-															<i class="fa fa-star avg-star-3"></i>
-															<i class="fa fa-star avg-star-4"></i>
-															<i class="fa fa-star avg-star-5"></i>
+														<span class="rating_heading" style="margin-left: 0px;">Overall Ratings (<span class="users-count">{{$usersCounts[0]->usersCount}}</span>)</span><span class="rating_star">&nbsp;
+														<i class="fa fa-star avg-star-1 {{($starAvg >= 1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-2 {{($starAvg >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-3 {{($starAvg >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-4 {{($starAvg >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-5 {{($starAvg >= 5) ? 'orange-star' : 'grey-star'}}"></i>
 														</span>
 													</p>
-
 												</div>
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
 												</div>
 											</div>
-
 											<div class="row">
 												<div class="col-md-12">
 													<div class="side">
-														<div>Excellent</div>
+														 <div>Excellent</div>
 													</div>
 													<div class="middle md-rating">
-														<div class="bar-container-rating">
-															<div class="bar-5-rating" style="width:100%"></div>
-															<span>&nbsp; <span class="rating-5">90</span>%</span>
-														</div>
+														 <div class="bar-container-rating">
+																<div class="bar-5-rating" style="width:{{$rating_avg[4]}}%"></div>
+																<span>&nbsp; <span class="rating-5">{{$rating_avg[4]}}</span>%</span>
+														 </div>
 													</div>
 													<div class="side">
-														<div>Very Good</div>
+														 <div>Very Good</div>
 													</div>
 													<div class="middle md-rating">
-														<div class="bar-container-rating">
-															<div class="bar-4-rating" style="width:45%"></div>
-															<span>&nbsp; <span class="rating-4">45</span>%</span>
-														</div>
+														 <div class="bar-container-rating">
+																<div class="bar-4-rating" style="width:{{$rating_avg[3]}}%"></div>
+																<span>&nbsp; <span class="rating-4">{{$rating_avg[3]}}</span>%</span>
+														 </div>
 													</div>
 													<div class="side">
-														<div>Good</div>
+														 <div>Good</div>
 													</div>
 													<div class="middle md-rating">
-														<div class="bar-container-rating">
-															<div class="bar-3-rating" style="width:50%"></div>
-															<span>&nbsp; <span class="rating-3">50</span>%</span>
-														</div>
+														 <div class="bar-container-rating">
+																<div class="bar-3-rating" style="width:{{$rating_avg[2]}}%"></div>
+																<span>&nbsp; <span class="rating-3">{{$rating_avg[2]}}</span>%</span>
+														 </div>
 													</div>
 													<div class="side">
-														<div>Average</div>
+														 <div>Average</div>
 													</div>
 													<div class="middle md-rating">
-														<div class="bar-container-rating">
-															<div class="bar-2-rating" style="width:20%"></div>
-															<span>&nbsp; <span class="rating-2">25</span>%</span>
-														</div>
+														 <div class="bar-container-rating">
+																<div class="bar-2-rating" style="width:{{$rating_avg[1]}}%"></div>
+																<span>&nbsp; <span class="rating-2">{{$rating_avg[1]}}</span>%</span>
+														 </div>
 													</div>
 													<div class="side">
-														<div>Poor</div>
+														 <div>Poor</div>
 													</div>
 													<div class="middle md-rating">
-														<div class="bar-container-rating">
-															<div class="bar-1-rating" style="width:5%"></div>
-															<span>&nbsp; <span class="rating-1">15</span>%</span>
-														</div>
+														 <div class="bar-container-rating">
+																<div class="bar-1-rating" style="width:{{$rating_avg[0]}}%"></div>
+																<span>&nbsp; <span class="rating-1">{{$rating_avg[0]}}</span>%</span>
+														 </div>
 													</div>
-												</div>
-											</div>
-											<br>
-											<hr>
-											<div class="comment_section">
-												<div class="review_form">
-													<div class="form-group">
-														<label for="">Sort By</label>
+											 </div>
+										</div>
+										<br>
+										<hr>
+										<div class="comment_section">
+											<div class="review_form">
+													<div class="form-group" style="padding-right:15px;">
+														<!-- <label for="">Sort By</label>
 														<select  class="form-control filter-products">
 															<option value="default">Default</option>
 															<option value="newest">Newest</option>
 															<option value="oldest">Oldest</option>
-														</select>
+														</select> -->
+														<input type="hidden" class="quote_id" value="{{$q_id}}">
+														<input type="hidden" class="job_id" value="{{$j_id}}">
+														<input type="hidden" class="p_id" value="{{$p_id}}">
+														<input type="hidden" name="customer_name" value="{{$customer_name}}">
 													</div>
 												</div><br>
 												<div class="table_comments" style="margin-left: 30px;">
-													<div class="reviews_container">
+												<div class="reviews_container">
+													@foreach($reviews as $row)
 														<div class="row review_comment">
 															<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 																<div class="user_image user_image_table" style="margin-left:auto;margin-right:auto">
-																	<img src="" class="img-circle" alt="Image" style="width: 100%;">
-
+																		<img src="{{asset('frontend-assets/dashboard/new_logo.png')}}" class="img-circle" alt="Image" style="width: 100%;">
 																</div>
-																<p class="text-center">Zeeshan</p>
+																<p class="text-center">{{$row->customer_name}}</p>
 															</div>
-															<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-																<p><span>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star-half-o"></i></span></p>
-																	<p>review</p>
-																</div>
+															<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left">
+															<p><span><i class="fa {{($row->overall_rating == 0.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 0.5 || $row->overall_rating >=1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 1.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 1.5 || $row->overall_rating >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 2.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 2.5 || $row->overall_rating >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 3.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 3.5 || $row->overall_rating >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 4.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 4.5 || $row->overall_rating >= 5) ? 'orange-star' : 'grey-star'}}"></i></span></p>
+																<p>{{$row->customer_review}}</p>
 															</div>
-															<hr>
 														</div>
-													</div>
+														<hr>
+													@endforeach
 												</div>
-											</div>
+												</div>
+											</div><!-- end comment section-->
+										</div>
 										</div>
 										<div role="tabpanel" class="tab-pane" id="segmentation">Profile badge</div>
 									</div>
