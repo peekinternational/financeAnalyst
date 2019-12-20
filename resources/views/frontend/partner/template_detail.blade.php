@@ -74,7 +74,7 @@
 																<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
 															</div>
 															<div class="col-xs-4">
-																<a href="" title='{{$data->mobilenumber}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</a>
+																<a href="" title='{{$data->mobile_code}}{{$data->mobilenumber}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-phone"></i> Call Client</a>
 																<a href="" title='{{$data->job_email}}' class="btn cta-button btn-block btn-lg"><i class="fa fa-envelope"></i> E-mail the Client</a>
 															</div>
 														</div>
