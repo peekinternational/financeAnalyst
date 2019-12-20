@@ -7,32 +7,66 @@
   .hero{
     display: none;
   }
+  section.dark {
+    background: #f3f3f3;
+}
 </style>
     
     
     
     
-    <section class="light" style="margin-top: 0rem;">
-      <div style="background-image: url('/frontend-assets/images/partner/banner.jpg');background-size: 100% 100%;
+    <section class="light" style="margin-top: 0rem; padding-bottom: 0;">
+      <div style="background-image: url('/frontend-assets/images/partner/exper_banner.jpg');background-size: 100% 100%;
     height: 500px;" class="main-banner">
       
     </div>
+    </section>
+    <section id="transparency">
       <div class="container">
         
         <div class="row">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">Why Experlu?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2 class="promoted">Looking to grow your accounting, tax and professional services business? Experlu will find you new clients to grow your accounting and tax practice. </h2>
           </div>
-
         </div>
         
+        <div class="row" style="padding-top: 4rem">
+          <div class="col-md-4 text-center">
+            <i data-icon="mdi-eye" class="mdi iconify mdi-48px text-green"></i>
+            <h4><b>Grow your business</b></h4>
+            <p><i class="fa fa-check text-success"></i> Grow your practice by finding diverse set of clients</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <i data-icon="mdi-seal" class="mdi iconify mdi-48px text-green"></i>
+            <h4><b>Pay when you win </b></h4>
+            <p><i class="fa fa-check  text-success"></i> Your success is our success that’s why you only pay when you win a Client*</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <i data-icon="mdi-comment-account-outline" class="mdi iconify  mdi-48px text-green"></i>
+            <h4><b>Online portal</b></h4>
+            <p><i class="fa fa-check  text-success"></i> A dedicated portal where you can manage all your proposals and much more</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="transparency" class="dark">
+      <div class="container">
+        
         <div class="row">
+          <div class="col-xs-12">
+            <h3 class="promoted text-center">Why Experlu?</h3>
+            <ul class="list-unstyled experlu-list">
+              <li><i class="fa fa-check"></i> Simple onboarding process</li>
+              <li><i class="fa fa-check"></i> Qualified leads- all leads on our platform are genuine and qualified!</li>
+              <li><i class="fa fa-check"></i> Once subscribed, send <span style="color: #e21111;">free</span> unlimited proposals as you only pay when your proposal is accepted by the client</li>
+              <li><i class="fa fa-check"></i> Pay when you win a client</li>
+              <li><i class="fa fa-check"></i> Dedicated Expert Success Manager</li>
+              <li><i class="fa fa-check"></i> Fixed subscription fee of £85 per month*</li>
+            </ul>
+            <p class="text-center"><a href="{{url('/partner_register')}}" style="font-size: 20px; color: #e21111;"><b>Sign up for a free trial</b></a></p>
+          </div>
+        </div>
+        <!-- <div class="row">
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-check-circle qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
             <h4>Extraordinarily easy</h4>
@@ -45,238 +79,43 @@
             <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span></div>
             <h4>Fantastically free</h4>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     
-    <section id="services" class="dark">
+    <section id="services">
       <div class="container">
         
-        <div class="row ">
+        <div class="row">
           <div class="col-xs-12 text-center">
-            <h3 class="promoted">Receive 3 free quotes from experts for</h3>
+            <h3 class="promoted">How you will work with Experlu</h3>
           </div>
         </div>
-        
-        <div class="row">
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Audit</h4>
-                  </a>
-                </div>
-              </div>
-              
-             <!--  <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
+
+        <div class="row" style="padding-top: 4rem">
+          <div class="col-md-4 text-center">
+            <div class="work-box">
+              <div class="icon_holder pull-left" style=" transition-delay: 100ms; -webkit-transition-delay: 100ms; -moz-transition-delay: 100ms; -o-transition-delay: 100ms;"></div>
+              <h4><b>Select a client</b> </h4>
+              <p>From list of open queries on your Expert portal, select clients which match your profile and specialism. </p>
             </div>
           </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Bookkeeping</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
+          <div class="col-md-4 text-center">
+            <div class="work-box">
+              <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"></div>
+              <h4><b>Write proposal</b></h4>
+              <p>Tell your potential clients why they should work with you and your fee in a pre-populated and user-friendly proposal. </p>
             </div>
           </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Accounting</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
-            </div>
-          </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Tax</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
-            </div>
-          </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-calculator" class="mdi iconify mdi-calculator mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Payroll</h4>
-                  </a>
-                </div>
-              </div>
-              
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
-            </div>
-          </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-book-multiple" class="mdi iconify mdi-book-multiple mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Incorporation</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
-            </div>
-          </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Secretarial service</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
-            </div>
-          </div>
-          
-          <div class="col-md-3 col-sm-6">
-            <div class="card card-condensed service-card">
-              
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <i data-icon="mdi-account-edit" class="mdi iconify mdi-account-edit mdi-48px text-muted"></i>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="link" data-track-term="service_card" class="cta-button cursor-pointer" style="text-decoration: none;">
-                    <h4 class="promoted">Mix your own service pack</h4>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- <div class="row">
-                <div class="col-xs-12 text-center">
-                  <a data-industry="accounting" data-track-content="button" data-track-term="service_card" class="btn cta-button" style="margin: 20px 0 15px 0;">
-                    Get 3 quotes
-                  </a>
-                </div>
-              </div> -->
-              
+          <div class="col-md-4 text-center">
+            <div class="work-box">
+              <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"></div>
+              <h4><b>Sign up client</b></h4>
+              <p>Once you and potential client agree on your proposal terms, start doing what you good at- providing Expert accounting, tax or other professional services.</p>
             </div>
           </div>
         </div>
-        <div class="row">
+       <!--  <div class="row">
           <div class="col-xs-12 text-center">
             <h3 class="promoted" class="text-20px" style="margin-top: 40px;">Mix your own service pack</h3>
               <p class="text-20px">
@@ -284,7 +123,8 @@
               
             </p>
           </div>
-        </div>
+        </div> -->
+        <h2 class="promoted text-center" style="padding-top: 4rem; margin-bottom: 25px;">Join Experlu and start growing your business </h2>
       </div>
     </section>
     
@@ -381,9 +221,8 @@
       </div>
     </section> -->
     
-    
-    
-    <!-- <section id="transparency" class="dark">
+  
+   <!--  <section id="transparency" class="dark">
       <div class="container">
         
         <div class="row">
@@ -432,7 +271,7 @@
       </div>
     </section> -->
     
-    <section id="contact" class="inverse hidden-xs">
+   <!--  <section id="contact" class="inverse hidden-xs">
       <div class="container">
         
         <div class="row">
@@ -481,9 +320,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     
-    <section id="reviews" class="dark hidden-xs">
+    <!-- <section id="reviews" class="dark hidden-xs">
       <div class="container">
         
         <div class="row">
@@ -497,17 +336,15 @@
           <div class="col-md-12">
            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
 
-            <!-- Bottom Carousel Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
               <li data-target="#quote-carousel" data-slide-to="1"></li>
               <li data-target="#quote-carousel" data-slide-to="2"></li>
             </ol>
 
-            <!-- Carousel Slides / Quotes -->
             <div class="carousel-inner">
 
-              <!-- Quote 1 -->
+              
               <div class="item active">
                 <div class="row">
                   <div class="col-sm-12">
@@ -522,7 +359,6 @@
                 </div>
               </div>
 
-              <!-- Quote 2 -->
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12">
@@ -537,7 +373,7 @@
                 </div>
               </div>
 
-              <!-- Quote 3 -->
+              
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12">
@@ -558,7 +394,7 @@
         
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Match modal -->
 <div class="modal fade" id="match" tabindex="-1" role="dialog" aria-labelledby="match-label">

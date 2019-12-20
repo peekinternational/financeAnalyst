@@ -46,4 +46,10 @@
 	.main-banner{
 		height: 250px !important;
 	}
+	.work-box{
+		margin-bottom: 15px;
+	}
+	section {
+    	padding: 51px 0;
+	}
 }
