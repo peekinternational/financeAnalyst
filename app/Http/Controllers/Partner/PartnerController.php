@@ -52,11 +52,8 @@ class PartnerController extends Controller
           $update= DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->update($data_array);
                 $request->session()->flash('message','Profile save successfully');
                 return redirect()->back();
- //dd($update);
- //return view('frontend.partner.thanks');
+                //dd($update);
             }
-    //dd($userinfo);
-        //dd($userId);
         $jobs=[];
          $userinfo = DB::table('fa_partner')->where('p_id','=',$userId)->where('user_type','partner')->first();
          $service=json_decode($userinfo->services);
@@ -76,7 +73,7 @@ class PartnerController extends Controller
          $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_email','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          //$quotes=DB::table('fa_quote')->get();
-        // dd($rquote);
+        // dd($pquots);
 
          foreach($alljobs as &$res)
          {
@@ -84,8 +81,77 @@ class PartnerController extends Controller
 
          }
 
+         $quote= DB::table('fa_quote')
+                 ->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')
+                 ->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')
+                 ->where('fa_quote.id',$q_id)->first();
 
-     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots'));
+         $rating_avg = array();
+
+         $reviews = DB::table('fa_quotes_review')
+         ->where('p_id','=',$userId)
+         ->orderBy('review_id','desc')
+         ->get()->toArray();
+
+         $star1 = DB::table('fa_quotes_review')
+             ->where('p_id','=',$userId)
+             ->where(function ($query) {
+                 $query->where('overall_rating', '=', 0.5)
+                   ->orWhere('overall_rating', '=', 1);
+             })
+             ->count('overall_rating');
+
+         $star2 = DB::table('fa_quotes_review')
+             ->where('p_id','=',$userId)
+             ->where(function ($query) {
+                 $query->where('overall_rating', '=', 1.5)
+                   ->orWhere('overall_rating', '=', 2);
+             })
+             ->count('overall_rating');
+         $star3 = DB::table('fa_quotes_review')
+             ->where('p_id','=',$userId)
+             ->where(function ($query) {
+                 $query->where('overall_rating', '=', 2.5)
+                   ->orWhere('overall_rating', '=', 3);
+             })
+             ->count('overall_rating');
+         $star4 = DB::table('fa_quotes_review')
+             ->where('p_id','=',$userId)
+             ->where(function ($query) {
+                 $query->where('overall_rating', '=', 3.5)
+                   ->orWhere('overall_rating', '=', 4);
+             })
+             ->count('overall_rating');
+         $star5 = DB::table('fa_quotes_review')
+             ->where('p_id','=',$userId)
+             ->where(function ($query) {
+                 $query->where('overall_rating', '=', 4.5)
+                   ->orWhere('overall_rating', '=', 5);
+             })
+             ->count('overall_rating');
+
+
+         $tot_stars = $star1 + $star2 + $star3 + $star4 + $star5;
+
+         if($tot_stars == 0){
+             $rating_avg = array('0','0','0','0','0');
+         } else{
+
+             for ($i=1;$i<=5;++$i) {
+
+               $var     = "star$i";
+               $count   = $$var;
+               $percent = $count * 100 / $tot_stars;
+               $avg     = number_format($percent,2)+0;
+
+               array_push($rating_avg, $avg);
+
+             }
+
+         }
+
+
+     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId'));
     }
 
         public function getDocument(Request $request)

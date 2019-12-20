@@ -26,7 +26,7 @@ class customerController extends Controller
 
     public function jobpost(Request $request)
     {
-        
+
         $this->validate($request, [
             'job_title' => 'required',
             'job_type' => 'required',
