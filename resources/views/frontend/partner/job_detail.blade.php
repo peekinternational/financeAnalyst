@@ -20,7 +20,7 @@
 						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">New Jobs</a>
 					</li>
 					<li role="presentation" class="active">
-						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">My Jobs</a>
+						<a href="{{url('partner/partner_dashboard#job_management')}}" style="cursor: pointer;">My Jobs</a>
 					</li>
 					<li role="presentation">
 						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Business Profile</a>
@@ -47,8 +47,8 @@
 												<div class="col-md-12">
 													<div class="about-section-content">
 														<div class="row">
-															<div class="col-md-6">
-															<h4>About the client</h4>
+															<div class="col-md-4">
+															<h4><strong>About the client</strong></h4>
 																<div class="row">
 																	<div class="col-xs-12">
 																		<p>Case Status:  {{$data->status}}</p>
@@ -56,15 +56,15 @@
 																		<p><i class="fa fa-building"></i>  Company Name: {{$data->company_name}}</p>
 																		<p><i class="fa fa-map-marker"></i>  Location: {{$data->city}}</p>
 																	</div>
-																	<div class="col-xs-12">
+																	<!-- <div class="col-xs-12">
 
 																		<button class="btn cta-button btn-lg"  style="width: 49%;"><i class="fa fa-phone"></i> Call Client</button>
 																		<button class="btn cta-button btn-lg"   style="width: 49%;"><i class="fa fa-envelope"></i> E-mail the Client</button>
-																	</div>
+																	</div> -->
 																</div>
 															</div>
-															<div class="col-md-6">
-																<h4>Services needed</h4>
+															<div class="col-md-4">
+																<h4><strong>Services needed</strong></h4>
 																<div class="row">
 																	@if($service_required)
 																	@foreach($service_required as $data_need)
@@ -75,6 +75,181 @@
 																	@endif
 																</div>
 														</div>
+														<div class="col-md-4">
+															<div>
+																<h4><strong>Preferences for the partner</strong></h4>
+																@if($data->expert_requiremnt !="")
+																<div class="row">
+																	<div class="col-md-6">Preferred Expert Requirements</div>
+																	<div class="col-md-6">{{$data->expert_requiremnt}}</div>
+																</div>
+																@endif
+																@if($data->expert_1 !="")
+																<div class="row">
+																	<div class="col-md-6">Partner should be (1)</div>
+																	<div class="col-md-6">{{$data->expert_1}}</div>
+																</div>
+																@endif
+																@if($data->expert_2 !="")
+																<div class="row">
+																	<div class="col-md-6">Partner should be (2)</div>
+																	<div class="col-md-6">{{$data->expert_2}}</div>
+																</div>
+																@endif
+																@if($data->expert_3 !="")
+																<div class="row">
+																	<div class="col-md-6">Partner should be (3)</div>
+																	<div class="col-md-6">{{$data->expert_3}}</div>
+																</div>
+																@endif
+																@if($data->local_expert !="")
+																<div class="row">
+																	<div class="col-md-6">Local Expert</div>
+																	<div class="col-md-6">{{$data->local_expert}}</div>
+																</div>
+																@endif
+																@if($data->expert_choice !="")
+																<div class="row">
+																	<div class="col-md-6">Working style</div>
+																	<div class="col-md-6">{{$data->expert_choice}}</div>
+																</div>
+																@endif
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-4">
+															<div>
+																<h4><strong>Job Highlights</strong></h4>
+																<div class="row">
+																	<div class="col-md-6">Legal Structure</div>
+																	<div class="col-md-6">{{$data->legal_structure}}</div>
+																</div>
+																@if($data->currency !="")
+																<div class="row">
+																	<div class="col-md-6">Currency</div>
+																	<div class="col-md-6">{{$data->currency}}</div>
+																</div>
+																@endif
+																@if($data->turnover !="")
+																<div class="row">
+																	<div class="col-md-6">Turnover</div>
+																	<div class="col-md-6">{{$data->turnover}}</div>
+																</div>
+																@endif
+																@if($data->year_end !="")
+																<?php
+																$date = $data->year_end;
+																$show_date = DateTime::createFromFormat('Y-m-d', $date)->format('d F Y');
+																 ?>
+																<div class="row">
+																	<div class="col-md-6">Year End </div>
+																	<div class="col-md-6">{{$show_date}}</div>
+																</div>
+																@endif
+																@if($data->deadline !="")
+																<?php
+																// $date_return = date($data->deadline);
+																// print_r($date_return); die;
+
+																$date2 = $data->deadline;
+																$show_date2 = DateTime::createFromFormat('Y-m-d', $date2)->format('d F Y');
+																 ?>
+																<div class="row">
+																	<div class="col-md-6">Deadline </div>
+																	<div class="col-md-6">{{$show_date2}}</div>
+																</div>
+																@endif
+																@if($data->nmber_location !="")
+																<div class="row">
+																	<div class="col-md-6">Number of Locations</div>
+																	<div class="col-md-6">{{$data->nmber_location}}</div>
+																</div>
+																@endif
+																@if($data->bookkeeping_status !="")
+																<div class="row">
+																	<div class="col-md-6">Current Bookkeeping Status</div>
+																	<div class="col-md-6">{{$data->bookkeeping_status}}</div>
+																</div>
+																@endif
+																@if($data->software_use !="")
+																<div class="row">
+																	<div class="col-md-6">Software Use</div>
+																	<div class="col-md-6">{{$data->software_use}}</div>
+																</div>
+																@endif
+																@if($data->budget !="")
+																<div class="row">
+																	<div class="col-md-6">Budget</div>
+																	<div class="col-md-6">{{$data->budget}}</div>
+																</div>
+																@endif
+																@if($data->other !="")
+																<div class="row">
+																	<div class="col-md-6">Other</div>
+																	<div class="col-md-6">{{$data->other}}</div>
+																</div>
+																@endif
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div>
+																<h4><strong>About the Client</strong></h4>
+																@if($data->industry !="")
+																<div class="row">
+																	<div class="col-md-6">Industry</div>
+																	<div class="col-md-6">{{$data->industry}}</div>
+																</div>
+																@endif
+																@if($data->owner_experience !="")
+																<div class="row">
+																	<div class="col-md-6">Experience as a Business Owner</div>
+																	<div class="col-md-6">{{$data->owner_experience}}</div>
+																</div>
+																@endif
+																@if($data->reason_change !="")
+																<div class="row">
+																	<div class="col-md-6">Reason for Change (if applicable)</div>
+																	<div class="col-md-6">{{$data->reason_change}}</div>
+																</div>
+																@endif
+																@if($data->other_requirement !="")
+																<div class="row">
+																	<div class="col-md-6">Any other Requirements</div>
+																	<div class="col-md-6">{{$data->other_requirement}}</div>
+																</div>
+																@endif
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div>
+																<h4><strong>Client Contact Preference</strong></h4>
+																@if($data->mode !="")
+																<div class="row">
+																	<div class="col-md-6">Mode</div>
+																	<div class="col-md-6">{{$data->mode}}</div>
+																</div>
+																@endif
+																@if($data->time !="")
+																<div class="row">
+																	<div class="col-md-6">Time</div>
+																	<div class="col-md-6">{{$data->time}}</div>
+																</div>
+																@endif
+																@if($data->when_hire !="")
+																<div class="row">
+																	<div class="col-md-6">Looking to Hire</div>
+																	<div class="col-md-6">{{$data->when_hire}}</div>
+																</div>
+																@endif
+																@if($data->deadlines_approch !="")
+																<div class="row">
+																	<div class="col-md-6">Deadlines</div>
+																	<div class="col-md-6">{{$data->deadlines_approch}}</div>
+																</div>
+																@endif
+															</div>
+														</div>
 														</div>
 													</div>
 												</div>
@@ -83,7 +258,7 @@
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="about-section-content">
-														<h4>Case Description</h4>
+														<h4>Job Description</h4>
 														<p>
 															{{$data->job_case}}
 														</p>
@@ -107,7 +282,6 @@
 																		<div class="col-xs-5">
 																			<label>Service</label>
 																			<select class="form-control" name="q_services[]">
-																				<option>Select Service</option>
 																				@if($service_required) @foreach($service_required as $data_need)
 																				<option value="{{$data_need}}">{{$data_need}}</option>
 																				@endforeach
@@ -134,7 +308,7 @@
 																		</div>
 																		<div class="col-xs-3">
 																			<label>Price</label>
-																			<input type="text" name="quote_price[]" class="form-control">
+																			<input type="text" name="quote_price[]" class="form-control quote_price">
 																		</div>
 																		<div class="col-xs-1" style="line-height: 5;">
 																			<a href="javascript:void(0)" class="add_more"><i class="fa fa-plus"></i></a>
@@ -153,15 +327,16 @@
 																<label class="fa fa-exclamation-triangle">Note:</label> Already three partners have quoted on this job, there is a possibility your quote may not be accepted
 																@endif
 
-                                                           <div class="form-group text-left" id="back">
-																<button type="button" class="btn btn-success">Back</button>
+                              <div class="form-group text-left">
+																<button type="button" class="btn btn-success" id="back">Back</button>
+																<button type="submit" class="btn btn-success pull-right">Submit</button>
+															</div>
+															<!-- <div class="form-group text-right">
+																
+															</div> -->
 															</div>
 															<div class="form-group text-right">
-																<button type="submit" class="btn btn-success">Submit</button>
-															</div>
-															</div>
-															<div class="form-group text-right" id="next">
-																<button type="button" class="btn btn-success">Next</button>
+																<button type="button" class="btn btn-success" id="next">Next</button>
 															</div>
 
 														</form>
@@ -183,6 +358,15 @@
 @endsection
 @section('script')
 <script>
+	$(document).ready(function(){
+    $('#next').attr('disabled',true);
+    $('.quote_price').keyup(function(){
+        if($(this).val().length !=0)
+            $('#next').attr('disabled', false);            
+        else
+            $('#next').attr('disabled',true);
+    })
+});
 
 	var services= <?php echo json_encode($service); ?>;
 	var services_required= <?php echo json_encode($service_required); ?>;
@@ -213,7 +397,7 @@
 		'</div>'+
 		'<div class="col-xs-3">'+
 		'<label>Price</label>'+
-		'<input type="text" name="quote_price[]" class="form-control">'+
+		'<input type="text" name="quote_price[]" class="form-control quote_price">'+
 		'</div>'+
 		'<div class="col-xs-1" style="line-height: 5;">'+
 		'<a href="javascript:void(0)" class="remove_service" onclick="deleteService('+x+');"><i class="fa fa-minus"></i></a>'+
@@ -228,6 +412,7 @@
 
 		$('#service'+id).remove();
 	};
+
 
 	$('#next').click(function(){
 		var formdata=$('form').serialize();

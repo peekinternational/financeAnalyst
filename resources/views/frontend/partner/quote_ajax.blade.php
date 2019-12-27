@@ -47,3 +47,4 @@ table, th, td {
         </tbody>
     </table>
 </div>
+<p style="font-size: 20px;color: #072f44; padding-top: 0px;font-weight: 700;">The Experlu fee for this job is <strong>{{number_format(array_sum($data['quote_price'])*25/100)}}</strong></p>

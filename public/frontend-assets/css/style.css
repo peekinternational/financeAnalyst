@@ -1577,6 +1577,101 @@ table.datatable.responsive .table-mobile-cell {
     margin-top: 0;
 }
 .work-box p{
-    font-size: 18px;
-    line-height: 2;
+  font-size: 18px;
+  line-height: 2;
+}
+/*Contact Us*/
+.contact_area {
+  padding: 81px 0 100px;
+  background: #f9f9f9;
+}
+.contact_form {
+  padding-top: 11px;
+}
+.contact-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 0;
+  color: #999;
+}
+#contact_us_form .form_field {
+  width: 100%;
+  overflow: hidden;
+}
+.form_field_inner {
+  width: 50%;
+  float: left;
+}
+.contact_form .form_field_inner input, .contact_form .form_field_inner select, .contact_form .form_field_inner textarea {
+  width: 98%;
+  background: transparent;
+  border: 1px solid #ddd;
+  height: 45px;
+  border-radius: 5px;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+#contact_us_form .form_field {
+    width: 100%;
+    overflow: hidden;
+}
+.text_area .form_field_inner {
+    width: 100%;
+}
+.contact_form .text_area .form_field_inner textarea {
+    width: 99.2%;
+    height: 250px;
+}
+.contact_button button {
+    background: #072f44;
+    border: 2px solid #072f44;
+    border-radius: 30px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    width: inherit;
+    margin-top: 10px;
+}
+.contact-title2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 31px;
+    padding-top: 12px;
+}
+.single_company_info i {
+    color: #fff;
+    font-size: 36px;
+    border: 1px solid transparent;
+    float: left;
+    border-radius: 5px;
+    margin-right: 15px;
+    line-height: 58px;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    background: #072f44;
+}
+.company_info_content {
+    overflow: hidden;
+}
+.company_info_content h5{
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-weight: 600;
+}
+.single_company_info p {
+    padding-top: 3px;
 }

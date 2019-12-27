@@ -8,8 +8,9 @@
 		display: none;
 	}
 </style>
+
 <?php $service_required=json_decode($data->q_services, true);  ?>
-<div class="container" style="margin-top: 9rem;">
+<div class="container" style="margin-top: 9rem; margin-bottom: 5rem;">
 	<div class="row">
 		<div class="col-md-12">
 			<div role="tabpanel">
@@ -20,7 +21,7 @@
 						<a href="{{url('partner/partner_dashboard#job_section')}}" aria-controls="job_section">New Jobs</a>
 					</li>
 					<li role="presentation" class="active">
-						<a href="#job_management" aria-controls="job_management" role="tab" data-toggle="tab">My Jobs</a>
+						<a href="{{url('partner/partner_dashboard#job_management')}}" aria-controls="job_management" style="cursor: pointer;">My Jobs</a>
 					</li>
 					<li role="presentation">
 						<a href="{{url('partner/partner_dashboard#profile')}}" aria-controls="profile">Business Profile</a>
@@ -43,7 +44,7 @@
 							<ul class="nav nav-tabs profile_tabs" role="tablist">
 								<li>
 									<div class="text-center company-info">
-										<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
+										<div style="height: 65px; width: 50px; margin: 0 auto;"><img src="{{asset('frontend-assets/images/job_logo.PNG')}}"></div>
 										<p>Company Name: {{$data->company_name}}</p>
 										<p>Location: {{$data->location}}</p>
 									</div>
@@ -86,16 +87,16 @@
 													<!-- Nav tabs -->
 													<ul class="nav nav-tabs main-tabs	" role="tablist">
 														<li role="presentation" class="active">
-															<a href="#highlights" aria-controls="highlights" role="tab" data-toggle="tab">Case Highlights</a>
+															<a href="#highlights" aria-controls="highlights" role="tab" data-toggle="tab">Job Highlights</a>
 														</li>
 														<li role="presentation">
 															<a href="#service_needed" aria-controls="service_needed" role="tab" data-toggle="tab">Services needed</a>
 														</li>
 														<li role="presentation">
-															<a href="#caseDetail" aria-controls="caseDetail" role="tab" data-toggle="tab">Case detail</a>
+															<a href="#caseDetail" aria-controls="caseDetail" role="tab" data-toggle="tab">Job detail</a>
 														</li>
 														<li role="presentation">
-															<a href="#description" aria-controls="tab" role="tab" data-toggle="tab">Case description</a>
+															<a href="#description" aria-controls="tab" role="tab" data-toggle="tab">Job description</a>
 														</li>
 													</ul>
 
@@ -299,7 +300,7 @@
 															<div class="about-section-content">
 																<h5><strong>Description</strong></h5>
 																<p>
-																	{{$data->quote}}
+																	{{$data->job_case}}
 																</p>
 																<!--<div class="text-center">
 																	<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary btn-lg">Download as PDF</a>

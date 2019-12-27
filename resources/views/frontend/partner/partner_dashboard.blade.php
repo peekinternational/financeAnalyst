@@ -92,7 +92,7 @@ foreach($jobs as $item){
 											<div class="sc-caSCKo dokwNX">
 												<div class="sc-jhAzac ibcqOI">
 													<div>
-														<div class="mdi mdi-book sc-kvZOFW eXQcCf"></div>
+														<div style="height: 50px; width: 50px;"><img src="{{asset('frontend-assets/images/job_logo.PNG')}}"></div>
 													</div>
 
 													<div>
@@ -161,7 +161,7 @@ foreach($jobs as $item){
 												<div class="sc-caSCKo dokwNX">
 													<div class="sc-jhAzac ibcqOI">
 														<div>
-															<div class="mdi mdi-factory sc-kvZOFW eXQcCf"></div>
+															<div style="height: 50px; width: 50px;"><img src="{{asset('frontend-assets/images/job_logo.PNG')}}"></div>
 														</div>
 
 														<div>
@@ -282,12 +282,14 @@ foreach($jobs as $item){
 															<th>Phone</th>
 															<th>Notes</th>
 															<th>Quote Date</th>
+															<th>Quote Price</th>
 															<th>Status</th>
 															<th>Mark</th>
 															<th>Review</th>
 														</tr>
 													</thead>
 													<tbody>
+														
 														@foreach($rquote as $quots)
 														<tr>
 															<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
@@ -296,6 +298,13 @@ foreach($jobs as $item){
 															<td>{{$quots->mobilenumber}}</td>
 															<td>{{$quots->quote}}</td>
 															<td>{{$quots->created_at}}</td>
+															<td>
+																<?php $val=0; ?>
+																 <?php
+																   $val=$val + array_sum(@json_decode($quots->quote_price));
+																   ?>
+																<?php echo '£ '.number_format($val, 2); ?>
+																</td>
 															<td>{{$quots->status}}</td>
 															<td>
 																@if($quots->status == 'Loss' || $quots->status == 'Won' )
