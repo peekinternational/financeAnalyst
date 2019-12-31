@@ -7,8 +7,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 contact-text">
-        <span><b>Conatct us:</b> 054-8465484</span> &nbsp; &nbsp;
-        <span><b>Email:</b> finance@gmail.com</span>
+        <span><b>Conatct us:</b> <a href="tel:0203 983 8100">0203 983 8100</a></span> &nbsp; &nbsp;
+        <span><b>Email:</b> <a href="mailto:hello@experlu.com">hello@experlu.com</a></span>
       </div>
       <!-- <div class="col-md-6 text-right social-icons">
         <ul>

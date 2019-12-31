@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-md-12">
 		   <img  alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
-		   <p style="position: absolute; top: 280px;left: 479px;"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+		   <p style="position: absolute; top: 330px;left: 479px;"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
                         Get started
                       </a></p>
            <!-- <div id="carousel-id" class="carousel slide" data-ride="carousel" style=" height: 550px ; overflow: hidden;">
