@@ -7,8 +7,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 contact-text">
-        <span><b>Conatct us:</b> <a href="tel:0203 983 8100">0203 983 8100</a></span> &nbsp; &nbsp;
-        <span><b>Email:</b> <a href="mailto:hello@experlu.com">hello@experlu.com</a></span>
+        <span><b>Conatct us:</b> <a href="tel:0203 983 8100" style="color: white">0203 983 8100</a></span> &nbsp; &nbsp;
+        <span><b>Email:</b> <a href="mailto:hello@experlu.com" style="color: white">hello@experlu.com</a></span>
       </div>
       <!-- <div class="col-md-6 text-right social-icons">
         <ul>
@@ -43,11 +43,11 @@
             Home
           </a>
         </li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="{{url('/services')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Services
           </a>
-        </li>
+        </li> -->
         <li class="dropdown">
           <a href="{{url('/blog')}}"  class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false">
             Blogs

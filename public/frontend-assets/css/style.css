@@ -4,7 +4,8 @@ body{
 /*Top Header*/
 .top-header{
 	height: 54px;
-	background-color: rgba(7,47,68,1);
+	/*background-color: rgba(7,47,68,1);*/
+    background-color: rgb(11, 78, 162);
 	border-bottom: 1px solid rgba(7,47,68,1);
 }
 .contact-text{

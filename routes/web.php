@@ -61,6 +61,18 @@ Route::group(['prefix' => 'partner'], function () {
 Route::get('/contact-us',function(){
 	return view('frontend.contact-us');
 });
+
+Route::get('/privacy-policy',function(){
+	return view('frontend.privacy-policy');
+});
+
+Route::get('/terms-and-conditions',function(){
+	return view('frontend.terms-conditions');
+});
+
+Route::get('/contact-us',function(){
+	return view('frontend.contact-us');
+});
 //////////////////////// Partner close /////////////////////////////////
 Route::post('quotes/visit','Dashboard\JobManageController@visit');
 //////////////////////// Customer /////////////////////////////////
