@@ -11,54 +11,9 @@
         <div class="row">
           <div class="col-md-12">
 		   <img  alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
-		   <p style="position: absolute; top: 330px;left: 479px;"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                        Get started
-                      </a></p>
-           <!-- <div id="carousel-id" class="carousel slide" data-ride="carousel" style=" height: 550px ; overflow: hidden;">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-                <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="item">
-                  <img data-src="{{asset('frontend-assets/images/slide1.jpg')}}" alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!--
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img data-src="{{asset('frontend-assets/images/slide2.jpg')}}" alt="Second slide" src="{{asset('frontend-assets/images/slide2.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!-- <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                        Get started
-                      </a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="item active">
-                  <img data-src="{{asset('frontend-assets/images/slide3.jpg')}}" src="{{asset('frontend-assets/images/slide3.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1> -->
-                      <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!--  <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                          Get started
-                        </a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-              <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div> -->
+		        <p class="get-started"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+            Get started
+            </a></p>           
           </div>
         </div>
 

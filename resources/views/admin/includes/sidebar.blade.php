@@ -3,13 +3,13 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="{{url('/')}}" class="simple-text logo-mini">
+        <a href="{{url('/')}}" class="simple-text logo-mini" style="width: 42%;">
           <div class="logo-image-small">
-            <img src="" alt="Logo">
+            <img src="{{asset('/frontend-assets/logo.png')}}" alt="Logo">
           </div>
         </a>
         <a href="{{url('/')}}" class="simple-text logo-normal">
-          Finance Analyst
+          Experlu
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->

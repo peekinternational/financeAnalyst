@@ -841,10 +841,10 @@ foreach($jobs as $item){
 									<!-- Nav tabs -->
 
 									<ul class="nav nav-tabs profile_tabs" role="tablist">
-										<li role="presentation" class="active">
+										<li role="presentation">
 											<a href="#account_status" aria-controls="account_status" role="tab" data-toggle="tab">Account Status</a>
 										</li>
-										<li role="presentation">
+										<li role="presentation" class="active">
 											<a href="#invoice" aria-controls="invoice" role="tab" data-toggle="tab">Invoice</a>
 										</li>
 										<li role="presentation">
@@ -864,73 +864,51 @@ foreach($jobs as $item){
 												<div class="sc-caSCKo jKLHsR">
 													<div>
 														<div class="sc-TOsTZ hiHQAi">Invoices</div>
-														<table class="datatable responsive compact">
-															<thead><tr><th class="table-mobile-cell"></th><th>Invoice number</th><th>Invoice date</th><th>Amount</th><th>Due date</th><th>Status</th></tr></thead>
-															<tbody>
-																<tr>
-																	<td class="table-mobile-cell">
-																		<table class="definition-list">
-																			<tbody>
-																				<tr>
-																					<td>Invoice number:</td>
-																					<td><a href="/invoices/42014">Invoice #16606</a></td>
-																				</tr>
-																				<tr>
-																					<td>Invoice date:</td><td><span>07/01/2019</span></td>
-																				</tr>
-																				<tr>
-																					<td>Amount:</td><td><span>£112.50</span></td>
-																				</tr>
-																				<tr>
-																					<td>Due date:</td><td><span>09/01/2019</span></td>
-																				</tr>
-																				<tr>
-																					<td>Status:</td><td><span class="label label-success">Paid</span></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</td>
-																	<td><a href="/invoices/42014">Invoice #16606</a></td><td><span>07/01/2019</span></td>
-																	<td class="amount"><span>£112.50</span></td>
-																	<td><span>09/01/2019</span></td>
-																	<td><span class="label label-success">Paid</span></td>
-																</tr>
-
-
-																<tr>
-																	<td class="table-mobile-cell">
-																		<table class="definition-list"><tbody>
-																			<tr>
-																				<td>Invoice number:</td>
-																				<td><a href="/invoices/40457">Credit note #16021</a></td>
-																			</tr>
-																			<tr>
-																				<td>Invoice date:</td>
-																				<td><span>27/11/2018</span></td>
-																			</tr>
-																			<tr>
-																				<td>Amount:</td>
-																				<td><span>-£195.00</span></td>
-																			</tr>
-																			<tr>
-																				<td>Due date:</td>
-																				<td><span>27/11/2018</span></td>
-																			</tr>
-																			<tr>
-																				<td>Status:</td>
-																				<td><span class="label label-success">un paid</span></td>
-																			</tr>
-																		</tbody>
-																	</table>
-																</td>
-																<td><a href="/invoices/40457">Credit note #16021</a></td>
-																<td><span>27/11/2018</span></td>
-																<td class="amount"><span>-£195.00</span></td>
-																<td><span>27/11/2018</span></td>
-																<td><span class="label label-success">Un Paid</span></td>
-															</tr>
-														</tbody>
-													</table>
+														<div class="table-responsive">
+																<table class="datatable responsive compact">
+																	<thead>
+																		<tr>
+																			<th class="table-mobile-cell"></th>
+																			<th>Invoice number</th>
+																			<th>Invoice date</th>
+																			<th>Due date</th>
+																			<th>Job id</th>
+																			<th>Client name</th>
+																			<th>Amount</th>
+																			<th>Status</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 1</a></td>
+																			<td><span>07/01/2019</span></td>
+																			<td><span>09/01/2019</span></td>
+																			<td><span>12</span></td>
+																			<td><span>Experlu</span></td>
+																			<td class="amount"><span>£112.50</span></td>
+																			<td><span class="label label-success">Paid</span></td>
+																		</tr>
+																		<tr>
+																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 2</a></td>
+																			<td><span>07/01/2019</span></td>
+																			<td><span>09/01/2019</span></td>
+																			<td><span>12</span></td>
+																			<td><span>Experlu</span></td>
+																			<td class="amount"><span>£112.50</span></td>
+																			<td><span class="label label-info">refunded</span></td>
+																		</tr>
+																		<tr>
+																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 3</a></td>
+																			<td><span>07/01/2019</span></td>
+																			<td><span>09/01/2019</span></td>
+																			<td><span>12</span></td>
+																			<td><span>Experlu</span></td>
+																			<td class="amount"><span>£112.50</span></td>
+																			<td><span class="label label-warning">pending</span></td>
+																		</tr>
+																	</tbody>
+															</table>
+														</div>
 												</div>
 											</div>
 										</div>
@@ -938,59 +916,51 @@ foreach($jobs as $item){
 									<div role="tabpanel" class="tab-pane" id="refund">
 										<div class="card">
 											<h2>Refunds</h2>
-											<div>
+											<div class="table-responsive">
 												<table class="sc-gwVKww fybuiN">
 													<thead>
 														<tr class="sc-hXRMBi fVoksB">
 															<th class="table-mobile-cell"></th>
-															<th>Invoice number</th>
-															<th>Request date</th>
-															<th>Requested refund total</th>
+															<th>Refund_number</th>
+															<th>Invoice_number</th>
+															<th>Request_request_date</th>
+															<th>Refund_amount</th>
 															<th>Status</th>
-															<th>Accepted refund amount</th>
-															<th>Reason</th>
+															<th>Refunded_amount</th>
+															<th>Reason_for_refund</th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
-															<td class="table-mobile-cell">
-																<table class="definition-list">
-																	<tr>
-																		<td>Invoice number</td>
-																		<td><a href="" target="_blank">Invoice #15836</a></td>
-																	</tr>
-																	<tr>
-																		<td>Request date</td>
-																		<td><span>23/11/2018</span></td>
-																	</tr>
-																	<tr>
-																		<td>Requested refund total</td>
-																		<td><span>£180.00</span></td>
-																	</tr>
-																	<tr>
-																		<td>Status</td>
-																		<td><span class="label label-new">Accepted</span></td>
-																	</tr>
-																	<tr>
-																		<td>Accepted refund amount</td>
-																		<td><span>£180.00</span></td>
-																	</tr>
-																	<tr>
-																		<td>Reason</td>
-																		<td>Client chose local solution. never signed letter of engagement </td>
-																	</tr>
-																</table>
-															</td>
-															<td><a href="" target="_blank">Invoice #15836</a></td>
+															<td><a href="" target="_blank">Refund #15836</a></td>
+															<td><span>Invoice #15836</span></td>
 															<td><span>23/11/2018</span></td>
 															<td><span>£180.00</span></td>
 															<td><span class="label label-success">Accepted</span></td>
+															<td><span>£280.00</span></td>
+															<td>Client chose local solution. never signed letter of engagement </td>
+														</tr>
+														<tr>
+															<td><a href="" target="_blank">Refund #15836</a></td>
+															<td><span>Invoice #15836</span></td>
+															<td><span>23/11/2018</span></td>
 															<td><span>£180.00</span></td>
+															<td><span class="label label-danger">Rejected</span></td>
+															<td><span>£280.00</span></td>
+															<td>Client chose local solution. never signed letter of engagement </td>
+														</tr>
+														<tr>
+															<td><a href="" target="_blank">Refund #15836</a></td>
+															<td><span>Invoice #15836</span></td>
+															<td><span>23/11/2018</span></td>
+															<td><span>£180.00</span></td>
+															<td><span class="label label-success">Accepted</span></td>
+															<td><span>£280.00</span></td>
 															<td>Client chose local solution. never signed letter of engagement </td>
 														</tr>
 													</tbody>
 												</table>
-												<hr><a class="btn btn-action btn-lg btn-block" href="/account/refunds-create">Request refund</a>
+												<!-- <hr><a class="btn btn-action btn-lg btn-block" href="/account/refunds-create">Request refund</a> -->
 											</div>
 										</div>
 									</div>

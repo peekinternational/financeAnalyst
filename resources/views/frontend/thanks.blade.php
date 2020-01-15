@@ -7,61 +7,26 @@
 	.hero{
 		display: none;
 	}
+	p{
+		font-size: 20px;
+	}
 </style>
 <div class="container" style="margin-top: 9rem;">
 	<div class="row">
 		<div class="col-md-12">
 			<p><img alt="" src="{{asset('/frontend-assets/images/partner/thankyou.jpg')}}" width="100%" /></p>
-			<h3>Thank you! We have received your request. Here are the next steps...</h3>
+			<h3>Thank you for your request. Here are the next steps...</h3>
 
-			<p>We will start processing your request and look for 3 specialists that meet your preferences. After a quick phone call, during which we will briefly discuss your assignment, we will send you an email for each match with more information on the specialist interested in handling your case. So please keep an eye on your phone and your inbox - we look forward to helping you!</p>
+			<p><strong>Step 1-</strong><br> We will be having a brief phone call with you to discuss job in more detail and understand your requirements. </p>
 
-			<h4>Other Experlu sources</h4>
-			;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			
-			<h4>Do you have any questions or remarks?</h4>
+			<p><strong>Step 2-</strong><br> You will receive upto 3 emails with proposals from our Experts. Email will have more information about the Expert interested in working with you and proposed fees. </p>
 
-			<p>&nbsp;+41451234542415412415415</p>
+			<p><strong>Step 3-</strong><br>
+				Pick one which is best fit for you and your business and start getting thigs done!
+				</p>
 
-			<p>Don&#39;t hesitate to contact us during our opening hours. We are ready to answer your questions to the best of our abilities.</p>
+			<p>Do keep an eye on your phone and your inbox - we look forward to finding you a perfect Expert! IN mean time if you have any questions, please use chat function on our website or call us on 0203 983 8100 </p>
 
-			<table class="table table-hover">
-				<tbody>
-					<tr>
-						<td>Monday</td>
-						<td>8 a.m. - 4 p.m.</td>
-					</tr>
-					<tr>
-						<td>Tuesday</td>
-						<td>8 a.m. - 4 p.m.</td>
-					</tr>
-					<tr>
-						<td>Wednesday</td>
-						<td>8 a.m. - 4 p.m.</td>
-					</tr>
-					<tr>
-						<td>Thursday</td>
-						<td>8 a.m. - 4 p.m.</td>
-					</tr>
-					<tr>
-						<td>Friday</td>
-						<td>8 a.m. - 3 p.m.</td>
-					</tr>
-					<tr>
-						<td>Saturday</td>
-						<td>closed</td>
-					</tr>
-					<tr>
-						<td>Sunday</td>
-						<td>closed</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>
