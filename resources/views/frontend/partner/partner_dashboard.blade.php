@@ -880,7 +880,7 @@ foreach($jobs as $item){
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 1</a></td>
+																			<td><a href="{{url('partner/invoice')}}" style="color: #00a4eb;">Invoice# 1</a></td>
 																			<td><span>07/01/2019</span></td>
 																			<td><span>09/01/2019</span></td>
 																			<td><span>12</span></td>

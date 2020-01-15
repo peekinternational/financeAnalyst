@@ -123,7 +123,7 @@
           @endif
            @if(Session::get('fa_admin')->role =='admin')
           <li>
-            <a href="">
+            <a href="{{url('dashboard/help-menu')}}">
               <i class="nc-icon nc-single-02"></i>
               <p>Help Menu</p>
             </a>

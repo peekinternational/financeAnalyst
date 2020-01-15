@@ -54,6 +54,10 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
 
+	Route::get('/invoice', function(){
+		return view ('frontend.partner.invoice-template');
+	});
+
 	});
 
 });
