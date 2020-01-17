@@ -35,6 +35,14 @@ foreach($jobs as $item){
 <div class="container" style="margin-top: 9rem; margin-bottom: 6rem;">
 	<div class="row">
 		<div class="col-md-12">
+			@if(session()->has('message'))
+			<div class="row">
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+					<strong>Message:</strong>{{session()->get('message')}}
+				</div>
+			</div>
+			@endif
 			<div role="tabpanel">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs main-tabs" role="tablist">
@@ -289,7 +297,7 @@ foreach($jobs as $item){
 														</tr>
 													</thead>
 													<tbody>
-														
+
 														@foreach($rquote as $quots)
 														<tr>
 															<td><a href="{{url('partner/template_detail/'.$quots->job_id)}}">{{$quots->id}}</a></td>
@@ -382,6 +390,9 @@ foreach($jobs as $item){
 											</li>
 											<li role="presentation">
 												<a href="#segmentation" aria-controls="segmentation" role="tab" data-toggle="tab">Profile Badges</a>
+											</li>
+											<li role="presentation">
+												<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account</a>
 											</li>
 											<!-- <li role="presentation">
 											<a href="#billing" aria-controls="cv" role="tab" data-toggle="tab">Billing</a>
@@ -693,6 +704,7 @@ foreach($jobs as $item){
 											</div>
 										</div>
 									</div>
+									<!-- widget Tab -->
 									<div role="tabpanel" class="tab-pane" id="widget">
 										<div class="sc-hmzhuo fPEirj">
 											<div class="sc-caSCKo jKLHsR">
@@ -720,19 +732,21 @@ foreach($jobs as $item){
 											</div>
 										</div>
 									</div>
+									<!-- widget Tab End -->
+									<!-- Review Tab -->
 									<div role="tabpanel" class="tab-pane" id="review">
 										<div class="review_content">
 
 											<?php
-												$usersCounts = FA::countUserReviews($userId);
-												$starAvg     = ($usersCounts[0]->starsAvg != null) ? round($usersCounts[0]->starsAvg) : 0;
+											$usersCounts = FA::countUserReviews($userId);
+											$starAvg     = ($usersCounts[0]->starsAvg != null) ? round($usersCounts[0]->starsAvg) : 0;
 											?>
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 													<!-- <p>Review can only be made by dinners who have eaten at this restaurant</p> -->
 													<p>
 														<span class="rating_heading" style="margin-left: 0px;">Overall Ratings (<span class="users-count">{{$usersCounts[0]->usersCount}}</span>)</span><span class="rating_star">&nbsp;
-														<i class="fa fa-star avg-star-1 {{($starAvg >= 1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-2 {{($starAvg >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-3 {{($starAvg >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-4 {{($starAvg >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-5 {{($starAvg >= 5) ? 'orange-star' : 'grey-star'}}"></i>
+															<i class="fa fa-star avg-star-1 {{($starAvg >= 1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-2 {{($starAvg >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-3 {{($starAvg >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-4 {{($starAvg >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa fa-star avg-star-5 {{($starAvg >= 5) ? 'orange-star' : 'grey-star'}}"></i>
 														</span>
 													</p>
 												</div>
@@ -742,92 +756,107 @@ foreach($jobs as $item){
 											<div class="row">
 												<div class="col-md-12">
 													<div class="side">
-														 <div>Excellent</div>
+														<div>Excellent</div>
 													</div>
 													<div class="middle md-rating">
-														 <div class="bar-container-rating">
-																<div class="bar-5-rating" style="width:{{$rating_avg[4]}}%"></div>
-																<span>&nbsp; <span class="rating-5">{{$rating_avg[4]}}</span>%</span>
-														 </div>
+														<div class="bar-container-rating">
+															<div class="bar-5-rating" style="width:{{$rating_avg[4]}}%"></div>
+															<span>&nbsp; <span class="rating-5">{{$rating_avg[4]}}</span>%</span>
+														</div>
 													</div>
 													<div class="side">
-														 <div>Very Good</div>
+														<div>Very Good</div>
 													</div>
 													<div class="middle md-rating">
-														 <div class="bar-container-rating">
-																<div class="bar-4-rating" style="width:{{$rating_avg[3]}}%"></div>
-																<span>&nbsp; <span class="rating-4">{{$rating_avg[3]}}</span>%</span>
-														 </div>
+														<div class="bar-container-rating">
+															<div class="bar-4-rating" style="width:{{$rating_avg[3]}}%"></div>
+															<span>&nbsp; <span class="rating-4">{{$rating_avg[3]}}</span>%</span>
+														</div>
 													</div>
 													<div class="side">
-														 <div>Good</div>
+														<div>Good</div>
 													</div>
 													<div class="middle md-rating">
-														 <div class="bar-container-rating">
-																<div class="bar-3-rating" style="width:{{$rating_avg[2]}}%"></div>
-																<span>&nbsp; <span class="rating-3">{{$rating_avg[2]}}</span>%</span>
-														 </div>
+														<div class="bar-container-rating">
+															<div class="bar-3-rating" style="width:{{$rating_avg[2]}}%"></div>
+															<span>&nbsp; <span class="rating-3">{{$rating_avg[2]}}</span>%</span>
+														</div>
 													</div>
 													<div class="side">
-														 <div>Average</div>
+														<div>Average</div>
 													</div>
 													<div class="middle md-rating">
-														 <div class="bar-container-rating">
-																<div class="bar-2-rating" style="width:{{$rating_avg[1]}}%"></div>
-																<span>&nbsp; <span class="rating-2">{{$rating_avg[1]}}</span>%</span>
-														 </div>
+														<div class="bar-container-rating">
+															<div class="bar-2-rating" style="width:{{$rating_avg[1]}}%"></div>
+															<span>&nbsp; <span class="rating-2">{{$rating_avg[1]}}</span>%</span>
+														</div>
 													</div>
 													<div class="side">
-														 <div>Poor</div>
+														<div>Poor</div>
 													</div>
 													<div class="middle md-rating">
-														 <div class="bar-container-rating">
-																<div class="bar-1-rating" style="width:{{$rating_avg[0]}}%"></div>
-																<span>&nbsp; <span class="rating-1">{{$rating_avg[0]}}</span>%</span>
-														 </div>
+														<div class="bar-container-rating">
+															<div class="bar-1-rating" style="width:{{$rating_avg[0]}}%"></div>
+															<span>&nbsp; <span class="rating-1">{{$rating_avg[0]}}</span>%</span>
+														</div>
 													</div>
-											 </div>
-										</div>
-										<br>
-										<hr>
-										<div class="comment_section">
-											<div class="review_form">
+												</div>
+											</div>
+											<br>
+											<hr>
+											<div class="comment_section">
+												<div class="review_form">
 													<div class="form-group" style="padding-right:15px;">
 														<!-- <label for="">Sort By</label>
 														<select  class="form-control filter-products">
-															<option value="default">Default</option>
-															<option value="newest">Newest</option>
-															<option value="oldest">Oldest</option>
-														</select> -->
-														<input type="hidden" class="quote_id" value="{{$q_id}}">
-														<input type="hidden" class="job_id" value="{{$j_id}}">
-														<input type="hidden" class="p_id" value="{{$p_id}}">
-														<input type="hidden" name="customer_name" value="{{$customer_name}}">
-													</div>
-												</div><br>
-												<div class="table_comments" style="margin-left: 30px;">
+														<option value="default">Default</option>
+														<option value="newest">Newest</option>
+														<option value="oldest">Oldest</option>
+													</select> -->
+													<input type="hidden" class="quote_id" value="{{$q_id}}">
+													<input type="hidden" class="job_id" value="{{$j_id}}">
+													<input type="hidden" class="p_id" value="{{$p_id}}">
+													<input type="hidden" name="customer_name" value="{{$customer_name}}">
+												</div>
+											</div><br>
+											<div class="table_comments" style="margin-left: 30px;">
 												<div class="reviews_container">
 													@foreach($reviews as $row)
-														<div class="row review_comment">
-															<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-																<div class="user_image user_image_table" style="margin-left:auto;margin-right:auto">
-																		<img src="{{asset('frontend-assets/dashboard/new_logo.png')}}" class="img-circle" alt="Image" style="width: 100%;">
-																</div>
-																<p class="text-center">{{$row->customer_name}}</p>
+													<div class="row review_comment">
+														<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+															<div class="user_image user_image_table" style="margin-left:auto;margin-right:auto">
+																<img src="{{asset('frontend-assets/dashboard/new_logo.png')}}" class="img-circle" alt="Image" style="width: 100%;">
 															</div>
-															<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left">
-															<p><span><i class="fa {{($row->overall_rating == 0.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 0.5 || $row->overall_rating >=1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 1.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 1.5 || $row->overall_rating >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 2.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 2.5 || $row->overall_rating >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 3.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 3.5 || $row->overall_rating >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 4.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 4.5 || $row->overall_rating >= 5) ? 'orange-star' : 'grey-star'}}"></i></span></p>
-																<p>{{$row->customer_review}}</p>
-															</div>
+															<p class="text-center">{{$row->customer_name}}</p>
 														</div>
-														<hr>
+														<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left">
+															<p><span><i class="fa {{($row->overall_rating == 0.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 0.5 || $row->overall_rating >=1) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 1.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 1.5 || $row->overall_rating >= 2) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 2.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 2.5 || $row->overall_rating >= 3) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 3.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 3.5 || $row->overall_rating >= 4) ? 'orange-star' : 'grey-star'}}"></i><i class="fa {{($row->overall_rating == 4.5) ? 'fa-star-half-o' : 'fa-star'}} {{($row->overall_rating >= 4.5 || $row->overall_rating >= 5) ? 'orange-star' : 'grey-star'}}"></i></span></p>
+															<p>{{$row->customer_review}}</p>
+														</div>
+													</div>
+													<hr>
 													@endforeach
 												</div>
-												</div>
-											</div><!-- end comment section-->
+											</div>
+										</div><!-- end comment section-->
+									</div>
+									</div>
+							 		<!-- Review Tab End -->
+									<!-- Segmentation Tab -->
+									<div role="tabpanel" class="tab-pane" id="segmentation">Profile badge</div>
+									<!-- Segmentation Tab End -->
+									<!-- Account Tab -->
+									<div role="tabpanel" class="tab-pane" id="account">
+										@if($userinfo->verify_status == 0)
+										<h4>Your Account isn't verified yet click below to verify your Account</h4>
+										<div class="text-center">
+											<a href="javascript:void(0);" onclick="sendverifyCode('{{$userinfo->p_id}}','{{$userinfo->email}}','{{$userinfo->name}}');" class="btn btn-md btn-success">Verify Account</a>
 										</div>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="segmentation">Profile badge</div>
+										@else
+										<h4>Your Account is verified <i class="fa fa-check text-success"></i> </h4>
+										@endif
+									</div>
+									<!-- Account Tab End -->
 									</div>
 								</div>
 							</div>
@@ -1150,6 +1179,38 @@ function sendEmail(q_id,j_id,p_id,email) {
 		processData: false,
 		success: function(data){
 			toastr.success('Request Send successfully', '', {timeOut: 5000, positionClass: "toast-top-right"});
+			// window.location.href = "{{url('/dashboard/onlineShoppingOrder')}}/"+listing_id+'?shopping';
+
+		},
+		error: function() {
+			$('#checkcatid').prop("disabled",false);
+			alert("Error posting feed");
+		}
+	});
+}
+
+function sendverifyCode(p_id,email,name) {
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+	var token = "{{csrf_token()}}";
+	var form = new FormData();
+	form.append('p_id', p_id);
+	form.append('email', email);
+	form.append('name', name);
+	form.append('token', token);
+// console.log(form);
+	$.ajax({
+		type: "POST",
+		url:" {{ url('/partner/send_verification_email')}}",
+		data: form,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(data){
+			toastr.success('Check Your Email to Verify', '', {timeOut: 5000, positionClass: "toast-top-right"});
 			// window.location.href = "{{url('/dashboard/onlineShoppingOrder')}}/"+listing_id+'?shopping';
 
 		},

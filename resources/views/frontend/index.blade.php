@@ -6,14 +6,21 @@
     <div class="hero-overlay hidden-md hidden-lg"></div>
     <div class="hero-content" style="padding: 0;">
 
-
+      @if(session()->has('message'))
+        <div class="row">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <strong>Message:</strong>{{session()->get('message')}}
+          </div>
+        </div>
+      @endif
       <div id="hero">
         <div class="row">
           <div class="col-md-12">
 		   <img  alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
 		        <p class="get-started"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
             Get started
-            </a></p>           
+            </a></p>
           </div>
         </div>
 
