@@ -58,7 +58,13 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/invoice', function(){
 		return view ('frontend.partner.invoice-template');
 	});
-
+	Route::get('/membership', function(){
+		return view ('frontend.partner.membership');
+	});
+	Route::get('/checkout', function(){
+		return view ('frontend.partner.checkout');
+	});
+	
 	});
 
 });
