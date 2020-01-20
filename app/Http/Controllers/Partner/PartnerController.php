@@ -10,6 +10,7 @@ use Storage;
 use Response;
 use PDF;
 use Mail;
+use Carbon;
 
 class PartnerController extends Controller
 {
@@ -73,7 +74,8 @@ class PartnerController extends Controller
          $rquote = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.job_title','fa_jobpost.mobilenumber','fa_jobpost.city','fa_jobpost.job_case','fa_jobpost.job_email','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          //$quotes=DB::table('fa_quote')->get();
-        // dd($pquots);
+        $invoicequote = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->where('fa_quote.p_id',$userId)->where('fa_quote.status','Won')->orderBy('fa_quote.id','desc')->get();
+        // dd($invoicequote);
 
          foreach($alljobs as &$res)
          {
@@ -151,7 +153,15 @@ class PartnerController extends Controller
          }
 
       // dd($userinfo);
-     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId'));
+     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId','invoicequote'));
+    }
+
+    public function get_invoice_detail(Request $request, $id)
+    {
+      // dd($id);
+      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
+      // dd($invoice);
+        return view ('frontend.partner.invoice-template',compact('invoice'));
     }
 
         public function getDocument(Request $request)
@@ -508,6 +518,7 @@ public function doLogin($email,$password){
 
 public function quote(Request $request)
     {
+      // dd($request->all());
         $userinfo=$request->session()->get('faUser')->p_id;
         $input['p_id']=$userinfo;
         $input['job_id']=$request->input('job_id');
@@ -516,9 +527,16 @@ public function quote(Request $request)
           $input['q_services']=json_encode($request->input('q_services'));
            $input['payment_frquency']=json_encode($request->input('payment_frquency'));
             $input['quote_price']=json_encode($request->input('quote_price'));
+            $get_total = array_sum($request->input('quote_price'));
+            $vat_fee = $get_total*20/100;
+            $experlu_fee = $get_total*25/100;
+            $total_fee = $get_total+$vat_fee+$experlu_fee;
+            $input['vat_fee']=$vat_fee;
+            $input['experlu_fee']=$experlu_fee;
+            $input['total_fee']=$total_fee;
+            // dd($input);
         // $request->merge(['p_id' => $userinfo]);
          //$request->merge(['q_services' => json_encode($request->input('q_services'))]);
-       // dd($request->all());
            $job_id=$request->input('job_id');
           $getemail= DB::table('fa_jobpost')->where('id',$job_id)->first();
           $toemail=$getemail->job_email;
@@ -598,7 +616,7 @@ public function rejectquote(Request $request,$id,$id2)
         $message->to($toemail);
       });
 
-        DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Won']);
+        DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Won','updated_at'=>Carbon\Carbon::now()]);
 
 
         $request->session()->flash('message','Quote created successfully');
@@ -629,8 +647,8 @@ public function export_pdf($id)
     // Send data to the view using loadView function of PDF facade
     $data= DB::table('fa_jobpost')->join('fa_user_template','fa_user_template.job_id','fa_jobpost.id')
         ->join('fa_quote','fa_quote.job_id','fa_jobpost.id')->where('fa_jobpost.id',$id)->first();
-       // dd($data);
     $pdf = PDF::loadView('casedetail',compact('data'));
+    // dd($pdf);
 
     return $pdf->download('CaseDetail.pdf');
   }
@@ -724,10 +742,13 @@ public function export_pdf($id)
      $token = $request->input('token');
      $input['verify_status']='1';
      $partner = DB::table('fa_partner')->where('p_id', $p_id)->where('token',$token)->update($input);
-     $request->session()->flash('message','Email Verified Successfully');
-     return redirect('/partner_login');
-     // return redi('verify_email');
-     // return view('verify_email');
+     if($request->session()->has('faUser')){
+       $request->session()->flash('message','Email Verfied successfully');
+        return redirect()->back();
+    }else {
+      $request->session()->flash('message','Email Verfied successfully');
+      return redirect('partner_login');
+    }
    }
 
 

@@ -54,17 +54,18 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
+	Route::get('/invoice/{id}','Partner\PartnerController@get_invoice_detail');
 
-	Route::get('/invoice', function(){
-		return view ('frontend.partner.invoice-template');
-	});
+	// Route::get('/invoice', function(){
+	// 	return view ('frontend.partner.invoice-template');
+	// });
 	Route::get('/membership', function(){
 		return view ('frontend.partner.membership');
 	});
 	Route::get('/checkout', function(){
 		return view ('frontend.partner.checkout');
 	});
-	
+
 	});
 
 });

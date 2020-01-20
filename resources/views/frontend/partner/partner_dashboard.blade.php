@@ -35,14 +35,6 @@ foreach($jobs as $item){
 <div class="container" style="margin-top: 9rem; margin-bottom: 6rem;">
 	<div class="row">
 		<div class="col-md-12">
-			@if(session()->has('message'))
-			<div class="row">
-				<div class="alert alert-success">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-					<strong>Message:</strong>{{session()->get('message')}}
-				</div>
-			</div>
-			@endif
 			<div role="tabpanel">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs main-tabs" role="tablist">
@@ -392,7 +384,7 @@ foreach($jobs as $item){
 												<a href="#segmentation" aria-controls="segmentation" role="tab" data-toggle="tab">Profile Badges</a>
 											</li>
 											<li role="presentation">
-												<a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account</a>
+												<a href="#verification" aria-controls="verification" role="tab" data-toggle="tab">Verification</a>
 											</li>
 											<!-- <li role="presentation">
 											<a href="#billing" aria-controls="cv" role="tab" data-toggle="tab">Billing</a>
@@ -846,7 +838,7 @@ foreach($jobs as $item){
 									<div role="tabpanel" class="tab-pane" id="segmentation">Profile badge</div>
 									<!-- Segmentation Tab End -->
 									<!-- Account Tab -->
-									<div role="tabpanel" class="tab-pane" id="account">
+									<div role="tabpanel" class="tab-pane" id="verification">
 										@if($userinfo->verify_status == 0)
 										<h4>Your Account isn't verified yet click below to verify your Account</h4>
 										<div class="text-center">
@@ -908,16 +900,23 @@ foreach($jobs as $item){
 																		</tr>
 																	</thead>
 																	<tbody>
+																		@foreach($invoicequote as $invoice)
+																		<?php
+																		$date = $invoice->updated_at;
+																		$quote_date =	date('d-M-Y', strtotime($date));
+																		$due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
+																		 ?>
 																		<tr>
-																			<td><a href="{{url('partner/invoice')}}" style="color: #00a4eb;">Invoice# 1</a></td>
-																			<td><span>07/01/2019</span></td>
-																			<td><span>09/01/2019</span></td>
-																			<td><span>12</span></td>
-																			<td><span>Experlu</span></td>
-																			<td class="amount"><span>£112.50</span></td>
+																			<td><a href="{{url('partner/invoice/'.$invoice->id)}}" style="color: #00a4eb;">Invoice# {{$invoice->id}}</a></td>
+																			<td><span>{{$quote_date}}</span></td>
+																			<td><span>{{$due_date}}</span></td>
+																			<td><span>{{$invoice->job_id}}</span></td>
+																			<td><span>{{$invoice->name}}</span></td>
+																			<td class="amount"><span>£{{$invoice->experlu_fee}}</span></td>
 																			<td><span class="label label-success">Paid</span></td>
 																		</tr>
-																		<tr>
+																		@endforeach
+																		<!-- <tr>
 																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 2</a></td>
 																			<td><span>07/01/2019</span></td>
 																			<td><span>09/01/2019</span></td>
@@ -925,8 +924,8 @@ foreach($jobs as $item){
 																			<td><span>Experlu</span></td>
 																			<td class="amount"><span>£112.50</span></td>
 																			<td><span class="label label-info">refunded</span></td>
-																		</tr>
-																		<tr>
+																		</tr> -->
+																		<!-- <tr>
 																			<td><a href="/invoices/42014" style="color: #00a4eb;">Invoice# 3</a></td>
 																			<td><span>07/01/2019</span></td>
 																			<td><span>09/01/2019</span></td>
@@ -934,7 +933,7 @@ foreach($jobs as $item){
 																			<td><span>Experlu</span></td>
 																			<td class="amount"><span>£112.50</span></td>
 																			<td><span class="label label-warning">pending</span></td>
-																		</tr>
+																		</tr> -->
 																	</tbody>
 															</table>
 														</div>
