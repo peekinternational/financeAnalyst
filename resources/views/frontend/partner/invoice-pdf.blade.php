@@ -1,206 +1,302 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<HTML>
-<HEAD>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-<TITLE>bcl_1879666702.htm</TITLE>
-<META name="generator" content="BCL easyConverter SDK 5.0.140">
 
-    <style>
-    .invoice-box {
-        max-width: 800px;
-        margin: auto;
-        padding: 30px;
-        border: 1px solid #eee;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-        font-size: 16px;
-        line-height: 24px;
-        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        color: #555;
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Example 2</title>
+ <style>
+@font-face {
+  font-family: SourceSansPro;
+  src: url(SourceSansPro-Regular.ttf);
+}
 
-    .invoice-box table {
-        width: 100%;
-        line-height: inherit;
-        text-align: left;
-    }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-    .invoice-box table td {
-        padding: 5px;
-        vertical-align: top;
-    }
+a {
+  color: #252851;
+  text-decoration: none;
+}
 
-    .invoice-box table tr td:nth-child(2) {
-        text-align: right;
-    }
+body {
+  position: relative;
+  width: 16cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  color: #555555;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  font-family: SourceSansPro;
+}
 
-    .invoice-box table tr.top table td {
-        padding-bottom: 20px;
-    }
+header {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #AAAAAA;
+}
 
-    .invoice-box table tr.top table td.title {
-        font-size: 45px;
-        line-height: 45px;
-        color: #333;
-    }
+#logo {
+  float: left;
+  margin-top: 8px;
+}
 
-    .invoice-box table tr.information table td {
-        padding-bottom: 40px;
-    }
+#logo img {
+  height: 70px;
+}
 
-    .invoice-box table tr.heading td {
-        background: #eee;
-        border-bottom: 1px solid #ddd;
-        font-weight: bold;
-    }
+#company {
+  text-align: right;
+}
 
-    .invoice-box table tr.details td {
-        padding-bottom: 20px;
-    }
 
-    .invoice-box table tr.item td{
-        border-bottom: 1px solid #eee;
-    }
+#details {
+  margin-bottom: 50px;
+}
 
-    .invoice-box table tr.item.last td {
-        border-bottom: none;
-    }
+#client {
+  padding-left: 6px;
+  border-left: 6px solid #252851;
+  float: left;
+}
 
-    .invoice-box table tr.total td:nth-child(2) {
-        border-top: 2px solid #eee;
-        font-weight: bold;
-    }
+#client .to {
+  color: #777777;
+}
 
-    @media only screen and (max-width: 600px) {
-        .invoice-box table tr.top table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
+h2.name {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
 
-        .invoice-box table tr.information table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-    }
+#invoice {
+  text-align: right;
+}
 
-    /** RTL **/
-    .rtl {
-        direction: rtl;
-        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-    }
+#invoice h1 {
+  color: #0087C3;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 10px 0;
+}
 
-    .rtl table {
-        text-align: right;
-    }
+#invoice .date {
+  font-size: 1.1em;
+  color: #777777;
+}
 
-    .rtl table tr td:nth-child(2) {
-        text-align: left;
-    }
-    </style>
-</head>
-<?php
-                    $path = public_path('/frontend-assets/logo.png');
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 20px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+table th {
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+table td {
+  text-align: right;
+}
+
+table td h3{
+  color: #d9af44;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+table .no {
+  color: #FFFFFF;
+  font-size: 1.6em;
+  background: #d9af44;
+}
+
+table .desc {
+  text-align: left;
+}
+
+table .unit {
+  background: #DDDDDD;
+}
+
+table .qty {
+}
+
+table .total {
+  background: #d9af44;
+  color: #FFFFFF;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+table tbody tr:last-child td {
+  border: none;
+}
+
+table tfoot td {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap; 
+  border-top: 1px solid #AAAAAA; 
+}
+
+table tfoot tr:first-child td {
+  border-top: none; 
+}
+
+table tfoot tr:last-child td {
+  color: #d9af44;
+  font-size: 1.4em;
+  border-top: 1px solid #d9af44; 
+
+}
+
+table tfoot tr td:first-child {
+  border: none;
+}
+
+#thanks{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+#notices{
+  padding-left: 6px;
+  border-left: 6px solid#d9af44;  
+}
+
+#notices .notice {
+  font-size: 1.2em;
+}
+
+footer {
+  color: #777777;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #AAAAAA;
+  padding: 8px 0;
+  text-align: center;
+}
+
+ </style>
+  </head>
+  <body>
+  <?php
+   $path = public_path('/frontend-assets/logo.png');
                     $type = pathinfo($path, PATHINFO_EXTENSION);
                     $data = file_get_contents($path);
                     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-           
-    ?>
-<body>
-  <div class="invoice-box" id="DivIdToPrint">
-    <table cellpadding="0" cellspacing="0">
-      <tr class="top">
-        <td colspan="2">
-          <table>
-            <tr>
-              <td class="title">
-                <img src="{{ $base64}}" style="width:100%; max-width:300px;">
-              </td>
-              <td>
-                <?php
-                $date = $invoice->updated_at;
-                $quote_date =	date('d-M-Y', strtotime($date));
-                $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
-                 ?>
-                Invoice #: {{$invoice->id}}<br>
-                Created: {{$quote_date}}<br>
-                Due: {{$due_date}}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
 
-      <tr class="information">
-        <td colspan="2">
-          <table>
-            <tr>
-              <td>
-                Sparksuite, Inc.<br>
-                12345 Sunny Road<br>
-                Sunnyville, CA 12345
-              </td>
-
-              <td>
-                <!-- Acme Corp.<br> -->
-                {{$invoice->name}}<br>
-                {{$invoice->email}}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <tr class="heading">
-        <td>
-          Payment Method
-        </td>
-
-        <td>
-          Check #
-        </td>
-      </tr>
-
-      <tr class="details">
-        <td>
-          Check
-        </td>
-
-        <td>
-          1000
-        </td>
-      </tr>
-
-      <tr class="heading">
-        <td>Item</td>
-
-        <td>Price</td>
-      </tr>
-
-      <tr class="item">
-        <td> Experlu Fee</td>
-
-        <td> {{$invoice->experlu_fee}}</td>
-      </tr>
-
-      <tr class="item">
-        <td>VAT</td>
-
-        <td>{{$invoice->vat_fee}}</td>
-      </tr>
-      <tr class="total">
-        <td></td>
-        <?php
-          $total =$invoice->experlu_fee+$invoice->vat_fee;
-         ?>
-        <td>
-          Total: {{$total}}
-        </td>
-      </tr>
-    </table>
-  </div>
-  
-</body>
+                    ?>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="{{$base64}}">
+      </div>
+      <div id="company">
+        <h2 class="name">Experlu</h2>
+        <div>455 Foggy Heights, AZ 85004, US</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">John Doe</h2>
+          <div class="address">796 Silver Harbour, TX 79273, US</div>
+          <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+        </div>
+        <div id="invoice">
+         
+          <div class="date">Date of Invoice: 01/06/2014</div>
+          <div class="date">Due Date: 30/06/2014</div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="desc">DESCRIPTION</th>
+            <th class="unit">UNIT PRICE</th>
+            <th class="qty">QUANTITY</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="desc"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">30</td>
+            <td class="total">$1,200.00</td>
+          </tr>
+          <tr>
+            <td class="no">02</td>
+            <td class="desc"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">80</td>
+            <td class="total">$3,200.00</td>
+          </tr>
+          <tr>
+            <td class="no">03</td>
+            <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">20</td>
+            <td class="total">$800.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TAX 25%</td>
+            <td>$1,300.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>$6,500.00</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="thanks">Thank you!</div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
 </html>
-
