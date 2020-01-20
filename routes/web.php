@@ -55,6 +55,7 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
 	Route::get('/invoice/{id}','Partner\PartnerController@get_invoice_detail');
+	Route::get('/invoice_pdf/{id}','Partner\PartnerController@get_invoice_pdf');
 
 	// Route::get('/invoice', function(){
 	// 	return view ('frontend.partner.invoice-template');
@@ -64,6 +65,12 @@ Route::group(['prefix' => 'partner'], function () {
 	});
 	Route::get('/checkout', function(){
 		return view ('frontend.partner.checkout');
+	});
+	Route::get('/checkoutfree', function(){
+		return view ('frontend.partner.checkoutfree');
+	});
+	Route::get('/checkoutmonthly', function(){
+		return view ('frontend.partner.checkoutmothly');
 	});
 
 	});
@@ -157,4 +164,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 
 Route::get('addmoney/stripe', array('as' => 'addmoney.paystripe','uses' => 'MoneySetupController@PaymentStripe'));
 Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
+
+Route::post('addmoney/freetrial', array('as' => 'addmoney.stripefree','uses' => 'MoneySetupController@postPaymentStripefree'));
+Route::post('addmoney/monthly', array('as' => 'addmoney.stripemonthly','uses' => 'MoneySetupController@postPaymentStripemonthly'));
 //////////////////////// Admin Dashboard Close ////////////////////////////

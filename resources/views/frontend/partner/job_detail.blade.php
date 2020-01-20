@@ -262,7 +262,7 @@
 														<p>
 															{{$data->job_case}}
 														</p>
-														<div class="text-right" style="display:none">
+														<div class="text-right" >
 															<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary">Download as PDF</a>
 														</div>
 													</div>

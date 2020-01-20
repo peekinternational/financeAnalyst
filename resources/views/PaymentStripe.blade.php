@@ -31,7 +31,7 @@
 <div class='row'>
 <div class='col-md-4'></div>
 <div class='col-md-4'>
-<form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!!route('addmoney.stripe')!!}" >
+<form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!!route('addmoney.stripemonthly')!!}" >
 {{ csrf_field() }}
 <div class='form-row'>
 <div class='col-xs-12 form-group card required'>

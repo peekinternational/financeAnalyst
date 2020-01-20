@@ -1,8 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Experlu Invoice</title>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<TITLE>bcl_1879666702.htm</TITLE>
+<META name="generator" content="BCL easyConverter SDK 5.0.140">
 
     <style>
     .invoice-box {
@@ -98,7 +100,13 @@
     }
     </style>
 </head>
-
+<?php
+                    $path = public_path('/frontend-assets/logo.png');
+                    $type = pathinfo($path, PATHINFO_EXTENSION);
+                    $data = file_get_contents($path);
+                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+           
+    ?>
 <body>
   <div class="invoice-box" id="DivIdToPrint">
     <table cellpadding="0" cellspacing="0">
@@ -107,7 +115,7 @@
           <table>
             <tr>
               <td class="title">
-                <img src="{{asset('frontend-assets/logo.png')}}" style="width:100%; max-width:300px;">
+                <img src="{{ $base64}}" style="width:100%; max-width:300px;">
               </td>
               <td>
                 <?php
@@ -192,46 +200,7 @@
       </tr>
     </table>
   </div>
-  <div class="text-center" style="text-align: center;margin-top: 10px;">
-    <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" style="color: white;background: #d9af44;height: 34px;">Download PDF</a>
-  </div>
+  
 </body>
 </html>
-<script src="{{asset('/frontend-assets/dashboard/js/core/jquery.min.js')}}"></script>
-<script>
-function printDiv()
-{
-  // $('#print_btn').hide();
-  var divToPrint=document.getElementById('DivIdToPrint');
 
-  var newWin=window.open('','Print-Window');
-
-  newWin.document.open();
-
-  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-
-  newWin.document.close();
-
-  setTimeout(function(){newWin.close();},10);
-
-}
-
-function downloadPdf(){
-  var formdata=$('form').serialize();
-  console.log(formdata);
-  $.ajax({
-      url: "{{ url('quote_ajax')}}",
-      type: "post",
-      data: formdata ,
-      success: function (response) {
-    console.log(response);
-       $('#qoute_ajax').html(response);
-         // You will get response from your PHP page (what you echo or print)
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-         console.log(textStatus, errorThrown);
-      }
-  });
-}
-
-</script>

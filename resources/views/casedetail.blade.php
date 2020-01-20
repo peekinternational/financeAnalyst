@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<META http-equiv="X-UA-Compatible" content="IE=8">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <TITLE>bcl_1879666702.htm</TITLE>
 <META name="generator" content="BCL easyConverter SDK 5.0.140">
 <STYLE type="text/css">
@@ -79,7 +79,13 @@ body {margin-top: 0px;margin-left: 0px;}
 
 </STYLE>
 </HEAD>
-
+  <?php
+                    $path = public_path('/frontend-assets/logo.png');
+                    $type = pathinfo($path, PATHINFO_EXTENSION);
+                    $data = file_get_contents($path);
+                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+           
+    ?>
 <BODY>
 <DIV id="page_1">
 <DIV id="p1dimg1">
@@ -87,6 +93,7 @@ body {margin-top: 0px;margin-left: 0px;}
 
 
 <DIV id="id1_1">
+<img src="{{ $base64}}" style="width:100%; max-width:300px;">
 <P class="p0 ft0">Experlu | 1635 Market St #1600 | 19103 Philadelphia</P>
 <P class="p0 ft0">PA | | +1 (267) 8000215</P>
 <P class="p1 ft1">{{$data->job_title}}</P>

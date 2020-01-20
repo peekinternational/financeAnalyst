@@ -55,7 +55,7 @@
                       
                      <div class="pricing_bottom">
                         <div class="order_now">          
-                           <a href="" class="singinp">Order Now</a>    
+                           <a href="{{ url('partner/checkoutfree')}}" class="singinp">Order Now</a>    
                         </div>
                      </div>
                     
@@ -102,7 +102,7 @@
                       
                      <div class="pricing_bottom">
                         <div class="order_now">          
-                           <a href="" class="singinp">Order Now</a>    
+                           <a href="{{ url('partner/checkoutmonthly')}}" class="singinp">Order Now</a>    
                         </div>
                      </div>
                     
