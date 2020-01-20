@@ -169,20 +169,28 @@
             </thead>
             <tbody>
               <tr>
-                <td>
+                <td rowspan="2">
                   <img alt="" class="image" data-src="{{asset('frontend-assets/images/job_logo.PNG')}}" src="{{asset('frontend-assets/images/job_logo.PNG')}}" lazy="loaded">
                 </td>
                 <td>
-                  <p>Title</p>
+                  <p>Experlu Fee</p>
                 </td>
                 <td align="right">
-                  <p>30$</p>
+                  <p>£{{$fee}}</p>
                 </td>
               </tr>
+                <tr>
+                  <td>
+                    <p>VAT</p>
+                  </td>
+                  <td align="right">
+                    <p>£{{$vat}}</p>
+                  </td>
+                </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="3" align="right"><strong>Total: 50$</strong></td>
+                <td colspan="3" align="right"><strong>Total: £{{$total}}</strong></td>
               </tr>
             </tfoot>
           </table>
@@ -192,28 +200,37 @@
     <div class="row">
       <div class="col-75">
         <div class="container">
-          <form action="" id="paymentForm">
-
+          @if(session()->has('error'))
+          <div class="row">
+            <div class="alert alert-warning">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+              <strong>Message:</strong>{{session()->get('error')}}
+            </div>
+          </div>
+          @endif
+          <!-- <form ction="{!!route('addmoney.stripemonthly')!!}" id="paymentForm" method="post"> -->
+            <form action="{!!route('addmoney.stripe')!!}" id="paymentForm" method="post">
+              {{csrf_field()}}
             <div class="row">
               <div class="col-50">
                 <h3>Billing Address</h3>
                 <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                <input type="text" id="fname" name="fullname" placeholder="John M. Doe" required>
                 <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                <input type="text" id="email" name="email" placeholder="john@example.com">
+                <input type="text" id="email" name="email" placeholder="john@example.com" required>
                 <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                <label for="city"><i class="fa fa-institution"></i> City</label>
+                <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
+                <label for="city"><i class="fa fa-institution"></i> City</label required>
                 <input type="text" id="city" name="city" placeholder="New York">
 
                 <div class="row">
                   <div class="col-50">
                     <label for="state">State</label>
-                    <input type="text" id="state" name="state" placeholder="NY">
+                    <input type="text" id="state" name="state" placeholder="NY" required>
                   </div>
                   <div class="col-50">
                     <label for="zip">Zip</label>
-                    <input type="text" id="zip" name="zip" placeholder="10001">
+                    <input type="text" id="zip" name="zip" placeholder="10001" required>
                   </div>
                 </div>
               </div>
@@ -228,20 +245,21 @@
                   <i class="fa fa-cc-discover" style="color:orange;"></i>
                 </div>
                 <label for="cname">Name on Card</label>
-                <input type="text" id="name_on_card" name="cardname" placeholder="John More Doe">
+                <input type="text" id="name_on_card" name="cardname" placeholder="John More Doe" required>
                 <label for="ccnum">Credit card number</label>
-                <input type="text" id="card_number" name="cardnumber" placeholder="1111-2222-3333-4444">
+                <input type="text" id="card_number" name="cardnumber" size='20' placeholder="1111222233334444" required>
                 <label for="expmonth">Exp Month</label>
-                <input type="text" id="expiry_month" name="expmonth" placeholder="September">
+                <input type="text" id="expiry_month" name="expmonth" size='4' placeholder="MM" required>
+                <input type="hidden" id="" name="amount" value="{{$total}}">
 
                 <div class="row">
                   <div class="col-50">
                     <label for="expyear">Exp Year</label>
-                    <input type="text" id="expiry_year" name="expyear" placeholder="2018">
+                    <input type="text" id="expiry_year" name="expyear" size='4' placeholder="2020" required>
                   </div>
                   <div class="col-50">
                     <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="352">
+                    <input type="text" id="cvv" name="cvv" size='3' placeholder="352" required>
                   </div>
                 </div>
               </div>

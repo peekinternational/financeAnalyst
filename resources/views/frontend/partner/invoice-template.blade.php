@@ -193,7 +193,8 @@
     </table>
   </div>
   <div class="text-center" style="text-align: center;margin-top: 10px;">
-    <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" style="color: white;background: #d9af44;height: 34px;">Download PDF</a>
+    <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 5px;">Download PDF</a>
+    <a href="{{ url('partner/checkout/'.$invoice->id.'/'.$invoice->experlu_fee.'/'.$invoice->vat_fee.'/'.$total)}}" class="btn" style="color: white;background: #d9af44;padding: 5px;">Pay Now</a>
   </div>
 </body>
 </html>

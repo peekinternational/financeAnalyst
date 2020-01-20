@@ -6,7 +6,7 @@
 <div class="pricing_area">
 	<div class="container">
 		<div class="row">
-         
+
 				<!-- area section title-->
 				<div class="col-md-12">
 
@@ -14,8 +14,8 @@
 						<!-- title -->
 						<h2>Choose <span>Your Plan</span></h2>
 						<!-- TEXT -->
-					</div>	
-				</div>	
+					</div>
+				</div>
 			</div>
 			<div id="individual_pkg" class="row">
 				<!-- single pricing-->
@@ -41,24 +41,24 @@
                      <div class="price_item">
                         <div class="price_item_inner">
                            <div class="price_item_inner_center">
-                              <span class="starting">BASIC USER MEMBERSHIP</span>  
-                              
+                              <span class="starting">BASIC USER MEMBERSHIP</span>
+
                               <span class="curencyp">£ </span>
-                               
-                              <span class="tk">0</span>  
-                               
-                              <span class="slash">/only</span>  
-                              
+
+                              <span class="tk">0</span>
+
+                              <span class="slash">/only</span>
+
                            </div>
                         </div>
                      </div>
-                      
+
                      <div class="pricing_bottom">
-                        <div class="order_now">          
-                           <a href="{{ url('partner/checkoutfree')}}" class="singinp">Order Now</a>    
+                        <div class="order_now">
+                           <a href="{{ url('partner/checkoutfree')}}" class="singinp">Order Now</a>
                         </div>
                      </div>
-                    
+
                   </div>
                </div>
             </div>
@@ -88,29 +88,29 @@
                      <div class="price_item">
                         <div class="price_item_inner">
                            <div class="price_item_inner_center">
-                              <span class="starting">PREMIUM USER MEMBERSHIP</span>  
-                              
+                              <span class="starting">PREMIUM USER MEMBERSHIP</span>
+
                               <span class="curencyp">£ </span>
-                               
-                              <span class="tk">500</span>  
-                               
-                              <span class="slash">/only</span>  
-                              
+
+                              <span class="tk">85</span>
+
+                              <span class="slash">/only</span>
+
                            </div>
                         </div>
                      </div>
-                      
+
                      <div class="pricing_bottom">
-                        <div class="order_now">          
-                           <a href="{{ url('partner/checkoutmonthly')}}" class="singinp">Order Now</a>    
+                        <div class="order_now">
+                           <a href="{{ url('partner/checkoutmonthly')}}" class="singinp">Order Now</a>
                         </div>
                      </div>
-                    
+
                   </div>
                </div>
             </div>
          </div>
-						
+
 		</div>
 	</div>
 </div>

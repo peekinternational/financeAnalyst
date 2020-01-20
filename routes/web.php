@@ -63,14 +63,15 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/membership', function(){
 		return view ('frontend.partner.membership');
 	});
-	Route::get('/checkout', function(){
-		return view ('frontend.partner.checkout');
-	});
+	// Route::get('/checkout', function(){
+	// 	return view ('frontend.partner.checkout');
+	// });
+	Route::get('/checkout/{id}/{fee}/{vat}/{total}','Partner\PartnerController@checkout');
 	Route::get('/checkoutfree', function(){
 		return view ('frontend.partner.checkoutfree');
 	});
 	Route::get('/checkoutmonthly', function(){
-		return view ('frontend.partner.checkoutmothly');
+		return view ('frontend.partner.checkoutmonthly');
 	});
 
 	});

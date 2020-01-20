@@ -24,8 +24,12 @@ class PartnerController extends Controller
              if(!$request->session()->has('faUser')){
 			return redirect('/');
 		}
+    $userId=$request->session()->get('faUser')->p_id;
 
-        $userId=$request->session()->get('faUser')->p_id;
+    $payment_status = DB::table('fa_partner')->where('p_id',$userId)->first()->payment_status;
+    if ($payment_status == 0) {
+      return redirect('partner/membership');
+    }
 
      $document=DB::table('fa_partner_cv')->where('partner_id',$userId)->first();
             if($request->isMethod('post')){
@@ -160,7 +164,7 @@ class PartnerController extends Controller
     public function get_invoice_detail(Request $request, $id)
     {
       // dd($id);
-      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
+      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name','fa_partner.email')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->where('fa_quote.id',$id)->first();
       // dd($invoice);
         return view ('frontend.partner.invoice-template',compact('invoice'));
     }
@@ -173,7 +177,13 @@ class PartnerController extends Controller
        $pdf = PDF::loadView('frontend.partner.invoice-pdf',compact('invoice'));
        //dd($pdf);
        return $pdf->download('inovice.pdf');
-       
+
+    }
+
+    public function checkout(Request $request,$id,$fee,$vat,$total)
+    {
+      // dd($id." ".$fee." ".$vat." ".$total);
+      	return view ('frontend.partner.checkout',compact('id','fee','vat','total'));
     }
 
         public function getDocument(Request $request)

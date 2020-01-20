@@ -10,6 +10,7 @@ use Input;
 use App\User;
 use Stripe\Error\Card;
 use Cartalyst\Stripe\Stripe;
+use DB;
 class MoneySetupController extends Controller
 {
  public function paymentStripe()
@@ -18,26 +19,30 @@ class MoneySetupController extends Controller
  }
 
 
-public function postPaymentStripecharge(Request $request)
+// public function postPaymentStripecharge(Request $request)
+public function postPaymentStripe(Request $request)
  {
+   // dd($request->all());
  $validator = Validator::make($request->all(), [
- 'card_no' => 'required',
- 'ccExpiryMonth' => 'required',
- 'ccExpiryYear' => 'required',
- 'cvvNumber' => 'required',
- //'amount' => 'required',
+   'cardname' => 'required',
+   'cardnumber' => 'required',
+   'expmonth' => 'required',
+   'expyear' => 'required',
+   'cvv' => 'required',
+   'amount' => 'required',
  ]);
  $input = $request->all();
- if ($validator->passes()) { 
+ // dd($input['amount']);
+ if ($validator->passes()) {
  $input = array_except($input,array('_token'));
-$stripe = \Stripe::setApiKey(env('STRIPE_SECRET'));
+$stripe = \Stripe::setApiKey('sk_test_736e4BO4MrWwgnGDMiVYQ2z000JdtbBfSJ');
  try {
  $token = $stripe->tokens()->create([
  'card' => [
- 'number' => $request->get('card_no'),
- 'exp_month' => $request->get('ccExpiryMonth'),
- 'exp_year' => $request->get('ccExpiryYear'),
- 'cvc' => $request->get('cvvNumber'),
+   'number' => $request->get('cardnumber'),
+   'exp_month' => $request->get('expmonth'),
+   'exp_year' => $request->get('expyear'),
+   'cvc' => $request->get('cvv'),
  ],
  ]);
 if (!isset($token['id'])) {
@@ -46,20 +51,36 @@ if (!isset($token['id'])) {
  }
  $charge = $stripe->charges()->create([
  'card' => $token['id'],
- 'currency' => 'USD',
- 'amount' => 20.49,
- 'description' => 'wallet',
+ 'currency' => 'gbp',
+ 'amount' => $input['amount'],
+ 'description' => 'Quotation Charges',
  ]);
- 
+
  if($charge['status'] == 'succeeded') {
-	 dd($charge);
- echo "<pre>";
- print_r($charge);exit();
- return redirect()->route('addmoney.paymentstripe');
+   $amount = $charge['amount']/100;
+   // dd($charge);
+   $userId=$request->session()->get('faUser')->p_id;
+   $detail['p_id'] = $userId;
+   $detail['name'] = $request->input('fullname');
+   $detail['email'] = $request->input('email');
+   $detail['address'] = $request->input('address');
+   $detail['city'] = $request->input('city');
+   $detail['state'] = $request->input('state');
+   $detail['zip'] = $request->input('zip');
+   $detail['method'] = 'Quotation Charges';
+   $detail['amount'] = $amount;
+   $detail['currency'] = $charge['currency'];
+   $detail['trial_period_days'] = $charge['trial_period_days'];
+   // dd($detail);
+   $payment = DB::table('fa_payments')->insertGetID($detail);
+   $receipt =$charge['receipt_url'];
+ // print_r($charge);exit();
+ return view('frontend.thanks2',compact('receipt'));
+
  } else {
 	 dd("error");
  \Session::put('error','Money not add in wallet!!');
- 
+
   //dd($e->getMessage());
  return Redirect::to('addmoney/stripe');
  }
@@ -87,30 +108,33 @@ if (!isset($token['id'])) {
 ////////// monthly free plan////////////
  public function postPaymentStripefree(Request $request)
  {
+   // dd($request->all());
  $validator = Validator::make($request->all(), [
- 'card_no' => 'required',
- 'ccExpiryMonth' => 'required',
- 'ccExpiryYear' => 'required',
- 'cvvNumber' => 'required',
+ 'cardname' => 'required',
+ 'cardnumber' => 'required',
+ 'expmonth' => 'required',
+ 'expyear' => 'required',
+ 'cvv' => 'required',
  //'amount' => 'required',
  ]);
  $input = $request->all();
- if ($validator->passes()) { 
+ if ($validator->passes()) {
  $input = array_except($input,array('_token'));
 $stripe = \Stripe::setApiKey('sk_test_736e4BO4MrWwgnGDMiVYQ2z000JdtbBfSJ');
 //dd($stripe);
  try {
  $token = $stripe->tokens()->create([
  'card' => [
- 'number' => $request->get('card_no'),
- 'exp_month' => $request->get('ccExpiryMonth'),
- 'exp_year' => $request->get('ccExpiryYear'),
- 'cvc' => $request->get('cvvNumber'),
+ 'number' => $request->get('cardnumber'),
+ 'exp_month' => $request->get('expmonth'),
+ 'exp_year' => $request->get('expyear'),
+ 'cvc' => $request->get('cvv'),
  ],
  ]);
 if (!isset($token['id'])) {
-	dd($token);
- return redirect()->route('addmoney.paymentstripe');
+  // dd($token);
+ return redirect('partner/checkoutfree');
+ // return redirect()->route('addmoney.paymentstripe');
  }
  $charge = $stripe->plans()->create([
  "product" => "prod_GYewlOlNZumeBx",
@@ -121,34 +145,49 @@ if (!isset($token['id'])) {
   "billing_scheme"=> "per_unit",
   "nickname" => "Experlu",
   "trial_period_days"=> "30",
-  "amount_decimal"=> "30000"
+  "amount_decimal"=> "0"
  ]);
- dd($charge);
- if($charge['status'] == 'succeeded') {
-	 
- echo "<pre>";
- print_r($charge);exit();
- return redirect()->route('addmoney.paymentstripe');
+ if($charge['active'] == true) {
+   // dd($charge);
+   $userId=$request->session()->get('faUser')->p_id;
+   $detail['p_id'] = $userId;
+   $detail['name'] = $request->input('fullname');
+   $detail['email'] = $request->input('email');
+   $detail['address'] = $request->input('address');
+   $detail['city'] = $request->input('city');
+   $detail['state'] = $request->input('state');
+   $detail['zip'] = $request->input('zip');
+   $detail['method'] = 'BASIC USER MEMBERSHIP';
+   $detail['amount'] = $charge['amount'];
+   $detail['currency'] = $charge['currency'];
+   $detail['trial_period_days'] = $charge['trial_period_days'];
+   // dd($detail);
+   $payment = DB::table('fa_payments')->insertGetID($detail);
+   $patner_detail['payment_status']='1';
+   $patner_detail['payment_id']=$payment;
+   $partner = DB::table('fa_partner')->where('p_id',$userId)->update($patner_detail);
+
+ return redirect('/partner/partner_dashboard');
  } else {
 	 dd("error");
- \Session::put('error','Money not add in wallet!!');
- 
+ \Session::flash('error','Money not add in wallet!!');
+
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutfree');
  }
  } catch (Exception $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutfree');
  } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
- //return redirect()->url('addmoney/stripe');
+ return Redirect::to('partner/checkoutfree');
+ //return redirect()->url('partner/checkoutfree');
  } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutfree');
  }
  }
  }
@@ -157,25 +196,27 @@ if (!isset($token['id'])) {
 ////////// monthly plan////////////
  public function postPaymentStripemonthly(Request $request)
  {
+   // dd($request->all());
  $validator = Validator::make($request->all(), [
- 'card_no' => 'required',
- 'ccExpiryMonth' => 'required',
- 'ccExpiryYear' => 'required',
- 'cvvNumber' => 'required',
+ 'cardname' => 'required',
+ 'cardnumber' => 'required',
+ 'expmonth' => 'required',
+ 'expyear' => 'required',
+ 'cvv' => 'required',
  //'amount' => 'required',
  ]);
  $input = $request->all();
- if ($validator->passes()) { 
+ if ($validator->passes()) {
  $input = array_except($input,array('_token'));
 $stripe = \Stripe::setApiKey('sk_test_736e4BO4MrWwgnGDMiVYQ2z000JdtbBfSJ');
 //dd($stripe);
  try {
  $token = $stripe->tokens()->create([
  'card' => [
- 'number' => $request->get('card_no'),
- 'exp_month' => $request->get('ccExpiryMonth'),
- 'exp_year' => $request->get('ccExpiryYear'),
- 'cvc' => $request->get('cvvNumber'),
+   'number' => $request->get('cardnumber'),
+   'exp_month' => $request->get('expmonth'),
+   'exp_year' => $request->get('expyear'),
+   'cvc' => $request->get('cvv'),
  ],
  ]);
 if (!isset($token['id'])) {
@@ -192,32 +233,48 @@ if (!isset($token['id'])) {
   "nickname" => "Monthly Experlu Subscription Fee",
   "amount_decimal"=> "50000"
  ]);
- dd($charge);
- if($charge['status'] == 'succeeded') {
-	 
- echo "<pre>";
- print_r($charge);exit();
- return redirect()->route('addmoney.paymentstripe');
+ if($charge['active'] == true) {
+   // dd($charge);
+   $userId=$request->session()->get('faUser')->p_id;
+   $detail['p_id'] = $userId;
+   $detail['name'] = $request->input('fullname');
+   $detail['email'] = $request->input('email');
+   $detail['address'] = $request->input('address');
+   $detail['city'] = $request->input('city');
+   $detail['state'] = $request->input('state');
+   $detail['zip'] = $request->input('zip');
+   $detail['method'] = 'PREMIUM USER MEMBERSHIP';
+   $detail['amount'] = $charge['amount'];
+   $detail['currency'] = $charge['currency'];
+   $detail['trial_period_days'] = $charge['trial_period_days'];
+   // dd($detail);
+   $payment = DB::table('fa_payments')->insertGetID($detail);
+   $patner_detail['payment_status']='1';
+   $patner_detail['payment_id']=$payment;
+   $partner = DB::table('fa_partner')->where('p_id',$userId)->update($patner_detail);
+ // echo "<pre>";
+ // print_r($charge);exit();
+ return redirect('/partner/partner_dashboard');
  } else {
 	 dd("error");
- \Session::put('error','Money not add in wallet!!');
- 
+ \Session::flash('error','Money not add in wallet!!');
+
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutmonthly');
  }
  } catch (Exception $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutmonthly');
  } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
- //return redirect()->url('addmoney/stripe');
+ return Redirect::to('partner/checkoutmonthly');
+ //return redirect()->url('partner/checkoutmonthly');
  } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkoutmonthly');
  }
  }
  }
