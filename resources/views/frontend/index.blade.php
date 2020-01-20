@@ -6,59 +6,21 @@
     <div class="hero-overlay hidden-md hidden-lg"></div>
     <div class="hero-content" style="padding: 0;">
 
-
+      @if(session()->has('message'))
+        <div class="row">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <strong>Message:</strong>{{session()->get('message')}}
+          </div>
+        </div>
+      @endif
       <div id="hero">
         <div class="row">
           <div class="col-md-12">
 		   <img  alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
-		   <p style="position: absolute; top: 280px;left: 479px;"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                        Get started
-                      </a></p>
-           <!-- <div id="carousel-id" class="carousel slide" data-ride="carousel" style=" height: 550px ; overflow: hidden;">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-                <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="item">
-                  <img data-src="{{asset('frontend-assets/images/slide1.jpg')}}" alt="First slide" src="{{asset('frontend-assets/images/slide1.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!--
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img data-src="{{asset('frontend-assets/images/slide2.jpg')}}" alt="Second slide" src="{{asset('frontend-assets/images/slide2.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1>
-                       <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!-- <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                        Get started
-                      </a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="item active">
-                  <img data-src="{{asset('frontend-assets/images/slide3.jpg')}}" src="{{asset('frontend-assets/images/slide3.jpg')}}" style="width: 100%; height: 100%;">
-                  <div class="container">
-                    <div class="carousel-caption">
-                      <h1>Looking for accountant, tax advisor or bookkeeper?</h1> -->
-                      <!-- <p>Find the best accountant or bookkeeper with Finance Analyst</p> -->
-                     <!--  <p><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
-                          Get started
-                        </a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-              <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div> -->
+		        <p class="get-started"><a href="#" class="cta-button btn btn-green btn-shadowless btn-lg get-started-btn">
+            Get started
+            </a></p>
           </div>
         </div>
 
@@ -434,7 +396,7 @@
 
                 </p>
                 <p>
-                  <a href="contact-us.html" target="_blank" class="btn btn-link btn-lg btn-block btn-shadowless">Go to contact page</a>
+                  <a href="{{url('/contact-us')}}" target="_blank" class="btn btn-link btn-lg btn-block btn-shadowless">Go to contact page</a>
                 </p>
               </div>
               <div class="col-md-4 text-center">
@@ -445,7 +407,7 @@
 
                 </p>
                 <p>
-                  <a href="tel:+442038683459" class="btn btn-link btn-lg btn-block btn-shadowless">+545 54124 45424</a>
+                  <a href="tel:0203 983 8100" class="btn btn-link btn-lg btn-block btn-shadowless">0203 983 8100</a>
                 </p>
               </div>
               <div class="col-md-4 text-center">
@@ -482,21 +444,21 @@
               <img src="{{asset('frontend-assets/images/easy.png')}}" width="45px">
             </div>
             <h4>Extraordinarily easy</h4>
-            <p>Our match making process makes it spectacularly simple to find your perfect accountant, tax advisor or bookkeeper. And from finding a perfect match till onboarding and filing your tax returns, our expert advisors are here to help.</p>
+            <p>Our match making process makes it spectacularly simple to find your perfect accountant, tax advisor or bookkeeper. From finding a perfect match till onboarding and filing your tax returns, our expert advisors are here to help.</p>
           </div>
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><!-- <span data-icon-type="circle" class="icon-circle  fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-flag qode_iwt_icon_element" style="color: #ffffff;"></i></span> -->
               <img src="{{asset('frontend-assets/images/truly.png')}}" width="45px">
             </div>
             <h4>Truly transparent</h4>
-            <p>Decades of finance experience. We hand pick our accountants from across the country and thoroughly verify them- including their practice certificates, indemnity insurance and professional memberships. So, you can trust that your match is genuinely an EXPERT</p>
+            <p>Decades of finance experience. We hand pick our Experts from across the country and thoroughly verify them- including their practice certificates, indemnity insurances and professional memberships. So, you can trust that your match is genuinely an EXPERT!</p>
           </div>
           <div class="col-md-4 text-center">
             <div class="icon_holder pull-left" style=" transition-delay: 200ms; -webkit-transition-delay: 200ms; -moz-transition-delay: 200ms; -o-transition-delay: 200ms;"><!-- <span data-icon-type="circle" class="icon-circle fa-stack fa-lg  " style="font-size: 24px;border-color: #072f44;background-color: #072f44;"><i class="qode_icon_font_awesome fa fa-clock-o qode_iwt_icon_element" style="color: #ffffff;"></i></span> -->
               <img src="{{asset('frontend-assets/images/free.png')}}" width="45px">
             </div>
             <h4>Fantastically free</h4>
-            <p>Experlu won’t cost you a penny because we get paid by the Expert. Our Experts will save you around 15% off the average fee for similar services. What are you waiting for?</p>
+            <p>Experlu won’t cost you a penny because we get paid by the Expert. Our Experts will save you around 15% of the average fee for similar services. What are you waiting for?</p>
           </div>
         </div>
       </div>
@@ -639,7 +601,7 @@
             <div class="col-xs-3 text-center step-progress-2">
               <i class="desktop mdi mdi-checkbox-blank-circle-outline mdi-48px text-muted hidden-xs"></i>
               <i class="mobile mdi mdi-numeric-2-box mdi-48px text-muted visible-xs"></i>
-              <div class="hidden-xs text-muted">Describe your case</div>
+              <div class="hidden-xs text-muted">Describe your job</div>
             </div>
             <div class="col-xs-3 text-center step-progress-3">
               <i class="desktop mdi mdi-checkbox-blank-circle-outline mdi-48px text-muted hidden-xs"></i>
@@ -755,6 +717,7 @@
           <div class="form-group" style="display:table">
              <span class="input-group-addon" id="basic-addon1" style="padding: 0px 3px !important;">
                 <select name="mobile_code" id="input" class="phone-nmbr" style="width:139px">
+                  <option value="44">United Kingdom (+44)</option>
                    <option value="93">Afghanistan (+93)</option>
                    <option value="355">Albania (+355)</option>
                    <option value="213">Algeria (+213)</option>
@@ -995,7 +958,7 @@
                    <option value="263">Zimbabwe (+263)</option>
                 </select>
              </span>
-             <input type="number" class="form-control" name="mobilenumber" placeholder="Mobile Number(1025xxxxxx)" required="required">
+             <input type="number" class="form-control" name="mobilenumber" placeholder="" required="required">
           </div>
           <!-- <div class="form-group">
             <label class="control-label" for="input-phone">Phone number</label>
@@ -1010,14 +973,14 @@
           <div class="form-group">
             <div class="form-group" style="margin-top: 20px;">
               <input required type="checkbox" id="input-email_optin" style="margin-right: 10px;" />
-              <label class="control-label" for="input-email_optin">Finance Analyst contact me via email</label>
+              <label class="control-label" for="input-email_optin">Experlu contact me via email</label>
               <span class="help-block"></span>
             </div>
           </div>
           <div class="form-group text-center">
-            <button type="submit" class="btn cta-button btn-lg btn-block submit-button" style="margin-top: 40px;">Get 3 offers - free and non binding</button>
+            <button type="submit" class="btn cta-button btn-lg btn-block submit-button" style="margin-top: 40px;">Get 3 proposals - free and non binding</button>
           </div>
-          <p class="text-muted text-center">Read our <a target="_blank" rel="nofollow" href="privacy-policy.html" class="privacypolicy_link">privacy policy</a></p>
+          <p class="text-muted text-center">Read our <a target="_blank" rel="nofollow" href="{{url('/privacy-policy')}}" class="privacypolicy_link">privacy policy</a></p>
         </div>
         </form>
       </div>

@@ -150,7 +150,7 @@ class PartnerController extends Controller
 
          }
 
-
+      // dd($userinfo);
      return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId'));
     }
 
@@ -379,13 +379,30 @@ public function doLogin($email,$password){
             $input['phoneno'] = trim($request->input('phoneno'));
             $input['user_type'] = 'partner';
             $input['password'] = md5(trim($request->input('password')));
+            $string = "";
+           $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for($i=0;$i<20;$i++)
+           $string.=substr($chars,rand(0,strlen($chars)),1);
+           // dd($string);
+           $input['token']=$string;
 
            $userId = DB::table('fa_partner')->insertGetId($input);
             setcookie('cc_data', $userId, time() + (86400 * 30), "/");
             $fNotice = 'Please check your mobile for verification code';
 			$request->session()->flash('fNotice',$fNotice);
            // return redirect('verify');
-            }
+
+            $toemail = $input['email'];
+            Mail::send('mail.sendmailforverify',['p_id'=>$userId,'customer_name' =>$input['name'],'token'=>$string],
+
+          function ($message) use ($toemail)
+          {
+
+            $message->subject('Experlu.com - Welcome To Experlu');
+            $message->from('searchbysearchs@gmail.com', 'Experlu');
+            $message->to($toemail);
+          });
+        }
 
 		$pageType = \Request::segment('1');
 		return view('frontend.partner.partner_login',compact('pageType'));
@@ -664,6 +681,53 @@ public function export_pdf($id)
            $message->to($toemail);
          });
            return view('frontend.thanks');
+   }
+
+   public function send_verification_email(Request $request)
+   {
+       // dd($request->all());
+       $p_id = $request->input('p_id');
+       $email = $request->input('email');
+       $name = $request->input('name');
+       // $token = $request->input('token');
+       $string = "";
+      $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for($i=0;$i<20;$i++)
+      $string.=substr($chars,rand(0,strlen($chars)),1);
+      // dd($string);
+      $input['token']=$string;
+       // $p_id=$request->session()->get('faUser')->p_id;
+       // $p_id = $request->input('p_id');
+
+       $code= DB::table('fa_partner')
+               ->where('p_id',$p_id)->where('email',$email)->update($input);
+               // dd($code);
+
+       // dd($quote);
+           $toemail = $email;
+           Mail::send('mail.sendmailforverify',['p_id'=>$p_id,'customer_name' =>$name,'token'=>$string],
+
+         function ($message) use ($toemail)
+         {
+
+           $message->subject('Experlu.com - Welcome To Experlu');
+           $message->from('searchbysearchs@gmail.com', 'Experlu');
+           $message->to($toemail);
+         });
+           return view('frontend.thanks');
+   }
+
+   public function verify_account(Request $request)
+   {
+     // dd($request->all());
+     $p_id = $request->input('p_id');
+     $token = $request->input('token');
+     $input['verify_status']='1';
+     $partner = DB::table('fa_partner')->where('p_id', $p_id)->where('token',$token)->update($input);
+     $request->session()->flash('message','Email Verified Successfully');
+     return redirect('/partner_login');
+     // return redi('verify_email');
+     // return view('verify_email');
    }
 
 

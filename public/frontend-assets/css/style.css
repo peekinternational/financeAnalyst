@@ -4,7 +4,8 @@ body{
 /*Top Header*/
 .top-header{
 	height: 54px;
-	background-color: rgba(7,47,68,1);
+	/*background-color: rgba(7,47,68,1);*/
+    background-color: rgb(11, 78, 162);
 	border-bottom: 1px solid rgba(7,47,68,1);
 }
 .contact-text{
@@ -1673,5 +1674,135 @@ table.datatable.responsive .table-mobile-cell {
   font-weight: 600;
 }
 .single_company_info p {
-    padding-top: 3px;
+  padding-top: 3px;
+}
+/*MemberShip*/
+.pricing_area{
+  margin-top: 10rem;
+}
+.section-title.t_center {
+  margin: auto;
+  text-align: center;
+  width: 90%;
+}
+.section-title h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 11px;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+}
+.section-title span {
+  color: #0b4ea2;
+}
+.single_pricing {
+  background: #fff none repeat scroll 0 0;
+  transition: all 0.3s ease 0s;
+  padding: 4px 0px 50px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.20);
+  margin-bottom: 30px;
+  margin-top: 5px;
+  min-height: 580px;
+}
+.pricing_head {
+  padding: 20px 0 16px;
+  transition: all 0.3s ease 0s;
+  text-align: center;
+}
+.pricing_img {
+  text-align: center;
+  display: inline-block;
+  padding: 25px;
+  border-radius: 100%;
+  width: 40%;
+  height: 50%;
+}
+.pricing_img img{
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+.pricing_title {
+  text-align: center;
+  position: relative;
+}
+.pricing_title h3 {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  padding: 4px 0px 0;
+  -webkit-transition: .3s;
+  transition: .3s;
+  text-transform: uppercase;
+}
+.featur ul {
+    text-align: center;
+}
+.featur ul li {
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 7px 0;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+}
+.featur ul li i {
+  margin-right: 5px;
+  color: #666;
+}
+.price_item {
+  text-align: center;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.price_item_inner_center {
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-top: 19px;
+}
+.starting {
+  display: block !important;
+  font-size: 15px !important;
+  color: #454545 !important;
+  text-transform: uppercase;
+}
+.price_item span {
+  color: #0b4ea2;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.3s ease 0s;
+  font-size: 30px;
+}
+.slash {
+  font-size: 26px !important;
+}
+.tk {
+  color: #0b4ea2;
+  font-weight: 600;
+}
+.pricing_bottom {
+  padding-top: 16px;
+}
+.order_now {
+  background: transparent none repeat scroll 0 0;
+  text-align: center;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.order_now a {
+  background: #0b4ea2 none repeat scroll 0 0;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 39px;
+  position: relative;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  letter-spacing: 1px;
 }

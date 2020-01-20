@@ -45,6 +45,7 @@ Route::group(['middleware' => 'partner'], function () {
 Route::group(['prefix' => 'partner'], function () {
 	Route::match(['get','post'],'/partner_dashboard','Partner\PartnerController@index');
 	Route::match(['get','post'],'/get_review','Partner\PartnerController@get_review');
+	Route::match(['get','post'],'/send_verification_email','Partner\PartnerController@send_verification_email');
 	Route::match(['get','post'],'/profile/picture','Partner\PartnerController@profilePicture');
 	Route::match(['get','post'],'/profile/picturedel','Partner\PartnerController@removeprofilePicture');
 	Route::match(['get','post'],'/cv','Partner\PartnerController@cvupload');
@@ -54,8 +55,31 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
 
+	Route::get('/invoice', function(){
+		return view ('frontend.partner.invoice-template');
+	});
+	Route::get('/membership', function(){
+		return view ('frontend.partner.membership');
+	});
+	Route::get('/checkout', function(){
+		return view ('frontend.partner.checkout');
+	});
+	
 	});
 
+});
+Route::match(['get','post'],'/partner/verify-email','Partner\PartnerController@verify_account');
+
+Route::get('/contact-us',function(){
+	return view('frontend.contact-us');
+});
+
+Route::get('/privacy-policy',function(){
+	return view('frontend.privacy-policy');
+});
+
+Route::get('/terms-and-conditions',function(){
+	return view('frontend.terms-conditions');
 });
 
 Route::get('/contact-us',function(){
