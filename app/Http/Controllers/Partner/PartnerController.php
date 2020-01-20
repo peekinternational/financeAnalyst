@@ -169,7 +169,7 @@ class PartnerController extends Controller
     {
       // dd($id);
       $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
-     //return view ('frontend.partner.invoice-pdf',compact('invoice'));
+    //return view ('frontend.partner.invoice-pdf',compact('invoice'));
        $pdf = PDF::loadView('frontend.partner.invoice-pdf',compact('invoice'));
        //dd($pdf);
        return $pdf->download('inovice.pdf');
