@@ -129,4 +129,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	});
 });
 });
+
+Route::get('addmoney/stripe', array('as' => 'addmoney.paystripe','uses' => 'MoneySetupController@PaymentStripe'));
+Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
 //////////////////////// Admin Dashboard Close ////////////////////////////

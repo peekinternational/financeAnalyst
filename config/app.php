@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         App\Providers\FAProvider::class,
+		Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
     ],
 
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'FA' => App\Facade\FA::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+		'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
 
     ],
 
