@@ -190,7 +190,8 @@ class PartnerController extends Controller
     public function get_invoice_pdf(Request $request, $id)
     {
       // dd($id);
-      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
+      // $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
+      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name','fa_partner.email','fa_jobpost.job_title','fa_jobpost.job_case')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
     //return view ('frontend.partner.invoice-pdf',compact('invoice'));
        $pdf = PDF::loadView('frontend.partner.invoice-pdf',compact('invoice'));
        //dd($pdf);

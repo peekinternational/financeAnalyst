@@ -201,7 +201,27 @@ footer {
   padding: 8px 0;
   text-align: center;
 }
-
+.text-right {
+    text-align: right;
+}
+.label-success {
+    background-color: #5cb85c;
+}
+.label-warning {
+    background-color: #f0ad4e;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    color: #fff;
+    border-radius: .25em;
+}
+.badge, .label {
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+}
  </style>
   </head>
   <body>
@@ -243,6 +263,11 @@ footer {
           <div class="date">Due Date: {{$due_date}}</div>
         </div>
       </div>
+      @if(FA::checkPayment($invoice->id,$invoice->p_id) == 1)
+      <div class="text-right" style="margin-bottom: 20px;"><span class="label label-success" style="font-size: 15px;">Paid</span></div>
+      @else
+      <div class="text-right" style="margin-bottom: 20px;"><span class="label label-warning" style="font-size: 15px;">UnPaid</span></div>
+      @endif
       <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
@@ -254,7 +279,7 @@ footer {
         <tbody>
           <tr>
             <td class="no" style="text-align:center;">1</td>
-            <td class="desc"colspan="3"><h3>Experlu Fee</h3></td>
+            <td class="desc"colspan="3"><h3>{{$invoice->job_title}}</h3>Experlu Fee</td>
             <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
           </tr>
           <?php

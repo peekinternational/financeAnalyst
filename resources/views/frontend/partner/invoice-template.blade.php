@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  position: relative;
+  /* position: relative;
   width: 16cm;
   height: 29.7cm;
   margin: 0 auto;
@@ -26,7 +26,7 @@ body {
   background: #FFFFFF;
   font-family: Arial, sans-serif;
   font-size: 14px;
-  font-family: SourceSansPro;
+  font-family: SourceSansPro; */
 }
 
 header {
@@ -187,7 +187,7 @@ table tfoot tr td:first-child {
   font-size: 1.2em;
 }
 
-footer {
+/* footer {
   color: #777777;
   width: 100%;
   height: 30px;
@@ -196,7 +196,7 @@ footer {
   border-top: 1px solid #AAAAAA;
   padding: 8px 0;
   text-align: center;
-}
+} */
 
  </style>
   @section('content')
@@ -207,96 +207,106 @@ footer {
                     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
                     ?>
-    <header class="clearfix">
-      <div id="logo">
-        <img src="{{$base64}}">
-      </div>
-      <div id="company">
-        <h2 class="name">Experlu</h2>
-        <div>455 Foggy Heights, AZ 85004, US</div>
-        <div>(602) 519-0450</div>
-        <div><a href="mailto:company@example.com">company@example.com</a></div>
-      </div>
-    </header>
-    <main>
-      <div id="details" class="clearfix">
-        <div id="client">
-          <div class="to">INVOICE TO:</div>
-          <h2 class="name">{{$invoice->name}}</h2>
-          <div class="address">{{$invoice->address}}</div>
-          <div class="email"><a href="mailto:{{$invoice->email}}">{{$invoice->email}}</a></div>
+    <div class="container" style="margin-top: 9rem;margin-bottom: 6rem;background:white;">
+      <div class="row">
+        <div class="col-md-12" style="margin-bottom:30px;">
+          <div class="clearfix">
+            <div id="logo">
+              <img src="{{$base64}}">
+            </div>
+            <div id="company">
+              <h2 class="name">Experlu</h2>
+              <div>455 Foggy Heights, AZ 85004, US</div>
+              <div>(602) 519-0450</div>
+              <div><a href="mailto:company@example.com">company@example.com</a></div>
+            </div>
+          </div>
+          <div>
+            <div id="details" class="clearfix">
+              <div id="client">
+                <div class="to">INVOICE TO:</div>
+                <h2 class="name">{{$invoice->name}}</h2>
+                <div class="address">{{$invoice->address}}</div>
+                <div class="email"><a href="mailto:{{$invoice->email}}">{{$invoice->email}}</a></div>
+              </div>
+              <div id="invoice">
+                <?php
+                $date = $invoice->updated_at;
+                $quote_date =	date('d-M-Y', strtotime($date));
+                $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
+                 ?>
+                <div class="date">Invoice #: {{$invoice->id}}</div>
+                <div class="date">Date of Invoice: {{$quote_date}}</div>
+                <div class="date">Due Date: {{$due_date}}</div>
+              </div>
+            </div>
+            @if(FA::checkPayment($invoice->id,$invoice->p_id) == 1)
+            <div class="text-right" style="margin-bottom: 20px;"><span class="label label-success" style="font-size: 15px;">Paid</span></div>
+            @else
+            <div class="text-right" style="margin-bottom: 20px;"><span class="label label-warning" style="font-size: 15px;">UnPaid</span></div>
+            @endif
+            <table border="0" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <th class="no">#</th>
+                  <th class="desc" colspan="3">Title</th>
+                  <th class="total">TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="no" style="text-align:center;">1</td>
+                  <td class="desc"colspan="3"><h3>{{$invoice->job_title}}</h3>Experlu Fee</td>
+                  <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
+                </tr>
+                <?php
+                $vat_fee = $invoice->experlu_fee*20/100;
+                $total = $invoice->experlu_fee+$vat_fee;
+                ?>
+                <!-- <tr>
+                  <td class="no" style="text-align:center;">2</td>
+                  <td class="desc"colspan="3"><h3>VAT</h3></td>
+                  <td class="total" style="text-align:center;">£{{$vat_fee}}</td>
+                </tr> -->
+                <!-- <tr>
+                  <td class="no">03</td>
+                  <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
+                  <td class="unit">$40.00</td>
+                  <td class="qty">20</td>
+                  <td class="total">$800.00</td>
+                </tr> -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">SUBTOTAL</td>
+                  <td>£{{$invoice->experlu_fee}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">VAT 20%</td>
+                  <td>£{{$vat_fee}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">GRAND TOTAL</td>
+                  <td>£{{$total}}</td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="text-center" style="text-align: center;margin-top: 50px;">
+              <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 15px; border-radius: 9px;">Download PDF</a>
+              @if(FA::checkPayment($invoice->id,$invoice->p_id) == 0)
+              <a href="{{ url('partner/checkout')}}" class="btn" style="color: white;background: #252851;padding: 15px; border-radius: 9px;">Pay Now</a>
+              @endif
+            </div>
+            <!-- <div id="thanks">Thank you!</div>
+            <div id="notices">
+              <div>NOTICE:</div>
+              <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+            </div> -->
+          </div>
         </div>
-        <div id="invoice">
-          <?php
-          $date = $invoice->updated_at;
-          $quote_date =	date('d-M-Y', strtotime($date));
-          $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
-           ?>
-          <div class="date">Invoice #: {{$invoice->id}}</div>
-          <div class="date">Date of Invoice: {{$quote_date}}</div>
-          <div class="date">Due Date: {{$due_date}}</div>
-        </div>
       </div>
-      <table border="0" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <th class="no">#</th>
-            <th class="desc" colspan="3">Title</th>
-            <th class="total">TOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="no" style="text-align:center;">1</td>
-            <td class="desc"colspan="3"><h3>{{$invoice->job_title}}</h3>Experlu Fee</td>
-            <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
-          </tr>
-          <?php
-          $vat_fee = $invoice->experlu_fee*20/100;
-          $total = $invoice->experlu_fee+$vat_fee;
-          ?>
-          <!-- <tr>
-            <td class="no" style="text-align:center;">2</td>
-            <td class="desc"colspan="3"><h3>VAT</h3></td>
-            <td class="total" style="text-align:center;">£{{$vat_fee}}</td>
-          </tr> -->
-          <!-- <tr>
-            <td class="no">03</td>
-            <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">20</td>
-            <td class="total">$800.00</td>
-          </tr> -->
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">SUBTOTAL</td>
-            <td>£{{$invoice->experlu_fee}}</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">VAT 20%</td>
-            <td>£{{$vat_fee}}</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">GRAND TOTAL</td>
-            <td>£{{$total}}</td>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="text-center" style="text-align: center;margin-top: 50px;">
-        <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 15px; border-radius: 9px;">Download PDF</a>
-        <a href="{{ url('partner/checkout')}}" class="btn" style="color: white;background: #252851;padding: 15px; border-radius: 9px;">Pay Now</a>
-      </div>
-      <!-- <div id="thanks">Thank you!</div>
-      <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-      </div> -->
-    </main>
-    <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
-    </footer>
+    </div>
   @endsection
