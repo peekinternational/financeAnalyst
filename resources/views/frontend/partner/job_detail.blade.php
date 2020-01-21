@@ -262,7 +262,7 @@
 														<p>
 															{{$data->job_case}}
 														</p>
-														<div class="text-right" >
+														<div class="text-right" style="display:none;">
 															<a href="{{ url('partner/pdf/'.$data->job_id)}}" class="btn btn-primary">Download as PDF</a>
 														</div>
 													</div>
@@ -332,7 +332,7 @@
 																<button type="submit" class="btn btn-success pull-right">Submit</button>
 															</div>
 															<!-- <div class="form-group text-right">
-																
+
 															</div> -->
 															</div>
 															<div class="form-group text-right">
@@ -362,7 +362,7 @@
     $('#next').attr('disabled',true);
     $('.quote_price').keyup(function(){
         if($(this).val().length !=0)
-            $('#next').attr('disabled', false);            
+            $('#next').attr('disabled', false);
         else
             $('#next').attr('disabled',true);
     })

@@ -78,14 +78,19 @@ class FA {
 
     public function checkPayment($q_id,$p_id)
     {
-        //dd($id);
-       $check=DB::table('fa_payments')->where('q_id','=',$q_id)->where('p_id','=',$p_id)->count();
-       // dd($check);
-        if ($check == 1) {
-          return 1;
-        }else {
-          return 0;
-        }
+      $check=DB::table('fa_payments')->where('q_id','=',$q_id)->where('p_id','=',$p_id)->count();
+      if ($check == 1) {
+        return 1;
+      }else {
+        return 0;
+      }
+    }
+
+    public function checkMembership($payment_id)
+    {
+      $check=DB::table('fa_payments')->where('payment_id','=',$payment_id)->first()->method;
+      // dd($check);
+      return $check;
     }
 
 

@@ -445,7 +445,7 @@ foreach($jobs as $item){
 															</div>
 															<div class="form-group">
 																<label>Location</label>
-																<input type="text" class="form-control" name="location">
+																<input type="text" class="form-control" name="location" value="{{$userinfo->location}}">
 															</div>
 
 														</div>
@@ -456,25 +456,25 @@ foreach($jobs as $item){
 																<div class="col-md-6">
 																	<div class="form-group">
 																		<label>Business Name</label>
-																		<input type="text" name="company_name" class="form-control" placeholder="Company Name">
+																		<input type="text" name="company_name" class="form-control" placeholder="Company Name" value="{{$userinfo->company_name}}">
 																	</div>
 																</div>
 																<div class="col-md-6">
 																	<div class="form-group">
 																		<label>Business Email</label>
-																		<input type="Email" name="company_email" class="form-control" placeholder="Company Email">
+																		<input type="Email" name="company_email" class="form-control" placeholder="Company Email" value="{{$userinfo->company_email}}">
 																	</div>
 																</div>
 																<div class="col-md-6">
 																	<div class="form-group">
 																		<label>VAT Number</label>
-																		<input type="text" name="vat_number" class="form-control" placeholder="VAT Number">
+																		<input type="text" name="vat_number" class="form-control" placeholder="VAT Number" value="{{$userinfo->vat_number}}">
 																	</div>
 																</div>
 																<div class="col-md-6">
 																	<div class="form-group">
 																		<label>Company Number</label>
-																		<input type="text" name="company_number" class="form-control" placeholder="Company Number">
+																		<input type="text" name="company_number" class="form-control" placeholder="Company Number" value="{{$userinfo->company_number}}">
 																	</div>
 																</div>
 																<div class="col-md-6">
@@ -878,7 +878,62 @@ foreach($jobs as $item){
 									<!-- Tab panes -->
 									<div class="tab-content">
 										<div role="tabpanel" class="tab-pane" id="account_status">
-											Account status
+											<div class="sc-hmzhuo fPEirj">
+												<div class="sc-caSCKo jKLHsR">
+													<h2>Your Membership is {{FA::checkMembership($userinfo->payment_id)}}</h2>
+													<div>
+														<div class="sc-TOsTZ hiHQAi">Payments</div>
+														<div class="table-responsive">
+																<table class="datatable responsive compact">
+																	<thead>
+																		<tr>
+																			<th class="table-mobile-cell"></th>
+																			<th>PAYMENT ID</th>
+																			<th>AMOUNT</th>
+																			<th>DATE</th>
+																			<th>PAYMENT METHOD</th>
+																			<th>TRIAL PERIOD</th>
+																			<th>ACTION</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		@foreach($payments as $payment)
+																		<?php
+																		$date = $payment->created_at;
+																		$exp_date =	date('Y-m-d', strtotime($date. ' + 1 month'));
+																		$exp_date2 =	strtotime($exp_date);
+																		$payment_date =	date('Y-m-d', strtotime($date));
+																		$payment_date2 =	strtotime($payment_date);;
+																		$now = time(); // or your date as well
+																		$datediff = $exp_date2 - $now;
+																		$trial_day = round($datediff / (60 * 60 * 24));
+																		// print_r($trial_day); die;
+
+
+																		 ?>
+																		<tr>
+																			<td>{{$payment->payment_id}}</td>
+																			<td class="amount"><span>£{{$payment->amount}}</span></td>
+																			<td><span>{{$payment->created_at}}</span></td>
+																			<td><span>{{$payment->method}}</span></td>
+																			@if($payment->trial_period_days !="")
+																			<td><span>{{$trial_day}} Days</span></td>
+																			@else
+																			<td><span></span></td>
+																			@endif
+																			@if($payment->link !="")
+																			<td><span><a href="{{url($payment->link)}}" class="btn btn-sm btn-primary" style="color:white;">View Receipt</a> </span></td>
+																			@else
+																			<td></td>
+																			@endif
+																		</tr>
+																		@endforeach
+																	</tbody>
+															</table>
+														</div>
+												</div>
+											</div>
+										</div>
 										</div>
 										<div role="tabpanel" class="tab-pane active" id="invoice">
 											<div class="sc-hmzhuo fPEirj">

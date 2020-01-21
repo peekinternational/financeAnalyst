@@ -45,6 +45,11 @@ class PartnerController extends Controller
                 'post_code'=>$request->input('post_code'),
                 'city'=>$request->input('city'),
                 'phoneno'=>$request->input('phoneno'),
+                'location'=>$request->input('location'),
+                'company_name'=>$request->input('company_name'),
+                'company_email'=>$request->input('company_email'),
+                'vat_number'=>$request->input('vat_number'),
+                'company_number'=>$request->input('company_number'),
                 'company_des'=>$request->input('company_des'),
                 'company_info'=>$request->input('company_info'),
                 'vat_number'=>$request->input('vat_number'),
@@ -79,7 +84,8 @@ class PartnerController extends Controller
          $pquots = DB::table('fa_jobpost')->select('fa_quote.*','fa_jobpost.services','fa_jobpost.city','fa_jobpost.mobilenumber','fa_jobpost.job_title','fa_jobpost.job_type')->join('fa_quote','fa_quote.job_id','=','fa_jobpost.id')->where('fa_quote.p_id',$userId)->orderBy('fa_quote.id','desc')->get();
          //$quotes=DB::table('fa_quote')->get();
         $invoicequote = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->where('fa_quote.p_id',$userId)->where('fa_quote.status','Won')->orderBy('fa_quote.id','desc')->get();
-        // dd($invoicequote);
+        $payments = DB::table('fa_payments')->where('p_id',$userId)->orderBy('payment_id','desc')->get();
+        // dd($payments);
 
          foreach($alljobs as &$res)
          {
@@ -157,7 +163,7 @@ class PartnerController extends Controller
          }
 
       // dd($userinfo);
-     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId','invoicequote'));
+     return view('frontend.partner.partner_dashboard',compact('userinfo','document','jobs','alljobs','rquote','pquots','reviews','rating_avg','userId','invoicequote','payments'));
     }
 
 
@@ -189,8 +195,6 @@ class PartnerController extends Controller
 
     public function get_invoice_pdf(Request $request, $id)
     {
-      // dd($id);
-      // $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.*','fa_jobpost.*')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
       $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name','fa_partner.email','fa_jobpost.job_title','fa_jobpost.job_case')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
     //return view ('frontend.partner.invoice-pdf',compact('invoice'));
        $pdf = PDF::loadView('frontend.partner.invoice-pdf',compact('invoice'));

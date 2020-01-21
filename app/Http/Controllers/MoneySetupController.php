@@ -169,6 +169,7 @@ if (!isset($token['id'])) {
    $patner_detail['payment_id']=$payment;
    $partner = DB::table('fa_partner')->where('p_id',$userId)->update($patner_detail);
 
+   $request->session()->flash('message', 'Membership Activated successfully');
  return redirect('/partner/partner_dashboard');
  } else {
 	 dd("error");
@@ -256,6 +257,7 @@ if (!isset($token['id'])) {
    $partner = DB::table('fa_partner')->where('p_id',$userId)->update($patner_detail);
  // echo "<pre>";
  // print_r($charge);exit();
+ $request->session()->flash('message', 'Membership Activated successfully');
  return redirect('/partner/partner_dashboard');
  } else {
 	 dd("error");

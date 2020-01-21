@@ -207,7 +207,7 @@ table tfoot tr td:first-child {
                     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
                     ?>
-    <div class="container" style="margin-top: 9rem;margin-bottom: 6rem;background:white;">
+    <div class="container" style="margin-top: 9rem;margin-bottom: 6rem;background:white;width:800px;">
       <div class="row">
         <div class="col-md-12" style="margin-bottom:30px;">
           <div class="clearfix">
