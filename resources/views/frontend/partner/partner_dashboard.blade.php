@@ -913,7 +913,11 @@ foreach($jobs as $item){
 																			<td><span>{{$invoice->job_id}}</span></td>
 																			<td><span>{{$invoice->name}}</span></td>
 																			<td class="amount"><span>£{{$invoice->experlu_fee}}</span></td>
+																			@if(FA::checkPayment($invoice->id,$invoice->p_id) == 1)
 																			<td><span class="label label-success">Paid</span></td>
+																			@else
+																			<td><span class="label label-warning">UnPaid</span></td>
+																			@endif
 																		</tr>
 																		@endforeach
 																		<!-- <tr>

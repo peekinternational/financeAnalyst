@@ -76,6 +76,18 @@ class FA {
       return $name;
     }
 
+    public function checkPayment($q_id,$p_id)
+    {
+        //dd($id);
+       $check=DB::table('fa_payments')->where('q_id','=',$q_id)->where('p_id','=',$p_id)->count();
+       // dd($check);
+        if ($check == 1) {
+          return 1;
+        }else {
+          return 0;
+        }
+    }
+
 
 }
 
