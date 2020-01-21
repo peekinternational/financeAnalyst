@@ -1,238 +1,309 @@
-<!doctype html>
-<html>
-<head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <title>Experlu Invoice</title>
+    <title>Example 2</title>
+ <style>
+@font-face {
+  font-family: SourceSansPro;
+  src: url(SourceSansPro-Regular.ttf);
+}
 
-    <style>
-    .invoice-box {
-        max-width: 800px;
-        margin: auto;
-        padding: 30px;
-        border: 1px solid #eee;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-        font-size: 16px;
-        line-height: 24px;
-        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        color: #555;
-    }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-    .invoice-box table {
-        width: 100%;
-        line-height: inherit;
-        text-align: left;
-    }
+a {
+  color: #252851;
+  text-decoration: none;
+}
 
-    .invoice-box table td {
-        padding: 5px;
-        vertical-align: top;
-    }
+body {
+  position: relative;
+  width: 16cm;
+  height: 29.7cm;
+  margin: 0 auto;
+  color: #555555;
+  background: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-family: SourceSansPro;
+}
 
-    .invoice-box table tr td:nth-child(2) {
-        text-align: right;
-    }
+header {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #AAAAAA;
+}
 
-    .invoice-box table tr.top table td {
-        padding-bottom: 20px;
-    }
+#logo {
+  float: left;
+  margin-top: 8px;
+}
 
-    .invoice-box table tr.top table td.title {
-        font-size: 45px;
-        line-height: 45px;
-        color: #333;
-    }
+#logo img {
+  height: 70px;
+}
 
-    .invoice-box table tr.information table td {
-        padding-bottom: 40px;
-    }
+#company {
+  text-align: right;
+}
 
-    .invoice-box table tr.heading td {
-        background: #eee;
-        border-bottom: 1px solid #ddd;
-        font-weight: bold;
-    }
 
-    .invoice-box table tr.details td {
-        padding-bottom: 20px;
-    }
+#details {
+  margin-bottom: 50px;
+}
 
-    .invoice-box table tr.item td{
-        border-bottom: 1px solid #eee;
-    }
+#client {
+  padding-left: 6px;
+  border-left: 6px solid #252851;
+  float: left;
+}
 
-    .invoice-box table tr.item.last td {
-        border-bottom: none;
-    }
+#client .to {
+  color: #777777;
+}
 
-    .invoice-box table tr.total td:nth-child(2) {
-        border-top: 2px solid #eee;
-        font-weight: bold;
-    }
+h2.name {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
 
-    @media only screen and (max-width: 600px) {
-        .invoice-box table tr.top table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
+#invoice {
+  text-align: right;
+}
 
-        .invoice-box table tr.information table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-    }
+#invoice h1 {
+  color: #0087C3;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 10px 0;
+}
 
-    /** RTL **/
-    .rtl {
-        direction: rtl;
-        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-    }
+#invoice .date {
+  font-size: 1.1em;
+  color: #777777;
+}
 
-    .rtl table {
-        text-align: right;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
 
-    .rtl table tr td:nth-child(2) {
-        text-align: left;
-    }
-    </style>
-</head>
+table th,
+table td {
+  padding: 20px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
 
-<body>
-  <div class="invoice-box" id="DivIdToPrint">
-    <table cellpadding="0" cellspacing="0">
-      <tr class="top">
-        <td colspan="2">
-          <table>
-            <tr>
-              <td class="title">
-                <img src="{{asset('frontend-assets/logo.png')}}" style="width:100%; max-width:300px;">
-              </td>
-              <td>
-                <?php
-                $date = $invoice->updated_at;
-                $quote_date =	date('d-M-Y', strtotime($date));
-                $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
-                 ?>
-                Invoice #: {{$invoice->id}}<br>
-                Created: {{$quote_date}}<br>
-                Due: {{$due_date}}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+table th {
+  white-space: nowrap;
+  font-weight: normal;
+}
 
-      <tr class="information">
-        <td colspan="2">
-          <table>
-            <tr>
-              <td>
-                Sparksuite, Inc.<br>
-                12345 Sunny Road<br>
-                Sunnyville, CA 12345
-              </td>
+table td {
+  text-align: right;
+}
 
-              <td>
-                <!-- Acme Corp.<br> -->
-                {{$invoice->name}}<br>
-                {{$invoice->email}}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+table td h3{
+  color: #d9af44;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
 
-      <tr class="heading">
-        <td>
-          Payment Method
-        </td>
+table .no {
+  color: #FFFFFF;
+  font-size: 1.6em;
+  background: #d9af44;
+}
 
-        <td>
-          Check #
-        </td>
-      </tr>
+table .desc {
+  text-align: left;
+}
 
-      <tr class="details">
-        <td>
-          Check
-        </td>
+table .unit {
+  background: #DDDDDD;
+}
 
-        <td>
-          1000
-        </td>
-      </tr>
+table .qty {
+}
 
-      <tr class="heading">
-        <td>Item</td>
+table .total {
+  background: #d9af44;
+  color: #FFFFFF;
+}
 
-        <td>Price</td>
-      </tr>
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
 
-      <tr class="item">
-        <td> Experlu Fee</td>
+table tbody tr:last-child td {
+  border: none;
+}
 
-        <td> {{$invoice->experlu_fee}}</td>
-      </tr>
+table tfoot td {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap;
+  border-top: 1px solid #AAAAAA;
+}
 
-      <tr class="item">
-        <td>VAT</td>
+table tfoot tr:first-child td {
+  border-top: none;
+}
 
-        <td>{{$invoice->vat_fee}}</td>
-      </tr>
-      <tr class="total">
-        <td></td>
-        <?php
-          $total =$invoice->experlu_fee+$invoice->vat_fee;
-         ?>
-        <td>
-          Total: {{$total}}
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="text-center" style="text-align: center;margin-top: 10px;">
-    <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 5px;">Download PDF</a>
-    <a href="{{ url('partner/checkout/'.$invoice->id.'/'.$invoice->experlu_fee.'/'.$invoice->vat_fee.'/'.$total)}}" class="btn" style="color: white;background: #d9af44;padding: 5px;">Pay Now</a>
-  </div>
-</body>
+table tfoot tr:last-child td {
+  color: #d9af44;
+  font-size: 1.4em;
+  border-top: 1px solid #d9af44;
+
+}
+
+table tfoot tr td:first-child {
+  border: none;
+}
+
+#thanks{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+#notices{
+  padding-left: 6px;
+  border-left: 6px solid#d9af44;
+}
+
+#notices .notice {
+  font-size: 1.2em;
+}
+
+footer {
+  color: #777777;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #AAAAAA;
+  padding: 8px 0;
+  text-align: center;
+}
+
+ </style>
+  </head>
+  <body>
+  <?php
+   $path = public_path('/frontend-assets/logo.png');
+                    $type = pathinfo($path, PATHINFO_EXTENSION);
+                    $data = file_get_contents($path);
+                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+                    ?>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="{{$base64}}">
+      </div>
+      <div id="company">
+        <h2 class="name">Experlu</h2>
+        <div>455 Foggy Heights, AZ 85004, US</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">{{$invoice->name}}</h2>
+          <div class="address">{{$invoice->address}}</div>
+          <div class="email"><a href="mailto:{{$invoice->email}}">{{$invoice->email}}</a></div>
+        </div>
+        <div id="invoice">
+          <?php
+          $date = $invoice->updated_at;
+          $quote_date =	date('d-M-Y', strtotime($date));
+          $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
+           ?>
+          <div class="date">Invoice #: {{$invoice->id}}</div>
+          <div class="date">Date of Invoice: {{$quote_date}}</div>
+          <div class="date">Due Date: {{$due_date}}</div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="desc" colspan="3">Title</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no" style="text-align:center;">1</td>
+            <td class="desc"colspan="3"><h3>Experlu Fee</h3></td>
+            <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
+          </tr>
+          <?php
+          $vat_fee = $invoice->experlu_fee*20/100;
+          $total = $invoice->experlu_fee+$vat_fee;
+          ?>
+          <!-- <tr>
+            <td class="no" style="text-align:center;">2</td>
+            <td class="desc"colspan="3"><h3>VAT</h3></td>
+            <td class="total" style="text-align:center;">£{{$vat_fee}}</td>
+          </tr> -->
+          <!-- <tr>
+            <td class="no">03</td>
+            <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
+            <td class="unit">$40.00</td>
+            <td class="qty">20</td>
+            <td class="total">$800.00</td>
+          </tr> -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>£{{$invoice->experlu_fee}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">VAT 20%</td>
+            <td>£{{$vat_fee}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>£{{$total}}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="text-center" style="text-align: center;margin-top: 50px;">
+        <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 15px; border-radius: 9px;">Download PDF</a>
+        <a href="{{ url('partner/checkout/'.$invoice->id.'/'.$invoice->experlu_fee.'/'.$vat_fee.'/'.$total)}}" class="btn" style="color: white;background: #252851;padding: 15px; border-radius: 9px;">Pay Now</a>
+      </div>
+      <!-- <div id="thanks">Thank you!</div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div> -->
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
 </html>
-<script src="{{asset('/frontend-assets/dashboard/js/core/jquery.min.js')}}"></script>
-<script>
-function printDiv()
-{
-  // $('#print_btn').hide();
-  var divToPrint=document.getElementById('DivIdToPrint');
-
-  var newWin=window.open('','Print-Window');
-
-  newWin.document.open();
-
-  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-
-  newWin.document.close();
-
-  setTimeout(function(){newWin.close();},10);
-
-}
-
-function downloadPdf(){
-  var formdata=$('form').serialize();
-  console.log(formdata);
-  $.ajax({
-      url: "{{ url('quote_ajax')}}",
-      type: "post",
-      data: formdata ,
-      success: function (response) {
-    console.log(response);
-       $('#qoute_ajax').html(response);
-         // You will get response from your PHP page (what you echo or print)
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-         console.log(textStatus, errorThrown);
-      }
-  });
-}
-
-</script>

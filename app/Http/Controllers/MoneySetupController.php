@@ -71,9 +71,10 @@ if (!isset($token['id'])) {
    $detail['amount'] = $amount;
    $detail['currency'] = $charge['currency'];
    $detail['trial_period_days'] = $charge['trial_period_days'];
+   $receipt =$charge['receipt_url'];
+   $detail['link'] = $receipt;
    // dd($detail);
    $payment = DB::table('fa_payments')->insertGetID($detail);
-   $receipt =$charge['receipt_url'];
  // print_r($charge);exit();
  return view('frontend.thanks2',compact('receipt'));
 

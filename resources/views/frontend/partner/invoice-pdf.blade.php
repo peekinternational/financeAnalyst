@@ -23,13 +23,13 @@ a {
 
 body {
   position: relative;
-  width: 16cm;  
-  height: 29.7cm; 
-  margin: 0 auto; 
+  width: 16cm;
+  height: 29.7cm;
+  margin: 0 auto;
   color: #555555;
-  background: #FFFFFF; 
-  font-family: Arial, sans-serif; 
-  font-size: 14px; 
+  background: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
   font-family: SourceSansPro;
 }
 
@@ -106,7 +106,7 @@ table td {
 }
 
 table th {
-  white-space: nowrap;        
+  white-space: nowrap;
   font-weight: normal;
 }
 
@@ -158,18 +158,18 @@ table tfoot td {
   background: #FFFFFF;
   border-bottom: none;
   font-size: 1.2em;
-  white-space: nowrap; 
-  border-top: 1px solid #AAAAAA; 
+  white-space: nowrap;
+  border-top: 1px solid #AAAAAA;
 }
 
 table tfoot tr:first-child td {
-  border-top: none; 
+  border-top: none;
 }
 
 table tfoot tr:last-child td {
   color: #d9af44;
   font-size: 1.4em;
-  border-top: 1px solid #d9af44; 
+  border-top: 1px solid #d9af44;
 
 }
 
@@ -184,7 +184,7 @@ table tfoot tr td:first-child {
 
 #notices{
   padding-left: 6px;
-  border-left: 6px solid#d9af44;  
+  border-left: 6px solid#d9af44;
 }
 
 #notices .notice {
@@ -228,64 +228,67 @@ footer {
       <div id="details" class="clearfix">
         <div id="client">
           <div class="to">INVOICE TO:</div>
-          <h2 class="name">John Doe</h2>
-          <div class="address">796 Silver Harbour, TX 79273, US</div>
-          <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+          <h2 class="name">{{$invoice->name}}</h2>
+          <div class="address">{{$invoice->address}}</div>
+          <div class="email"><a href="mailto:{{$invoice->email}}">{{$invoice->email}}</a></div>
         </div>
         <div id="invoice">
-         
-          <div class="date">Date of Invoice: 01/06/2014</div>
-          <div class="date">Due Date: 30/06/2014</div>
+          <?php
+          $date = $invoice->updated_at;
+          $quote_date =	date('d-M-Y', strtotime($date));
+          $due_date =	date('d-M-Y', strtotime($date. ' + 1 days'));
+           ?>
+          <div class="date">Invoice #: {{$invoice->id}}</div>
+          <div class="date">Date of Invoice: {{$quote_date}}</div>
+          <div class="date">Due Date: {{$due_date}}</div>
         </div>
       </div>
       <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
             <th class="no">#</th>
-            <th class="desc">DESCRIPTION</th>
-            <th class="unit">UNIT PRICE</th>
-            <th class="qty">QUANTITY</th>
+            <th class="desc" colspan="3">Title</th>
             <th class="total">TOTAL</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="no">01</td>
-            <td class="desc"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">30</td>
-            <td class="total">$1,200.00</td>
+            <td class="no" style="text-align:center;">1</td>
+            <td class="desc"colspan="3"><h3>Experlu Fee</h3></td>
+            <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
           </tr>
-          <tr>
-            <td class="no">02</td>
-            <td class="desc"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">80</td>
-            <td class="total">$3,200.00</td>
-          </tr>
-          <tr>
+          <?php
+          $vat_fee = $invoice->experlu_fee*20/100;
+          $total = $invoice->experlu_fee+$vat_fee;
+          ?>
+          <!-- <tr>
+            <td class="no" style="text-align:center;">2</td>
+            <td class="desc"colspan="3"><h3>VAT</h3></td>
+            <td class="total" style="text-align:center;">£{{$vat_fee}}</td>
+          </tr> -->
+          <!-- <tr>
             <td class="no">03</td>
             <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
             <td class="unit">$40.00</td>
             <td class="qty">20</td>
             <td class="total">$800.00</td>
-          </tr>
+          </tr> -->
         </tbody>
         <tfoot>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">SUBTOTAL</td>
-            <td>$5,200.00</td>
+            <td>£{{$invoice->experlu_fee}}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
-            <td colspan="2">TAX 25%</td>
-            <td>$1,300.00</td>
+            <td colspan="2">VAT 20%</td>
+            <td>£{{$vat_fee}}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">GRAND TOTAL</td>
-            <td>$6,500.00</td>
+            <td>£{{$total}}</td>
           </tr>
         </tfoot>
       </table>
