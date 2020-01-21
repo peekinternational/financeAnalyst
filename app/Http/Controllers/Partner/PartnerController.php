@@ -164,9 +164,27 @@ class PartnerController extends Controller
     public function get_invoice_detail(Request $request, $id)
     {
       // dd($id);
-      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name','fa_partner.email')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->where('fa_quote.id',$id)->first();
-      // dd($invoice);
+      $invoice = DB::table('fa_quote')->select('fa_quote.*','fa_partner.name','fa_partner.email','fa_jobpost.job_title','fa_jobpost.job_case')->join('fa_partner','fa_partner.p_id','=','fa_quote.p_id')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id)->first();
+      $quote_id=$invoice->id;
+      $experlu_fee=$invoice->experlu_fee;
+      $vat_fee = $invoice->experlu_fee*20/100;
+      $total = $invoice->experlu_fee+$vat_fee;
+      $request->session()->put('Quote_id', $quote_id);
+      $request->session()->put('experlu_fee', $experlu_fee);
+      $request->session()->put('vat_fee', $vat_fee);
+      $request->session()->put('total', $total);
+      // dd($request->session()->get('total'));
         return view ('frontend.partner.invoice-template',compact('invoice'));
+    }
+
+    public function checkout_form(Request $request)
+    {
+        $quote_id=$request->session()->get('Quote_id');
+        $fee=$request->session()->get('experlu_fee');
+        $vat=$request->session()->get('vat_fee');
+        $total=$request->session()->get('total');
+        // dd($total);
+        return view ('frontend.partner.checkout',compact('quote_id','fee','vat','total'));
     }
 
     public function get_invoice_pdf(Request $request, $id)
@@ -180,11 +198,7 @@ class PartnerController extends Controller
 
     }
 
-    public function checkout(Request $request,$id,$fee,$vat,$total)
-    {
-      // dd($id." ".$fee." ".$vat." ".$total);
-      	return view ('frontend.partner.checkout',compact('id','fee','vat','total'));
-    }
+
 
         public function getDocument(Request $request)
         {

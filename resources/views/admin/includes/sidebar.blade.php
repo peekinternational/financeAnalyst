@@ -113,13 +113,17 @@
             </ul>
           </li>
           @endif
-           @if(Session::get('fa_admin')->role =='admin' || Session::get('fa_admin')->role =='c')
-          <li>
-            <a href="">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Payments</p>
-            </a>
-          </li>
+           @if(Session::get('fa_admin')->role =='admin')
+           <li>
+             <a href="#managepayment"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
+               <i class="nc-icon nc-single-02"></i>
+               <p>Payments</p>
+             </a>
+             <ul class="collapse" id="managepayment">
+               <li><a href="{{url('dashboard/payment_management')}}">View Payments</a></li>
+             </ul>
+
+           </li>
           @endif
            @if(Session::get('fa_admin')->role =='admin')
           <li>

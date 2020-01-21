@@ -1,9 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Example 2</title>
+@extends('layouts.app')
  <style>
 @font-face {
   font-family: SourceSansPro;
@@ -203,8 +199,7 @@ footer {
 }
 
  </style>
-  </head>
-  <body>
+  @section('content')
   <?php
    $path = public_path('/frontend-assets/logo.png');
                     $type = pathinfo($path, PATHINFO_EXTENSION);
@@ -221,7 +216,6 @@ footer {
         <div>455 Foggy Heights, AZ 85004, US</div>
         <div>(602) 519-0450</div>
         <div><a href="mailto:company@example.com">company@example.com</a></div>
-      </div>
       </div>
     </header>
     <main>
@@ -254,7 +248,7 @@ footer {
         <tbody>
           <tr>
             <td class="no" style="text-align:center;">1</td>
-            <td class="desc"colspan="3"><h3>Experlu Fee</h3></td>
+            <td class="desc"colspan="3"><h3>{{$invoice->job_title}}</h3>Experlu Fee</td>
             <td class="total" style="text-align:center;">£{{$invoice->experlu_fee}}</td>
           </tr>
           <?php
@@ -294,7 +288,7 @@ footer {
       </table>
       <div class="text-center" style="text-align: center;margin-top: 50px;">
         <a href="{{ url('partner/invoice_pdf/'.$invoice->id)}}" class="btn" style="color: white;background: #d9af44;padding: 15px; border-radius: 9px;">Download PDF</a>
-        <a href="{{ url('partner/checkout/'.$invoice->id.'/'.$invoice->experlu_fee.'/'.$vat_fee.'/'.$total)}}" class="btn" style="color: white;background: #252851;padding: 15px; border-radius: 9px;">Pay Now</a>
+        <a href="{{ url('partner/checkout')}}" class="btn" style="color: white;background: #252851;padding: 15px; border-radius: 9px;">Pay Now</a>
       </div>
       <!-- <div id="thanks">Thank you!</div>
       <div id="notices">
@@ -305,5 +299,4 @@ footer {
     <footer>
       Invoice was created on a computer and is valid without the signature and seal.
     </footer>
-  </body>
-</html>
+  @endsection

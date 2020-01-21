@@ -251,6 +251,7 @@
                 <label for="expmonth">Exp Month</label>
                 <input type="text" id="expiry_month" name="expmonth" size='4' placeholder="MM" required>
                 <input type="hidden" id="" name="amount" value="{{$total}}">
+                <input type="hidden" id="" name="q_id" value="{{$quote_id}}">
 
                 <div class="row">
                   <div class="col-50">

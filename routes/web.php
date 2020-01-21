@@ -54,7 +54,7 @@ Route::group(['prefix' => 'partner'], function () {
 	Route::get('/pdf/{id}','Partner\PartnerController@export_pdf');
 	Route::get('/job_detail/{id}','Partner\PartnerController@jobdetail');
 	Route::get('/mark/{id}','Partner\PartnerController@mark');
-	Route::get('/invoice/{id}','Partner\PartnerController@get_invoice_detail');
+	Route::match(['get','post'],'/invoice/{id}','Partner\PartnerController@get_invoice_detail');
 	Route::get('/invoice_pdf/{id}','Partner\PartnerController@get_invoice_pdf');
 
 	// Route::get('/invoice', function(){
@@ -66,7 +66,7 @@ Route::group(['prefix' => 'partner'], function () {
 	// Route::get('/checkout', function(){
 	// 	return view ('frontend.partner.checkout');
 	// });
-	Route::get('/checkout/{id}/{fee}/{vat}/{total}','Partner\PartnerController@checkout');
+	Route::match(['get','post'],'/checkout','Partner\PartnerController@checkout_form');
 	Route::get('/checkoutfree', function(){
 		return view ('frontend.partner.checkoutfree');
 	});
@@ -130,6 +130,7 @@ Route::group(['prefix' => 'dashboard'], function () {
 	Route::post('/post_portal', 'Dashboard\JobManageController@post_portal');
 	Route::post('/mark', 'Dashboard\JobManageController@mark');
 	Route::match(['get','post'],'/jobstatus_update/{id}', 'Dashboard\JobManageController@jobstatus_update');
+	Route::get('payment_management','Customer\CustomerController@payment_management');
 
 	Route::get('/icons', function(){
 		return view('/admin.icons');

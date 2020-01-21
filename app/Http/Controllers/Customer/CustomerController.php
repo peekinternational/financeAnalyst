@@ -158,7 +158,12 @@ class customerController extends Controller
       return view('frontend.review',compact('reviews','rating_avg','user_exist','user_type','q_id','j_id','p_id','quote','customer_name'));
     }
 
-
+    public function payment_management()
+    {
+        $allpayment = DB::table('fa_payments')->orderBy('payment_id','desc')->get();
+        // dd($allpayment);
+        return view('admin.payment_management',compact('allpayment'));
+    }
 
 
     /**

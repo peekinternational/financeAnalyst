@@ -61,6 +61,7 @@ if (!isset($token['id'])) {
    // dd($charge);
    $userId=$request->session()->get('faUser')->p_id;
    $detail['p_id'] = $userId;
+   $detail['q_id'] = $request->input('q_id');
    $detail['name'] = $request->input('fullname');
    $detail['email'] = $request->input('email');
    $detail['address'] = $request->input('address');
@@ -83,21 +84,21 @@ if (!isset($token['id'])) {
  \Session::put('error','Money not add in wallet!!');
 
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkout');
  }
  } catch (Exception $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkout');
  } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
- //return redirect()->url('addmoney/stripe');
+ return Redirect::to('partner/checkout');
+ //return redirect()->url('partner/checkout');
  } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
- \Session::put('error',$e->getMessage());
+ \Session::flash('error',$e->getMessage());
   //dd($e->getMessage());
- return Redirect::to('addmoney/stripe');
+ return Redirect::to('partner/checkout');
  }
  }
  }
