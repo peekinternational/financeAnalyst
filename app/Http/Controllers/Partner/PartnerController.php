@@ -619,8 +619,17 @@ public function rejectquote(Request $request,$id,$id2)
     {
 
            //$job_id=$request->input('job_id');
-          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
-        //dd($quotedata);
+           $quotedata= DB::table('fa_quote')->select('fa_quote.*','fa_jobpost.job_title')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->where('fa_quote.status','pending')->first();
+         // dd($quotedata);
+         if ($quotedata =="") {
+           $newdata= DB::table('fa_quote')->where('fa_quote.id',$id2)->first();
+           if ($newdata->status == "Loss") {
+             $request->session()->flash('message','You already Reject this Quote');
+           }else {
+             $request->session()->flash('message','You already Accept this Quote');
+           }
+            return redirect('/');
+         }
           $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
           $toemail=$userinfo->email;
          // dd($job_id);
@@ -636,15 +645,24 @@ public function rejectquote(Request $request,$id,$id2)
          DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Loss']);
 
 
-        $request->session()->flash('message','Quote created successfully');
+        $request->session()->flash('message','Quote Rejected successfully');
          return redirect()->back();
 
     }
 
     public function acceptquote(Request $request, $id,$id2)
     {
-          $quotedata= DB::table('fa_quote')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->first();
-        //dd($quotedata);
+          $quotedata= DB::table('fa_quote')->select('fa_quote.*','fa_jobpost.job_title')->join('fa_jobpost','fa_jobpost.id','=','fa_quote.job_id')->where('fa_quote.id',$id2)->where('fa_quote.status','pending')->first();
+        // dd($quotedata);
+        if ($quotedata =="") {
+          $newdata= DB::table('fa_quote')->where('fa_quote.id',$id2)->first();
+          if ($newdata->status == "Won") {
+            $request->session()->flash('message','You already Accept this Quote');
+          }else {
+            $request->session()->flash('message','You already Reject this Quote');
+          }
+           return redirect('/');
+        }
           $userinfo= DB::table('fa_partner')->where('p_id',$id)->first();
           $toemail=$userinfo->email;
          // dd($job_id);
@@ -660,7 +678,7 @@ public function rejectquote(Request $request,$id,$id2)
         DB::table('fa_quote')->where('id',$id2)->update(['status'=>'Won','updated_at'=>Carbon\Carbon::now()]);
 
 
-        $request->session()->flash('message','Quote created successfully');
+        $request->session()->flash('message','Quote Accepted successfully');
          return redirect()->back();
 
     }
