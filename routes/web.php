@@ -78,6 +78,8 @@ Route::group(['prefix' => 'partner'], function () {
 
 });
 Route::match(['get','post'],'/partner/verify-email','Partner\PartnerController@verify_account');
+Route::match(['get','post'],'/success1','Partner\PartnerController@success1');
+Route::match(['get','post'],'/success2','Partner\PartnerController@success2');
 
 Route::get('/contact-us',function(){
 	return view('frontend.contact-us');

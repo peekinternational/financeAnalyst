@@ -1806,3 +1806,17 @@ table.datatable.responsive .table-mobile-cell {
   transition: all 0.3s ease 0s;
   letter-spacing: 1px;
 }
+.order_now button {
+  background: #0b4ea2 none repeat scroll 0 0;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 39px;
+  position: relative;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  letter-spacing: 1px;
+}

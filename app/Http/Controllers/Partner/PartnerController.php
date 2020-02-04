@@ -711,6 +711,35 @@ public function export_pdf($id)
 
     return $pdf->download('CaseDetail.pdf');
   }
+  public function success1(Request $request)
+  {
+    $user_info=$request->session()->get('faUser');
+    // dd($user_info);
+    $detail['p_id'] = $user_info->p_id;
+    $detail['email'] = $user_info->email;
+    $detail['method'] = 'PREMIUM USER MEMBERSHIP';
+    $detail['amount'] = 85;
+    $payment = DB::table('fa_payments')->insertGetID($detail);
+    $patner_detail['payment_status']='1';
+    $patner_detail['payment_id']=$payment;
+    $partner = DB::table('fa_partner')->where('p_id',$user_info->p_id)->update($patner_detail);
+    return redirect('/thank-you');
+  }
+
+  public function success2(Request $request)
+  {
+    $user_info=$request->session()->get('faUser');
+    $detail['p_id'] = $user_info->p_id;
+    $detail['email'] = $user_info->email;
+    $detail['method'] = 'BASIC USER MEMBERSHIP';
+    $detail['trial_period_days'] = 30;
+    $payment = DB::table('fa_payments')->insertGetID($detail);
+    $patner_detail['payment_status']='1';
+    $patner_detail['payment_id']=$payment;
+    $partner = DB::table('fa_partner')->where('p_id',$user_info->p_id)->update($patner_detail);
+    return redirect('/thank-you');
+  }
+
 
 
     public function create()
